@@ -130,7 +130,7 @@ input, select, textarea {
 		@media screen and (max-width: 1680px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 13pt;
 			}
 
 		}
@@ -138,7 +138,7 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			body, input, select, textarea {
-				font-size: 11pt;
+				font-size: 12pt;
 			}
 
 		}
