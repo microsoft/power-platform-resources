@@ -109,7 +109,7 @@ commit date.
 - Replaced the Ignite 2024 news link with the Ignite 2025 Book of News.
 - Normalized touched microsoft.com URLs to remove the `/en-us/` locale segment.
 
-## Unreleased
+## 2026-08-07 (editorial design system)
 
 ### Added
 
@@ -184,6 +184,7 @@ commit date.
   jumping to it.
 - Hardened the page script so a missing theme toggle or search input no longer
   prevents the remaining behavior from initializing.
+- Corrected a "maintainted" typo in the footer credit line.
 - Fixed misaligned subsection labels (e.g. Power Apps, Power Automate) in the
 "Explore Power Platform products" list: label headings that are direct
 children of a resource section now share the same left gutter as the numbered
