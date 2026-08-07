@@ -4,6 +4,6 @@ _No open items._
 
 ## Completed
 
-- **Resource freshness metadata** — Added a site-wide "Last reviewed" date in
-  the footer and a freshness banner that warns when the page is past its
-  two-week review cadence. Completed 2026-08-07.
+- **Resource freshness metadata** — Added a "Last updated" date in the footer,
+  rendered from a single `<time datetime>` value that the scheduled update prompt
+  refreshes with each content update. Completed 2026-08-07.

@@ -79,6 +79,28 @@
 		}
 	}
 
+	// Accordion: opening a category from its header collapses any other open
+	// section, so only one is expanded at a time. Scoped to real clicks on the
+	// summary, so search- and nav-driven opens are left untouched.
+	sections.forEach((section) => {
+		const summary = section.querySelector("summary");
+		if (!summary) {
+			return;
+		}
+		summary.addEventListener("click", () => {
+			// section.open still reflects the pre-toggle state during click. If it
+			// is already open, this click closes it — leave the others alone.
+			if (section.open) {
+				return;
+			}
+			sections.forEach((other) => {
+				if (other !== section) {
+					other.open = false;
+				}
+			});
+		});
+	});
+
 	const navStrip = document.querySelector(".nav-strip");
 	if (navStrip) {
 		const updateNavFades = () => {
@@ -109,25 +131,19 @@
 		});
 	});
 
-	// Freshness: render the single source-of-truth review date and warn when the
-	// site hasn't been reviewed within the maintenance cadence. Maintainer only
-	// needs to update the <time datetime="YYYY-MM-DD"> value every review.
-	const REVIEW_INTERVAL_DAYS = 14;
-	const reviewTimeEl = document.getElementById("lastReviewed");
-	const freshnessBanner = document.getElementById("freshnessBanner");
-	if (reviewTimeEl) {
-		const iso = reviewTimeEl.getAttribute("datetime");
-		const reviewed = iso ? new Date(`${iso}T00:00:00`) : null;
-		if (reviewed && !Number.isNaN(reviewed.getTime())) {
-			reviewTimeEl.textContent = reviewed.toLocaleDateString(undefined, {
+	// Render the "Last updated" date from a single source-of-truth <time datetime>
+	// value. The scheduled update prompt (.github/update.md) refreshes that value
+	// whenever site content changes, so only the ISO date needs to be edited.
+	const lastUpdatedEl = document.getElementById("lastUpdated");
+	if (lastUpdatedEl) {
+		const iso = lastUpdatedEl.getAttribute("datetime");
+		const updated = iso ? new Date(`${iso}T00:00:00`) : null;
+		if (updated && !Number.isNaN(updated.getTime())) {
+			lastUpdatedEl.textContent = updated.toLocaleDateString(undefined, {
 				year: "numeric",
 				month: "long",
 				day: "numeric",
 			});
-			const ageDays = Math.floor((Date.now() - reviewed.getTime()) / 86400000);
-			if (ageDays > REVIEW_INTERVAL_DAYS && freshnessBanner) {
-				freshnessBanner.hidden = false;
-			}
 		}
 	}
 

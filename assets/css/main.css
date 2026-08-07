@@ -714,21 +714,10 @@ details[hidden] {
 	font-size: 1.1875rem;
 }
 
-.last-reviewed {
+.last-updated {
 	margin-top: var(--cp-space-sm);
 	color: var(--cp-text-soft);
 	font-size: 0.9375rem;
-}
-
-.freshness-banner {
-	padding: var(--cp-space-sm) var(--cp-space-lg);
-	border-bottom: 1px solid var(--cp-border);
-	background: var(--cp-bg-elevated);
-	color: var(--cp-warning);
-	font-family: var(--cp-font-display);
-	font-size: 0.9375rem;
-	font-weight: 600;
-	text-align: center;
 }
 
 .actions {

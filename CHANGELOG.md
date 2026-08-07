@@ -10,10 +10,11 @@ rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number
 
 ### Added
 
-- Added a site-wide "Last reviewed" date in the footer and a freshness banner
-  that appears when the page has not been reviewed within the two-week
-  maintenance cadence. The review date is set from a single `<time datetime>`
-  value that the maintainer updates each review.
+- Added a "Last updated" date in the footer, rendered from a single
+  `<time datetime>` value that the scheduled update prompt refreshes whenever
+  site content changes.
+- Made the resource sections behave as an accordion: opening a category from its
+  header collapses any other open section, so only one is expanded at a time.
 
 ## 2026-08-07 (scheduled update)
 
