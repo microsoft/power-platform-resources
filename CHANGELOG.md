@@ -120,6 +120,10 @@ commit date.
 - Consolidated the resource collection into 11 journey-based categories.
 - Added the Instrument Sans, Source Sans 3, and Geist Mono type families
   (loaded from Google Fonts) and a documented design system in `DESIGN.md`.
+- Added a distinct per-category icon to each resource section header (rocket,
+  newspaper, trending-up, graduation-cap, wrench, sparkles, layers,
+  shield-check, package, book-open, calendar, and users), replacing the single
+  repeated arrow glyph. Icons are inline stroke SVGs using the accent color.
 
 ### Changed
 

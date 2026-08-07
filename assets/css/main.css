@@ -445,19 +445,21 @@ summary::-webkit-details-marker {
 	display: none;
 }
 
-summary::before {
+summary .cat-icon {
 	position: absolute;
 	left: 20px;
 	display: grid;
 	width: 34px;
 	height: 34px;
-	content: "↗";
 	place-items: center;
 	border-radius: var(--cp-radius-md);
 	background: var(--cp-accent-soft);
 	color: var(--cp-accent);
-	font-size: 18px;
-	font-weight: 700;
+}
+
+summary .cat-icon svg {
+	width: 18px;
+	height: 18px;
 }
 
 summary::after {
@@ -666,7 +668,7 @@ details[hidden] {
 		font-size: 1.0625rem;
 	}
 
-	summary::before {
+	summary .cat-icon {
 		left: 12px;
 		width: 32px;
 		height: 32px;
