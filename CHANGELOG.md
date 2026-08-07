@@ -4,6 +4,36 @@ All notable changes to this project are documented in this file. The repository
 does not currently use version tags, so historical entries are grouped by
 commit date.
 
+## 2026-08-07
+
+### Added
+
+- Added What's new in Power Apps, the 2026 release wave 1 plan, the Release
+  Planner, and the monthly Power Platform feature update blog to News.
+- Added the new Power Apps vibe coding experience (vibe.powerapps.com) and the
+  "Inside the new Power Apps" announcement.
+- Added self-healing desktop flows and process mining resources to Building.
+- Added the agent feed for model-driven apps to AI & Copilot.
+- Added the PL-500 certification and community YouTube channels (Shane Young,
+  Reza Dorrani) to Training.
+- Added Well-Architected "What's new" to Architecture & guidance.
+- Added Power Platform pipelines and ALM documentation, plus the CoE Starter
+  Kit transition to the Power Platform admin center, to Governance.
+- Added the Power Platform CLI to Tools & samples.
+
+### Removed
+
+- Removed all Copilot Studio links and sections, which are covered by a
+  dedicated Copilot Studio resources site.
+- Removed retired and superseded content: Ignite 2024 news, the 2025 wave 1
+  plans, the Channel 9 POWERful Devs series, the Build 2021 fusion resources,
+  the 2021 Microsoft Mechanics episode, and a 2016 calendar walkthrough.
+
+### Changed
+
+- Replaced the Ignite 2024 news link with the Ignite 2025 Book of News.
+- Normalized touched microsoft.com URLs to remove the `/en-us/` locale segment.
+
 ## Unreleased
 
 ### Added

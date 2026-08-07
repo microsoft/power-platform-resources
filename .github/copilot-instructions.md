@@ -34,4 +34,4 @@ There is no automated test suite or single-test command. Validate changes in a b
 
 ## Track Changes
 
-Always update CHANGELOG.md with additions/removals from the sites. Follow the Keep a Changelog convention. When updating CHANGELOG.md, make sure there is a newline between the header and the paragraph text.
+Always update CHANGELOG.md with additions/removals from the sites. Follow the Keep a Changelog convention at https://keepachangelog.com/en/1.0.0/. When updating CHANGELOG.md, make sure there is a newline between the header and the paragraph text.
