@@ -4,20 +4,22 @@
 <head>
 	<title>Microsoft Power Platform Resources</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script>
 		(() => {
+			const isValid = (value) => value === "light" || value === "dark";
 			const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
-			const theme =
-				param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+			let saved = null;
+			try {
+				saved = window.localStorage.getItem("clawpilotTheme");
+			} catch (error) {
+				saved = null;
+			}
+			const system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+			const theme = [param, saved, system].find(isValid) || "light";
 			document.documentElement.setAttribute("data-theme", theme);
 		})();
 	</script>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link
-		rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Source+Sans+3:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="icon" href="images/banner.png" sizes="32x32">
 </head>
@@ -44,8 +46,7 @@
 			<div class="inner">
 				<header>
 					<h2>Microsoft Power Platform Resources</h2>
-					<p>Resources to help you on every stage of your Power Platform journey,<br/> curated by <a
-							href="https://aka.ms/WhoIsPowerCAT">Power CAT</a> and updated regularly</p>
+					<p>Resources to help you on every stage of your Power Platform journey,<br/> curated and updated regularly</p>
 				</header>
 				<div class="search-bar">
 					<svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1047,7 +1048,7 @@
 	</section>
 	<!-- Footer -->
 	<footer id="footer">
-		
+		Created and maintainted by <a href="https://linkedin.com/in/rstandefer">Robert Standefer</a>
 		<p class="copyright">&copy; 2026 Microsoft. All rights reserved.<br />
 			<!-- <a href="#">Terms of Use</a>  -->
 	</footer>

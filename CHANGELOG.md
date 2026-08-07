@@ -119,7 +119,11 @@ commit date.
 - Added repository-specific GitHub Copilot instructions.
 - Consolidated the resource collection into 11 journey-based categories.
 - Added the Instrument Sans, Source Sans 3, and Geist Mono type families
-  (loaded from Google Fonts) and a documented design system in `DESIGN.md`.
+  (self-hosted WOFF2 under `assets/fonts/`, latin and latin-ext subsets) and a
+  documented design system in `DESIGN.md`.
+- Added persistence of the selected color theme to `localStorage`, so an
+  explicit light/dark choice survives reloads (precedence: `clawpilotTheme`
+  URL parameter, then saved choice, then operating-system preference).
 - Added a distinct per-category icon to each resource section header (rocket,
   newspaper, trending-up, graduation-cap, wrench, sparkles, layers,
   shield-check, package, book-open, calendar, and users), replacing the single
@@ -127,6 +131,10 @@ commit date.
 
 ### Changed
 
+- Self-hosted the Instrument Sans, Source Sans 3, and Geist Mono fonts under
+  `assets/fonts/` and dropped the Google Fonts CDN links and preconnects,
+  keeping the site free of external runtime dependencies. Each `@font-face`
+  uses `font-display: swap`.
 - Replaced the plum/violet identity accent with a warm rust accent
   (`#b5531f` light, `#e89a6b` dark) applied to section icons, category-title
   highlights, the masthead rule, and focus states. Functional links remain
@@ -151,6 +159,22 @@ commit date.
 
 ### Fixed
 
+- Removed `user-scalable=no` from the viewport meta so people can pinch-zoom
+  the page on touch devices (WCAG 2.1 SC 1.4.4).
+- Raised the color contrast of the rust accent where it sits on a tinted
+  background: navigation links now use the darker `--cp-accent-hover` on hover
+  so the text meets WCAG AA.
+- Fixed the keyboard focus outline on masthead links, which used the light-mode
+  link blue against the dark masthead and fell below the 3:1 non-text contrast
+  minimum; masthead links now focus with the masthead accent color.
+- Made the resource search restore each section's prior expanded/collapsed
+  state when the query is cleared, instead of leaving matched sections forced
+  open.
+- Made category navigation links work after a search has hidden the target
+  section: the link now clears the search and reveals the section before
+  jumping to it.
+- Hardened the page script so a missing theme toggle or search input no longer
+  prevents the remaining behavior from initializing.
 - Fixed misaligned subsection labels (e.g. Power Apps, Power Automate) in the
 "Explore Power Platform products" list: label headings that are direct
 children of a resource section now share the same left gutter as the numbered
