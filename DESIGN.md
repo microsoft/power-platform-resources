@@ -90,3 +90,4 @@ These risks should remain reversible. The safe baseline—prominent search, clea
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | 2026-08-07 | Initial design system created | Created by `/design-consultation` after reviewing Microsoft and developer resource hubs. The editorial utilitarian direction distinguishes a curated link index from card-heavy product portals. |
+| 2026-08-07 | Implemented the design system in `index.html` + `assets/css/main.css` | Applied tokens, typography, flat ink masthead, and numbered index rows. Kept the existing sticky top navigation (restyled as the index) rather than adding a persistent sidebar, to limit blast radius and preserve the responsive baseline. Resource content untouched. |
