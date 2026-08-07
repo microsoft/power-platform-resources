@@ -3,18 +3,10 @@
 All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
-This project does not use version tags, so releases are grouped by commit date
-rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
-
-## [Unreleased]
-
-### Added
-
-- Added a "Last updated" date in the footer, rendered from a single
-  `<time datetime>` value that the scheduled update prompt refreshes whenever
-  site content changes.
-- Made the resource sections behave as an accordion: opening a category from its
-  header collapses any other open section, so only one is expanded at a time.
+Changes are published continuously (every change is pushed to `main`), so there
+is no "Unreleased" section. The project does not use version tags either, so
+entries are grouped by commit date rather than by
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
 ## 2026-08-07 (scheduled update)
 
@@ -146,6 +138,11 @@ rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number
 - Added left/right gradient edge-fades to the sticky category index so its
   horizontal overflow is discoverable on narrow screens where most categories
   scroll off-screen.
+- Made the resource sections behave as an accordion: opening a category from its
+  header collapses any other open section, so only one is expanded at a time.
+- Added a "Last updated" date in the footer, rendered from a single
+  `<time datetime>` value that the scheduled update prompt refreshes whenever
+  site content changes.
 
 ### Changed
 
