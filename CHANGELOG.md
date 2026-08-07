@@ -16,6 +16,8 @@ commit date.
 
 ### Changed
 
+- Replaced the repository template README with project-specific setup,
+  architecture, contribution, validation, support, and security guidance.
 - Redesigned the site around a responsive card layout based on the Microsoft
   Agent Resources experience.
 - Replaced the original template styling with a Power Platform purple-to-blue
