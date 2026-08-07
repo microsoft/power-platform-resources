@@ -1,10 +1,9 @@
 # TODOs
 
-## Resource freshness metadata
+_No open items._
 
-- **What:** Show when high-value resources were last reviewed and flag entries that need another review.
-- **Why:** A curated directory builds trust only when users and maintainers can judge whether guidance is current.
-- **Pros:** Improves credibility, helps prioritize maintenance, and makes the human curation visible.
-- **Cons:** Requires an agreed review cadence, ownership model, and reliable metadata for every covered resource.
-- **Context:** The design system defines metadata typography, but the current content has no trustworthy review dates. Do not invent or infer dates from page history.
-- **Depends on / blocked by:** Maintainers selecting a review cadence, assigning ownership, and defining the source of truth for review dates.
+## Completed
+
+- **Resource freshness metadata** — Added a site-wide "Last reviewed" date in
+  the footer and a freshness banner that warns when the page is past its
+  two-week review cadence. Completed 2026-08-07.

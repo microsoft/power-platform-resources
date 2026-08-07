@@ -109,5 +109,27 @@
 		});
 	});
 
+	// Freshness: render the single source-of-truth review date and warn when the
+	// site hasn't been reviewed within the maintenance cadence. Maintainer only
+	// needs to update the <time datetime="YYYY-MM-DD"> value every review.
+	const REVIEW_INTERVAL_DAYS = 14;
+	const reviewTimeEl = document.getElementById("lastReviewed");
+	const freshnessBanner = document.getElementById("freshnessBanner");
+	if (reviewTimeEl) {
+		const iso = reviewTimeEl.getAttribute("datetime");
+		const reviewed = iso ? new Date(`${iso}T00:00:00`) : null;
+		if (reviewed && !Number.isNaN(reviewed.getTime())) {
+			reviewTimeEl.textContent = reviewed.toLocaleDateString(undefined, {
+				year: "numeric",
+				month: "long",
+				day: "numeric",
+			});
+			const ageDays = Math.floor((Date.now() - reviewed.getTime()) / 86400000);
+			if (ageDays > REVIEW_INTERVAL_DAYS && freshnessBanner) {
+				freshnessBanner.hidden = false;
+			}
+		}
+	}
+
 	window.setTimeout(() => document.body.classList.remove("is-preload"), 100);
 })();

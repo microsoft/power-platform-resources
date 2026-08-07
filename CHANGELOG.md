@@ -8,7 +8,12 @@ rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number
 
 ## [Unreleased]
 
-_No unreleased changes._
+### Added
+
+- Added a site-wide "Last reviewed" date in the footer and a freshness banner
+  that appears when the page has not been reviewed within the two-week
+  maintenance cadence. The review date is set from a single `<time datetime>`
+  value that the maintainer updates each review.
 
 ## 2026-08-07 (scheduled update)
 
