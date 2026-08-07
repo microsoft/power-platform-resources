@@ -4,6 +4,81 @@ All notable changes to this project are documented in this file. The repository
 does not currently use version tags, so historical entries are grouped by
 commit date.
 
+## 2026-08-07 (scheduled update)
+
+### Added
+
+- Added an Events category covering the Power Platform Community Conference,
+  Scottish Summit, the European Power Platform Conference, DynamicsMinds, the
+  Power Platform Boost and Intelligence Age podcasts, and Power Platform Weekly.
+- Added dedicated Power Pages and Microsoft Dataverse product blocks to Get
+  Started, covering documentation, tutorials, templates, design studio, learning
+  paths, data modeling, Dataverse for Teams, and capacity.
+- Added 2026 release wave 1 plans broken out by product, the Power Automate
+  released versions page, and the Power Platform and canvas app deprecation
+  pages to News.
+- Added Microsoft Build 2026 announcements and the Dataverse agent data platform
+  blog post to News.
+- Added Power Fx language and formula references, responsive layout, modern
+  controls and theming, accessibility, and performance guidance to Building.
+- Added a robotic process automation and process mining group to Building
+  covering desktop flow actions, machine management, unattended flows, hosted
+  RPA, hosted machine groups, and task mining.
+- Added a pro-developer group to Building covering the Power Platform CLI, the
+  VS Code extension, PCF, the Dataverse Web API, plug-ins, custom APIs, elastic
+  tables, and the Power Pages Liquid, Web API, and pac pages tooling.
+- Added flow authoring guidance to Building: triggers, expressions, the
+  expression functions reference, approvals, business process flows, error
+  handling, naming conventions, and limits and throttling.
+- Added AI Builder, generative actions in cloud flows, generative pages, the
+  Power Apps vibe experience documentation, and Dataverse MCP resources to AI.
+- Added Link to Microsoft Fabric, Azure Synapse Link for Dataverse, the full
+  connector reference, and long-term data retention to Building.
+- Added Managed Environments, environment groups, tenant settings, inventory,
+  usage, monitor, actions and advisor, tenant-level analytics, admin PowerShell,
+  cross-tenant restrictions, customer-managed keys, Purview activity logging,
+  Dataverse Git integration, Azure DevOps build tools, and pay-as-you-go
+  licensing to Governance.
+- Added Power Pages security guidance (authentication, table permissions, web
+  roles, page permissions, site checker, accessibility) to Architecture.
+- Added Microsoft Applied Skills credentials, Microsoft Learn workshop guidance,
+  and expanded community YouTube channel and blog listings to Training.
+- Added the Creator Kit GitHub repository, the VS Code extension, the Terraform
+  provider, the Dataverse MCP samples, and PCF Gallery to Tools & samples.
+- Added Reddit discussion boards, the Microsoft Tech Community hub, per-product
+  ideas portals, and the Microsoft MVP Program to Community.
+
+### Changed
+
+- Renamed the AI & Copilot category to AI.
+- Replaced the 2024 Charles Lamanna announcement with the 2026 "From apps to
+  agents" post.
+- Replaced retired `flow.microsoft.com`, `powerapps.microsoft.com/blog`,
+  `powerapps.microsoft.com/guided-learning`, and `powerusers.microsoft.com`
+  links with their current `make.powerautomate.com`,
+  `microsoft.com/power-platform/blog`, Microsoft Learn, and
+  `community.powerplatform.com` destinations.
+- Replaced the Ignite 2025 Book of News with Microsoft Build 2026 coverage.
+- Updated the monthly feature update link to the July/August 2026 post.
+- Updated the plan designer, Power Apps performance, developer plan, common
+  issues, Dataverse, DLP, tenant isolation, security overview, ALM solutions,
+  and adoption links to their current documentation paths.
+- Noted that the CoE Starter Kit is no longer actively maintained and pointed to
+  the native Power Platform admin center inventory, usage, monitor, and actions
+  experiences.
+- Replaced the 2020 and 2021 books with the 2024 Power Apps Cookbook and the
+  2025 Solutions Architect's Handbook.
+
+### Removed
+
+- Removed the retired PL-100, PL-500, and PL-600 certifications and the legacy
+  Power Platform certification browse link.
+- Removed the retired Power Automate plugin for ChatGPT, the retired Power Apps
+  and Power Automate guided learning pages, the dead Common Data Model short
+  link, and superseded discoverability, Thrive, and HEAT blog posts.
+- Removed dead or superseded video links, the retired `ms.flow.microsoft.com`
+  blog, and the North Star architecture blog post.
+
 ## 2026-08-07
 
 ### Added
@@ -43,9 +118,17 @@ commit date.
 - Added light and dark color themes with an in-page theme toggle.
 - Added repository-specific GitHub Copilot instructions.
 - Consolidated the resource collection into 11 journey-based categories.
+- Added the Instrument Sans, Source Sans 3, and Geist Mono type families
+  (loaded from Google Fonts) and a documented design system in `DESIGN.md`.
 
 ### Changed
 
+- Applied the "editorial utilitarian" design system: replaced the
+  purple-to-blue gradient masthead with a flat ink masthead and plum accent
+  rule, introduced a full design-token set (color, spacing, radius, motion),
+  restyled the category navigation as an editorial index, and rendered
+  resource links as numbered index rows. Resource wording and URLs are
+  unchanged.
 - Replaced the repository template README with project-specific setup,
   architecture, contribution, validation, support, and security guidance.
 - Redesigned the site around a responsive card layout based on the Microsoft
