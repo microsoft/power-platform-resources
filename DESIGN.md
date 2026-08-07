@@ -23,7 +23,7 @@ Use strong typography, compact indexed resource rows, subtle grid lines, and res
 - **UI/Labels:** Instrument Sans, 600–650 weight — keeps navigation and controls crisp.
 - **Data/Tables:** Geist Mono, 400–600 weights — supports clear metadata, counts, dates, and tabular numerals.
 - **Code:** Geist Mono.
-- **Loading:** Load from Google Fonts with preconnect hints. Retain system sans-serif and monospace fallback stacks so content remains usable if fonts fail.
+- **Loading:** Self-hosted WOFF2 files under `assets/fonts/` with `@font-face` and `font-display: swap`. Retain system sans-serif and monospace fallback stacks so content remains usable if fonts fail. (No third-party font CDN — avoids the extra connection and the privacy/availability cost of Google Fonts.)
 - **Scale:**
   - Display: `clamp(3.5rem, 8vw, 7rem)` / 0.92 line height
   - H1: `clamp(2.75rem, 6vw, 5rem)` / 0.96
@@ -36,8 +36,8 @@ Use strong typography, compact indexed resource rows, subtle grid lines, and res
 
 ## Color
 
-- **Approach:** Restrained. Plum identifies the Power Platform practice, blue communicates action, and semantic colors remain functional.
-- **Primary:** `#742774` Power Plum — active categories, primary controls, selected states, and small identity accents.
+- **Approach:** Restrained. Teal identifies the Power Platform practice, blue communicates action, and semantic colors remain functional.
+- **Primary:** `#0F7B8A` Signal Teal — active categories, category icons, primary controls, selected states, and small identity accents.
 - **Secondary:** `#0067B8` Action Blue — links, focus indicators, and informational actions.
 - **Neutrals:**
   - Ink: `#172033`
@@ -47,7 +47,7 @@ Use strong typography, compact indexed resource rows, subtle grid lines, and res
   - Canvas: `#F7F8FA`
   - Surface: `#FFFFFF`
 - **Semantic:** Success `#16844A`, warning `#B65D00`, error `#C42B1C`, info `#0067B8`.
-- **Dark mode:** Redesign surfaces rather than invert them. Use canvas `#111827`, surface `#182235`, soft surface `#202C42`, border `#344158`, text `#EDF2F8`, and muted text `#AEB8C7`. Use lighter accents such as plum `#D89BD8` and blue `#6BB8F0`; reduce large areas of saturated color.
+- **Dark mode:** Redesign surfaces rather than invert them. Use canvas `#111827`, surface `#182235`, soft surface `#202C42`, border `#344158`, text `#EDF2F8`, and muted text `#AEB8C7`. Use lighter accents such as teal `#4BB8C4` and blue `#6BB8F0`; reduce large areas of saturated color.
 
 All color combinations must meet WCAG AA contrast. Never rely on color alone to communicate category, state, or status.
 
@@ -79,9 +79,10 @@ Use motion only to clarify search filtering, disclosure expansion, navigation st
 
 ## Creative Risk Strategy
 
-- Replace the category-standard purple-to-blue marketing gradient with a flat ink or plum editorial masthead to increase authority and distinctiveness.
+- Replace the category-standard purple-to-blue marketing gradient with a flat ink editorial masthead (thin teal top rule) to increase authority and distinctiveness.
 - Prefer indexed resource rows over universal cards to improve scanning speed and content density.
-- Use Instrument Sans and Source Sans 3 instead of relying exclusively on Segoe UI, giving the site a recognizable editorial voice while retaining Microsoft color literacy.
+- Use a cool Signal Teal rather than the category-standard purple/plum for identity accents — distinct from generic AI-generated palettes while keeping Microsoft color literacy via Action Blue links.
+- Use Instrument Sans and Source Sans 3 instead of relying exclusively on Segoe UI, giving the site a recognizable editorial voice.
 
 These risks should remain reversible. The safe baseline—prominent search, clear grouping, familiar Microsoft accents, responsive navigation, visible focus, and light/dark themes—must not be compromised.
 
@@ -91,3 +92,7 @@ These risks should remain reversible. The safe baseline—prominent search, clea
 |------|----------|-----------|
 | 2026-08-07 | Initial design system created | Created by `/design-consultation` after reviewing Microsoft and developer resource hubs. The editorial utilitarian direction distinguishes a curated link index from card-heavy product portals. |
 | 2026-08-07 | Implemented the design system in `index.html` + `assets/css/main.css` | Applied tokens, typography, flat ink masthead, and numbered index rows. Kept the existing sticky top navigation (restyled as the index) rather than adding a persistent sidebar, to limit blast radius and preserve the responsive baseline. Resource content untouched. |
+| 2026-08-07 | Self-hosted fonts instead of Google Fonts | Eng review: dropped the Google Fonts CDN links and shipped WOFF2 files under `assets/fonts/` with `@font-face` + `font-display: swap`. Removes a third-party connection and its privacy/availability cost. |
+| 2026-08-07 | Swapped primary accent from plum → rust → **Signal Teal `#0F7B8A`** | Design review: the earlier plum/rust accents read as generic/"AI-generated." Teal is cooler, more editorial, and distinct from category-standard purple while Action Blue links keep Microsoft color literacy. Verified WCAG AA in both themes (dark accent `#4BB8C4`). |
+| 2026-08-07 | Flattened category icons (removed tinted "chip" backgrounds) | Design review: the soft-tinted rounded squares behind each icon were the most template-like element and conflicted with the system's own "avoid decorative icon circles" rule. Kept a larger bare teal glyph for scannability. |
+| 2026-08-07 | Added search empty state + mobile nav edge-fade | Design review: a no-match search previously left a blank void — now shows "No resources match …" with a Clear-search action. The horizontally overflowing mobile category index now has left/right gradient edge-fades to signal it scrolls. |

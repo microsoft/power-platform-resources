@@ -127,7 +127,13 @@ commit date.
 - Added a distinct per-category icon to each resource section header (rocket,
   newspaper, trending-up, graduation-cap, wrench, sparkles, layers,
   shield-check, package, book-open, calendar, and users), replacing the single
-  repeated arrow glyph. Icons are inline stroke SVGs using the accent color.
+  repeated arrow glyph. Icons are flat inline stroke SVGs using the accent
+  color (no tinted background container).
+- Added a search empty state: a no-match query now shows a "No resources match
+  <query>." panel with a Clear search button, instead of leaving a blank page.
+- Added left/right gradient edge-fades to the sticky category index so its
+  horizontal overflow is discoverable on narrow screens where most categories
+  scroll off-screen.
 
 ### Changed
 
@@ -135,11 +141,14 @@ commit date.
   `assets/fonts/` and dropped the Google Fonts CDN links and preconnects,
   keeping the site free of external runtime dependencies. Each `@font-face`
   uses `font-display: swap`.
-- Replaced the plum/violet identity accent with a warm rust accent
-  (`#b5531f` light, `#e89a6b` dark) applied to section icons, category-title
+- Replaced the plum/violet identity accent with a cool teal accent
+  (`#0f7b8a` light, `#4bb8c4` dark) applied to section icons, category-title
   highlights, the masthead rule, and focus states. Functional links remain
-  Microsoft blue. Gives the site a warmer, editorial feel and moves away from
-  the saturated-violet palette.
+  Microsoft blue. Moves the site away from the saturated-violet palette and
+  gives it a cooler, more editorial identity distinct from generic templates.
+- Flattened the category icons by removing the soft-tinted rounded "chip"
+  background behind each one, keeping a larger bare teal glyph. Aligns with the
+  design system's guidance to avoid decorative icon containers.
 - Applied the "editorial utilitarian" design system: replaced the
   purple-to-blue gradient masthead with a flat ink masthead and accent
   rule, introduced a full design-token set (color, spacing, radius, motion),
@@ -161,7 +170,7 @@ commit date.
 
 - Removed `user-scalable=no` from the viewport meta so people can pinch-zoom
   the page on touch devices (WCAG 2.1 SC 1.4.4).
-- Raised the color contrast of the rust accent where it sits on a tinted
+- Raised the color contrast of the accent where it sits on a tinted
   background: navigation links now use the darker `--cp-accent-hover` on hover
   so the text meets WCAG AA.
 - Fixed the keyboard focus outline on masthead links, which used the light-mode
