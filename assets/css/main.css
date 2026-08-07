@@ -552,7 +552,8 @@ details li::before {
 /* Metadata / subsection labels */
 details h5,
 details > ul > h5 {
-	margin: var(--cp-space-lg) 0 var(--cp-space-sm);
+	margin-top: var(--cp-space-lg);
+	margin-bottom: var(--cp-space-sm);
 	padding-bottom: var(--cp-space-xs);
 	border-bottom: 1px solid var(--cp-border);
 	color: var(--cp-text-muted);

@@ -140,6 +140,13 @@ commit date.
 - Reorganized product, developer, integration, guidance, partner, and community
   resources under the new category model without removing existing links.
 
+### Fixed
+
+- Fixed misaligned subsection labels (e.g. Power Apps, Power Automate) in the
+"Explore Power Platform products" list: label headings that are direct
+children of a resource section now share the same left gutter as the numbered
+index rows, instead of hanging left of them.
+
 ## 2025-04-29
 
 ### Added
