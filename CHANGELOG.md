@@ -1,8 +1,14 @@
 # Changelog
 
-All notable changes to this project are documented in this file. The repository
-does not currently use version tags, so historical entries are grouped by
-commit date.
+All notable changes to this project are documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+This project does not use version tags, so releases are grouped by commit date
+rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
+
+## [Unreleased]
+
+_No unreleased changes._
 
 ## 2026-08-07 (scheduled update)
 
@@ -96,6 +102,11 @@ commit date.
   Kit transition to the Power Platform admin center, to Governance.
 - Added the Power Platform CLI to Tools & samples.
 
+### Changed
+
+- Replaced the Ignite 2024 news link with the Ignite 2025 Book of News.
+- Normalized touched microsoft.com URLs to remove the `/en-us/` locale segment.
+
 ### Removed
 
 - Removed all Copilot Studio links and sections, which are covered by a
@@ -103,11 +114,6 @@ commit date.
 - Removed retired and superseded content: Ignite 2024 news, the 2025 wave 1
   plans, the Channel 9 POWERful Devs series, the Build 2021 fusion resources,
   the 2021 Microsoft Mechanics episode, and a 2016 calendar walkthrough.
-
-### Changed
-
-- Replaced the Ignite 2024 news link with the Ignite 2025 Book of News.
-- Normalized touched microsoft.com URLs to remove the `/en-us/` locale segment.
 
 ## 2026-08-07 (editorial design system)
 
@@ -186,9 +192,9 @@ commit date.
   prevents the remaining behavior from initializing.
 - Corrected a "maintainted" typo in the footer credit line.
 - Fixed misaligned subsection labels (e.g. Power Apps, Power Automate) in the
-"Explore Power Platform products" list: label headings that are direct
-children of a resource section now share the same left gutter as the numbered
-index rows, instead of hanging left of them.
+  "Explore Power Platform products" list: label headings that are direct
+  children of a resource section now share the same left gutter as the numbered
+  index rows, instead of hanging left of them.
 
 ## 2025-04-29
 
