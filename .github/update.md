@@ -11,7 +11,7 @@ Strategy:
 - Focus on official resources from Microsoft and resources created by MVPs as much as possible.
 - Provide the most up to date and relevant resources for each product, organized in sections.
 - Emphasize high-value content that will be useful to the reader
-- Remove resources that are out of date, deprecated, superseded by new content
+- Remove resources that are out of date, deprecated, superseded by new content, or have broken links
 - Be sure to prioritize adding new documentation articles from Microsoft Learn
 - When you add content from conferences, remove the entries from the previous event. For example, when you add content from Build 2026, remove the content from Build 2025. Ditto for Ignite.
 
