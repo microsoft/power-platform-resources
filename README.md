@@ -2,7 +2,7 @@
 
 A curated collection of learning, adoption, architecture, governance, development, AI, and community resources for Microsoft Power Platform.
 
-The site is maintained by [Power CAT](https://aka.ms/WhoIsPowerCAT) and is available at:
+The site is maintained by [Robert Standefer](https://linkedin.com/in/rstandefer) and is available at:
 
 **https://microsoft.github.io/power-platform-resources/**
 
