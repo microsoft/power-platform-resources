@@ -10,11 +10,30 @@
 	<title>Microsoft Power Platform Resources</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<script>
+		(() => {
+			const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+			const theme =
+				param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+			document.documentElement.setAttribute("data-theme", theme);
+		})();
+	</script>
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="icon" href="images/banner.png" sizes="32x32">
 </head>
 
 <body class="landing is-preload">
+	<div class="site-controls">
+		<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch color theme">
+			<svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+			</svg>
+			<svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+				<circle cx="12" cy="12" r="4"></circle>
+				<path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path>
+			</svg>
+		</button>
+	</div>
 	<header id="header" class="alt">
 		<h1 id="logo"><a href="index.html">Microsoft Power Platform Resources</a></h1>
 	</header>
@@ -28,6 +47,14 @@
 					<p>Resources to help you on your Power Platform journey, curated by <a
 							href="https://aka.ms/WhoIsPowerCAT">Power CAT</a> and updated regularly</p>
 				</header>
+				<div class="search-bar">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<circle cx="11" cy="11" r="8"></circle>
+						<path d="m21 21-4.35-4.35"></path>
+					</svg>
+					<input id="searchInput" type="search" aria-label="Search resources"
+						placeholder="Search resources..." autocomplete="off" />
+				</div>
 				<!-- <ul class="actions">
 					<li><a href="#resources" class="button huge">Learning resources</a></li>
 					<li><a href="#tools" class="button huge">Tools</a></li>
@@ -35,6 +62,19 @@
 			</div>
 		</div>
 	</section>
+	<nav class="nav-strip" aria-label="Resource categories">
+		<a href="#get-started">Get Started</a>
+		<a href="#news">News</a>
+		<a href="#adoption">Adoption</a>
+		<a href="#training">Training</a>
+		<a href="#building">Building</a>
+		<a href="#ai-copilot">AI &amp; Copilot</a>
+		<a href="#architecture-guidance">Architecture</a>
+		<a href="#governance">Governance</a>
+		<a href="#tools-samples">Tools &amp; Samples</a>
+		<a href="#stories">Stories</a>
+		<a href="#community">Community</a>
+	</nav>
 	<section id="resources" class="wrapper">
 		<div class="inner">
 			<header>
@@ -42,8 +82,8 @@
 				<p>This ever-evolving list of resources aims to help support you, wherever you are in your Power Platform
 					journey</p>
 			</header>
-			<details>
-				<summary>I am <b>new</b>, help me get started</summary>
+			<details id="get-started">
+				<summary>Get started with <b>Power Platform</b></summary>
 
 				<ul>
 					<h5>Get informed</h5>
@@ -88,7 +128,7 @@
 							target="_blank" rel="noopener">Flow</a> | <a
 							href="https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-get-started?tabs=web">Agent</a>
 					</li>
-					
+
 					<li>Join an 'in a Day' workshop - <a
 							href="https://powerplatform.microsoft.com/training-workshops/" target="_blank"
 							rel="noopener">Microsoft In A Day trainings</a> | <a href="https://aka.ms/appinaday">App in
@@ -140,9 +180,82 @@
 							target="_blank" rel="noopener">FAQ</a> -->
 					</li>
 				</ul>
+
+				<h3 class="category-subtitle">Explore Power Platform products</h3>
+				<h5>Power Apps</h5>
+				<ul>
+					<li><a href="https://powerapps.microsoft.com/" target="_blank" rel="noopener">Website</a> | <a
+							href="https://powerapps.microsoft.com/blog/" target="_blank" rel="noopener">Blog</a> | <a
+							href="https://powerapps.microsoft.com/tutorials/getting-started/" target="_blank"
+							rel="noopener">Documentation</a> | <a href="https://aka.ms/powerapps-community"
+							target="_blank" rel="noopener">Community</a> | <a href="https://aka.ms/powerapps-ideas"
+							target="_blank" rel="noopener">Suggest Ideas</a> | <a
+							href="https://powerusers.microsoft.com/t5/Webinars-and-Video-Gallery/bd-p/VideoGallery"
+							target="_blank" rel="noopener">Webinars</a></li>
+					<li><a href="https://powerapps.microsoft.com/blog/category/new-features/" target="_blank"
+							rel="noopener">Product updates</a></li>
+					<li><a href="https://powerapps.microsoft.com/guided-learning/" target="_blank" rel="noopener">Guided
+							Learning</a> | <a
+							href="https://www.youtube.com/playlist?list=PL8IYfXypsj2DU3EwoaeBYiuuQTvcscJfo"
+							target="_blank" rel="noopener">YouTube playlist</a></li>
+					<li><a href="https://powerapps.microsoft.com/pricing/" target="_blank" rel="noopener">Licensing /
+							Pricing</a></li>
+					<li>Support - <a href="https://learn.microsoft.com/powerapps/common-issues-and-resolutions"
+							target="_blank" rel="noopener">known issues</a> | <a
+							href="https://powerusers.microsoft.com/t5/General-Discussion/bd-p/PowerAppsForum1"
+							target="_blank" rel="noopener">view/report issues</a> | <a
+							href="https://powerapps.microsoft.com/support/" target="_blank" rel="noopener">create a
+							support ticket</a></li>
+				</ul>
+				<h5>Power Automate</h5>
+				<ul>
+					<li><a href="https://flow.microsoft.com/" target="_blank" rel="noopener">Website</a> | <a
+							href="https://ms.flow.microsoft.com/blog/" target="_blank" rel="noopener">Blog</a> | <a
+							href="https://flow.microsoft.com/documentation/getting-started/" target="_blank"
+							rel="noopener">Documentation</a> | <a href="https://aka.ms/flow-community" target="_blank"
+							rel="noopener">Community</a> | <a href="https://aka.ms/msflow-ideas" target="_blank"
+							rel="noopener">Suggest Ideas</a> | <a
+							href="https://flow.microsoft.com/blog/category/webinars/" target="_blank"
+							rel="noopener">Webinars</a></li>
+					<li><a href="https://flow.microsoft.com/blog/category/product-updates/" target="_blank"
+							rel="noopener">Product updates</a></li>
+					<li><a href="https://flow.microsoft.com/guided-learning/" target="_blank" rel="noopener">Guided
+							Learning</a> | <a
+							href="https://www.youtube.com/playlist?list=PL8nfc9haGeb55I9wL9QnWyHp3ctU2_ThF"
+							target="_blank" rel="noopener">YouTube Playlist</a></li>
+					<li><a href="https://flow.microsoft.com/pricing/" target="_blank" rel="noopener">Licensing /
+							Pricing</a></li>
+					<li><a href="https://flow.microsoft.com/support/" target="_blank" rel="noopener">Support</a></li>
+				</ul>
+				<h5>Copilot Studio</h5>
+				<ul>
+					<li><a href="https://www.microsoft.com/microsoft-copilot/microsoft-copilot-studio/" target="_blank"
+							rel="noopener">Website</a> | <a href="https://www.microsoft.com/microsoft-copilot/blog/"
+							target="_blank" rel="noopener">Blog</a> | <a
+							href="https://learn.microsoft.com/microsoft-copilot-studio/" target="_blank"
+							rel="noopener">Documentation</a> | <a
+							href="https://community.powerplatform.com/forums/thread/?groupid=db8f53c2-767d-47d6-a1ae-fe4c828a6553&amp;page=1"
+							target="_blank" rel="noopener" target="_blank" rel="noopener">Community</a></li>
+				</ul>
+				<h5>Power BI</h5>
+				<ul>
+					<li><a href="https://powerbi.com" target="_blank" rel="noopener">Website</a> | <a
+							href="https://powerbi.microsoft.com/blog/" target="_blank" rel="noopener">Blog</a> | <a
+							href="https://learn.microsoft.com/power-bi/" target="_blank" rel="noopener">Documentation</a>
+						| <a href="https://community.powerbi.com/" target="_blank"
+							rel="noopener">Community</a><b>&nbsp;</b></li>
+					<li><a href="https://powerbi.microsoft.com/roadmap/" target="_blank" rel="noopener">Product
+							updates</a></li>
+					<li><a href="https://learn.microsoft.com/learn/powerplatform/power-bi?WT.mc_id=powerbi_landingpage-docs-link"
+							target="_blank" rel="noopener">Guided Learning</a> | <a
+							href="https://www.youtube.com/user/mspowerbi" target="_blank" rel="noopener">YouTube
+							Playlist</a></li>
+					<li><a href="https://powerbi.microsoft.com/pricing/" target="_blank" rel="noopener">Licensing /
+							Pricing</a></li>
+				</ul>
 			</details>
-			<details>
-				<summary>I want to stay <b>up to date</b> on what's new</summary>
+			<details id="news">
+				<summary>Stay <b>up to date</b> on news and features</summary>
 				<ul>
 					<li>Latest shipped features&nbsp;- <a href="https://aka.ms/PAWeeklyReleaseNotes" target="_blank"
 							rel="noopener">Weekly release notes</a></li>
@@ -153,8 +266,8 @@
 							target="_blank" rel="noopener">Power Platform updates from Ignite 2024</a></li>
 				</ul>
 			</details>
-			<details>
-				<summary>I am looking for successful <b>adoption guidance</b></summary>
+			<details id="adoption">
+				<summary>Drive successful <b>adoption</b></summary>
 				<ul>
 					<li><a href="https://adoption.microsoft.com/powerplatform/" target="_blank" rel="noopener">Power
 							Platform Adoption</a> | <a href="https://aka.ms/powerplatformadoptionworkbook"
@@ -182,8 +295,52 @@
 							well-architected workloads</a></li>
 				</ul>
 			</details>
-			<details>
-				<summary>I need resources for <b>pro developers</b> and <b>fusion teams</b></summary>
+			<details id="training">
+				<summary>Build skills with <b>training and certification</b></summary>
+				<h5>Microsoft certifications</h5>
+				<ul>
+					<li><a href="https://learn.microsoft.com/learn/certifications/browse/?products=power-platform&amp;expanded=power-platform"
+							target="_blank" rel="noopener">Power Platform Exams &amp; Certifications</a> |&nbsp;<a
+							href="https://learn.microsoft.com/learn/certifications/exams/pl-100" target="_blank"
+							rel="noopener">PL-100</a> | <a
+							href="https://learn.microsoft.com/learn/certifications/power-platform-functional-consultant-associate#certification-exams"
+							target="_blank" rel="noopener">PL-200</a> | <a
+							href="https://learn.microsoft.com/learn/certifications/power-platform-developer-associate"
+							target="_blank" rel="noopener">PL-400</a> | <a
+							href="https://learn.microsoft.com/learn/certifications/exams/pl-900" target="_blank"
+							rel="noopener">PL-900</a> | </li>
+				</ul>
+				<h5>Online learning</h5>
+				<ul>
+					<li>Pluralsight - <a
+							href="https://www.pluralsight.com/paths/microsoft-power-platform-fundamentals-pl-900"
+							target="_blank" rel="noopener">Microsoft Power Platform Fundamentals</a></li>
+					<li>LinkedIn Learning - <a
+							href="https://www.linkedin.com/learning/search?keywords=microsoft%20power%20platform"
+							target="_blank" rel="noopener">Power Platform classes</a></li>
+					<li>Udemy - <a href="https://www.udemy.com/courses/search/?src=ukw&amp;q=power+platform"
+							target="_blank" rel="noopener">Power Platform classes</a>&nbsp;| <a
+							href="https://www.udemy.com/courses/search/?src=ukw&amp;q=power+apps" target="_blank"
+							rel="noopener">Power Apps</a> | <a
+							href="https://www.udemy.com/courses/search/?src=ukw&amp;q=power+automate" target="_blank"
+							rel="noopener">Power Automate</a> | <a
+							href="https://www.udemy.com/courses/search/?src=ukw&amp;q=power+bi" target="_blank"
+							rel="noopener">Power BI</a></li>
+					<li>Power Platform Academy by Rory Neary - <a href="https://www.powerplatformlearn.academy/"
+							target="_blank" rel="noopener">free courses</a></li>
+				</ul>
+				<h5>Books</h5>
+				<ul>
+					<li><a href="https://www.apress.com/gp/book/9781484260074" target="_blank" rel="noopener">Pro
+							Microsoft Power Platform (published by Apress</a>)</li>
+					<li><a href="https://www.amazon.com/dp/1789805821" target="_blank" rel="noopener">Learn Microsoft
+							Power Apps (by Matthew Weston)</a></li>
+				</ul>
+				</li>
+				</ul>
+			</details>
+			<details id="building">
+				<summary>Build with <b>makers, fusion teams, and developers</b></summary>
 				<ul>
 					<li>Microsoft Power Platform is the best way for teams to build together - <a
 							href="https://aka.ms/FusionBlogBuild2021" target="_blank" rel="noopener">blog post with
@@ -244,86 +401,28 @@
 						</ul>
 					</li>
 				</ul>
-			</details>
-			<details>
-				<summary>I am interested in <b>architecture</b></summary>
+
+				<h3 class="category-subtitle">Data and integration</h3>
 				<ul>
-					<h5>Power Platform Well-Architected</h5>
-					<ul>
-						<li><a href="https://aka.ms/powa" target="_blank" rel="noopener">Design and build
-								well-architected
-								workloads</a></li>
-						<li><a href="https://learn.microsoft.com/power-platform/well-architected/reliability/"
-								target="_blank" rel="noopener">Reliability pillar</a></li>
-						<li><a href="https://learn.microsoft.com/power-platform/well-architected/security/"
-								target="_blank" rel="noopener">Security pillar</a></li>
-						<li><a href="https://learn.microsoft.com/power-platform/well-architected/operational-excellence/"
-								target="_blank" rel="noopener">Operational Excellence pillar</a></li>
-						<li><a href="https://learn.microsoft.com/power-platform/well-architected/performance-efficiency/"
-								target="_blank" rel="noopener">Performance Efficency pillar</a></li>
-						<li><a href="https://learn.microsoft.com/power-platform/well-architected/experience-optimization/"
-								target="_blank" rel="noopener">Experience Optimization pillar</a></li>
-					</ul>
-				</ul>
-				<ul>
-					<h5>Architecture Center</h5>
-					<ul>
-						<li><a href="https://aka.ms/powerarchitecture"
-							target="_blank" rel="noopener">Established patterns & best practices</a></li>
-						<li><a href="https://www.microsoft.com/power-platform/blog/power-apps/introducing-power-platform-and-copilot-studio-architecture-center/"
-							target="_blank" rel="noopener">blog post</a></li>
-						<li><a href="https://aka.ms/powerarchitecture/feedback"
-							target="_blank" rel="noopener">provide feedback</a></li>
-					</ul>
-				</ul>
-				<ul>
-					<h5>Additional architectures</h5>
-					<ul>
-						<li>Reference architecture and landing zones for Power Platform - <a
-								href="https://www.microsoft.com/power-platform/blog/2022/02/18/north-star-architecture-and-landing-zones-for-power-platform/"
-								target="_blank" rel="noopener">blog post</a> | <a
-								href="https://github.com/microsoft/industry/tree/main/foundations/powerPlatform"
-								target="_blank" rel="noopener">GitHub repo</a></li>
-						<li>Browse <a
-								href="https://learn.microsoft.com/azure/architecture/browse/?expanded=power-platform&products=power-platform"
-								target="_blank" rel="noopener">Power Platform + Azure</a> architectures</li>
-					</ul>
-				</ul>
-				<ul>
-					<h5>Scenarios and real-world patterns</h5>
-					<ul>
-						<li><a href="https://flow.microsoft.com/blog/heat-holistic-enterprise-automation-techniques-for-rpa-and-more/"
-								target="_blank" rel="noopener">Enterprise automation techniques for RPA</a>
-						<li>Real-world usage patterns - <a
-								href="https://learn.microsoft.com/power-platform/guidance/architecture/real-world-examples/overview"
-								target="_blank" rel="noopener">architecture patterns</a> | <a
-								href="https://learn.microsoft.com/powerapps/guidance/patterns/overview" target="_blank"
-								rel="noopener">scenario patterns</a> | <a
-								href="https://aka.ms/PowerPlatformStories/#Category" target="_blank"
-								rel="noopener">index of
-								stories by scenario category</a></li>
-					</ul>
+					<li>Power Platform connectors - <a href="https://learn.microsoft.com/connectors/" target="_blank"
+							rel="noopener">documentation</a> | <a href="https://flow.microsoft.com/connectors"
+							target="_blank" rel="noopener">Power Automate connectors list</a></li>
+					<li>Data integrator - <a href="https://learn.microsoft.com/powerapps/administrator/data-integrator"
+							target="_blank" rel="noopener">documentation</a></li>
+					<li>Power Query - <a href="https://learn.microsoft.com/power-query/" target="_blank"
+							rel="noopener">documentation</a></li>
+					<li>On-premises data gateway - <a
+							href="https://learn.microsoft.com/data-integration/gateway/service-gateway-onprem"
+							target="_blank" rel="noopener">documentation</a></li>
+					<li>Common Data Model - <a href="https://aka.ms/commondatamodel" target="_blank"
+							rel="noopener">documentation and printable CDM poster</a></li>
+					<li>Microsoft Dataverse and Power BI - <a
+							href="https://learn.microsoft.com/powerapps/maker/common-data-service/data-platform-powerbi-connector">documentation</a>
+					</li>
 				</ul>
 			</details>
-			<details>
-				<summary>I'm looking for <b>tools</b></summary>
-				<ul>
-					<h5>Toolkits</h5>
-					<ul>
-						<li><a href="https://github.com/microsoft/Power-CAT-Tools?tab=readme-ov-file#power-cat-tools" target="_blank" rel="noopener">Power CAT Tools app</a> | <a href="https://www.microsoft.com/power-platform/blog/2025/03/04/elevate-your-microsoft-power-platform-development-experience-with-power-cat-tools/"  target="_blank" rel="noopener">blog post</a></li>
-						<li><a href="https://aka.ms/CoEStarterKit" target="_blank" rel="noopener">CoE Kit</a></li>
-						<li><a href="https://aka.ms/automationkit" target="_blank" rel="noopener">Automation Kit</a></li>
-						<li><a href="https://learn.microsoft.com/power-automate/guidance/business-approvals-templates/introduction" target="_blank" rel="noopener">Approvals Kit</a></li>
-						<li><a href="https://aka.ms/creatorkit" target="_blank" rel="noopener">Creator Kit</a></li>
-						<li><a href="https://aka.ms/copilotstudiokit" target="_blank" rel="noopener">Copilot Studio Kit</a></li>
-					</ul>
-					<h5>Power Platform tools</h5>
-					<ul>
-					<li>Power Platform tool <a href="https://github.com/Microsoft/powerplatform" target="_blank" rel="noopener">repository index</a></li>
-				</ul>
-			</details>
-			<details>
-				<summary>Tell me about <b>copilot</b> and <b>generative AI</b></summary>
+			<details id="ai-copilot">
+				<summary>Explore <b>AI and Copilot</b></summary>
 				<div>
 					<h5>Power Apps</h5>
 					<ul>
@@ -410,101 +509,67 @@
 					</ul>
 				</div>
 			</details>
-			<details>
-				<summary>I am interested in <b>administration</b> and <b>governance</b></summary>
+			<details id="architecture-guidance">
+				<summary>Explore <b>architecture and guidance</b></summary>
 				<ul>
-					<li>Power Platform Admin Center - <a href="https://www.youtube.com/watch?v=PV4ortF3hR8&amp;t=1s"
-							target="_blank" rel="noopener">video</a> | <a
-							href="https://learn.microsoft.com/power-platform/admin/admin-documentation" target="_blank"
-							rel="noopener">documentation</a></li>
-					<li>Administration - <a href="https://learn.microsoft.com/power-platform/guidance/white-papers/"
-							target="_blank" rel="noopener">White papers</a> | <a
-							href="https://github.com/microsoft/powerapps-tools/tree/master/Administration/AdminInADay"
-							target="_blank" rel="noopener">Admin in a Day lab</a></li>
-					<li>Establishing a Center of Excellence - <a href="https://aka.ms/CoEStarterKit" target="_blank"
-							rel="noopener">CoE Starter Kit</a>&nbsp;| <a
-							href="https://www.youtube.com/playlist?list=PLi9EhCY4z99W5kzaPK1np6sv6AzMQDsXG"
-							target="_blank" rel="noopener">videos</a></li>
-					<li>Security in Power Platform - <a
-							href="https://learn.microsoft.com/power-platform/admin/security/overview"
-							target="_blank" rel="noopener">Overview</a></li>
-					<li>Power Platform Guidance Center - <a href="https://aka.ms/PowerPlatformGuidance" target="_blank"
-							rel="noopener">documentation</a> | <a href="https://aka.ms/pparchseries" target="_blank"
-							rel="noopener">architecture video series</a></li>
-					<li>Build a customized Admin experience using the Power Apps admin connectors - <a
-							href="https://aka.ms/adminconnectors" target="_blank" rel="noopener">blog post with sample
-							admin dashboard</a></li>
-					<li>Strategies for improving app discoverability in your enterprise&nbsp;-&nbsp;<a
-							href="https://powerapps.microsoft.com/blog/powerapps-discoverability-in-the-enterprise/"
-							target="_blank" rel="noopener">part 1</a> | <a
-							href="https://powerapps.microsoft.com/blog/powerapps-discoverability-in-the-enterprise-part-2/"
-							target="_blank" rel="noopener">part 2</a> | <a
-							href="https://powerapps.microsoft.com/blog/powerapps-discoverability-in-the-enterprise-part-3/"
-							target="_blank" rel="noopener">part 3</a></li>
-					<li>Security and certifications - <a
-							href="https://www.microsoft.com/TrustCenter/CloudServices/business-application-platform/default.aspx"
-							target="_blank" rel="noopener">Microsoft Trust Center</a></li>
-					<li>Manage Power Apps licenses in your organization - <a
-							href="https://learn.microsoft.com/microsoft-365/community/powerplatformlicensingforcitizendeveloper" target="_blank"
-							rel="noopener">documentation</a>
-						|&nbsp;<a
-							href="https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq" target="_blank"
-							rel="noopener">FAQ</a>
-						| <a href="https://go.microsoft.com/fwlink/?linkid=2085130" target="_blank"
-						rel="noopener">licensing guide (PDF)</a></li>
-					<li>Pricing and licensing - <a
-							href="https://www.microsoft.com/power-platform/products/power-apps/pricing" target="_blank"
-							rel="noopener">Power Apps licensing</a> | <a
-							href="https://learn.microsoft.com/powerapps/pricing-billing-skus" target="_blank"
-							rel="noopener">Licensing documentation</a>
-					</li>
-					<li>Microsoft's approach to deploying Power Apps for all employees - <a
-							href="https://aka.ms/ThrivePresentation" target="_blank"
-							rel="noopener">Pat Dunn’s presentation at Biz Apps Summit</a>
-					</li>
-					<li>Manage environments and other resources - <a
-						href="https://microsoft.github.io/terraform-provider-power-platform/" target="_blank"
-						rel="noopener">Power Platform Terraform Provider</a></li>
+					<h5>Power Platform Well-Architected</h5>
+					<ul>
+						<li><a href="https://aka.ms/powa" target="_blank" rel="noopener">Design and build
+								well-architected
+								workloads</a></li>
+						<li><a href="https://learn.microsoft.com/power-platform/well-architected/reliability/"
+								target="_blank" rel="noopener">Reliability pillar</a></li>
+						<li><a href="https://learn.microsoft.com/power-platform/well-architected/security/"
+								target="_blank" rel="noopener">Security pillar</a></li>
+						<li><a href="https://learn.microsoft.com/power-platform/well-architected/operational-excellence/"
+								target="_blank" rel="noopener">Operational Excellence pillar</a></li>
+						<li><a href="https://learn.microsoft.com/power-platform/well-architected/performance-efficiency/"
+								target="_blank" rel="noopener">Performance Efficency pillar</a></li>
+						<li><a href="https://learn.microsoft.com/power-platform/well-architected/experience-optimization/"
+								target="_blank" rel="noopener">Experience Optimization pillar</a></li>
+					</ul>
 				</ul>
-			</details>
-			<details>
-				<summary>I am a <b>Microsoft partner</b></summary>
 				<ul>
-					<li>Power Platform partner programs - <a
-							href="https://www.microsoft.com/power-platform/products/power-apps/partners" target="_blank"
-							rel="noopener">Power Apps</a> | <a
-							href="https://www.microsoft.com/power-platform/products/power-automate/partners"
-							target="_blank" rel="noopener">Power Automate</a></li>
-					<li>Join the <a
-							href="https://powerplatformpartners.transform.microsoft.com/?culture=en-us&country=us"
-							target="_blank" rel="noopener">Power Platform Partner program</a></li>
-					<li>Become a <a href="https://aka.ms/PowerPlatformFTRSA" target="_blank" rel="noopener">Recognized
-							Solution Architect</a></li>
-					<li>You can also <a href="https://aka.ms/xIAD/PartnerEvents" target="_blank" rel="noopener">sign-up
-							to deliver trainings for our customers</a></li>
-					<li>View <a href="https://powerplatformpartners.transform.microsoft.com/partner-stories"
-							target="_blank" rel="noopener">Power Platform partner stories</a></li>
+					<h5>Architecture Center</h5>
+					<ul>
+						<li><a href="https://aka.ms/powerarchitecture"
+							target="_blank" rel="noopener">Established patterns & best practices</a></li>
+						<li><a href="https://www.microsoft.com/power-platform/blog/power-apps/introducing-power-platform-and-copilot-studio-architecture-center/"
+							target="_blank" rel="noopener">blog post</a></li>
+						<li><a href="https://aka.ms/powerarchitecture/feedback"
+							target="_blank" rel="noopener">provide feedback</a></li>
+					</ul>
 				</ul>
-			</details>
-			<details>
-				<summary>Tell me about <b>real-world customer stories</b></summary>
 				<ul>
-					<li>Curated customer stories list - <a href="https://aka.ms/PowerPlatformStories" target="_blank"
-							rel="noopener">https://aka.ms/PowerPlatformStories</a></li>
-					<li>Additional links - <a href="https://aka.ms/PowerPlatformVideos" target="_blank"
-							rel="noopener">customer story videos</a> | <a href="https://aka.ms/PowerForPros"
-							target="_blank" rel="noopener">pro-dev stories</a> | <a
-							href="https://www.microsoft.com/power-platform/products/power-automate/#Customer-stories"
-							target="_blank" rel="noopener">automation stories</a> | <a href="https://aka.ms/PowerChamps"
-							target="_blank" rel="noopener">hero profiles</a></li>
-					<li><a href="https://learn.microsoft.com/power-platform/guidance/case-studies/overview"
-							target="_blank" rel="noopener">technical case studies</a></li>
-					<li>Power Champions <a href="https://aka.ms/PowerChamps" target="_blank" rel="noopener">stories</a>
-					</li>
+					<h5>Additional architectures</h5>
+					<ul>
+						<li>Reference architecture and landing zones for Power Platform - <a
+								href="https://www.microsoft.com/power-platform/blog/2022/02/18/north-star-architecture-and-landing-zones-for-power-platform/"
+								target="_blank" rel="noopener">blog post</a> | <a
+								href="https://github.com/microsoft/industry/tree/main/foundations/powerPlatform"
+								target="_blank" rel="noopener">GitHub repo</a></li>
+						<li>Browse <a
+								href="https://learn.microsoft.com/azure/architecture/browse/?expanded=power-platform&products=power-platform"
+								target="_blank" rel="noopener">Power Platform + Azure</a> architectures</li>
+					</ul>
 				</ul>
-			</details>
-			<details>
-				<summary>What are some <b>best practices</b> and <b>common use cases</b>?</summary>
+				<ul>
+					<h5>Scenarios and real-world patterns</h5>
+					<ul>
+						<li><a href="https://flow.microsoft.com/blog/heat-holistic-enterprise-automation-techniques-for-rpa-and-more/"
+								target="_blank" rel="noopener">Enterprise automation techniques for RPA</a>
+						<li>Real-world usage patterns - <a
+								href="https://learn.microsoft.com/power-platform/guidance/architecture/real-world-examples/overview"
+								target="_blank" rel="noopener">architecture patterns</a> | <a
+								href="https://learn.microsoft.com/powerapps/guidance/patterns/overview" target="_blank"
+								rel="noopener">scenario patterns</a> | <a
+								href="https://aka.ms/PowerPlatformStories/#Category" target="_blank"
+								rel="noopener">index of
+								stories by scenario category</a></li>
+					</ul>
+				</ul>
+
+				<h3 class="category-subtitle">Best practices and common use cases</h3>
 				<ul>
 					<li>Guidance and best practices - <a href="https://aka.ms/PowerPlatformGuidance" target="_blank"
 							rel="noopener">Power Platform guidance</a> | <a
@@ -561,8 +626,99 @@
 							<li>Audit scenario solution - <a href="https://powerusers.microsoft.com/t5/PowerApps-Community-Blog/A-PowerApps-solution-for-audit-scenarios/ba-p/53611">blog post from community member</a></li> -->
 				</ul>
 			</details>
-			<details>
-				<summary>How I can <b>get involved</b> and <b>get connected</b></summary>
+			<details id="governance">
+				<summary>Administer and <b>govern Power Platform</b></summary>
+				<ul>
+					<li>Power Platform Admin Center - <a href="https://www.youtube.com/watch?v=PV4ortF3hR8&amp;t=1s"
+							target="_blank" rel="noopener">video</a> | <a
+							href="https://learn.microsoft.com/power-platform/admin/admin-documentation" target="_blank"
+							rel="noopener">documentation</a></li>
+					<li>Administration - <a href="https://learn.microsoft.com/power-platform/guidance/white-papers/"
+							target="_blank" rel="noopener">White papers</a> | <a
+							href="https://github.com/microsoft/powerapps-tools/tree/master/Administration/AdminInADay"
+							target="_blank" rel="noopener">Admin in a Day lab</a></li>
+					<li>Establishing a Center of Excellence - <a href="https://aka.ms/CoEStarterKit" target="_blank"
+							rel="noopener">CoE Starter Kit</a>&nbsp;| <a
+							href="https://www.youtube.com/playlist?list=PLi9EhCY4z99W5kzaPK1np6sv6AzMQDsXG"
+							target="_blank" rel="noopener">videos</a></li>
+					<li>Security in Power Platform - <a
+							href="https://learn.microsoft.com/power-platform/admin/security/overview"
+							target="_blank" rel="noopener">Overview</a></li>
+					<li>Power Platform Guidance Center - <a href="https://aka.ms/PowerPlatformGuidance" target="_blank"
+							rel="noopener">documentation</a> | <a href="https://aka.ms/pparchseries" target="_blank"
+							rel="noopener">architecture video series</a></li>
+					<li>Build a customized Admin experience using the Power Apps admin connectors - <a
+							href="https://aka.ms/adminconnectors" target="_blank" rel="noopener">blog post with sample
+							admin dashboard</a></li>
+					<li>Strategies for improving app discoverability in your enterprise&nbsp;-&nbsp;<a
+							href="https://powerapps.microsoft.com/blog/powerapps-discoverability-in-the-enterprise/"
+							target="_blank" rel="noopener">part 1</a> | <a
+							href="https://powerapps.microsoft.com/blog/powerapps-discoverability-in-the-enterprise-part-2/"
+							target="_blank" rel="noopener">part 2</a> | <a
+							href="https://powerapps.microsoft.com/blog/powerapps-discoverability-in-the-enterprise-part-3/"
+							target="_blank" rel="noopener">part 3</a></li>
+					<li>Security and certifications - <a
+							href="https://www.microsoft.com/TrustCenter/CloudServices/business-application-platform/default.aspx"
+							target="_blank" rel="noopener">Microsoft Trust Center</a></li>
+					<li>Manage Power Apps licenses in your organization - <a
+							href="https://learn.microsoft.com/microsoft-365/community/powerplatformlicensingforcitizendeveloper" target="_blank"
+							rel="noopener">documentation</a>
+						|&nbsp;<a
+							href="https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq" target="_blank"
+							rel="noopener">FAQ</a>
+						| <a href="https://go.microsoft.com/fwlink/?linkid=2085130" target="_blank"
+						rel="noopener">licensing guide (PDF)</a></li>
+					<li>Pricing and licensing - <a
+							href="https://www.microsoft.com/power-platform/products/power-apps/pricing" target="_blank"
+							rel="noopener">Power Apps licensing</a> | <a
+							href="https://learn.microsoft.com/powerapps/pricing-billing-skus" target="_blank"
+							rel="noopener">Licensing documentation</a>
+					</li>
+					<li>Microsoft's approach to deploying Power Apps for all employees - <a
+							href="https://aka.ms/ThrivePresentation" target="_blank"
+							rel="noopener">Pat Dunn’s presentation at Biz Apps Summit</a>
+					</li>
+					<li>Manage environments and other resources - <a
+						href="https://microsoft.github.io/terraform-provider-power-platform/" target="_blank"
+						rel="noopener">Power Platform Terraform Provider</a></li>
+				</ul>
+			</details>
+			<details id="tools-samples">
+				<summary>Find <b>tools and samples</b></summary>
+				<ul>
+					<h5>Toolkits</h5>
+					<ul>
+						<li><a href="https://github.com/microsoft/Power-CAT-Tools?tab=readme-ov-file#power-cat-tools" target="_blank" rel="noopener">Power CAT Tools app</a> | <a href="https://www.microsoft.com/power-platform/blog/2025/03/04/elevate-your-microsoft-power-platform-development-experience-with-power-cat-tools/"  target="_blank" rel="noopener">blog post</a></li>
+						<li><a href="https://aka.ms/CoEStarterKit" target="_blank" rel="noopener">CoE Kit</a></li>
+						<li><a href="https://aka.ms/automationkit" target="_blank" rel="noopener">Automation Kit</a></li>
+						<li><a href="https://learn.microsoft.com/power-automate/guidance/business-approvals-templates/introduction" target="_blank" rel="noopener">Approvals Kit</a></li>
+						<li><a href="https://aka.ms/creatorkit" target="_blank" rel="noopener">Creator Kit</a></li>
+						<li><a href="https://aka.ms/copilotstudiokit" target="_blank" rel="noopener">Copilot Studio Kit</a></li>
+					</ul>
+					<h5>Power Platform tools</h5>
+					<ul>
+					<li>Power Platform tool <a href="https://github.com/Microsoft/powerplatform" target="_blank" rel="noopener">repository index</a></li>
+				</ul>
+			</details>
+			<details id="stories">
+				<summary>Learn from <b>customer stories</b></summary>
+				<ul>
+					<li>Curated customer stories list - <a href="https://aka.ms/PowerPlatformStories" target="_blank"
+							rel="noopener">https://aka.ms/PowerPlatformStories</a></li>
+					<li>Additional links - <a href="https://aka.ms/PowerPlatformVideos" target="_blank"
+							rel="noopener">customer story videos</a> | <a href="https://aka.ms/PowerForPros"
+							target="_blank" rel="noopener">pro-dev stories</a> | <a
+							href="https://www.microsoft.com/power-platform/products/power-automate/#Customer-stories"
+							target="_blank" rel="noopener">automation stories</a> | <a href="https://aka.ms/PowerChamps"
+							target="_blank" rel="noopener">hero profiles</a></li>
+					<li><a href="https://learn.microsoft.com/power-platform/guidance/case-studies/overview"
+							target="_blank" rel="noopener">technical case studies</a></li>
+					<li>Power Champions <a href="https://aka.ms/PowerChamps" target="_blank" rel="noopener">stories</a>
+					</li>
+				</ul>
+			</details>
+			<details id="community">
+				<summary>Connect with the <b>community</b></summary>
 				<ul>
 					<li>Stay updated - <a href="https://www.microsoft.com/power-platform/blog/" target="_blank"
 							rel="noopener">Power Platform blog</a></li>
@@ -584,145 +740,23 @@
 							rel="noopener">Power Pages support</a></li>
 					<li><a href="https://aka.ms/powerapps-ideas" target="_blank" rel="noopener">Submit an idea</a></li>
 				</ul>
-			</details>
 
-			<details>
-				<summary>I'm interested in <b>connectors</b> and <b>data integration</b></summary>
+				<h3 class="category-subtitle">Microsoft partner resources</h3>
 				<ul>
-					<li>Power Platform connectors - <a href="https://learn.microsoft.com/connectors/" target="_blank"
-							rel="noopener">documentation</a> | <a href="https://flow.microsoft.com/connectors"
-							target="_blank" rel="noopener">Power Automate connectors list</a></li>
-					<li>Data integrator - <a href="https://learn.microsoft.com/powerapps/administrator/data-integrator"
-							target="_blank" rel="noopener">documentation</a></li>
-					<li>Power Query - <a href="https://learn.microsoft.com/power-query/" target="_blank"
-							rel="noopener">documentation</a></li>
-					<li>On-premises data gateway - <a
-							href="https://learn.microsoft.com/data-integration/gateway/service-gateway-onprem"
-							target="_blank" rel="noopener">documentation</a></li>
-					<li>Common Data Model - <a href="https://aka.ms/commondatamodel" target="_blank"
-							rel="noopener">documentation and printable CDM poster</a></li>
-					<li>Microsoft Dataverse and Power BI - <a
-							href="https://learn.microsoft.com/powerapps/maker/common-data-service/data-platform-powerbi-connector">documentation</a>
-					</li>
-				</ul>
-			</details>
-
-			<details>
-				<summary>I want to learn more about the <b>Power Platform products</b></summary>
-				<h5>Power Apps</h5>
-				<ul>
-					<li><a href="https://powerapps.microsoft.com/" target="_blank" rel="noopener">Website</a> | <a
-							href="https://powerapps.microsoft.com/blog/" target="_blank" rel="noopener">Blog</a> | <a
-							href="https://powerapps.microsoft.com/tutorials/getting-started/" target="_blank"
-							rel="noopener">Documentation</a> | <a href="https://aka.ms/powerapps-community"
-							target="_blank" rel="noopener">Community</a> | <a href="https://aka.ms/powerapps-ideas"
-							target="_blank" rel="noopener">Suggest Ideas</a> | <a
-							href="https://powerusers.microsoft.com/t5/Webinars-and-Video-Gallery/bd-p/VideoGallery"
-							target="_blank" rel="noopener">Webinars</a></li>
-					<li><a href="https://powerapps.microsoft.com/blog/category/new-features/" target="_blank"
-							rel="noopener">Product updates</a></li>
-					<li><a href="https://powerapps.microsoft.com/guided-learning/" target="_blank" rel="noopener">Guided
-							Learning</a> | <a
-							href="https://www.youtube.com/playlist?list=PL8IYfXypsj2DU3EwoaeBYiuuQTvcscJfo"
-							target="_blank" rel="noopener">YouTube playlist</a></li>
-					<li><a href="https://powerapps.microsoft.com/pricing/" target="_blank" rel="noopener">Licensing /
-							Pricing</a></li>
-					<li>Support - <a href="https://learn.microsoft.com/powerapps/common-issues-and-resolutions"
-							target="_blank" rel="noopener">known issues</a> | <a
-							href="https://powerusers.microsoft.com/t5/General-Discussion/bd-p/PowerAppsForum1"
-							target="_blank" rel="noopener">view/report issues</a> | <a
-							href="https://powerapps.microsoft.com/support/" target="_blank" rel="noopener">create a
-							support ticket</a></li>
-				</ul>
-				<h5>Power Automate</h5>
-				<ul>
-					<li><a href="https://flow.microsoft.com/" target="_blank" rel="noopener">Website</a> | <a
-							href="https://ms.flow.microsoft.com/blog/" target="_blank" rel="noopener">Blog</a> | <a
-							href="https://flow.microsoft.com/documentation/getting-started/" target="_blank"
-							rel="noopener">Documentation</a> | <a href="https://aka.ms/flow-community" target="_blank"
-							rel="noopener">Community</a> | <a href="https://aka.ms/msflow-ideas" target="_blank"
-							rel="noopener">Suggest Ideas</a> | <a
-							href="https://flow.microsoft.com/blog/category/webinars/" target="_blank"
-							rel="noopener">Webinars</a></li>
-					<li><a href="https://flow.microsoft.com/blog/category/product-updates/" target="_blank"
-							rel="noopener">Product updates</a></li>
-					<li><a href="https://flow.microsoft.com/guided-learning/" target="_blank" rel="noopener">Guided
-							Learning</a> | <a
-							href="https://www.youtube.com/playlist?list=PL8nfc9haGeb55I9wL9QnWyHp3ctU2_ThF"
-							target="_blank" rel="noopener">YouTube Playlist</a></li>
-					<li><a href="https://flow.microsoft.com/pricing/" target="_blank" rel="noopener">Licensing /
-							Pricing</a></li>
-					<li><a href="https://flow.microsoft.com/support/" target="_blank" rel="noopener">Support</a></li>
-				</ul>
-				<h5>Copilot Studio</h5>
-				<ul>
-					<li><a href="https://www.microsoft.com/microsoft-copilot/microsoft-copilot-studio/" target="_blank"
-							rel="noopener">Website</a> | <a href="https://www.microsoft.com/microsoft-copilot/blog/"
-							target="_blank" rel="noopener">Blog</a> | <a
-							href="https://learn.microsoft.com/microsoft-copilot-studio/" target="_blank"
-							rel="noopener">Documentation</a> | <a
-							href="https://community.powerplatform.com/forums/thread/?groupid=db8f53c2-767d-47d6-a1ae-fe4c828a6553&amp;page=1"
-							target="_blank" rel="noopener" target="_blank" rel="noopener">Community</a></li>
-				</ul>
-				<h5>Power BI</h5>
-				<ul>
-					<li><a href="https://powerbi.com" target="_blank" rel="noopener">Website</a> | <a
-							href="https://powerbi.microsoft.com/blog/" target="_blank" rel="noopener">Blog</a> | <a
-							href="https://learn.microsoft.com/power-bi/" target="_blank" rel="noopener">Documentation</a>
-						| <a href="https://community.powerbi.com/" target="_blank"
-							rel="noopener">Community</a><b>&nbsp;</b></li>
-					<li><a href="https://powerbi.microsoft.com/roadmap/" target="_blank" rel="noopener">Product
-							updates</a></li>
-					<li><a href="https://learn.microsoft.com/learn/powerplatform/power-bi?WT.mc_id=powerbi_landingpage-docs-link"
-							target="_blank" rel="noopener">Guided Learning</a> | <a
-							href="https://www.youtube.com/user/mspowerbi" target="_blank" rel="noopener">YouTube
-							Playlist</a></li>
-					<li><a href="https://powerbi.microsoft.com/pricing/" target="_blank" rel="noopener">Licensing /
-							Pricing</a></li>
-				</ul>
-			</details>
-			<details>
-				<summary>Tell me about <b>labs, certifications, courses</b> and <b>books</b></summary>
-				<h5>Microsoft certifications</h5>
-				<ul>
-					<li><a href="https://learn.microsoft.com/learn/certifications/browse/?products=power-platform&amp;expanded=power-platform"
-							target="_blank" rel="noopener">Power Platform Exams &amp; Certifications</a> |&nbsp;<a
-							href="https://learn.microsoft.com/learn/certifications/exams/pl-100" target="_blank"
-							rel="noopener">PL-100</a> | <a
-							href="https://learn.microsoft.com/learn/certifications/power-platform-functional-consultant-associate#certification-exams"
-							target="_blank" rel="noopener">PL-200</a> | <a
-							href="https://learn.microsoft.com/learn/certifications/power-platform-developer-associate"
-							target="_blank" rel="noopener">PL-400</a> | <a
-							href="https://learn.microsoft.com/learn/certifications/exams/pl-900" target="_blank"
-							rel="noopener">PL-900</a> | </li>
-				</ul>
-				<h5>Online learning</h5>
-				<ul>
-					<li>Pluralsight - <a
-							href="https://www.pluralsight.com/paths/microsoft-power-platform-fundamentals-pl-900"
-							target="_blank" rel="noopener">Microsoft Power Platform Fundamentals</a></li>
-					<li>LinkedIn Learning - <a
-							href="https://www.linkedin.com/learning/search?keywords=microsoft%20power%20platform"
-							target="_blank" rel="noopener">Power Platform classes</a></li>
-					<li>Udemy - <a href="https://www.udemy.com/courses/search/?src=ukw&amp;q=power+platform"
-							target="_blank" rel="noopener">Power Platform classes</a>&nbsp;| <a
-							href="https://www.udemy.com/courses/search/?src=ukw&amp;q=power+apps" target="_blank"
+					<li>Power Platform partner programs - <a
+							href="https://www.microsoft.com/power-platform/products/power-apps/partners" target="_blank"
 							rel="noopener">Power Apps</a> | <a
-							href="https://www.udemy.com/courses/search/?src=ukw&amp;q=power+automate" target="_blank"
-							rel="noopener">Power Automate</a> | <a
-							href="https://www.udemy.com/courses/search/?src=ukw&amp;q=power+bi" target="_blank"
-							rel="noopener">Power BI</a></li>
-					<li>Power Platform Academy by Rory Neary - <a href="https://www.powerplatformlearn.academy/"
-							target="_blank" rel="noopener">free courses</a></li>
-				</ul>
-				<h5>Books</h5>
-				<ul>
-					<li><a href="https://www.apress.com/gp/book/9781484260074" target="_blank" rel="noopener">Pro
-							Microsoft Power Platform (published by Apress</a>)</li>
-					<li><a href="https://www.amazon.com/dp/1789805821" target="_blank" rel="noopener">Learn Microsoft
-							Power Apps (by Matthew Weston)</a></li>
-				</ul>
-				</li>
+							href="https://www.microsoft.com/power-platform/products/power-automate/partners"
+							target="_blank" rel="noopener">Power Automate</a></li>
+					<li>Join the <a
+							href="https://powerplatformpartners.transform.microsoft.com/?culture=en-us&country=us"
+							target="_blank" rel="noopener">Power Platform Partner program</a></li>
+					<li>Become a <a href="https://aka.ms/PowerPlatformFTRSA" target="_blank" rel="noopener">Recognized
+							Solution Architect</a></li>
+					<li>You can also <a href="https://aka.ms/xIAD/PartnerEvents" target="_blank" rel="noopener">sign-up
+							to deliver trainings for our customers</a></li>
+					<li>View <a href="https://powerplatformpartners.transform.microsoft.com/partner-stories"
+							target="_blank" rel="noopener">Power Platform partner stories</a></li>
 				</ul>
 			</details>
 		</div>
@@ -748,13 +782,8 @@
 	</footer>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+
+<script src="assets/js/main.js"></script>
 
 </body>
 

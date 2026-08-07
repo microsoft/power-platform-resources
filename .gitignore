@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# AI
+CLAUDE.md
+.gstack/
+
+
 # User-specific files
 *.rsuser
 *.suo
