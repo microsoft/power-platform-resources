@@ -8,6 +8,14 @@ is no "Unreleased" section. The project does not use version tags either, so
 entries are grouped by commit date rather than by
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-08-07 (link cleanup)
+
+### Removed
+
+- Removed the "Power Platform partner stories" link
+  (`powerplatformpartners.transform.microsoft.com/partner-stories`), which
+  returned a persistent 502 Service Unavailable error.
+
 ## 2026-08-07 (scheduled update)
 
 ### Added
