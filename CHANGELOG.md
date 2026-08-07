@@ -127,8 +127,13 @@ commit date.
 
 ### Changed
 
+- Replaced the plum/violet identity accent with a warm rust accent
+  (`#b5531f` light, `#e89a6b` dark) applied to section icons, category-title
+  highlights, the masthead rule, and focus states. Functional links remain
+  Microsoft blue. Gives the site a warmer, editorial feel and moves away from
+  the saturated-violet palette.
 - Applied the "editorial utilitarian" design system: replaced the
-  purple-to-blue gradient masthead with a flat ink masthead and plum accent
+  purple-to-blue gradient masthead with a flat ink masthead and accent
   rule, introduced a full design-token set (color, spacing, radius, motion),
   restyled the category navigation as an editorial index, and rendered
   resource links as numbered index rows. Resource wording and URLs are
