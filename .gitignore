@@ -15,6 +15,7 @@ CLAUDE.md
 *.userosscache
 *.sln.docstates
 .DS_Store
+.vscode
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
