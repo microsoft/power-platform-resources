@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## 2026-08-10
 
+### Added
+
+- Added complete Open Graph and Twitter Card metadata with a custom 1200 x 630 social preview image.
+
 ### Changed
 
 - Promoted Explore Power Platform products from a Get Started subsection to the second resource category.
