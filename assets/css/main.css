@@ -714,6 +714,19 @@ details[hidden] {
 	font-size: 1.1875rem;
 }
 
+.footer-links {
+	display: flex;
+	justify-content: center;
+	gap: var(--cp-space-sm);
+	margin-top: var(--cp-space-md);
+	font-family: var(--cp-font-mono);
+	font-size: 0.875rem;
+}
+
+.footer-links span {
+	color: var(--cp-text-soft);
+}
+
 .last-updated {
 	margin-top: var(--cp-space-sm);
 	color: var(--cp-text-soft);
