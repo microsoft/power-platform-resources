@@ -74,7 +74,7 @@ html[data-theme="dark"] .powercat-logo .logo-on-dark { display: block; }
 .main a[aria-current="page"] { font-weight: 700; }
 .spacer { flex: 1; }
 .icon-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); display: grid; place-items: center; cursor: pointer; font-size: 15px; }
-.menu-toggle, .nav-feedback { display: none; }
+.menu-toggle, .main .nav-feedback { display: none; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 0; border-radius: 9px; padding: 10px 18px; background: var(--grad); color: #fff; cursor: pointer; font-weight: 700; font-size: 14px; }
 .btn:hover { color: #fff; filter: brightness(1.08); }
 .btn.ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }

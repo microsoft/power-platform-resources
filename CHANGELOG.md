@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Prevented the mobile navigation feedback action from appearing alongside the desktop feedback button on SSP pillar pages.
 - Restored the missing light and dark Power CAT logo assets used by the Self-Service Portal header and footer.
 - Updated all navigation between the Self-Service Portal landing and resources pages to use their current filenames.
 - Kept color theme selection and theme-toggle icons consistent when navigating between SSP pages.
