@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="review-submission-url" content="">
+<title>SSP - Review Pillar</title>
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    let saved = null;
+    try { saved = localStorage.getItem("sspTheme"); } catch (error) {}
+    const theme = param || saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+    try { localStorage.setItem("sspTheme", theme); } catch (error) {}
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/ssp-design.css">
+</head>
+<body class="pillar-review" data-skill-label="Review">
+<header class="topbar"><div class="wrap row">
+  <a class="logo" href="ssp-landing.html" aria-label="Self-Service Portal home"><span class="mark">SSP</span><span>Self-Service Portal</span><span class="cat-divider" aria-hidden="true"></span><picture class="powercat-logo" title="Power CAT"><img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24"><img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24"></picture></a>
+  <nav class="main" id="siteNav" aria-label="Primary navigation"><a href="ssp-landing.html">Home</a><a href="ssp-design.html">Design</a><a href="ssp-build.html">Build</a><a href="ssp-review.html" aria-current="page">Review</a><a href="https://rshanthini.github.io/power-series-labs/index.html" target="ssp-learn" rel="noopener">Learn</a><a href="ssp-resources.html">Resources</a><a class="btn sm nav-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=Review%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a></nav>
+  <div class="spacer"></div><button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">&#9776;</button><button class="icon-btn" type="button" aria-label="Toggle theme" title="Toggle theme" id="themeBtn">&#9790;</button><a class="btn sm desktop-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=Review%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a>
+</div></header>
+
+<main>
+  <section class="design-hero"><div class="wrap hero-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-landing.html">SSP</a><span aria-hidden="true">/</span><span>Review</span></nav><span class="pillar-label">Review pillar</span>
+    <h1>Find risk before it reaches production.</h1><p class="lead">Run focused review skills yourself, or submit a sanitized solution or app for an independent deep review by the Power CAT team.</p>
+    <div class="hero-actions"><a class="btn" href="#skills">Run a review skill</a><a class="btn ghost" href="#deep-review">Submit for deep review</a></div>
+    <div class="hero-proof" aria-label="Review pillar highlights"><div class="proof"><strong>4</strong><span>Review skills</span></div><div class="proof"><strong>5</strong><span>Quality lenses</span></div><div class="proof"><strong>0</strong><span>PII permitted</span></div><div class="proof"><strong>1</strong><span>Prioritized report</span></div></div>
+  </div></section>
+
+  <section id="deep-review" aria-labelledby="deep-review-heading"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">Power CAT deep review</div><h2 id="deep-review-heading">Submit a solution or app for expert review</h2></div><p>Use this path when a focused skill is not enough and your team needs an independent assessment across architecture, security, reliability, performance, and operations.</p></div>
+    <div class="review-submit">
+      <div class="review-submit-main"><div class="kicker">Prepare before submitting</div><h3>Share the minimum sanitized evidence needed</h3><p>Remove or replace sensitive information before upload. The review team needs representative structure and behavior, not production records or secrets.</p>
+        <ul class="submission-list"><li><strong>No PII or personal data</strong>Do not include names, email addresses, phone numbers, identifiers, or user records.</li><li><strong>No secrets or credentials</strong>Remove connection strings, keys, tokens, passwords, and authentication material.</li><li><strong>No customer or production data</strong>Use synthetic sample data and sanitized screenshots, exports, and logs.</li><li><strong>Include review context</strong>Describe the outcome, architecture, known constraints, concerns, and target timeline.</li></ul>
+      </div>
+      <aside class="review-submit-aside" aria-label="Deep review access requirements"><h3>Organizational sign-in required</h3><p>You will be asked to sign in with your organizational ID before accessing the submission workflow. Access and submission eligibility may depend on your organization.</p><button class="btn review-launch" id="reviewLaunch" type="button" disabled>Submission portal pending</button><span class="submission-note">The portal opens only after an approved organizational submission URL is configured. Never submit PII or sensitive content.</span></aside>
+    </div>
+  </div></section>
+
+  <section class="skills-section" id="skills" aria-labelledby="skills-heading"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">Review skill catalog</div><h2 id="skills-heading">Check the highest-risk area first</h2></div><p>Use these focused skills before requesting a deep review, or to resolve findings after the review report arrives.</p></div>
+    <div class="skill-tools"><label class="skill-search"><span aria-hidden="true">&#9906;</span><span class="sr-only">Search Review skills</span><input id="skillSearch" type="search" placeholder="Search security, performance, architecture, or quality..." autocomplete="off"></label><div class="filters" role="group" aria-label="Filter by review area"><button class="filter" data-category="all" aria-pressed="true">All</button><button class="filter" data-category="architecture" aria-pressed="false">Architecture</button><button class="filter" data-category="security" aria-pressed="false">Security</button><button class="filter" data-category="performance" aria-pressed="false">Performance</button><button class="filter" data-category="quality" aria-pressed="false">Quality</button></div></div>
+    <div class="results-line"><span id="resultCount" role="status" aria-live="polite">4 Review skills</span><button class="clear-filter" id="clearFilters" type="button" hidden>Clear filters</button></div>
+    <div class="skills-grid" id="skillGrid">
+      <article class="skill-card" data-category="architecture" style="--accent:var(--design)"><div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Architecture</span><span class="skill-time">15-25 min</span></div><h3>Well-Architected Solution Review</h3><p>Assess reliability, security, operational excellence, performance efficiency, and experience.</p><div class="tags"><span class="tag">Risk report</span><span class="tag">WAF</span></div></div><details><summary>Inputs and output</summary><p>Bring the design and constraints. Leave with prioritized findings and recommended next actions.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div></article>
+      <article class="skill-card" data-category="security" style="--accent:var(--amber)"><div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Security</span><span class="skill-time">20-30 min</span></div><h3>Solution Security Review</h3><p>Inspect roles, sharing, connectors, identities, data boundaries, and least-privilege controls.</p><div class="tags"><span class="tag">Access</span><span class="tag">DLP</span></div></div><details><summary>Inputs and output</summary><p>Bring sanitized configuration evidence. Leave with security findings and remediation priorities.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div></article>
+      <article class="skill-card" data-category="performance" style="--accent:var(--teal)"><div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Performance</span><span class="skill-time">15-25 min</span></div><h3>App Performance Review</h3><p>Examine loading, queries, delegation, controls, formulas, network calls, and user-perceived latency.</p><div class="tags"><span class="tag">Monitor</span><span class="tag">Delegation</span></div></div><details><summary>Inputs and output</summary><p>Bring sanitized traces and scenarios. Leave with ranked bottlenecks and improvement actions.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div></article>
+      <article class="skill-card" data-category="quality" style="--accent:var(--brand-2)"><div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Quality</span><span class="skill-time">10-20 min</span></div><h3>Solution Checker Triage</h3><p>Turn automated checker output into an actionable remediation plan based on severity and impact.</p><div class="tags"><span class="tag">Checker</span><span class="tag">Triage</span></div></div><details><summary>Inputs and output</summary><p>Bring a sanitized checker report. Leave with grouped findings, owners, and resolution order.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div></article>
+    </div>
+  </div></section>
+
+  <section aria-labelledby="process-heading"><div class="wrap"><div class="section-head"><div><div class="kicker">A responsible review path</div><h2 id="process-heading">Prepare, assess, prioritize, improve</h2></div><p>Keep the review bounded, evidence-based, and free of sensitive data from intake through remediation.</p></div><div class="process"><div class="step"><span class="step-number">01 / SANITIZE</span><h3>Remove sensitive data</h3><p>Replace production content, identities, secrets, logs, and screenshots with safe examples.</p></div><div class="step"><span class="step-number">02 / FRAME</span><h3>State the concern</h3><p>Describe the architecture, business outcome, constraints, and decisions needing scrutiny.</p></div><div class="step"><span class="step-number">03 / REVIEW</span><h3>Assess the evidence</h3><p>Apply focused checks and capture severity, impact, confidence, and supporting evidence.</p></div><div class="step"><span class="step-number">04 / RESOLVE</span><h3>Close material risks</h3><p>Assign actions, validate changes, record accepted risks, and retain the final report.</p></div></div></div></section>
+</main>
+<footer><div class="wrap row"><span>Self-Service Portal - Curated by Power CAT</span><div class="footer-links"><a href="ssp-resources.html#architecture-guidance">Architecture resources</a><a href="https://github.com/microsoft/power-platform-resources/issues/new?title=Review%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a></div></div></footer>
+<script src="assets/js/ssp-pillar.js"></script>
+</body>
+</html>

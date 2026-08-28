@@ -4,6 +4,33 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-08-27
+
+### Added
+
+- Added a dedicated SSP Design pillar page with outcome guidance, searchable and filterable skill tiles, and a four-stage design process.
+- Added an integrated Design Advisor preview that recommends skill sequences and provides a configuration point for a Copilot Studio custom agent.
+- Added a skill-led SSP Build pillar page covering apps, automation, agents, data, integration, packaging, and deployment.
+- Added an SSP Review pillar page with focused review skills and a configurable deep-review submission path requiring organizational sign-in and sanitized, PII-free content.
+
+### Changed
+
+- Reworked the Self-Service Portal opening into four spacious featured messages, including a catalog metrics view, that rotate every nine seconds with manual playback controls.
+- Added a catalog-level notice that external resource links open in a new tab.
+- Standardized the SSP landing and resources headers with shared navigation, active-page states, and a compact mobile menu.
+- Replaced the unused Sign in controls with GitHub issue links for structured visitor feedback.
+
+### Fixed
+
+- Restored the missing light and dark Power CAT logo assets used by the Self-Service Portal header and footer.
+- Updated all navigation between the Self-Service Portal landing and resources pages to use their current filenames.
+- Kept color theme selection and theme-toggle icons consistent when navigating between SSP pages.
+- Compacted the SSP landing header and statistics layout at mobile widths to prevent horizontal overflow.
+
+### Removed
+
+- Removed the duplicate search option from the Self-Service Portal hero while retaining header search.
+
 ## 2026-08-11
 
 ### Added

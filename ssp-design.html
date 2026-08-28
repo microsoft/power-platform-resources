@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="copilot-studio-agent-url" content="">
+<title>SSP - Design Pillar</title>
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    let saved = null;
+    try { saved = localStorage.getItem("sspTheme"); } catch (error) {}
+    const theme = param || saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+    try { localStorage.setItem("sspTheme", theme); } catch (error) {}
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/ssp-design.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap row">
+    <a class="logo" href="ssp-landing.html" aria-label="Self-Service Portal home">
+      <span class="mark">SSP</span><span>Self-Service Portal</span><span class="cat-divider" aria-hidden="true"></span>
+      <picture class="powercat-logo" title="Power CAT">
+        <img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24">
+        <img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24">
+      </picture>
+    </a>
+    <nav class="main" id="siteNav" aria-label="Primary navigation">
+      <a href="ssp-landing.html">Home</a>
+      <a href="ssp-design.html" aria-current="page">Design</a>
+      <a href="ssp-build.html">Build</a>
+      <a href="ssp-review.html">Review</a>
+      <a href="https://rshanthini.github.io/power-series-labs/index.html" target="ssp-learn" rel="noopener">Learn</a>
+      <a href="ssp-resources.html">Resources</a>
+      <a class="btn sm nav-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=Design%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a>
+    </nav>
+    <div class="spacer"></div>
+    <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">&#9776;</button>
+    <button class="icon-btn" type="button" aria-label="Toggle theme" title="Toggle theme" id="themeBtn">&#9790;</button>
+    <a class="btn sm desktop-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=Design%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="design-hero">
+    <div class="wrap hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-landing.html">SSP</a><span aria-hidden="true">/</span><span>Design</span></nav>
+      <span class="pillar-label">Design pillar</span>
+      <h1>Shape the right solution before you build.</h1>
+      <p class="lead">Turn business intent into a secure, supportable Power Platform design. Start with the outcome, use a focused skill, and leave with a decision-ready artifact.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#skills">Explore Design skills</a>
+        <a class="btn ghost" href="ssp-resources.html#architecture-guidance">Browse architecture guidance</a>
+      </div>
+      <div class="hero-proof" aria-label="Design pillar highlights">
+        <div class="proof"><strong>8</strong><span>Design skills</span></div>
+        <div class="proof"><strong>5</strong><span>Focus areas</span></div>
+        <div class="proof"><strong>4</strong><span>Decision stages</span></div>
+        <div class="proof"><strong>1</strong><span>Clear next step</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="advisor-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">Design advisory agent</div><h2 id="advisor-heading">A guided path to the right skill</h2></div>
+        <p>Modeled on Agent Platform Advisor, this Copilot Studio agent will clarify constraints, explain tradeoffs, and recommend a primary skill sequence.</p>
+      </div>
+      <div class="advisor-shell">
+        <aside class="advisor-rail" aria-label="Advisor stages">
+          <div class="advisor-mark" aria-hidden="true">DA</div>
+          <h3>Design Advisor</h3>
+          <p>A conversational guide from business need to decision-ready artifacts.</p>
+          <ol class="advisor-stages">
+            <li class="active"><span class="stage-dot"></span>Frame</li>
+            <li><span class="stage-dot"></span>Clarify</li>
+            <li><span class="stage-dot"></span>Recommend</li>
+          </ol>
+        </aside>
+        <div class="advisor-main">
+          <span class="advisor-status" id="agentStatus">Copilot Studio connection pending</span>
+          <h3 id="advisorTitle">Describe the decision you need to make</h3>
+          <p id="advisorSummary">The advisor will clarify your outcome, constraints, audience, data, and governance needs before recommending a skill sequence.</p>
+          <div class="advisor-prompts" aria-label="Example advisor questions">
+            <div class="prompt"><strong>Outcome</strong>What must be different when this solution succeeds?</div>
+            <div class="prompt"><strong>Audience</strong>Who will use, own, support, and govern it?</div>
+            <div class="prompt"><strong>Constraints</strong>What data, integrations, policies, and timelines matter?</div>
+            <div class="prompt"><strong>Recommendation</strong>Which skill comes first, and what should follow?</div>
+          </div>
+          <div class="agent-config">
+            <button class="btn agent-launch" id="agentLaunch" type="button" disabled>Agent connection pending</button>
+            <span class="agent-note">Set the Copilot Studio web channel URL in the page metadata to enable launch.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="outcomes-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">Start with intent</div><h2 id="outcomes-heading">What are you designing for?</h2></div>
+        <p>Choose an outcome to preview an advisor recommendation and bring the most relevant skills forward.</p>
+      </div>
+      <div class="outcomes" role="group" aria-label="Filter skills by design outcome">
+        <button class="outcome" style="--tone:var(--design)" data-outcome="new" aria-pressed="false"><span class="outcome-code">01 / NEW</span><strong>Launch a new solution</strong><span>Clarify architecture, data, experience, and security before delivery.</span></button>
+        <button class="outcome" style="--tone:var(--teal)" data-outcome="modernize" aria-pressed="false"><span class="outcome-code">02 / MODERNIZE</span><strong>Modernize an existing app</strong><span>Assess constraints and choose a lower-risk target architecture.</span></button>
+        <button class="outcome" style="--tone:var(--amber)" data-outcome="govern" aria-pressed="false"><span class="outcome-code">03 / GOVERN</span><strong>Design for enterprise scale</strong><span>Plan environments, ALM, access, operations, and guardrails.</span></button>
+        <button class="outcome" style="--tone:var(--brand-2)" data-outcome="review" aria-pressed="false"><span class="outcome-code">04 / REVIEW</span><strong>Validate a proposed design</strong><span>Challenge assumptions and document risks before commitment.</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-section" id="skills" aria-labelledby="skills-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">Design skill catalog</div><h2 id="skills-heading">Pick the artifact you need next</h2></div>
+        <p>Each skill is scoped around a decision and a tangible output, so teams know what good looks like before implementation.</p>
+      </div>
+      <div class="skill-tools">
+        <label class="skill-search"><span aria-hidden="true">&#9906;</span><span class="sr-only">Search Design skills</span><input id="skillSearch" type="search" placeholder="Search skills, outputs, or focus areas..." autocomplete="off"></label>
+        <div class="filters" role="group" aria-label="Filter by focus area">
+          <button class="filter" data-category="all" aria-pressed="true">All</button><button class="filter" data-category="architecture" aria-pressed="false">Architecture</button><button class="filter" data-category="data" aria-pressed="false">Data</button><button class="filter" data-category="experience" aria-pressed="false">Experience</button><button class="filter" data-category="governance" aria-pressed="false">Governance</button>
+        </div>
+      </div>
+      <div class="results-line"><span id="resultCount" role="status" aria-live="polite">8 Design skills</span><button class="clear-filter" id="clearFilters" type="button" hidden>Clear filters</button></div>
+      <div class="skills-grid" id="skillGrid">
+        <article class="skill-card" data-category="architecture" data-outcomes="new modernize review" style="--accent:var(--design)">
+          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Architecture</span><span class="skill-time">15-25 min</span></div><h3>Solution Architecture Blueprint</h3><p>Translate a business scenario into platform boundaries, components, integrations, and key decisions.</p><div class="tags"><span class="tag">Decision map</span><span class="tag">Architecture</span></div></div>
+          <details><summary>Inputs and output</summary><p>Bring goals, users, constraints, and systems. Leave with a component blueprint and decision log.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+        </article>
+        <article class="skill-card" data-category="governance" data-outcomes="new govern review" style="--accent:var(--amber)">
+          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Governance</span><span class="skill-time">20-30 min</span></div><h3>Environment Strategy Blueprint</h3><p>Define environment purpose, ownership, routing, DLP boundaries, and deployment paths at scale.</p><div class="tags"><span class="tag">Environment map</span><span class="tag">DLP</span><span class="tag">ALM</span></div></div>
+          <details><summary>Inputs and output</summary><p>Bring tenant constraints and delivery teams. Leave with an environment topology and governance decisions.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+        </article>
+        <article class="skill-card" data-category="data" data-outcomes="new modernize review" style="--accent:var(--teal)">
+          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Data</span><span class="skill-time">15-20 min</span></div><h3>Dataverse Data Model Designer</h3><p>Turn business concepts into tables, relationships, ownership choices, and a maintainable data model.</p><div class="tags"><span class="tag">ERD</span><span class="tag">Dataverse</span><span class="tag">Ownership</span></div></div>
+          <details><summary>Inputs and output</summary><p>Bring entities, rules, and reporting needs. Leave with a logical model and implementation notes.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+        </article>
+        <article class="skill-card" data-category="experience" data-outcomes="new modernize" style="--accent:var(--brand-2)">
+          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Experience</span><span class="skill-time">10-20 min</span></div><h3>Experience Pattern Selector</h3><p>Choose between canvas, model-driven, Power Pages, code app, or agent-led experiences.</p><div class="tags"><span class="tag">UX pattern</span><span class="tag">Surface choice</span></div></div>
+          <details><summary>Inputs and output</summary><p>Bring user context, tasks, devices, and access needs. Leave with a recommended experience pattern.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+        </article>
+        <article class="skill-card" data-category="architecture" data-outcomes="new modernize govern" style="--accent:var(--design)">
+          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Architecture</span><span class="skill-time">15-25 min</span></div><h3>Integration Pattern Selector</h3><p>Match latency, volume, ownership, and failure needs to the right Power Platform integration pattern.</p><div class="tags"><span class="tag">API</span><span class="tag">Events</span><span class="tag">Virtual tables</span></div></div>
+          <details><summary>Inputs and output</summary><p>Bring source systems and service expectations. Leave with a pattern recommendation and tradeoffs.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+        </article>
+        <article class="skill-card" data-category="governance" data-outcomes="new govern review" style="--accent:var(--amber)">
+          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Security</span><span class="skill-time">15-25 min</span></div><h3>Security Role Mapper</h3><p>Map personas, responsibilities, records, and operations into least-privilege access decisions.</p><div class="tags"><span class="tag">Role matrix</span><span class="tag">Least privilege</span></div></div>
+          <details><summary>Inputs and output</summary><p>Bring personas, data sensitivity, and actions. Leave with an access matrix and open security decisions.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+        </article>
+        <article class="skill-card" data-category="governance" data-outcomes="modernize govern" style="--accent:var(--teal)">
+          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Operations</span><span class="skill-time">15-20 min</span></div><h3>ALM Topology Planner</h3><p>Plan source control, solution boundaries, pipelines, approvals, and release responsibilities.</p><div class="tags"><span class="tag">Pipeline map</span><span class="tag">Solutions</span><span class="tag">Git</span></div></div>
+          <details><summary>Inputs and output</summary><p>Bring team topology and release requirements. Leave with a delivery topology and control points.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+        </article>
+        <article class="skill-card" data-category="architecture" data-outcomes="review govern modernize" style="--accent:var(--brand-2)">
+          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Assurance</span><span class="skill-time">5-15 min</span></div><h3>Well-Architected Design Check</h3><p>Challenge a proposed solution across reliability, security, operations, performance, and experience.</p><div class="tags"><span class="tag">Risk report</span><span class="tag">WAF</span><span class="tag">Review</span></div></div>
+          <details><summary>Inputs and output</summary><p>Bring the proposed design and known constraints. Leave with findings, risk levels, and next actions.</p></details><div class="skill-actions"><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="process-heading">
+    <div class="wrap">
+      <div class="section-head"><div><div class="kicker">A repeatable design loop</div><h2 id="process-heading">From ambiguity to an actionable blueprint</h2></div><p>Use one skill or chain several together. Keep decisions, assumptions, and evidence with the solution.</p></div>
+      <div class="process">
+        <div class="step"><span class="step-number">01 / FRAME</span><h3>Define the outcome</h3><p>State the business result, users, boundaries, constraints, and measures of success.</p></div>
+        <div class="step"><span class="step-number">02 / EXPLORE</span><h3>Compare patterns</h3><p>Compare viable platform, data, experience, and integration choices using evidence.</p></div>
+        <div class="step"><span class="step-number">03 / DECIDE</span><h3>Record tradeoffs</h3><p>Capture assumptions, consequences, and rejected options alongside the decision.</p></div>
+        <div class="step"><span class="step-number">04 / VALIDATE</span><h3>Review before build</h3><p>Run an independent design check and resolve material risks before delivery starts.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="decision-band"><div class="wrap"><div class="decision-inner"><div><h2>Not sure which skill fits?</h2><p>Use an outcome above for an immediate preview, or open Skills Mission Control for the current catalog.</p></div><a class="btn" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open skill catalog <span aria-hidden="true">&nearr;</span></a></div></div></section>
+</main>
+
+<footer><div class="wrap row"><span>Self-Service Portal - Curated by Power CAT</span><div class="footer-links"><a href="ssp-resources.html#architecture-guidance">Architecture resources</a><a href="https://github.com/microsoft/power-platform-resources/issues/new?title=Design%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a></div></div></footer>
+<script src="assets/js/ssp-design.js"></script>
+</body>
+</html>

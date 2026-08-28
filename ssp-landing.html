@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSP — Self-Service Portal (Landing)</title>
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    let saved=null; try{saved=localStorage.getItem("sspTheme");}catch(e){}
+    const theme = param || saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+    try{localStorage.setItem("sspTheme",theme);}catch(e){}
+  })();
+</script>
+<style>
+:root{
+  --font: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+  --bg:#faf9fb; --surface:#ffffff; --surface-2:#f4f1f7; --border:#e6e2ea;
+  --text:#1f1a24; --muted:#5b5566; --soft:#7a7385;
+  --brand:#5b3a8a; --brand-2:#8a4f9e; --brand-3:#b06a8a;
+  --grad:linear-gradient(135deg,#342050 0%,#5b3a7e 45%,#8a5a86 78%,#b07f8f 100%);
+  --design:#0f6cbd; --build:#8332a8; --review:#c8791b; --learn:#0f7b6c;
+  --shadow:0 2px 6px rgba(0,0,0,.08), 0 14px 40px rgba(60,40,90,.16);
+  --glow:0 0 0 1px rgba(255,255,255,.35), 0 10px 34px rgba(91,58,138,.30);
+  --radius:16px;
+}
+html[data-theme="dark"]{
+  --bg:#161318; --surface:#211d26; --surface-2:#2a2530; --border:#3a3342;
+  --text:#efe9f3; --muted:#b3a9bf; --soft:#8f8699;
+  --brand:#c9a7e0; --brand-2:#d59fc6; --brand-3:#c98fa8;
+  --grad:linear-gradient(135deg,#2a1c44 0%,#4b3168 45%,#6f486f 78%,#8a6270 100%);
+  --design:#4aa5e8; --build:#c78fe0; --review:#e8b366; --learn:#4fbfab;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Top bar */
+header.topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb, var(--surface) 88%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.topbar .row{display:flex;align-items:center;gap:24px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.logo .mark{min-width:34px;height:26px;padding:0 7px;border-radius:7px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em}
+.logo .tag{font-size:11px;color:var(--muted);font-weight:600;border:1px solid var(--border);padding:2px 7px;border-radius:20px}
+.cat-divider{width:1px;height:26px;background:var(--border);margin:0 4px}
+.powercat-logo{display:inline-flex;align-items:center}
+.powercat-logo img{height:30px;width:auto;display:block}
+.powercat-logo .logo-on-dark{display:none}
+html[data-theme="dark"] .powercat-logo .logo-on-light{display:none}
+html[data-theme="dark"] .powercat-logo .logo-on-dark{display:block}
+nav.main{display:flex;gap:4px;margin-left:8px}
+nav.main a{padding:8px 12px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:500}
+nav.main a:hover{background:var(--surface-2);color:var(--text)}
+nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);font-weight:700}
+.spacer{flex:1}
+.icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--surface);display:grid;place-items:center;cursor:pointer;color:var(--text);font-size:15px}
+.menu-toggle{display:none}
+.nav-feedback{display:none}
+.btn{border:none;cursor:pointer;font-family:var(--font);font-weight:600;font-size:14px;border-radius:10px;padding:10px 18px;background:var(--grad);color:#fff}
+.btn.ghost{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.btn.sm{padding:7px 14px;font-size:13px}
+.header-feedback,.header-feedback:hover{color:#fff;text-decoration:none;white-space:nowrap}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#f6f2fa,#efe9f5);border-bottom:3px solid transparent;border-image:linear-gradient(90deg,var(--design),var(--build),var(--review),var(--learn)) 1}
+.hero .inner{position:relative;color:var(--text);padding:88px 24px 72px}
+.hero-viewport{display:grid;min-height:350px;align-items:center}
+.hero-slide{grid-area:1/1;max-width:940px;visibility:hidden;opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .5s ease,transform .5s ease,visibility .5s}
+.hero-slide.is-active{visibility:visible;opacity:1;transform:translateY(0);pointer-events:auto}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.3px;color:var(--brand);background:var(--brand-soft,rgba(116,39,116,.09));border:1px solid rgba(116,39,116,.2);padding:5px 12px;border-radius:20px;margin-bottom:18px}
+.hero h1{font-size:64px;line-height:1.04;margin:0 0 20px;font-weight:800;letter-spacing:0;color:var(--text);max-width:900px}
+.hero p.sub{font-size:18px;color:var(--muted);margin:0 0 30px;max-width:720px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .btn.ghost{background:var(--surface);border:1px solid var(--border);color:var(--text)}
+.hero-controls{display:flex;align-items:center;gap:10px;margin-top:30px}
+.hero-control{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--text);cursor:pointer;display:grid;place-items:center;font:700 20px/1 var(--font)}
+.hero-control:hover{border-color:var(--brand);color:var(--brand)}
+.hero-dots{display:flex;align-items:center;gap:8px;margin:0 4px}
+.hero-dot{width:28px;height:4px;padding:0;border:0;border-radius:2px;background:var(--border);cursor:pointer;transition:background .2s ease}
+.hero-dot.is-active{background:var(--brand)}
+.hero-pause{font-size:13px}
+.hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:900px;margin-top:34px}
+.hero-metric{padding:4px 24px;border-left:1px solid var(--border)}
+.hero-metric:first-child{padding-left:0;border-left:0}
+.hero-metric strong{display:block;font-size:48px;line-height:1;font-weight:800;color:var(--brand);letter-spacing:0}
+.hero-metric span{display:block;margin-top:9px;color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+html[data-theme="dark"] .hero{background:linear-gradient(180deg,#1c1726,#161318)}
+html[data-theme="dark"] .eyebrow{color:var(--brand);background:rgba(217,143,224,.12);border-color:rgba(217,143,224,.28)}
+.mini-pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mini{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:14px;transition:transform .15s,background .15s}
+.mini:hover{transform:translateY(-3px);background:rgba(255,255,255,.26)}
+.mini .d{font-size:24px;margin-bottom:6px}
+.mini .t{font-weight:800;font-size:15px}
+.mini .n{font-size:12px;opacity:.85}
+
+/* Pillars */
+section{padding:64px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 40px}
+.sec-head .kicker{color:var(--brand-2);font-weight:800;font-size:14px;letter-spacing:1.5px;text-transform:uppercase}
+.sec-head h2{font-size:42px;margin:8px 0 10px;letter-spacing:-.8px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sec-head p{color:var(--muted);font-size:16px;margin:0}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start}
+/* Pillars — horizontal accordion */
+.pillars{display:flex;gap:16px;height:300px;align-items:stretch}
+.pillar{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);color:var(--text);transition:flex .38s cubic-bezier(.4,0,.2,1),box-shadow .18s ease;flex:0 0 96px;min-width:0}
+.pillar.open{flex:1 1 auto;box-shadow:0 18px 44px rgba(91,58,138,.24)}
+.pillar .bar{position:absolute;top:0;left:0;right:0;height:5px;z-index:2}
+.pillar .ic{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;color:#fff;box-shadow:0 8px 20px rgba(91,58,138,.25);flex:none}
+.pillar .ic svg{width:26px;height:26px}
+/* collapsed strip */
+.pillar-mini{appearance:none;border:0;background:transparent;cursor:pointer;font-family:var(--font);width:100%;height:100%;display:flex;flex-direction:column;align-items:center;gap:18px;padding:22px 0}
+.pillar-mini .vname{writing-mode:vertical-rl;font-weight:800;font-size:18px;letter-spacing:.5px;color:var(--text)}
+.pillar.open .pillar-mini{display:none}
+.pillar:not(.open) .pillar-body{display:none}
+.pillar:not(.open):hover{box-shadow:0 12px 30px rgba(91,58,138,.2)}
+/* expanded body */
+.pillar-body{display:flex;align-items:center;gap:28px;height:100%;padding:26px 30px;min-width:520px}
+.pb-lead{flex:0 0 200px;display:flex;flex-direction:column;gap:12px}
+.pb-lead h3{margin:0;font-size:23px;font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pb-lead .p-short{margin:0;color:var(--muted);font-size:14px}
+.pb-detail{flex:1 1 auto;min-width:0}
+.pb-detail p{margin:0 0 12px;color:var(--muted);font-size:13.5px;line-height:1.5}
+.p-list{list-style:none;margin:0;padding:0}
+.p-list li{position:relative;padding-left:20px;margin:6px 0;font-size:13.5px;color:var(--text)}
+.p-list li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--brand-2)}
+.pb-actions{flex:0 0 200px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.pillar .meta{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:20px;background:var(--surface-2);color:var(--muted)}
+.pillar-launch{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 18px;border-radius:12px;background:var(--grad);color:#fff;font-weight:800;font-size:13px;text-decoration:none;letter-spacing:.2px;transition:filter .15s ease,transform .15s ease;box-shadow:0 8px 20px rgba(91,58,138,.28)}
+.pillar-launch:hover{filter:brightness(1.06);transform:translateY(-1px);text-decoration:none;color:#fff}
+.ext-badge{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:var(--grad);color:#fff}
+.pillar-hint{max-width:640px;margin:22px auto 0;text-align:center;color:var(--soft);font-size:13px}
+.p-design .ic,.p-design .bar{background:linear-gradient(135deg,#3a2a6a,#6a4f9e)}
+.p-build .ic,.p-build .bar{background:linear-gradient(135deg,#6a4f9e,#9a5f8e)}
+.p-review .ic,.p-review .bar{background:linear-gradient(135deg,#8a4f7e,#b06a7a)}
+.p-learn .ic,.p-learn .bar{background:linear-gradient(135deg,#5b3a8a,#b07f8f)}
+
+/* Resource tiles (outcome-card style) */
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.rtile{display:flex;flex-direction:column;background:var(--surface);border:2px solid var(--border);border-top:5px solid var(--brand-2);border-radius:16px;padding:24px 24px 22px;box-shadow:var(--shadow);cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;min-height:200px;position:relative;overflow:hidden}
+.rtile::after{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .18s ease;z-index:0}
+.rtile:hover{transform:translateY(-6px) scale(1.015);border-color:var(--brand);box-shadow:0 0 0 1px var(--brand),0 18px 44px rgba(91,58,138,.28)}
+.rtile>*{position:relative;z-index:1}
+.rtile .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--grad);color:#fff;margin-bottom:14px;box-shadow:0 8px 20px rgba(91,58,138,.28)}
+.rtile .ic svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rtile h3{margin:0 0 8px;font-size:21px;line-height:1.15;font-weight:800}
+.rtile p{margin:0;color:var(--muted);font-size:14px;flex:1}
+.rtile .go{margin-top:16px;font-weight:800;font-size:14px;color:var(--brand-2);display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.4px}
+.rtile.feature{background:var(--grad);background-size:200% 200%;animation:shift 10s ease infinite;border-color:transparent;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 18px 44px rgba(91,58,138,.32)}
+.rtile.feature .ic{background:rgba(255,255,255,.22);color:#fff;box-shadow:none}
+.rtile.feature h3,.rtile.feature p{color:#fff}
+.rtile.feature p{opacity:.95}
+.rtile.feature .go{color:#fff}
+
+/* Featured */
+.alt{background:var(--surface-2)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fcard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s;color:var(--text)}
+.fcard:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(91,58,138,.24);text-decoration:none}
+.ftop{height:96px;background:var(--grad);position:relative}
+.fbadge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:#3a2050;font-size:11px;font-weight:800;padding:4px 11px;border-radius:20px;letter-spacing:.3px;text-transform:uppercase}
+.fkind{position:absolute;bottom:12px;left:14px;color:#fff;font-size:12px;font-weight:700;opacity:.95;letter-spacing:.3px;text-transform:uppercase}
+.fbody{padding:18px 18px 16px;display:flex;flex-direction:column;flex:1}
+.fcard h4{margin:0 0 6px;font-size:17px;font-weight:800}
+.fcard p{margin:0 0 14px;color:var(--muted);font-size:13.5px;flex:1}
+.ffoot{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--soft)}
+.stars{color:#b06a7a;letter-spacing:1px}
+
+/* Assistant strip */
+.assist{background:var(--grad);border-radius:22px;color:#fff;padding:40px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow)}
+.assist h2{margin:0 0 8px;font-size:26px}
+.assist p{margin:0;opacity:.94;max-width:560px}
+.assist .btn.ghost{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);color:#fff}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat .n{font-size:72px;line-height:1;font-weight:900;letter-spacing:-3px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat .n sup{font-size:34px;top:-1.05em;letter-spacing:0}
+.stat .l{color:var(--muted);font-size:14px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-top:10px}
+
+/* Dark mode: gradient text needs a lighter fill to stay legible */
+html[data-theme="dark"] .sec-head h2,
+html[data-theme="dark"] .stat .n{background:linear-gradient(135deg,#c9a7e0 0%,#dca4c8 55%,#e6b7bf 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+footer{border-top:1px solid var(--border);padding:30px 0;color:var(--soft);font-size:13px}
+footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.foot-brand{display:flex;align-items:center;gap:12px}
+footer .powercat-logo img{height:30px}
+
+/* Chatbot */
+.fab{position:fixed;bottom:24px;right:24px;z-index:60;display:flex;align-items:center;gap:10px;background:var(--grad);color:#fff;border:none;cursor:pointer;padding:14px 20px;border-radius:30px;font-family:var(--font);font-weight:600;font-size:14px;box-shadow:0 10px 30px rgba(115,39,116,.45)}
+.fab .pulse{width:9px;height:9px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 10px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.panel{position:fixed;bottom:24px;right:24px;z-index:61;width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 48px);background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.3);display:none;flex-direction:column;overflow:hidden}
+.panel.open{display:flex}
+.panel .phead{background:var(--grad);color:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px}
+.panel .phead .av{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:18px}
+.panel .phead .nm{font-weight:600;font-size:15px}
+.panel .phead .st{font-size:12px;opacity:.85;display:flex;align-items:center;gap:6px}
+.panel .phead .st::before{content:"";width:7px;height:7px;border-radius:50%;background:#4ade80}
+.panel .phead .x{margin-left:auto;cursor:pointer;font-size:20px;opacity:.9}
+.msgs{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:var(--bg)}
+.bubble{max-width:82%;padding:11px 14px;border-radius:14px;font-size:13.5px;line-height:1.45}
+.bubble.bot{background:var(--surface);border:1px solid var(--border);border-bottom-left-radius:4px;align-self:flex-start}
+.bubble.me{background:var(--brand);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 12px;background:var(--bg)}
+.sugg button{background:var(--surface);border:1px solid var(--border);color:var(--brand-2);font-family:var(--font);font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:20px;cursor:pointer}
+.pin{display:flex;gap:8px;padding:14px;border-top:1px solid var(--border);background:var(--surface)}
+.pin input{flex:1;border:1px solid var(--border);background:var(--bg);border-radius:22px;padding:10px 16px;font-family:var(--font);font-size:14px;color:var(--text);outline:none}
+.pin .send{width:40px;height:40px;border-radius:50%;border:none;background:var(--grad);color:#fff;cursor:pointer;font-size:16px}
+@media(max-width:1080px){.rgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1080px){.topbar .row{position:relative}.menu-toggle{display:grid}.desktop-feedback{display:none}nav.main{display:none;position:absolute;top:60px;left:24px;right:24px;margin:0;padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:0 0 10px 10px;box-shadow:var(--shadow);flex-direction:column;gap:2px}nav.main.is-open{display:flex}nav.main a{width:100%}nav.main .nav-feedback{display:block;width:100%;margin-top:6px;text-align:left;color:#fff}}
+@media(max-width:960px){.hero h1{font-size:52px}.pillars{display:flex;flex-direction:column;height:auto;gap:14px}.pillar,.pillar.open{flex:none}.pillar .pillar-mini{display:none}.pillar .pillar-body{display:flex;flex-direction:column;align-items:flex-start;gap:16px;min-width:0;padding:24px}.pb-lead,.pb-actions{flex:none;width:100%}.rgrid{grid-template-columns:repeat(2,1fr)}.feat-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.assist{grid-template-columns:1fr}}
+@media(max-width:560px){.hero .inner{padding:58px 24px 48px}.hero-viewport{min-height:410px}.hero h1{font-size:40px}.hero p.sub{font-size:16px}.hero-metrics{grid-template-columns:1fr 1fr;row-gap:24px}.hero-metric{padding:0 14px}.hero-metric:nth-child(odd){padding-left:0;border-left:0}.hero-metric strong{font-size:40px}.rgrid{grid-template-columns:1fr}}
+@media(max-width:560px){.topbar .row{gap:8px}.logo{gap:6px;font-size:11px;line-height:1.15}.logo>span:nth-child(2){max-width:68px}.logo .mark{min-width:30px;height:24px;padding:0 5px;font-size:11px}.cat-divider{height:22px;margin:0 1px}header .powercat-logo img{height:24px}.icon-btn{width:32px;height:32px;flex:none}.btn.sm{padding:6px 9px;font-size:11px;white-space:nowrap}}
+@media(max-width:360px){.topbar .row{gap:6px}.logo{gap:4px;font-size:10px}.logo>span:nth-child(2){max-width:54px}.logo .mark{min-width:26px;height:22px;padding:0 4px;font-size:10px}.cat-divider{height:20px;margin:0}header .powercat-logo img{height:20px}.icon-btn{width:30px;height:30px}.btn.sm{padding:5px 7px;font-size:10px}.stats{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.hero-slide{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap row">
+    <a class="logo" href="ssp-landing.html" aria-label="Self-Service Portal home">
+      <span class="mark">SSP</span>
+      <span>Self-Service Portal</span>
+      <span class="cat-divider" aria-hidden="true"></span>
+      <picture class="powercat-logo" title="Power CAT">
+        <img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24">
+        <img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24">
+      </picture>
+    </a>
+    <nav class="main" id="siteNav" aria-label="Primary navigation">
+      <a href="ssp-landing.html" aria-current="page">Home</a>
+      <a href="ssp-design.html">Design</a>
+      <a href="ssp-build.html">Build</a>
+      <a href="ssp-review.html">Review</a>
+      <a href="https://rshanthini.github.io/power-series-labs/index.html" target="ssp-learn" rel="noopener">Learn</a>
+      <a href="ssp-resources.html">Resources</a>
+      <a class="btn sm nav-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=SSP%20feedback%3A%20&amp;body=%23%23%20Page%0A%0A%23%23%20Feedback%0A%0A%23%23%20Suggested%20change%0A" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="spacer"></div>
+    <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false" onclick="toggleSiteMenu()">☰</button>
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme" id="themeBtn">🌙</button>
+    <a class="btn sm desktop-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=SSP%20feedback%3A%20&amp;body=%23%23%20Page%0A%0A%23%23%20Feedback%0A%0A%23%23%20Suggested%20change%0A" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap inner">
+    <div class="hero-viewport">
+      <article class="hero-slide is-active" aria-hidden="false">
+        <span class="eyebrow">✨ Curated by Power CAT · Open to everyone</span>
+        <h1>Your self-service starting point for Power Platform</h1>
+        <p class="sub">Find practical guidance for designing, building, reviewing, and learning — all organized around the work you need to accomplish.</p>
+        <div class="cta">
+          <button class="btn" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">Explore the pillars</button>
+          <button class="btn ghost" onclick="openBot()">Ask the assistant</button>
+        </div>
+      </article>
+      <article class="hero-slide" aria-hidden="true">
+        <span class="eyebrow">Design · Build · Review · Learn</span>
+        <h1>Move from an idea to a solution with confidence</h1>
+        <p class="sub">Choose the right architecture, accelerate delivery with proven skills, validate quality, and build the expertise to keep going.</p>
+        <div class="cta">
+          <button class="btn" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">Choose your path</button>
+          <a class="btn ghost" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">Open the skills catalog</a>
+        </div>
+      </article>
+      <article class="hero-slide" aria-hidden="true">
+        <span class="eyebrow">Curated guidance for every stage</span>
+        <h1>One portal for resources, labs, and solution guidance</h1>
+        <p class="sub">Browse hundreds of curated resources across thirteen categories, or start with hands-on Power Series labs built for real scenarios.</p>
+        <div class="cta">
+          <a class="btn" href="ssp-resources.html">Browse resources</a>
+          <a class="btn ghost" href="https://rshanthini.github.io/power-series-labs/index.html" target="ssp-learn" rel="noopener">Explore Power Series</a>
+        </div>
+      </article>
+      <article class="hero-slide" aria-hidden="true">
+        <span class="eyebrow">The catalog at a glance</span>
+        <h1>Everything you need to keep moving forward</h1>
+        <div class="hero-metrics" aria-label="Portal catalog statistics">
+          <div class="hero-metric"><strong>385+</strong><span>Curated resources</span></div>
+          <div class="hero-metric"><strong>13</strong><span>Categories</span></div>
+          <div class="hero-metric"><strong>39</strong><span>Hands-on labs</span></div>
+          <div class="hero-metric"><strong>100%</strong><span>Free and open</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="hero-controls" aria-label="Featured messages">
+      <button class="hero-control" id="heroPrev" type="button" aria-label="Previous message" title="Previous message">‹</button>
+      <div class="hero-dots">
+        <button class="hero-dot is-active" type="button" aria-label="Show message 1" aria-current="true"></button>
+        <button class="hero-dot" type="button" aria-label="Show message 2"></button>
+        <button class="hero-dot" type="button" aria-label="Show message 3"></button>
+        <button class="hero-dot" type="button" aria-label="Show message 4"></button>
+      </div>
+      <button class="hero-control" id="heroNext" type="button" aria-label="Next message" title="Next message">›</button>
+      <button class="hero-control hero-pause" id="heroPause" type="button" aria-label="Pause rotating messages" title="Pause rotating messages">Ⅱ</button>
+    </div>
+  </div>
+</div>
+
+<!-- 4 PILLARS -->
+<section id="pillars">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">The Self-Service Portal</div>
+      <h2>Four pillars, one journey</h2>
+      <p>SSP guides you across every stage — from shaping the right solution to shipping, validating, and growing your skills. Tap a pillar to see what's inside, then launch it.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar p-design open">
+        <div class="bar"></div>
+        <button class="pillar-mini" type="button" onclick="openPillar(this)" aria-label="Open Design">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+          <span class="vname">Design</span>
+        </button>
+        <div class="pillar-body">
+          <div class="pb-lead">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+            <h3>Design</h3>
+            <p class="p-short">Shape the right solution before you build.</p>
+          </div>
+          <div class="pb-detail">
+            <p>The Design pillar helps you choose the best-fit architecture and data model up front, so what you build is reliable, secure and maintainable.</p>
+            <ul class="p-list">
+              <li>Architecture guidance &amp; reference patterns</li>
+              <li>UX patterns and data modeling</li>
+              <li>Well-Architected design reviews</li>
+            </ul>
+          </div>
+          <div class="pb-actions">
+            <div class="meta"><span class="chip">Architecture</span><span class="chip">Well-Architected</span></div>
+            <a class="pillar-launch" href="ssp-design.html">Launch Design <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar p-build">
+        <div class="bar"></div>
+        <button class="pillar-mini" type="button" onclick="openPillar(this)" aria-label="Open Build">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <span class="vname">Build</span>
+        </button>
+        <div class="pillar-body">
+          <div class="pb-lead">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+            <h3>Build</h3>
+            <p class="p-short">Ship apps, automation and agents faster.</p>
+          </div>
+          <div class="pb-detail">
+            <p>The Build pillar brings maker essentials and pro-dev tooling together so fusion teams can go from idea to working solution quickly.</p>
+            <ul class="p-list">
+              <li>Maker skills &amp; code accelerators</li>
+              <li>ALM templates and pipelines</li>
+              <li>Fusion-team playbooks</li>
+            </ul>
+          </div>
+          <div class="pb-actions">
+            <div class="meta"><span class="chip">Makers</span><span class="chip">Pro-dev</span></div>
+            <a class="pillar-launch" href="ssp-build.html">Launch Build <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar p-review">
+        <div class="bar"></div>
+        <button class="pillar-mini" type="button" onclick="openPillar(this)" aria-label="Open Review">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m8 11 2 2 4-4"/></svg></span>
+          <span class="vname">Review</span>
+        </button>
+        <div class="pillar-body">
+          <div class="pb-lead">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m8 11 2 2 4-4"/></svg></span>
+            <h3>Review</h3>
+            <p class="p-short">Validate quality before you go live.</p>
+          </div>
+          <div class="pb-detail">
+            <p>The Review pillar runs automated checks across security, performance and governance so solutions ship with confidence.</p>
+            <ul class="p-list">
+              <li>Automated solution reviews</li>
+              <li>Security &amp; governance checks</li>
+              <li>Performance &amp; reliability scoring</li>
+            </ul>
+          </div>
+          <div class="pb-actions">
+            <div class="meta"><span class="chip">Security</span><span class="chip">Governance</span></div>
+            <a class="pillar-launch" href="ssp-review.html">Launch Review <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar p-learn">
+        <div class="bar"></div>
+        <button class="pillar-mini" type="button" onclick="openPillar(this)" aria-label="Open Learn">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+          <span class="vname">Learn</span>
+        </button>
+        <div class="pillar-body">
+          <div class="pb-lead">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+            <h3>Learn <span class="ext-badge">Power Series</span></h3>
+            <p class="p-short">Grow your skills with hands-on labs.</p>
+          </div>
+          <div class="pb-detail">
+            <p>The Learn pillar opens the Power Series catalog — hands-on labs, curated learning paths, certifications, customer stories and community.</p>
+            <ul class="p-list">
+              <li>39 hands-on labs</li>
+              <li>Learning paths &amp; certifications</li>
+              <li>Customer stories &amp; community</li>
+            </ul>
+          </div>
+          <div class="pb-actions">
+            <div class="meta"><span class="chip">39 labs</span><span class="chip">385+ resources</span></div>
+            <a class="pillar-launch" href="https://rshanthini.github.io/power-series-labs/index.html" target="ssp-learn" rel="noopener">Launch Power Series <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="pillar-hint">Launches open in a companion tab — this portal stays open here so you can come back anytime.</p>
+  </div>
+</section>
+
+<!-- RESOURCE CATEGORIES -->
+<section id="categories" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Power Platform resources</div>
+      <h2>What are you looking for?</h2>
+      <p>Curated resources for every stage of your Power Platform journey. Pick a category to open the full catalog.</p>
+    </div>
+    <div class="rgrid">
+      <a class="rtile" href="ssp-resources.html#get-started">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+        <h3>Get Started</h3>
+        <p>Get informed and take your first steps — product overviews, first solutions and hands-on programs.</p>
+        <div class="go">44 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#products">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/></svg></div>
+        <h3>Products</h3>
+        <p>Explore Power Apps, Power Automate, Power Pages, Dataverse and Power BI in depth.</p>
+        <div class="go">51 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#news">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></div>
+        <h3>News &amp; Features</h3>
+        <p>Stay up to date on release plans, what's new, deprecations and event announcements.</p>
+        <div class="go">17 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#adoption">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <h3>Adoption</h3>
+        <p>Drive successful adoption with methodology, maturity models and enablement events.</p>
+        <div class="go">15 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#training">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
+        <h3>Training &amp; Certification</h3>
+        <p>Build skills with certifications, learning paths, workshops, books and community channels.</p>
+        <div class="go">47 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#building">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Building</h3>
+        <p>Maker essentials, RPA, pro-dev resources, and data &amp; integration for fusion teams.</p>
+        <div class="go">56 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#ai-copilot">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg></div>
+        <h3>AI in Power Platform</h3>
+        <p>Vibe coding, generative pages, AI Builder, Copilot, Dataverse MCP and responsible AI.</p>
+        <div class="go">27 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#architecture-guidance">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></div>
+        <h3>Architecture &amp; Guidance</h3>
+        <p>Well-Architected pillars, the Architecture Center, and real-world scenario patterns.</p>
+        <div class="go">35 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#governance">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Governance</h3>
+        <p>Administer and govern — admin center, security, ALM, licensing and Center of Excellence.</p>
+        <div class="go">46 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#tools-samples">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg></div>
+        <h3>Tools &amp; Samples</h3>
+        <p>Toolkits, the Power Platform CLI, IaC, Dataverse MCP and community galleries.</p>
+        <div class="go">13 resources →</div>
+      </a>
+      <a class="rtile" href="ssp-resources.html#stories">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></div>
+        <h3>Customer Stories</h3>
+        <p>Learn from curated customer stories, videos, hero profiles and technical case studies.</p>
+        <div class="go">7 resources →</div>
+      </a>
+      <a class="rtile feature" href="ssp-resources.html">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <h3>Browse the full catalog</h3>
+        <p>Open the complete Power Platform Resources catalog with search across all 13 categories and 385+ links.</p>
+        <div class="go">Open catalog ↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ASSISTANT -->
+<section>
+  <div class="wrap">
+    <div class="assist">
+      <div>
+        <h2>Not sure where to start? Ask the assistant.</h2>
+        <p>Describe what you're trying to do in plain language and the SSP assistant will route you to the right Power Platform resource across all 13 categories.</p>
+      </div>
+      <button class="btn ghost" onclick="openBot()" style="white-space:nowrap">💬 Open assistant</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="alt">
+  <div class="wrap stats">
+    <div class="stat"><div class="n">385<sup>+</sup></div><div class="l">Curated resources</div></div>
+    <div class="stat"><div class="n">13</div><div class="l">Resource categories</div></div>
+    <div class="stat"><div class="n">39</div><div class="l">Hands-on labs</div></div>
+    <div class="stat"><div class="n">24/7</div><div class="l">Always available</div></div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section id="featured">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Featured this week</div>
+      <h2>Popular skills &amp; guidance</h2>
+      <p>Hand-picked from the SSP pillars — jump straight into what teams are using most.</p>
+    </div>
+    <div class="feat-grid">
+      <a class="fcard" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">
+        <div class="ftop"><span class="fbadge">Build</span><span class="fkind">Skill</span></div>
+        <div class="fbody">
+          <h4>Canvas → Code App Migrator</h4>
+          <p>Convert a Canvas app to a React Code App with 1:1 fidelity.</p>
+          <div class="ffoot"><span class="stars">★★★★★</span><span>Power CAT · 8m</span></div>
+        </div>
+      </a>
+      <a class="fcard" href="https://wonderful-stone-025cb0603.7.azurestaticapps.net/" target="ssp-skills" rel="noopener">
+        <div class="ftop"><span class="fbadge">Review</span><span class="fkind">Skill</span></div>
+        <div class="fbody">
+          <h4>Well-Architected Design Check</h4>
+          <p>Score a solution across all 5 WAF pillars with an HTML report.</p>
+          <div class="ffoot"><span class="stars">★★★★★</span><span>Power CAT · 5m</span></div>
+        </div>
+      </a>
+      <a class="fcard" href="ssp-resources.html#architecture-guidance">
+        <div class="ftop"><span class="fbadge">Design</span><span class="fkind">Guidance</span></div>
+        <div class="fbody">
+          <h4>Environment Strategy Blueprint</h4>
+          <p>Reference architecture for environments, DLP and ALM at scale.</p>
+          <div class="ffoot"><span class="stars">★★★★☆</span><span>Guidance · 12m read</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div class="foot-brand">
+      <picture class="powercat-logo" title="Power CAT">
+        <img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="30">
+        <img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="30">
+      </picture>
+      <span>Self-Service Portal · Curated by Power CAT</span>
+    </div>
+    <div>Power Platform resources — open to everyone, worldwide</div>
+  </div>
+</footer>
+
+<!-- CHATBOT -->
+<button class="fab" id="fab" onclick="openBot()"><span class="pulse"></span>💬 Ask the assistant</button>
+<div class="panel" id="panel">
+  <div class="phead">
+    <div class="av">✨</div>
+    <div><div class="nm">Hub Assistant</div><div class="st">Online · Power CAT</div></div>
+    <div class="x" onclick="closeBot()">×</div>
+  </div>
+  <div class="msgs" id="msgs">
+    <div class="bubble bot">👋 Hi! I'm your Power Platform Hub assistant. Tell me what you're working on and I'll point you to the right skill or guidance across <strong>Design · Build · Review · Learn</strong>.</div>
+  </div>
+  <div class="sugg">
+    <button onclick="quick('I want to build an approval app')">Build an approval app</button>
+    <button onclick="quick('Review my solution for security')">Review for security</button>
+    <button onclick="quick('Design an environment strategy')">Env strategy</button>
+  </div>
+  <div class="pin">
+    <input id="pinput" placeholder="Ask anything…" onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="send" onclick="sendMsg()">➤</button>
+  </div>
+</div>
+
+<script>
+function toggleTheme(){
+  const el=document.documentElement;
+  const next=el.getAttribute('data-theme')==='dark'?'light':'dark';
+  el.setAttribute('data-theme',next);
+  try{localStorage.setItem('sspTheme',next)}catch(e){}
+  document.getElementById('themeBtn').textContent=next==='dark'?'☀️':'🌙';
+}
+document.getElementById('themeBtn').textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙';
+function toggleSiteMenu(){
+  const nav=document.getElementById('siteNav');
+  const button=document.querySelector('.menu-toggle');
+  const open=nav.classList.toggle('is-open');
+  button.setAttribute('aria-expanded',String(open));
+  button.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');
+  button.textContent=open?'×':'☰';
+}
+function openBot(seed){document.getElementById('panel').classList.add('open');document.getElementById('fab').style.display='none';if(seed)quick(seed);}
+function closeBot(){document.getElementById('panel').classList.remove('open');document.getElementById('fab').style.display='flex';}
+function addBubble(text,me){const m=document.getElementById('msgs');const b=document.createElement('div');b.className='bubble '+(me?'me':'bot');b.innerHTML=text;m.appendChild(b);m.scrollTop=m.scrollHeight;}
+function reply(q){
+  const l=q.toLowerCase();let r;
+  if(l.includes('approval')||l.includes('build'))r="🛠️ Sounds like a <strong>Build</strong> task. I'd start with the <strong>Approval App accelerator</strong> and the <strong>Canvas→Code App Migrator</strong>. Want me to open the Build pillar?";
+  else if(l.includes('security')||l.includes('review'))r="🔍 That's a <strong>Review</strong> goal. Try the <strong>Well-Architected Design Check</strong> and <strong>Solution Security Review</strong> skills — both generate an HTML report.";
+  else if(l.includes('environment')||l.includes('design')||l.includes('architect'))r="🎨 A <strong>Design</strong> question. The <strong>Environment Strategy Blueprint</strong> and <strong>Data Modeling patterns</strong> guidance are the best starting points.";
+  else if(l.includes('learn')||l.includes('cert'))r="🎓 For <strong>Learn</strong>, I recommend the <strong>Maker learning path</strong> and the <strong>PL-900 certification</strong> track.";
+  else r="Got it! Based on that, I'd route you across the four pillars. Here are a couple of matches to get you moving — want the full list?";
+  setTimeout(()=>addBubble(r,false),450);
+}
+function sendMsg(){const i=document.getElementById('pinput');const v=i.value.trim();if(!v)return;addBubble(v,true);i.value='';reply(v);}
+function quick(t){addBubble(t,true);reply(t);}
+const heroSlides=Array.from(document.querySelectorAll('.hero-slide'));
+const heroDots=Array.from(document.querySelectorAll('.hero-dot'));
+const heroPause=document.getElementById('heroPause');
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let heroIndex=0;
+let heroTimer;
+let heroPaused=reduceMotion;
+function showHeroSlide(index){
+  heroIndex=(index+heroSlides.length)%heroSlides.length;
+  heroSlides.forEach((slide,i)=>{
+    const active=i===heroIndex;
+    slide.classList.toggle('is-active',active);
+    slide.setAttribute('aria-hidden',String(!active));
+    heroDots[i].classList.toggle('is-active',active);
+    if(active)heroDots[i].setAttribute('aria-current','true');
+    else heroDots[i].removeAttribute('aria-current');
+  });
+}
+function startHeroRotation(){
+  clearInterval(heroTimer);
+  if(!heroPaused)heroTimer=setInterval(()=>showHeroSlide(heroIndex+1),9000);
+}
+function setHeroPaused(paused){
+  heroPaused=paused;
+  heroPause.textContent=paused?'▶':'Ⅱ';
+  heroPause.setAttribute('aria-label',paused?'Play rotating messages':'Pause rotating messages');
+  heroPause.title=paused?'Play rotating messages':'Pause rotating messages';
+  startHeroRotation();
+}
+document.getElementById('heroPrev').addEventListener('click',()=>{showHeroSlide(heroIndex-1);startHeroRotation();});
+document.getElementById('heroNext').addEventListener('click',()=>{showHeroSlide(heroIndex+1);startHeroRotation();});
+heroDots.forEach((dot,index)=>dot.addEventListener('click',()=>{showHeroSlide(index);startHeroRotation();}));
+heroPause.addEventListener('click',()=>setHeroPaused(!heroPaused));
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden)clearInterval(heroTimer);
+  else startHeroRotation();
+});
+setHeroPaused(heroPaused);
+// Horizontal accordion: clicking a collapsed pillar expands it and collapses the rest
+function openPillar(el){
+  const card=el.closest('.pillar');
+  if(card.classList.contains('open'))return;
+  document.querySelectorAll('.pillar.open').forEach(c=>c.classList.remove('open'));
+  card.classList.add('open');
+}
+
+</script>
+</body>
+</html>
