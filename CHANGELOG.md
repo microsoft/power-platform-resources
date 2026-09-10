@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Standardized SSP header-to-content spacing to 24px on desktop and 16px on mobile, including Home and Resources, top-aligned Home slides, and versioned the pillar stylesheet URL to refresh cached spacing styles.
 - Reduced the whitespace below the header on the Design, Build, and Review pages by removing stacked hero top padding and using tighter responsive spacing.
 - Updated the Learn navigation links across all five Self-Service Portal pages and both landing-page Power Series buttons to the new Power Series Labs URL: https://microsoft.github.io/apps-agents-workshop/labs/.
 

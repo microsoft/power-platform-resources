@@ -67,7 +67,7 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 /* Page banner */
 .pagehead{background:linear-gradient(180deg,#f6f2fa,#efe9f5);color:var(--text);border-bottom:1px solid var(--border)}
 @keyframes shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.pagehead .inner{padding:40px 24px 34px}
+.pagehead .inner{padding:24px 24px 34px}
 .pagehead .eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--brand-2)}
 .pagehead h1{margin:8px 0 6px;font-size:32px;letter-spacing:-.4px;color:var(--text)}
 .pagehead p{margin:0;color:var(--muted);font-size:16px;max-width:640px}
@@ -132,6 +132,9 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @media(max-width:1080px){.topbar .row{position:relative}.menu-toggle{display:grid}.desktop-feedback{display:none}nav.main{display:none;position:absolute;top:60px;left:24px;right:24px;margin:0;padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:0 0 10px 10px;box-shadow:var(--shadow);flex-direction:column;gap:2px}nav.main.is-open{display:flex}nav.main a{width:100%}nav.main .nav-feedback{display:block;width:100%;margin-top:6px;text-align:left;color:#fff}}
 @media(max-width:560px){.topbar .row{gap:8px}.logo{gap:6px;font-size:11px;line-height:1.15}.logo>span:nth-child(2){max-width:68px}.logo .mark{min-width:30px;height:24px;padding:0 5px;font-size:11px}.cat-divider{height:22px;margin:0 1px}header .powercat-logo img{height:24px}.icon-btn{width:32px;height:32px;flex:none}.btn.sm{padding:6px 9px;font-size:11px;white-space:nowrap}}
 @media(max-width:360px){.topbar .row{gap:6px}.logo{gap:4px;font-size:10px}.logo>span:nth-child(2){max-width:54px}.logo .mark{min-width:26px;height:22px;padding:0 4px;font-size:10px}.cat-divider{height:20px;margin:0}header .powercat-logo img{height:20px}.icon-btn{width:30px;height:30px}.btn.sm{padding:5px 7px;font-size:10px}}
+</style>
+<style>
+@media(max-width:560px){.pagehead .inner{padding-top:16px}}
 </style>
 <script src="assets/js/telemetry.js" defer></script>
 <link rel="stylesheet" href="assets/css/header-brand.css">

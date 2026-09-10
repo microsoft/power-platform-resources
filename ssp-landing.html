@@ -65,8 +65,8 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 
 /* Hero */
 .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#f6f2fa,#efe9f5);border-bottom:3px solid transparent;border-image:linear-gradient(90deg,var(--design),var(--build),var(--review),var(--learn)) 1}
-.hero .inner{position:relative;color:var(--text);padding:88px 24px 72px}
-.hero-viewport{display:grid;min-height:350px;align-items:center}
+.hero .inner{position:relative;color:var(--text);padding:24px 24px 72px}
+.hero-viewport{display:grid;min-height:350px;align-items:start}
 .hero-slide{grid-area:1/1;max-width:940px;visibility:hidden;opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .5s ease,transform .5s ease,visibility .5s}
 .hero-slide.is-active{visibility:visible;opacity:1;transform:translateY(0);pointer-events:auto}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.3px;color:var(--brand);background:var(--brand-soft,rgba(116,39,116,.09));border:1px solid rgba(116,39,116,.2);padding:5px 12px;border-radius:20px;margin-bottom:18px}
@@ -213,7 +213,7 @@ footer .powercat-logo img{height:30px}
 @media(max-width:1080px){.rgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1080px){.topbar .row{position:relative}.menu-toggle{display:grid}.desktop-feedback{display:none}nav.main{display:none;position:absolute;top:60px;left:24px;right:24px;margin:0;padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:0 0 10px 10px;box-shadow:var(--shadow);flex-direction:column;gap:2px}nav.main.is-open{display:flex}nav.main a{width:100%}nav.main .nav-feedback{display:block;width:100%;margin-top:6px;text-align:left;color:#fff}}
 @media(max-width:960px){.hero h1{font-size:52px}.pillars{display:flex;flex-direction:column;height:auto;gap:14px}.pillar,.pillar.open{flex:none}.pillar .pillar-mini{display:none}.pillar .pillar-body{display:flex;flex-direction:column;align-items:flex-start;gap:16px;min-width:0;padding:24px}.pb-lead,.pb-actions{flex:none;width:100%}.rgrid{grid-template-columns:repeat(2,1fr)}.feat-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.assist{grid-template-columns:1fr}}
-@media(max-width:560px){.hero .inner{padding:58px 24px 48px}.hero-viewport{min-height:410px}.hero h1{font-size:40px}.hero p.sub{font-size:16px}.hero-metrics{grid-template-columns:1fr 1fr;row-gap:24px}.hero-metric{padding:0 14px}.hero-metric:nth-child(odd){padding-left:0;border-left:0}.hero-metric strong{font-size:40px}.rgrid{grid-template-columns:1fr}}
+@media(max-width:560px){.hero .inner{padding:16px 24px 48px}.hero-viewport{min-height:410px}.hero h1{font-size:40px}.hero p.sub{font-size:16px}.hero-metrics{grid-template-columns:1fr 1fr;row-gap:24px}.hero-metric{padding:0 14px}.hero-metric:nth-child(odd){padding-left:0;border-left:0}.hero-metric strong{font-size:40px}.rgrid{grid-template-columns:1fr}}
 @media(max-width:560px){.topbar .row{gap:8px}.logo{gap:6px;font-size:11px;line-height:1.15}.logo>span:nth-child(2){max-width:68px}.logo .mark{min-width:30px;height:24px;padding:0 5px;font-size:11px}.cat-divider{height:22px;margin:0 1px}header .powercat-logo img{height:24px}.icon-btn{width:32px;height:32px;flex:none}.btn.sm{padding:6px 9px;font-size:11px;white-space:nowrap}}
 @media(max-width:360px){.topbar .row{gap:6px}.logo{gap:4px;font-size:10px}.logo>span:nth-child(2){max-width:54px}.logo .mark{min-width:26px;height:22px;padding:0 4px;font-size:10px}.cat-divider{height:20px;margin:0}header .powercat-logo img{height:20px}.icon-btn{width:30px;height:30px}.btn.sm{padding:5px 7px;font-size:10px}.stats{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.hero-slide{transition:none}}
