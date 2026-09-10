@@ -133,14 +133,15 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @media(max-width:560px){.topbar .row{gap:8px}.logo{gap:6px;font-size:11px;line-height:1.15}.logo>span:nth-child(2){max-width:68px}.logo .mark{min-width:30px;height:24px;padding:0 5px;font-size:11px}.cat-divider{height:22px;margin:0 1px}header .powercat-logo img{height:24px}.icon-btn{width:32px;height:32px;flex:none}.btn.sm{padding:6px 9px;font-size:11px;white-space:nowrap}}
 @media(max-width:360px){.topbar .row{gap:6px}.logo{gap:4px;font-size:10px}.logo>span:nth-child(2){max-width:54px}.logo .mark{min-width:26px;height:22px;padding:0 4px;font-size:10px}.cat-divider{height:20px;margin:0}header .powercat-logo img{height:20px}.icon-btn{width:30px;height:30px}.btn.sm{padding:5px 7px;font-size:10px}}
 </style>
+<script src="assets/js/telemetry.js" defer></script>
+<link rel="stylesheet" href="assets/css/header-brand.css">
 </head>
 <body>
 
 <header class="topbar">
   <div class="wrap row">
 		<a class="logo" href="ssp-landing.html" aria-label="Self-Service Portal home">
-			<span class="mark">SSP</span>
-			<span>Self-Service Portal</span>
+			<img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="200" height="60">
 			<span class="cat-divider" aria-hidden="true"></span>
 			<picture class="powercat-logo" title="Power CAT">
 				<img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24">
@@ -152,7 +153,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 			<a href="ssp-design.html">Design</a>
 			<a href="ssp-build.html">Build</a>
 			<a href="ssp-review.html">Review</a>
-			<a href="https://rshanthini.github.io/power-series-labs/index.html" target="ssp-learn" rel="noopener">Learn</a>
+			<a href="https://microsoft.github.io/apps-agents-workshop/labs/" target="ssp-learn" rel="noopener">Learn</a>
 			<a href="ssp-resources.html" aria-current="page">Resources</a>
 			<a class="btn sm nav-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=SSP%20feedback%3A%20&amp;body=%23%23%20Page%0A%0A%23%23%20Feedback%0A%0A%23%23%20Suggested%20change%0A" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">↗</span></a>
 		</nav>
@@ -563,6 +564,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div>Self-Service Portal · Curated by Power CAT</div>
     <div>Content adapted from Microsoft Power Platform Resources · © Microsoft</div>
   </div>
+	<p class="wrap">This site uses Azure Application Insights to measure page visits and approximate location derived from your IP address. No analytics cookies are used. <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
 </footer>
 
 <script>

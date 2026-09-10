@@ -82,9 +82,9 @@ html[data-theme="dark"] .powercat-logo .logo-on-dark { display: block; }
 .header-feedback, .header-feedback:hover { color: #fff; white-space: nowrap; }
 
 /* Hero */
-.design-hero { position: relative; overflow: hidden; border-bottom: 3px solid var(--design); background: var(--surface); }
+.design-hero { position: relative; overflow: hidden; padding-top: 0; border-bottom: 3px solid var(--design); background: var(--surface); }
 .design-hero::before { content: ""; position: absolute; inset: 0; opacity: .45; background-image: linear-gradient(color-mix(in srgb, var(--design) 9%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--design) 9%, transparent) 1px, transparent 1px); background-size: 28px 28px; mask-image: linear-gradient(90deg, #000, transparent 82%); }
-.hero-inner { position: relative; min-height: 510px; padding: 72px 24px 64px; display: flex; flex-direction: column; justify-content: center; }
+.hero-inner { position: relative; min-height: 510px; padding: 40px 24px 64px; display: flex; flex-direction: column; justify-content: flex-start; }
 .breadcrumb { display: flex; gap: 8px; margin-bottom: 24px; color: var(--muted); font-size: 13px; font-weight: 600; }
 .breadcrumb a { color: var(--design); }
 .pillar-label { display: inline-flex; align-items: center; gap: 9px; width: max-content; margin-bottom: 16px; color: var(--design); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; }
@@ -210,7 +210,7 @@ footer .row { display: flex; justify-content: space-between; gap: 14px; flex-wra
 }
 @media (max-width: 760px) {
   .design-hero h1 { font-size: 48px; }
-  .hero-inner { min-height: auto; padding-top: 56px; }
+  .hero-inner { min-height: auto; padding-top: 32px; }
   .hero-proof { display: grid; grid-template-columns: 1fr 1fr; row-gap: 22px; }
   .proof:nth-child(3) { padding-left: 0; border-left: 0; }
   section { padding: 52px 0; }
@@ -239,7 +239,7 @@ footer .row { display: flex; justify-content: space-between; gap: 14px; flex-wra
   header .powercat-logo img { height: 24px; }
   .icon-btn { width: 32px; height: 32px; flex: none; }
   .btn.sm { padding: 6px 9px; font-size: 11px; }
-  .hero-inner { padding: 42px 24px 46px; }
+  .hero-inner { padding: 24px 24px 46px; }
   .breadcrumb { margin-bottom: 18px; }
   .design-hero h1 { font-size: 40px; }
   .lead { font-size: 16px; }

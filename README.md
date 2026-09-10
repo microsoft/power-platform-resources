@@ -17,7 +17,7 @@ The site is maintained by [Robert Standefer](https://linkedin.com/in/rstandefer)
 
 ## Run locally
 
-The site is dependency-free and does not require a build step.
+The site does not require package installation or a build step. Production analytics loads the Microsoft Application Insights browser SDK from Microsoft's CDN.
 
 From the repository root, start a local web server:
 
@@ -36,11 +36,33 @@ Opening `index.html` directly may work for basic viewing, but using a local serv
 | `index.html` | Application shell and complete resource content |
 | `assets/css/main.css` | Responsive layout, design tokens, and light/dark themes |
 | `assets/js/main.js` | Theme switching, search filtering, and category navigation |
+| `assets/js/telemetry.js` | Shared production-only Application Insights page-view tracking |
 | `DESIGN.md` | Visual design system and interaction principles |
 | `CHANGELOG.md` | Notable content and site changes |
 | `TODOS.md` | Deferred maintenance and design work |
 
-The deployed page uses only `assets/css/main.css` and `assets/js/main.js`. Legacy template assets remain in the repository but are not part of the current runtime.
+The main resource page uses `assets/css/main.css`, `assets/js/main.js`, and the shared telemetry script. The SSP pages also load the telemetry script alongside their existing page-specific assets. Legacy template assets remain in the repository but are not part of the current runtime.
+
+## Site analytics
+
+All six HTML pages load `assets/js/telemetry.js`. Analytics runs only under `https://microsoft.github.io/power-platform-resources/`; localhost, direct file previews, and other hosts or paths do not load the SDK or send telemetry. Update the production check if the site moves to a custom domain.
+
+The script uses the configured Application Insights connection string and records a page view on each full page load, plus page-load performance when available. It reports page titles, URLs without queries or fragments, referrer origins only, and standard SDK browser/device context. It does not collect search or form input, link clicks, exceptions, or AJAX/fetch dependencies. Analytics cookies and local/session storage are disabled; user and session counts therefore cannot reliably identify repeat visitors across page loads. Page views are not unique people.
+
+Each footer includes an analytics notice and the Microsoft Privacy Statement. There is no consent prompt, per the site owner's requirements. SDK blocking or unavailability does not prevent use of the site.
+
+Application Insights receives the visitor's IP address with the telemetry request and normally uses it for approximate geolocation before replacing the stored IP with `0.0.0.0`. This change does not alter that Azure setting or call a third-party IP lookup service. Full IP retention requires configuring `DisableIpMasking` on the Azure resource after reviewing privacy and retention requirements. IP addresses can be shared or change and are not a reliable identity. See [Application Insights IP address handling](https://learn.microsoft.com/azure/azure-monitor/app/ip-collection).
+
+After deployment, open the production site and check **Application Insights > Logs** after ingestion completes:
+
+```kusto
+pageViews
+| where timestamp > ago(24h)
+| project timestamp, name, url, client_CountryOrRegion, client_City, client_Browser, client_IP
+| order by timestamp desc
+```
+
+Use **Usage > Events** for page-view totals. The connection string is public browser configuration, not a management credential. Never add Azure access tokens or client secrets to the site. Ad blockers and network failures can cause visits to be undercounted.
 
 ## Make changes
 
@@ -62,6 +84,7 @@ There is no automated build or test suite. Use the following checks:
 
 ```powershell
 node --check assets\js\main.js
+node --check assets\js\telemetry.js
 git diff --check
 ```
 

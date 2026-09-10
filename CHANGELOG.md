@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-09-10
+
+### Added
+
+- Added the Microsoft Power Platform logo from the Power Series Labs site to the top-left header on all six pages, with shared responsive sizing and existing home links preserved.
+- Added shared Azure Application Insights page-view telemetry to all six pages, restricted to the production GitHub Pages site, with analytics cookies and browser storage disabled and URL queries and fragments excluded.
+- Added an analytics notice and Microsoft Privacy Statement link to every page footer, without a consent prompt.
+
+### Changed
+
+- Reduced the whitespace below the header on the Design, Build, and Review pages by removing stacked hero top padding and using tighter responsive spacing.
+- Updated the Learn navigation links across all five Self-Service Portal pages and both landing-page Power Series buttons to the new Power Series Labs URL: https://microsoft.github.io/apps-agents-workshop/labs/.
+
 ## 2026-08-27
 
 ### Added
