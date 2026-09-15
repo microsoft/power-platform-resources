@@ -4,6 +4,38 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-09-15
+
+### Added
+
+- Added PowerCAT OverPage to the Review pillar's Quality category for Power Pages solution inspection, with solution/export ZIP requirements and optional findings JSON and HAR overlays.
+- Added PowerCAT OverFlow - Solution Master to the Review pillar's Quality category for side-by-side workflow inspection and optional findings overlays, including solution ZIP and findings JSON requirements.
+- Imported the full Skills Advisor catalog: 94 skills, 26 MCP capabilities, and 22 reference entries, preserving source IDs, product labels, availability, and source links.
+- Added an all-skills browse view in SSP search and entry points from Design, Build, and Review, plus catalog refresh and upstream parity-check commands.
+- Added Search & Guidance with scenario-based starting points, ordered source-backed actions, individual results across all five SSP pages, product and content-type filters, and deduplicated resource links.
+- Added a prominent scenario input on the landing page, Search navigation across SSP pages, and direct links to individual skill cards.
+- Added dependency-free regression tests for search ranking, scenario guidance, and unknown or unavailable content.
+
+### Changed
+
+- Moved the Home self-service banner above the scenario search section, preserving both sections' content and behavior.
+- Reduced whitespace across Home, Design, Build, Review, Search, and Resources by tightening hero, section, card, panel, and result spacing while preserving content and control sizes.
+- Moved the Review skill catalog above Power CAT deep review, preserving section content and anchor links.
+- Made SSP Home the default root entry page, preserving URL parameters and translating the legacy theme parameter during redirect.
+- Distinguished locally authored SSP guides from published Advisor skills in search results and content-type filters.
+- Updated all SSP skill and skills catalog links to https://aka.ms/powerplatformskillsadvisor.
+- Compacted the Home banner by placing navigation beside its slide actions and reducing reserved height and bottom spacing, with responsive wrapping on mobile.
+- Replaced example-specific search placeholders with a neutral prompt on the landing and Search & Guidance pages.
+- Moved Search to the first navigation position across all SSP pages, before Home and the pillar links.
+- Aligned Search & Guidance accents and primary buttons with the existing SSP purple brand palette in both color themes.
+- Clarified that the Get Started resource total represents 44 curated links grouped into 13 visible topics.
+- Replaced the landing-page assistant demo with a local site guide that routes queries to matching SSP pillars and resource categories without an AI service.
+- Removed the landing-page banner play/pause control and made its featured messages rotate automatically for every visitor.
+
+### Removed
+
+- Removed the temporary floating site guide and its hand-maintained keyword catalog in favor of content-backed Search & Guidance.
+
 ## 2026-09-10
 
 ### Added

@@ -67,7 +67,7 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 /* Page banner */
 .pagehead{background:linear-gradient(180deg,#f6f2fa,#efe9f5);color:var(--text);border-bottom:1px solid var(--border)}
 @keyframes shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.pagehead .inner{padding:24px 24px 34px}
+.pagehead .inner{padding:20px 24px 24px}
 .pagehead .eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--brand-2)}
 .pagehead h1{margin:8px 0 6px;font-size:32px;letter-spacing:-.4px;color:var(--text)}
 .pagehead p{margin:0;color:var(--muted);font-size:16px;max-width:640px}
@@ -81,7 +81,7 @@ html[data-theme="dark"] .pagehead .eyebrow{color:var(--brand-2)}
 .searchbar .clr{border:none;background:var(--surface-2);color:var(--muted);border-radius:8px;padding:8px 12px;font-family:var(--font);font-weight:600;font-size:13px;cursor:pointer}
 
 /* Docs layout */
-.layout{display:grid;grid-template-columns:288px 1fr;gap:32px;align-items:start;padding:28px 0 72px}
+.layout{display:grid;grid-template-columns:288px 1fr;gap:20px;align-items:start;padding:20px 0 36px}
 .rail{position:sticky;top:76px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:10px;box-shadow:var(--shadow);max-height:calc(100vh - 100px);overflow:auto}
 .rail .rail-title{font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--soft);padding:10px 12px 6px}
 .cat-link{width:100%;display:flex;align-items:center;gap:11px;padding:10px 12px;border:none;background:transparent;color:var(--muted);font-family:var(--font);font-size:14px;font-weight:600;border-radius:10px;cursor:pointer;text-align:left;transition:background .12s,color .12s}
@@ -98,7 +98,7 @@ html[data-theme="dark"] .pagehead .eyebrow{color:var(--brand-2)}
 
 /* Content */
 .content{min-width:0}
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 34px 34px;animation:fade .18s ease}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;animation:fade .18s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .panel[hidden]{display:none}
 .panel-head{margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border)}
@@ -106,8 +106,8 @@ html[data-theme="dark"] .pagehead .eyebrow{color:var(--brand-2)}
 .panel-head h2 b{color:var(--brand-2);font-weight:700}
 .panel-sub{margin:0;color:var(--soft);font-family:var(--mono);font-size:12.5px}
 .panel-body{color:var(--text)}
-.panel-body h5{margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.panel-body h3.category-subtitle{margin:28px 0 12px;padding-top:18px;border-top:1px solid var(--border);font-size:19px}
+.panel-body h5{margin:18px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.panel-body h3.category-subtitle{margin:20px 0 10px;padding-top:14px;border-top:1px solid var(--border);font-size:19px}
 .panel-body ul{list-style:none;margin:0 0 18px;padding:0;counter-reset:row}
 .panel-body li{position:relative;margin:6px 0;padding-left:34px;counter-increment:row;line-height:1.5}
 .panel-body li::before{position:absolute;left:0;top:.15em;content:counter(row,decimal-leading-zero);color:var(--soft);font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums}
@@ -118,7 +118,7 @@ html[data-theme="dark"] .pagehead .eyebrow{color:var(--brand-2)}
 .noresults p{margin:0 0 16px;color:var(--muted)}
 .noresults button{border:none;background:var(--grad);color:#fff;font-family:var(--font);font-weight:600;padding:10px 18px;border-radius:10px;cursor:pointer}
 
-footer{border-top:1px solid var(--border);padding:26px 0;color:var(--soft);font-size:13px}
+footer{border-top:1px solid var(--border);padding:20px 0;color:var(--soft);font-size:13px}
 footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
 @media(max-width:920px){
@@ -127,7 +127,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   .rail .rail-title{width:100%}
   .cat-link{width:auto}
   .cat-count{display:none}
-  .panel{padding:24px 20px}
+	.panel{padding:18px}
 }
 @media(max-width:1080px){.topbar .row{position:relative}.menu-toggle{display:grid}.desktop-feedback{display:none}nav.main{display:none;position:absolute;top:60px;left:24px;right:24px;margin:0;padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:0 0 10px 10px;box-shadow:var(--shadow);flex-direction:column;gap:2px}nav.main.is-open{display:flex}nav.main a{width:100%}nav.main .nav-feedback{display:block;width:100%;margin-top:6px;text-align:left;color:#fff}}
 @media(max-width:560px){.topbar .row{gap:8px}.logo{gap:6px;font-size:11px;line-height:1.15}.logo>span:nth-child(2){max-width:68px}.logo .mark{min-width:30px;height:24px;padding:0 5px;font-size:11px}.cat-divider{height:22px;margin:0 1px}header .powercat-logo img{height:24px}.icon-btn{width:32px;height:32px;flex:none}.btn.sm{padding:6px 9px;font-size:11px;white-space:nowrap}}
@@ -137,6 +137,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @media(max-width:560px){.pagehead .inner{padding-top:16px}}
 </style>
 <script src="assets/js/telemetry.js" defer></script>
+<script src="assets/js/ssp-search-entry.js" defer></script>
 <link rel="stylesheet" href="assets/css/header-brand.css">
 </head>
 <body>
@@ -205,7 +206,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <button onclick="document.getElementById('clr').click()">Clear search</button>
     </div>
       <article class="panel active" id="get-started" role="tabpanel">
-        <header class="panel-head"><h2>Get started with <b>Power Platform</b></h2><p class="panel-sub">44 curated resources</p></header>
+				<header class="panel-head"><h2>Get started with <b>Power Platform</b></h2><p class="panel-sub">13 topics · 44 curated links</p></header>
         <div class="panel-body"><ul>
 					<h5>Get informed</h5>
 					<li><a href="https://www.microsoft.com/power-platform/blog/2026/03/12/from-apps-to-agents-rearchitecting-enterprise-work-around-intent/" target="_blank" rel="noopener">From apps to agents: rearchitecting enterprise work around intent</a> by Charles Lamanna</li>

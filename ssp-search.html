@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>SSP - Search &amp; Guidance</title>
+  <script>
+    (() => {
+      let saved;
+      try { saved = localStorage.getItem('sspTheme'); } catch {}
+      document.documentElement.dataset.theme = new URLSearchParams(location.search).get('scoutTheme') || saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/ssp-design.css">
+  <link rel="stylesheet" href="assets/css/header-brand.css">
+  <link rel="stylesheet" href="assets/css/ssp-search.css">
+  <script src="assets/js/ssp-search-engine.js" defer></script>
+  <script src="assets/js/ssp-search-entry.js" defer></script>
+  <script src="assets/js/ssp-search.js" defer></script>
+  <script src="assets/js/telemetry.js" defer></script>
+</head>
+<body class="search-page">
+  <header class="topbar">
+    <div class="wrap row">
+      <a class="logo" href="ssp-landing.html" aria-label="Self-Service Portal home">
+        <img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="200" height="60">
+        <span class="cat-divider" aria-hidden="true"></span>
+        <picture class="powercat-logo"><img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24"><img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24"></picture>
+      </a>
+      <nav class="main" id="siteNav" aria-label="Primary navigation">
+        <a href="ssp-landing.html">Home</a><a href="ssp-design.html">Design</a><a href="ssp-build.html">Build</a><a href="ssp-review.html">Review</a><a href="https://microsoft.github.io/apps-agents-workshop/labs/" target="ssp-learn" rel="noopener">Learn</a><a href="ssp-resources.html">Resources</a>
+      </nav>
+      <div class="spacer"></div>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">&#9776;</button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme" title="Toggle theme">&#9790;</button>
+    </div>
+  </header>
+  <main>
+    <section class="scenario-entry">
+      <div class="wrap">
+        <p class="search-eyebrow">Power Platform / Search &amp; Guidance</p>
+        <h1>What are you trying to accomplish?</h1>
+        <form id="scenarioForm" class="scenario-form">
+          <label class="sr-only" for="scenario">Search or describe your scenario</label>
+          <textarea id="scenario" rows="2" maxlength="1500" placeholder="Type your search or describe your scenario..." required aria-describedby="privacy-note"></textarea>
+          <button class="btn" type="submit">Find guidance <span aria-hidden="true">&rarr;</span></button>
+        </form>
+        <p id="privacy-note" class="search-note">Keep customer data and credentials out of your scenario. Search text stays in this browser.</p>
+      </div>
+    </section>
+    <div class="wrap search-workspace">
+      <div id="indexStatus" class="index-status" role="status" aria-live="polite">Loading site content...</div>
+      <button id="retryIndex" class="btn ghost" type="button" hidden>Retry loading content</button>
+      <button id="browseSkills" class="btn ghost" type="button" style="margin-top:16px">Browse all advisor skills</button>
+      <section id="starterScenarios" class="starter-scenarios" aria-labelledby="starterHeading">
+        <h2 id="starterHeading">Start with your situation</h2>
+        <div class="scenario-examples">
+          <button type="button" data-scenario="Our canvas app is slow as more people use it. Should we move from SharePoint to Dataverse?"><span>Improve an existing app</span><strong>My app is getting slow</strong><span aria-hidden="true">&rarr;</span></button>
+          <button type="button" data-scenario="We built an app for one department and need to roll it out across the company."><span>Expand to more teams</span><strong>We're ready to roll out</strong><span aria-hidden="true">&rarr;</span></button>
+          <button type="button" data-scenario="Our Power Automate approval flow is failing. How do we troubleshoot it?"><span>Get back on track</span><strong>My approval flow is failing</strong><span aria-hidden="true">&rarr;</span></button>
+          <button type="button" data-scenario="I am a beginner and want hands-on Power Platform training."><span>Build confidence</span><strong>I want to learn by doing</strong><span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </section>
+      <section id="guidance" class="guidance" aria-labelledby="guidanceTitle" hidden>
+        <div class="guidance-intro"><p class="search-eyebrow">Suggested starting point</p><h2 id="guidanceTitle"></h2><p id="guidanceWhy"></p><span class="search-note">Curated guidance matched to your scenario</span></div>
+        <ol id="guidanceSteps" class="guidance-steps"></ol>
+      </section>
+      <section id="searchResults" class="search-results" aria-labelledby="resultsHeading" hidden>
+        <div class="results-heading"><div><h2 id="resultsHeading" tabindex="-1">Results across the site</h2><p id="resultSummary" role="status" aria-live="polite"></p></div><button id="resetSearch" class="clear-filter" type="button">Clear search</button></div>
+        <div class="search-filters">
+          <label>Content type<select id="typeFilter"><option value="">All content</option><option>Skill</option><option>MCP capability</option><option>Reference</option><option value="Guide">SSP guide</option><option>Resource</option><option>Learning</option><option>Page</option></select></label>
+          <label>Product<select id="productFilter"><option value="">Any product</option><option value="power apps">Power Apps</option><option value="canvas">Canvas apps</option><option value="model driven">Model-driven apps</option><option value="automate">Power Automate</option><option value="dataverse">Dataverse</option><option value="pages">Power Pages</option><option value="copilot">Copilot Studio</option><option value="power bi">Power BI</option></select></label>
+        </div>
+        <div id="resultList"></div>
+        <div id="emptyResults" class="empty-results" hidden><h3>No close matches</h3><p>Try a product name or the main task, or broaden the filters.</p><a href="ssp-resources.html">Browse the resource catalog &rarr;</a></div>
+        <button id="moreResults" class="btn ghost" type="button" hidden>Show more results</button>
+      </section>
+      <noscript><p>Search needs JavaScript. <a href="ssp-resources.html">Browse the resource catalog</a>.</p></noscript>
+    </div>
+  </main>
+  <footer><div class="wrap"><p>Self-Service Portal &middot; Curated by Power CAT</p><p>This site uses Azure Application Insights to measure page visits and approximate location derived from your IP address. No analytics cookies are used. <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p></div></footer>
+</body>
+</html>

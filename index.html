@@ -2,6 +2,19 @@
 <html>
 
 <head>
+	<script>
+		(() => {
+			const home = new URL("ssp-landing.html", window.location.href);
+			home.search = window.location.search;
+			home.hash = window.location.hash;
+			const theme = home.searchParams.get("clawpilotTheme");
+			if (!home.searchParams.has("scoutTheme") && (theme === "light" || theme === "dark")) {
+				home.searchParams.set("scoutTheme", theme);
+			}
+			window.location.replace(home.href);
+		})();
+	</script>
+	<noscript><meta http-equiv="refresh" content="0; url=ssp-landing.html" /></noscript>
 	<title>Microsoft Power Platform Resources</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -9,6 +9,7 @@ The site is maintained by [Robert Standefer](https://linkedin.com/in/rstandefer)
 ## What the site provides
 
 - Search across resource categories.
+- Scenario-based Search & Guidance across SSP skills, resources, and learning destinations.
 - Journey-based navigation for new and experienced Power Platform users.
 - Curated links for Power Apps, Power Automate, Power Pages, Copilot Studio, Dataverse, Power BI, and related technologies.
 - Guidance for adoption, architecture, administration, governance, development, and application lifecycle management.
@@ -27,9 +28,32 @@ python -m http.server 8000
 
 Then open [http://localhost:8000/](http://localhost:8000/).
 
+The root entry redirects to [SSP Home](ssp-landing.html). [The resource catalog](ssp-resources.html) remains available from the Resources navigation link.
+
 Opening `index.html` directly may work for basic viewing, but using a local server more closely matches the deployed experience.
 
+## Scenario search
+
+Open [Search & Guidance](ssp-search.html) through the local server, or enter a scenario on [the SSP landing page](ssp-landing.html). Search fetches the five SSP HTML pages from the same origin and indexes individual resource links, skills, page summaries, and the linked Power Series labs destination. It does not crawl external websites or index individual labs. Direct `file:` previews cannot reliably fetch these pages; use HTTP.
+
+The index is rebuilt from current page content on each search-page load. Duplicate resource URLs are combined. Skill-card anchors are derived from their headings by the shared search entry script. Keep skill headings unique within each pillar.
+
+Ranking uses whole words, curated synonyms, and term rarity. Common scenarios have curated action sequences; recommendations always link to an available indexed source. This is local retrieval and authored guidance, not an AI-generated answer or an assessment of the user's actual solution. Product and content-type filters narrow the result list and hide the unfiltered action sequence.
+
+Scenario text is held in memory. Landing-page submissions use same-tab session storage for a one-time handoff, removed when the search page reads it. Search text is not included in URLs, network requests, or analytics. Do not enter sensitive information. If browser storage is disabled, enter the scenario directly on the search page.
+
+Run search regression tests with `node --test tests/ssp-search.test.js`. Browser checks should cover landing-page handoff, result filters, pagination, skill anchors, unavailable content, unknown queries, and desktop/mobile layouts in both themes.
+
 ## Repository structure
+
+### Skills Advisor catalog
+
+[Browse all advisor skills](ssp-search.html#skills) includes the complete imported catalog from [Power Platform Skills Advisor](https://aka.ms/powerplatformskillsadvisor). Skills, MCP capabilities, and reference entries have separate content types; the existing pillar cards remain SSP guides. Imported entries link to their published source and retain availability labels, including Private Preview. Inclusion does not guarantee access to a source repository or preview program.
+
+The local snapshot in [assets/data/skills-advisor.json](assets/data/skills-advisor.json) contains all published entries and upstream IDs, including entries that share names or URLs. Search uses this snapshot without fetching external data or sending scenario text to the Advisor. The import date and upstream verification date are shown in search. The snapshot is not automatically refreshed at runtime.
+
+Refresh before publishing with `node scripts/sync-skills-advisor.js`. Verify exact entry parity without modifying files with `node scripts/sync-skills-advisor.js --check`. The command parses the Advisor's published JSON without executing its JavaScript and rejects empty, invalid, or changed-format catalogs before replacing the snapshot. Commit the regenerated snapshot along with any required tests or documentation updates. Catalog data is attributed to Microsoft; source license metadata is retained for each entry.
+
 
 | Path | Purpose |
 |------|---------|
@@ -45,7 +69,7 @@ The main resource page uses `assets/css/main.css`, `assets/js/main.js`, and the 
 
 ## Site analytics
 
-All six HTML pages load `assets/js/telemetry.js`. Analytics runs only under `https://microsoft.github.io/power-platform-resources/`; localhost, direct file previews, and other hosts or paths do not load the SDK or send telemetry. Update the production check if the site moves to a custom domain.
+All site pages load `assets/js/telemetry.js`. Analytics runs only under `https://microsoft.github.io/power-platform-resources/`; localhost, direct file previews, and other hosts or paths do not load the SDK or send telemetry. Update the production check if the site moves to a custom domain.
 
 The script uses the configured Application Insights connection string and records a page view on each full page load, plus page-load performance when available. It reports page titles, URLs without queries or fragments, referrer origins only, and standard SDK browser/device context. It does not collect search or form input, link clicks, exceptions, or AJAX/fetch dependencies. Analytics cookies and local/session storage are disabled; user and session counts therefore cannot reliably identify repeat visitors across page loads. Page views are not unique people.
 
