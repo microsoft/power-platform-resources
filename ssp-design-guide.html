@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSP - Design topics</title>
+  <script>
+    (() => {
+      let saved;
+      try { saved = localStorage.getItem('sspTheme'); } catch {}
+      document.documentElement.dataset.theme = new URLSearchParams(location.search).get('scoutTheme') || saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/ssp-design.css?v=20260918-local-advisor">
+  <link rel="stylesheet" href="assets/css/header-brand.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <script src="assets/js/ssp-search-entry.js" defer></script>
+  <script src="assets/js/telemetry.js" defer></script>
+  <style>
+    body{--design:var(--brand)}
+    .topic-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;padding:16px 0;border-bottom:1px solid var(--border)}
+    .back-to-design{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:10px 16px;border:1px solid var(--brand);border-radius:6px;background:var(--brand);color:var(--surface);font-size:15px;font-weight:600;text-decoration:none;flex:none}
+    .back-to-design:hover{background:var(--surface);color:var(--brand);text-decoration:none}
+    .back-to-design:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+    .topic-toolbar .topic-nav{padding:0;border:0}
+    .topic-nav{display:flex;flex-wrap:wrap;gap:8px 20px;padding:20px 0;border-bottom:1px solid var(--border)}
+    .topic-nav a{padding:6px 0;color:var(--muted);font-size:14px}
+    .topic-nav a[aria-current="page"]{color:var(--design);text-decoration:underline;text-underline-offset:6px}
+    .topic{padding:28px 0;max-width:960px;scroll-margin-top:90px}
+    .topic h1{font-size:36px;line-height:1.2;letter-spacing:0;margin:12px 0 16px;overflow-wrap:anywhere}
+    .topic .lead{max-width:760px;color:var(--muted);font-size:17px}
+    .topic h2{font-size:22px;margin:24px 0 12px;letter-spacing:0}
+    .topic h3{font-size:18px;margin:0 0 8px}
+    .topic p{line-height:1.6}
+    .topic-steps{list-style:none;padding:0;counter-reset:topic-step}
+    .topic-steps>li{counter-increment:topic-step;position:relative;border-top:1px solid var(--border);padding:22px 0 22px 44px;scroll-margin-top:90px}
+    .topic-steps>li::before{content:counter(topic-step,decimal-leading-zero);position:absolute;left:0;top:24px;font:600 13px var(--mono);color:var(--design)}
+    .topic-links{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px 24px;padding:0;list-style:none}
+    .topic-steps .topic-links li,.topic-support .topic-links li{text-align:right}
+    .topic-links a,.topic-support a{color:var(--design);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+    .topic-support{border-top:1px solid var(--border);padding:24px 0 36px;max-width:960px}
+    .topic-support h2{font-size:22px}
+    .topic[hidden]{display:none}
+    .topic.enhanced{max-width:none;padding-top:24px;--topic-accent:var(--brand)}
+    .topic.enhanced h1{font-size:40px;max-width:850px;margin-bottom:12px}
+    .topic.enhanced .lead{font-size:18px;max-width:720px;margin-bottom:24px}
+    .topic-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 24px}
+    .path-choice{display:grid;grid-template-columns:36px 1fr;gap:8px 12px;align-items:center;text-align:left;padding:18px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font:inherit;cursor:pointer;min-height:114px}
+    .path-choice .path-icon{grid-row:1 / 3;display:grid;place-items:center;width:36px;height:36px;color:var(--topic-accent);font-size:22px}
+    .path-choice strong{font-size:18px;line-height:1.3}
+    .path-choice small{font-size:13px;color:var(--muted);line-height:1.4}
+    .path-choice[aria-pressed="true"]{border-color:var(--topic-accent);background:color-mix(in srgb,var(--topic-accent) 8%,var(--surface));box-shadow:inset 0 3px var(--topic-accent)}
+    .path-choice:hover{border-color:var(--topic-accent)}
+    .path-choice:focus-visible,.path-next:focus-visible{outline:2px solid var(--topic-accent);outline-offset:3px}
+    .topic.enhanced .topic-steps{margin:0;border-block:1px solid var(--border)}
+    .topic.enhanced .topic-steps>li{padding:24px 0;border:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 40px}
+    .topic.enhanced .topic-steps>li[hidden]{display:none}
+    .topic.enhanced .topic-steps>li::before{content:none}
+    .topic.enhanced .topic-steps h3{font-size:23px;line-height:1.3;margin:0 0 12px}
+    .topic.enhanced .topic-steps p{grid-column:1;margin:0;color:var(--muted);max-width:620px}
+    .topic.enhanced .topic-steps .topic-links{grid-column:2;grid-row:1 / 3;display:flex;flex-direction:column;margin:0;gap:0}
+    .topic.enhanced .topic-steps .topic-links li{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .topic.enhanced .topic-steps .topic-links li:first-child{padding-top:0}
+    .path-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;margin-top:24px}
+    .topic .path-header h2{margin:0}
+    .path-controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0}
+    .path-position{font:600 12px var(--mono);color:var(--muted)}
+    .path-next{border:1px solid var(--topic-accent);background:var(--topic-accent);color:var(--surface);font:600 14px var(--font);padding:10px 16px;border-radius:6px;cursor:pointer}
+    .topic-preparation{border-block:1px solid var(--border);padding:16px 0;margin-top:20px;max-width:960px}
+    .topic .topic-preparation h2{font-weight:600;font-size:15px;margin:0}
+    .topic-preparation p{color:var(--muted);max-width:760px;font-size:14px;margin:12px 0 0}
+    .topic.enhanced>.topic-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .topic.enhanced>.topic-links>li{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:14px;line-height:1.6}
+    .topic.enhanced>.topic-links a{display:block;font-size:15px;font-weight:600;margin-bottom:8px;text-align:right}
+    .topic-support{font-size:14px;color:var(--muted)}
+    @media(max-width:700px){.topic.enhanced h1{font-size:28px}.topic.enhanced .lead{font-size:16px;margin-bottom:20px}.topic-path{gap:8px}.path-choice{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px 10px;min-height:132px}.path-choice strong{font-size:14px}.path-choice small{font-size:12px}.path-choice .path-icon{width:24px;height:24px;font-size:20px}.topic.enhanced .topic-steps>li{grid-template-columns:minmax(0,1fr);gap:16px;padding:20px 0}.topic.enhanced .topic-steps h3{font-size:21px;margin:0}.topic.enhanced .topic-steps .topic-links{grid-column:1;grid-row:auto}.topic.enhanced>.topic-links{grid-template-columns:minmax(0,1fr)}}
+    @media(max-width:700px){.topic h1{font-size:28px}.topic-nav{gap:8px 16px}.topic-links{flex-direction:column;gap:10px}.topic-steps>li{padding-left:34px}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="wrap row">
+    <a class="logo" href="ssp-landing.html" aria-label="About Self-Service Portal"><img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="200" height="60"><span class="cat-divider" aria-hidden="true"></span><picture class="powercat-logo"><img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24"><img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24"></picture></a>
+    <nav class="main" id="siteNav" aria-label="Primary navigation"><a href="ssp-landing.html">About</a><a href="ssp-design.html" aria-current="page">Design</a><a href="ssp-build.html">Build</a><a href="ssp-review.html">Review</a><a href="https://microsoft.github.io/apps-agents-workshop/labs/" target="ssp-learn" rel="noopener">Learn</a></nav>
+    <div class="spacer"></div>
+    <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">&#9776;</button>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme" title="Toggle theme">&#9790;</button>
+  </div></header>
+  <main class="wrap">
+    <div class="topic-toolbar">
+    <a class="back-to-design" href="ssp-design.html#outcomes-heading"><span class="fas fa-arrow-left" aria-hidden="true"></span>Back to Design</a>
+    <nav class="topic-nav" aria-label="Design topics"><a href="#new">New solution</a><a href="#modernize">Modernize an app</a><a href="#govern">Enterprise scale</a><a href="#review">Validate a design</a></nav>
+    </div>
+    <article class="topic" id="new" aria-labelledby="new-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-design.html#outcomes-heading">Design</a><span aria-hidden="true">/</span><span>New solution</span></nav>
+      <h1 id="new-heading" tabindex="-1">Launch a new solution</h1>
+      <p class="lead">Turn your idea into a clear design, from the first business question to a build-ready blueprint.</p>
+      <h2>Bring to the design session</h2>
+      <p>Your intended outcome, user groups, existing systems, sensitive data, timeline, and measures of success.</p>
+      <h2>Supporting published skills</h2>
+      <ul class="topic-links"><li><a href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor</a> - Discovery and architecture review for a composed Power Platform solution.</li><li><a href="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-metadata/SKILL.md" target="_blank" rel="noopener">dv-metadata</a> - Dataverse tables, relationships, forms, and views.</li></ul>
+      <h2>Suggested sequence</h2>
+      <ol class="topic-steps">
+        <li><h3>Frame the problem and solution boundary</h3><p>Identify the work to improve and the systems that must remain. Record the scope, assumptions, and constraints in a short solution brief.</p><ul class="topic-links"><li><a href="https://learn.microsoft.com/power-apps/maker/plan-designer/create-plan" target="_blank" rel="noopener">Microsoft Learn: Create a plan</a></li><li><a href="ssp-design.html#skill-solution-architecture-blueprint">Design guide: Solution Architecture Blueprint</a></li></ul></li>
+        <li><h3>Choose the experience and data model</h3><p>Match user tasks to an app experience. Define core entities, relationships, and ownership before selecting components. Keep a model and a record of the alternatives considered.</p><ul class="topic-links"><li><a href="ssp-design.html#skill-experience-pattern-selector">Design guide: Experience Pattern Selector</a></li><li><a href="ssp-design.html#skill-dataverse-data-model-designer">Design guide: Dataverse Data Model Designer</a></li><li><a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intro" target="_blank" rel="noopener">Microsoft Learn: Dataverse overview</a></li></ul></li>
+        <li><h3>Set access boundaries and challenge the design</h3><p>Map roles to data and actions, then review the proposed architecture. Leave with an access matrix and a prioritized list of risks to resolve before delivery.</p><ul class="topic-links"><li><a href="ssp-design.html#skill-security-role-mapper">Design guide: Security Role Mapper</a></li><li><a href="https://learn.microsoft.com/power-platform/admin/security-roles-privileges" target="_blank" rel="noopener">Microsoft Learn: Security roles and privileges</a></li><li><a href="https://aka.ms/powa" target="_blank" rel="noopener">Assessment: Power Platform Well-Architected</a></li></ul></li>
+      </ol>
+    </article>
+    <article class="topic" id="modernize" aria-labelledby="modernize-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-design.html#outcomes-heading">Design</a><span aria-hidden="true">/</span><span>Modernize an app</span></nav>
+      <h1 id="modernize-heading" tabindex="-1">Modernize an existing app</h1>
+      <p class="lead">Keep what works. Rethink what doesn't. Find a lower-risk path from today's app to your next design.</p>
+      <h2>Bring to the design session</h2>
+      <p>The current architecture, user pain points, performance evidence, dependencies, data volumes, release process, and support commitments.</p>
+      <h2>Supporting published skills</h2>
+      <ul class="topic-links"><li><a href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor</a> - Compare architecture choices before changing the implementation.</li><li><a href="https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/migrate-to-dataverse" target="_blank" rel="noopener">migrate-to-dataverse</a> - Relevant when moving a SharePoint-backed canvas app toward Dataverse, not a general-purpose app migration.</li></ul>
+      <h2>Suggested sequence</h2>
+      <ol class="topic-steps">
+        <li><h3>Assess the current system</h3><p>Separate design limitations from implementation issues. Record a baseline and the constraints a replacement or incremental change must satisfy.</p><ul class="topic-links"><li><a href="https://learn.microsoft.com/power-platform/well-architected/" target="_blank" rel="noopener">Microsoft Learn: Well-Architected guidance</a></li><li><a href="ssp-design.html#skill-well-architected-design-check">Design guide: Well-Architected Design Check</a></li></ul></li>
+        <li><h3>Compare target experiences and integration patterns</h3><p>Compare retaining, extending, or replacing the current experience. Document data ownership, latency, failure handling, and coexistence requirements alongside the chosen architecture.</p><ul class="topic-links"><li><a href="ssp-design.html#skill-experience-pattern-selector">Design guide: Experience Pattern Selector</a></li><li><a href="ssp-design.html#skill-integration-pattern-selector">Design guide: Integration Pattern Selector</a></li><li><a href="https://learn.microsoft.com/power-platform/architecture/" target="_blank" rel="noopener">Microsoft Learn: Architecture Center</a></li></ul></li>
+        <li><h3>Plan a reversible transition</h3><p>Define solution boundaries, test environments, migration checks, rollout stages, and rollback criteria. Agree on ownership before changing the production system.</p><ul class="topic-links"><li><a href="ssp-design.html#skill-alm-topology-planner">Design guide: ALM Topology Planner</a></li><li><a href="https://learn.microsoft.com/power-platform/alm/overview-alm" target="_blank" rel="noopener">Microsoft Learn: Application lifecycle management</a></li></ul></li>
+      </ol>
+    </article>
+    <article class="topic" id="govern" aria-labelledby="govern-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-design.html#outcomes-heading">Design</a><span aria-hidden="true">/</span><span>Enterprise scale</span></nav>
+      <h1 id="govern-heading" tabindex="-1">Design for enterprise scale</h1>
+      <p class="lead">Give more teams room to build, with clear ownership, secure access, and repeatable delivery.</p>
+      <h2>Bring to the design session</h2>
+      <p>Tenant and compliance constraints, delivery teams, data classifications, environment inventory, support model, and release responsibilities.</p>
+      <h2>Supporting published skills</h2>
+      <ul class="topic-links"><li><a href="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-security/SKILL.md" target="_blank" rel="noopener">dv-security</a> - Dataverse roles, users, business units, and access.</li><li><a href="https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/plan-alm" target="_blank" rel="noopener">plan-alm</a> - Solution boundaries, pipelines, and deployment topology for Power Pages.</li></ul>
+      <h2>Suggested sequence</h2>
+      <ol class="topic-steps">
+        <li><h3>Define environment and ownership boundaries</h3><p>Group workloads by purpose and risk. Agree who owns each environment, how makers are routed, and where development, testing, and production belong.</p><ul class="topic-links"><li><a href="ssp-design.html#skill-environment-strategy-blueprint">Design guide: Environment Strategy Blueprint</a></li><li><a href="https://learn.microsoft.com/power-platform/guidance/adoption/environment-strategy" target="_blank" rel="noopener">Microsoft Learn: Environment strategy</a></li></ul></li>
+        <li><h3>Set access and data policies</h3><p>Map personas to least-privilege access and define connector boundaries. Document policy exceptions, approval owners, and how controls will be reviewed.</p><ul class="topic-links"><li><a href="ssp-design.html#skill-security-role-mapper">Design guide: Security Role Mapper</a></li><li><a href="https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention" target="_blank" rel="noopener">Microsoft Learn: Data policies</a></li><li><a href="https://learn.microsoft.com/power-platform/admin/security/overview" target="_blank" rel="noopener">Microsoft Learn: Security overview</a></li></ul></li>
+        <li><h3>Establish delivery and operational controls</h3><p>Define pipeline stages, approvals, source control, and support ownership. Produce a delivery topology and a release checklist that teams can repeat.</p><ul class="topic-links"><li><a href="ssp-design.html#skill-alm-topology-planner">Design guide: ALM Topology Planner</a></li><li><a href="https://learn.microsoft.com/power-platform/alm/pipelines" target="_blank" rel="noopener">Microsoft Learn: Pipelines in Power Platform</a></li><li><a href="ssp-search.html#governance">Resource collection: Governance</a></li></ul></li>
+      </ol>
+    </article>
+    <article class="topic" id="review" aria-labelledby="review-heading">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-design.html#outcomes-heading">Design</a><span aria-hidden="true">/</span><span>Validate a design</span></nav>
+      <h1 id="review-heading" tabindex="-1">Validate a proposed design</h1>
+      <p class="lead">Find the gaps before you commit. Turn design risks into clear decisions and next actions.</p>
+      <h2>Bring to the review</h2>
+      <p>The proposed architecture, key decisions, user journeys, security model, service expectations, known risks, and any prototype or test evidence.</p>
+      <h2>Supporting published skills</h2>
+      <ul class="topic-links"><li><a href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor</a> - Discovery and architecture review for a proposed solution.</li><li><a href="https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/security-review" target="_blank" rel="noopener">security-review</a> - Security-focused assessment when a Power Pages site exists; not a substitute for reviewing an unbuilt design.</li></ul>
+      <h2>Suggested sequence</h2>
+      <ol class="topic-steps">
+        <li><h3>Assess the design across quality areas</h3><p>Review reliability, security, operational excellence, performance efficiency, and experience optimization. Record gaps and their business impact.</p><ul class="topic-links"><li><a href="https://aka.ms/powa" target="_blank" rel="noopener">Assessment: Power Platform Well-Architected</a></li><li><a href="https://learn.microsoft.com/power-platform/well-architected/" target="_blank" rel="noopener">Microsoft Learn: Well-Architected guidance</a></li><li><a href="ssp-design.html#skill-well-architected-design-check">Design guide: Well-Architected Design Check</a></li></ul></li>
+        <li><h3>Resolve the material design risks</h3><p>Route findings to the relevant architecture, data, or access decision. Capture alternatives, tradeoffs, and acceptance criteria rather than treating a checklist as approval.</p><ul class="topic-links"><li><a href="ssp-design.html#skill-solution-architecture-blueprint">Design guide: Solution Architecture Blueprint</a></li><li><a href="ssp-design.html#skill-dataverse-data-model-designer">Design guide: Dataverse Data Model Designer</a></li><li><a href="ssp-design.html#skill-security-role-mapper">Design guide: Security Role Mapper</a></li></ul></li>
+        <li><h3>Agree on evidence and next actions</h3><p>Assign an owner to each remaining risk and define what must be demonstrated before release. When an implementation exists, use the Review pillar's tools or request a deeper review.</p><ul class="topic-links"><li><a href="ssp-review.html">Review tools and deep-review options</a></li><li><a href="ssp-search.html#architecture-guidance">Resource collection: Architecture guidance</a></li></ul></li>
+      </ol>
+    </article>
+    <section class="topic-support" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Find supporting skills</h2>
+      <p>Published skill links open source instructions and prerequisites, not a running skill. Review them before installation or execution in a compatible host, particularly when a skill can change an environment.</p>
+      <p>The Design guides above are portal-authored planning outlines, not one-to-one names of published skills. Use the current catalog to find skills that support the decisions in your chosen sequence.</p>
+      <ul class="topic-links"><li><a href="ssp-search.html#skills">Browse published advisor skills</a></li><li><a href="https://aka.ms/powerplatformskillsadvisor" target="_blank" rel="noopener">Open Skills Advisor</a></li><li><a href="ssp-design.html#outcomes-heading">Back to Design topics</a></li></ul>
+    </section>
+  </main>
+  <footer><div class="wrap row"><span>Self-Service Portal - Curated by Power CAT</span><a href="ssp-design.html">Back to Design</a></div><p class="wrap">This site uses Azure Application Insights to measure page visits and approximate location derived from your IP address. No analytics cookies are used. <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p></footer>
+  <script>
+    (() => {
+      const topics = Array.from(document.querySelectorAll('.topic'));
+      const links = Array.from(document.querySelectorAll('.topic-nav a'));
+      const stepSelectors = new Map();
+      const paths = {
+        new: [['Frame', 'A clear solution brief', 'fa-compass'], ['Shape', 'An experience and data model', 'fa-layer-group'], ['Validate', 'Access decisions and risks', 'fa-check-circle']],
+        modernize: [['Assess', 'Know what needs to change', 'fa-search'], ['Compare', 'Choose your target design', 'fa-layer-group'], ['Transition', 'Plan a reversible rollout', 'fa-route']],
+        govern: [['Organize', 'Environment ownership', 'fa-sitemap'], ['Protect', 'Access and data policies', 'fa-shield-alt'], ['Deliver', 'Repeatable releases', 'fa-route']],
+        review: [['Assess', 'Surface the quality gaps', 'fa-search'], ['Resolve', 'Decide on the tradeoffs', 'fa-balance-scale'], ['Agree', 'Owners and next actions', 'fa-check-circle']]
+      };
+      topics.forEach(topic => {
+        const headings = topic.querySelectorAll(':scope > h2');
+        const preparation = document.createElement('section');
+        preparation.className = 'topic-preparation';
+        const preparationHeading = document.createElement('h2');
+        preparationHeading.textContent = 'Before you start';
+        preparationHeading.id = topic.id + '-preparation';
+        preparation.setAttribute('aria-labelledby', preparationHeading.id);
+        const preparationText = headings[0].nextElementSibling;
+        preparation.append(preparationHeading, preparationText);
+        headings[0].remove();
+        const skillsHeading = headings[1];
+        const skills = skillsHeading.nextElementSibling;
+        const sequence = topic.querySelector('.topic-steps');
+        const steps = Array.from(sequence.children);
+        headings[2].textContent = 'Your design path';
+        const path = document.createElement('div');
+        path.className = 'topic-path';
+        path.setAttribute('role', 'group');
+        path.setAttribute('aria-label', 'Choose a design step');
+        const controls = document.createElement('div');
+        controls.className = 'path-controls';
+        const position = document.createElement('span');
+        position.className = 'path-position';
+        position.setAttribute('role', 'status');
+        const next = document.createElement('button');
+        next.className = 'path-next';
+        next.type = 'button';
+        let activeStep = 0;
+        function selectStep(index, focus) {
+          activeStep = index;
+          steps.forEach((step, stepIndex) => { step.hidden = stepIndex !== index; });
+          Array.from(path.children).forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
+          position.textContent = `Step ${index + 1} of ${steps.length}`;
+          next.textContent = index === steps.length - 1 ? 'Back to first step' : 'Next: ' + paths[topic.id][index + 1][0];
+          if (focus) steps[index].querySelector('h3').focus({ preventScroll: true });
+        }
+        paths[topic.id].forEach(([label, outcome, iconName], index) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'path-choice';
+          const icon = document.createElement('span');
+          icon.className = 'path-icon fas ' + iconName;
+          icon.setAttribute('aria-hidden', 'true');
+          const title = document.createElement('strong');
+          title.textContent = label;
+          const detail = document.createElement('small');
+          detail.textContent = outcome;
+          button.append(icon, title, detail);
+          steps[index].id = topic.id + '-step-' + (index + 1);
+          steps[index].querySelector('h3').tabIndex = -1;
+          button.setAttribute('aria-controls', steps[index].id);
+          button.addEventListener('click', () => selectStep(index, false));
+          path.append(button);
+        });
+        next.addEventListener('click', () => selectStep((activeStep + 1) % steps.length, true));
+        controls.append(position, next);
+        const pathHeader = document.createElement('div');
+        pathHeader.className = 'path-header';
+        headings[2].before(pathHeader);
+        pathHeader.append(headings[2], controls);
+        sequence.before(path);
+        sequence.after(preparation, skillsHeading, skills);
+        topic.classList.add('enhanced');
+        stepSelectors.set(topic.id, selectStep);
+        selectStep(0, false);
+      });
+      function showTopic(focus) {
+        const targetId = location.hash.slice(1);
+        const selected = topics.find(topic => topic.id === targetId || topic.querySelector('[id="' + CSS.escape(targetId) + '"]')) || topics[0];
+        topics.forEach(topic => { topic.hidden = topic !== selected; });
+        const target = document.getElementById(targetId);
+        const stepIndex = Array.from(selected.querySelectorAll('.topic-steps > li')).findIndex(step => step === target || step.contains(target));
+        if (stepIndex >= 0) {
+          stepSelectors.get(selected.id)(stepIndex, false);
+          target.scrollIntoView({ block: 'start' });
+        }
+        links.forEach(link => {
+          if (link.hash === '#' + selected.id) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        });
+        document.title = 'SSP - ' + selected.querySelector('h1').textContent;
+        if (focus) {
+          const heading = stepIndex >= 0 ? selected.querySelectorAll('.topic-steps > li')[stepIndex].querySelector('h3') : selected.querySelector('h1');
+          heading.focus({ preventScroll: true });
+        }
+      }
+      window.addEventListener('hashchange', () => showTopic(true));
+      showTopic(false);
+      const themeButton = document.getElementById('themeBtn');
+      function syncTheme() {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        themeButton.textContent = dark ? '\u2600' : '\u263E';
+        themeButton.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+        themeButton.title = themeButton.getAttribute('aria-label');
+      }
+      themeButton.addEventListener('click', () => {
+        document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('sspTheme', document.documentElement.dataset.theme); } catch {}
+        syncTheme();
+      });
+      syncTheme();
+      const menuButton = document.querySelector('.menu-toggle');
+      function setMenu(open) {
+        document.getElementById('siteNav').classList.toggle('is-open', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        menuButton.textContent = open ? '\u00D7' : '\u2630';
+      }
+      menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
+    })();
+  </script>
+</body>
+</html>

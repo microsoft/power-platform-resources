@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="copilot-studio-agent-url" content="">
 <title>SSP - Design Pillar</title>
 <script>
   (() => {
@@ -15,12 +14,13 @@
     try { localStorage.setItem("sspTheme", theme); } catch (error) {}
   })();
 </script>
-<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260910-spacing-2">
+<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260918-heading-copy">
+<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 <script src="assets/js/telemetry.js" defer></script>
 <script src="assets/js/ssp-search-entry.js" defer></script>
 <link rel="stylesheet" href="assets/css/header-brand.css">
 </head>
-<body>
+<body class="pillar-design">
 <header class="topbar">
   <div class="wrap row">
     <a class="logo" href="ssp-landing.html" aria-label="About Self-Service Portal">
@@ -52,52 +52,16 @@
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-landing.html">SSP</a><span aria-hidden="true">/</span><span>Design</span></nav>
       <span class="pillar-label">Design pillar</span>
       <h1>Shape the right solution before you build.</h1>
-      <p class="lead">Turn business intent into a secure, supportable Power Platform design. Start with the outcome, use a focused skill, and leave with a decision-ready artifact.</p>
+      <p class="lead">Turn business intent into a secure, supportable Power Platform design. Start with an outcome, explore a design guide, and choose supporting skills and resources.</p>
       <div class="hero-actions">
-        <a class="btn" href="#skills">Explore Design skills</a>
+        <a class="btn" href="#skills">Explore Design guides</a>
         <a class="btn ghost" href="ssp-search.html#architecture-guidance">Browse architecture guidance</a>
       </div>
       <div class="hero-proof" aria-label="Design pillar highlights">
-        <div class="proof"><strong>8</strong><span>Design skills</span></div>
-        <div class="proof"><strong>5</strong><span>Focus areas</span></div>
+        <div class="proof"><strong>8</strong><span>Design guides</span></div>
+        <div class="proof"><strong>4</strong><span>Focus areas</span></div>
         <div class="proof"><strong>4</strong><span>Decision stages</span></div>
         <div class="proof"><strong>1</strong><span>Clear next step</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="advisor-heading">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="kicker">Design advisory agent</div><h2 id="advisor-heading">A guided path to the right skill</h2></div>
-        <p>Modeled on Agent Platform Advisor, this Copilot Studio agent will clarify constraints, explain tradeoffs, and recommend a primary skill sequence.</p>
-      </div>
-      <div class="advisor-shell">
-        <aside class="advisor-rail" aria-label="Advisor stages">
-          <div class="advisor-mark" aria-hidden="true">DA</div>
-          <h3>Design Advisor</h3>
-          <p>A conversational guide from business need to decision-ready artifacts.</p>
-          <ol class="advisor-stages">
-            <li class="active"><span class="stage-dot"></span>Frame</li>
-            <li><span class="stage-dot"></span>Clarify</li>
-            <li><span class="stage-dot"></span>Recommend</li>
-          </ol>
-        </aside>
-        <div class="advisor-main">
-          <span class="advisor-status" id="agentStatus">Copilot Studio connection pending</span>
-          <h3 id="advisorTitle">Describe the decision you need to make</h3>
-          <p id="advisorSummary">The advisor will clarify your outcome, constraints, audience, data, and governance needs before recommending a skill sequence.</p>
-          <div class="advisor-prompts" aria-label="Example advisor questions">
-            <div class="prompt"><strong>Outcome</strong>What must be different when this solution succeeds?</div>
-            <div class="prompt"><strong>Audience</strong>Who will use, own, support, and govern it?</div>
-            <div class="prompt"><strong>Constraints</strong>What data, integrations, policies, and timelines matter?</div>
-            <div class="prompt"><strong>Recommendation</strong>Which skill comes first, and what should follow?</div>
-          </div>
-          <div class="agent-config">
-            <button class="btn agent-launch" id="agentLaunch" type="button" disabled>Agent connection pending</button>
-            <span class="agent-note">Set the Copilot Studio web channel URL in the page metadata to enable launch.</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -106,13 +70,53 @@
     <div class="wrap">
       <div class="section-head">
         <div><div class="kicker">Start with intent</div><h2 id="outcomes-heading">What are you designing for?</h2></div>
-        <p>Choose an outcome to preview an advisor recommendation and bring the most relevant skills forward.</p>
+        <p>Choose a topic for a suggested sequence of design guides, Microsoft Learn articles, and tools.</p>
       </div>
-      <div class="outcomes" role="group" aria-label="Filter skills by design outcome">
-        <button class="outcome" style="--tone:var(--design)" data-outcome="new" aria-pressed="false"><span class="outcome-code">01 / NEW</span><strong>Launch a new solution</strong><span>Clarify architecture, data, experience, and security before delivery.</span></button>
-        <button class="outcome" style="--tone:var(--teal)" data-outcome="modernize" aria-pressed="false"><span class="outcome-code">02 / MODERNIZE</span><strong>Modernize an existing app</strong><span>Assess constraints and choose a lower-risk target architecture.</span></button>
-        <button class="outcome" style="--tone:var(--amber)" data-outcome="govern" aria-pressed="false"><span class="outcome-code">03 / GOVERN</span><strong>Design for enterprise scale</strong><span>Plan environments, ALM, access, operations, and guardrails.</span></button>
-        <button class="outcome" style="--tone:var(--brand-2)" data-outcome="review" aria-pressed="false"><span class="outcome-code">04 / REVIEW</span><strong>Validate a proposed design</strong><span>Challenge assumptions and document risks before commitment.</span></button>
+      <div class="outcomes" role="group" aria-label="Design topics">
+        <a class="outcome" style="--tone:var(--design)" href="ssp-design-guide.html#new"><span class="outcome-code">01 / NEW</span><strong>Launch a new solution</strong><span>Clarify architecture, data, experience, and security before delivery.</span></a>
+        <a class="outcome" style="--tone:var(--teal)" href="ssp-design-guide.html#modernize"><span class="outcome-code">02 / MODERNIZE</span><strong>Modernize an existing app</strong><span>Assess constraints and choose a lower-risk target architecture.</span></a>
+        <a class="outcome" style="--tone:var(--amber)" href="ssp-design-guide.html#govern"><span class="outcome-code">03 / GOVERN</span><strong>Design for enterprise scale</strong><span>Plan environments, ALM, access, operations, and guardrails.</span></a>
+        <a class="outcome" style="--tone:var(--brand-2)" href="ssp-design-guide.html#review"><span class="outcome-code">04 / REVIEW</span><strong>Validate a proposed design</strong><span>Challenge assumptions and document risks before commitment.</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="design-advisor" aria-labelledby="advisor-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">Design guide</div><h2 id="advisor-heading">Find your design starting point</h2></div>
+        <p>A suggested path through design guides and resources, not a final solution design. Product choices, licensing, and organizational policy still need validation before implementation.</p>
+      </div>
+      <div class="advisor-shell local-advisor">
+        <div class="advisor-main">
+          <p class="advisor-privacy">Answers stay in this page's memory and are not sent to a service or analytics. Reloading clears them.</p>
+          <noscript><p>Enable JavaScript to use the interactive guide, or browse the <a href="#skills">Design guides</a>.</p></noscript>
+          <div id="advisorApp" hidden>
+            <ol class="advisor-stages" aria-label="Design guide stages">
+              <li class="active" aria-current="step"><span class="stage-dot" aria-hidden="true"></span>Frame</li>
+              <li><span class="stage-dot" aria-hidden="true"></span>Clarify</li>
+              <li><span class="stage-dot" aria-hidden="true"></span>Next steps</li>
+            </ol>
+            <p id="advisorProgress" class="advisor-progress" role="status" aria-live="polite"></p>
+            <form id="advisorForm">
+              <fieldset><legend id="advisorQuestion" tabindex="-1"></legend><div id="advisorOptions" class="advisor-options"></div></fieldset>
+              <div class="advisor-controls">
+                <button class="btn ghost" id="advisorBack" type="button"><span class="fas fa-arrow-left" aria-hidden="true"></span> Back</button>
+                <button class="btn ghost" id="advisorReset" type="button"><span class="fas fa-undo" aria-hidden="true"></span> Start over</button>
+                <button class="btn" id="advisorNext" type="submit">Continue <span class="fas fa-arrow-right" aria-hidden="true"></span></button>
+              </div>
+            </form>
+            <section id="advisorResult" class="advisor-result" aria-labelledby="advisorResultTitle" hidden>
+              <h3 id="advisorResultTitle" tabindex="-1"></h3>
+              <div id="advisorResultBody"></div>
+              <div class="advisor-controls">
+                <button class="btn ghost" id="advisorEdit" type="button"><span class="fas fa-edit" aria-hidden="true"></span> Edit answers</button>
+                <button class="btn ghost" id="advisorRestart" type="button"><span class="fas fa-undo" aria-hidden="true"></span> Start over</button>
+                <button class="btn" id="advisorDownload" type="button"><span class="fas fa-download" aria-hidden="true"></span> Download brief</button>
+              </div>
+            </section>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -120,56 +124,84 @@
   <section class="skills-section" id="skills" aria-labelledby="skills-heading">
     <div class="wrap">
       <div class="section-head">
-        <div><div class="kicker">Design skill catalog</div><h2 id="skills-heading">Pick the artifact you need next</h2></div>
-        <p>Each skill is scoped around a decision and a tangible output, so teams know what good looks like before implementation.</p>
+        <div><div class="kicker">Design guides</div><h2 id="skills-heading">Pick the decision you need to make</h2></div>
+        <p>These are portal-authored planning guides, not published skill names. Each connects a design decision to relevant skills, documentation, or an assessment.</p>
       </div>
+      <p class="guide-note">Skill links open source instructions and prerequisites, not a running skill. Review requirements and permissions before using a skill in a compatible host. Skill mappings are based on the imported catalog verified 7 September 2026.</p>
       <div class="skill-tools">
-        <label class="skill-search"><span aria-hidden="true">&#9906;</span><span class="sr-only">Search Design skills</span><input id="skillSearch" type="search" placeholder="Search skills, outputs, or focus areas..." autocomplete="off"></label>
-        <div class="filters" role="group" aria-label="Filter by focus area">
-          <button class="filter" data-category="all" aria-pressed="true">All</button><button class="filter" data-category="architecture" aria-pressed="false">Architecture</button><button class="filter" data-category="data" aria-pressed="false">Data</button><button class="filter" data-category="experience" aria-pressed="false">Experience</button><button class="filter" data-category="governance" aria-pressed="false">Governance</button>
-        </div>
+        <label class="skill-search"><span aria-hidden="true">&#9906;</span><span class="sr-only">Search within Architecture</span><input id="skillSearch" type="search" placeholder="Search within Architecture..." autocomplete="off"></label>
       </div>
-      <div class="results-line"><span id="resultCount" role="status" aria-live="polite">8 Design skills</span><button class="clear-filter" id="clearFilters" type="button" hidden>Clear filters</button></div>
+      <div class="results-line"><span id="resultCount" role="status" aria-live="polite">3 Design guides</span></div>
+      <div class="guide-layout">
+        <aside class="guide-rail" aria-label="Design focus areas">
+          <h3>Focus areas</h3>
+          <div class="filters" role="group" aria-label="Filter by focus area">
+            <button class="filter" data-category="architecture" aria-pressed="true"><span class="fas fa-layer-group" aria-hidden="true"></span><span>Architecture</span><span class="guide-count">3</span></button>
+            <button class="filter" data-category="data" aria-pressed="false"><span class="fas fa-database" aria-hidden="true"></span><span>Data</span><span class="guide-count">1</span></button>
+            <button class="filter" data-category="experience" aria-pressed="false"><span class="fas fa-desktop" aria-hidden="true"></span><span>Experience</span><span class="guide-count">1</span></button>
+            <button class="filter" data-category="governance" aria-pressed="false"><span class="fas fa-shield-alt" aria-hidden="true"></span><span>Governance</span><span class="guide-count">3</span></button>
+          </div>
+        </aside>
+        <div class="guide-panel" role="region" aria-labelledby="guide-panel-heading">
+          <header class="guide-panel-head"><h2 id="guide-panel-heading">Architecture guides</h2><p id="guide-panel-description">Solution blueprints, integration patterns, and Well-Architected design reviews.</p></header>
       <div class="skills-grid" id="skillGrid">
         <article class="skill-card" data-category="architecture" data-outcomes="new modernize review" style="--accent:var(--design)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Architecture</span><span class="skill-time">15-25 min</span></div><h3>Solution Architecture Blueprint</h3><p>Translate a business scenario into platform boundaries, components, integrations, and key decisions.</p><div class="tags"><span class="tag">Decision map</span><span class="tag">Architecture</span></div></div>
-          <details><summary>Inputs and output</summary><p>Bring goals, users, constraints, and systems. Leave with a component blueprint and decision log.</p></details><div class="skill-actions"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+          <details open><summary>Inputs and intended output</summary><p>Bring goals, users, constraints, and systems. Aim for a component blueprint and decision log.</p></details>
+          <div class="guide-resources"><p><strong>Supporting skill</strong><br><code>powercat-pp-architecture-advisor</code> supports discovery and architecture review for a composed Power Platform solution.</p><a href="https://learn.microsoft.com/power-platform/architecture/" target="_blank" rel="noopener">Microsoft Learn: Architecture Center</a></div>
+          <div class="skill-actions"><a class="btn" href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">View architecture skill instructions <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="governance" data-outcomes="new govern review" style="--accent:var(--amber)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Governance</span><span class="skill-time">20-30 min</span></div><h3>Environment Strategy Blueprint</h3><p>Define environment purpose, ownership, routing, DLP boundaries, and deployment paths at scale.</p><div class="tags"><span class="tag">Environment map</span><span class="tag">DLP</span><span class="tag">ALM</span></div></div>
-          <details><summary>Inputs and output</summary><p>Bring tenant constraints and delivery teams. Leave with an environment topology and governance decisions.</p></details><div class="skill-actions"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+          <details open><summary>Inputs and intended output</summary><p>Bring tenant constraints and delivery teams. Aim for an environment topology and governance decisions.</p></details>
+          <div class="guide-resources"><p><strong>Documentation-led guide</strong><br>No dedicated environment-strategy skill is verified in the imported catalog. Use adoption guidance to define boundaries and ownership.</p><a href="https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention" target="_blank" rel="noopener">Microsoft Learn: Data policies</a></div>
+          <div class="skill-actions"><a class="btn" href="https://learn.microsoft.com/power-platform/guidance/adoption/environment-strategy" target="_blank" rel="noopener">Read environment strategy <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="data" data-outcomes="new modernize review" style="--accent:var(--teal)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Data</span><span class="skill-time">15-20 min</span></div><h3>Dataverse Data Model Designer</h3><p>Turn business concepts into tables, relationships, ownership choices, and a maintainable data model.</p><div class="tags"><span class="tag">ERD</span><span class="tag">Dataverse</span><span class="tag">Ownership</span></div></div>
-          <details><summary>Inputs and output</summary><p>Bring entities, rules, and reporting needs. Leave with a logical model and implementation notes.</p></details><div class="skill-actions"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+          <details open><summary>Inputs and intended output</summary><p>Bring entities, rules, and reporting needs. Aim for a logical model and implementation notes.</p></details>
+          <div class="guide-resources"><p><strong>Supporting skill</strong><br><code>dv-metadata</code> covers Dataverse tables, columns, relationships, forms, and views. Review environment permissions before applying changes.</p><a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intro" target="_blank" rel="noopener">Microsoft Learn: Dataverse overview</a></div>
+          <div class="skill-actions"><a class="btn" href="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-metadata/SKILL.md" target="_blank" rel="noopener">View Dataverse skill instructions <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="experience" data-outcomes="new modernize" style="--accent:var(--brand-2)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Experience</span><span class="skill-time">10-20 min</span></div><h3>Experience Pattern Selector</h3><p>Choose between canvas, model-driven, Power Pages, code app, or agent-led experiences.</p><div class="tags"><span class="tag">UX pattern</span><span class="tag">Surface choice</span></div></div>
-          <details><summary>Inputs and output</summary><p>Bring user context, tasks, devices, and access needs. Leave with a recommended experience pattern.</p></details><div class="skill-actions"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+          <details open><summary>Inputs and intended output</summary><p>Bring user context, tasks, devices, and access needs. Aim for a recommended experience pattern with tradeoffs.</p></details>
+          <div class="guide-resources"><p><strong>Documentation-led guide</strong><br>No dedicated cross-product experience-selector skill is verified in the imported catalog. Compare experience needs against architecture patterns.</p><a href="https://learn.microsoft.com/power-platform/well-architected/experience-optimization/" target="_blank" rel="noopener">Microsoft Learn: Experience optimization</a></div>
+          <div class="skill-actions"><a class="btn" href="https://learn.microsoft.com/power-platform/architecture/" target="_blank" rel="noopener">Compare architecture patterns <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="architecture" data-outcomes="new modernize govern" style="--accent:var(--design)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Architecture</span><span class="skill-time">15-25 min</span></div><h3>Integration Pattern Selector</h3><p>Match latency, volume, ownership, and failure needs to the right Power Platform integration pattern.</p><div class="tags"><span class="tag">API</span><span class="tag">Events</span><span class="tag">Virtual tables</span></div></div>
-          <details><summary>Inputs and output</summary><p>Bring source systems and service expectations. Leave with a pattern recommendation and tradeoffs.</p></details><div class="skill-actions"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+          <details open><summary>Inputs and intended output</summary><p>Bring source systems and service expectations. Aim for a pattern recommendation and documented tradeoffs.</p></details>
+          <div class="guide-resources"><p><strong>Documentation-led guide</strong><br>No dedicated integration-pattern selector is verified in the imported catalog. Compare system boundaries and data-access options before implementation.</p><a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-virtual-entities" target="_blank" rel="noopener">Microsoft Learn: Virtual tables</a></div>
+          <div class="skill-actions"><a class="btn" href="https://learn.microsoft.com/power-platform/architecture/" target="_blank" rel="noopener">Explore integration architecture <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="governance" data-outcomes="new govern review" style="--accent:var(--amber)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Security</span><span class="skill-time">15-25 min</span></div><h3>Security Role Mapper</h3><p>Map personas, responsibilities, records, and operations into least-privilege access decisions.</p><div class="tags"><span class="tag">Role matrix</span><span class="tag">Least privilege</span></div></div>
-          <details><summary>Inputs and output</summary><p>Bring personas, data sensitivity, and actions. Leave with an access matrix and open security decisions.</p></details><div class="skill-actions"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+          <details open><summary>Inputs and intended output</summary><p>Bring personas, data sensitivity, and actions. Aim for an access matrix and a list of open security decisions.</p></details>
+          <div class="guide-resources"><p><strong>Supporting skill</strong><br><code>dv-security</code> covers Dataverse roles, users, business units, and access. It is not a security mapper for every Power Platform product; review permissions before changes.</p><a href="https://learn.microsoft.com/power-platform/admin/security-roles-privileges" target="_blank" rel="noopener">Microsoft Learn: Security roles and privileges</a></div>
+          <div class="skill-actions"><a class="btn" href="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-security/SKILL.md" target="_blank" rel="noopener">View security skill instructions <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="governance" data-outcomes="modernize govern" style="--accent:var(--teal)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Operations</span><span class="skill-time">15-20 min</span></div><h3>ALM Topology Planner</h3><p>Plan source control, solution boundaries, pipelines, approvals, and release responsibilities.</p><div class="tags"><span class="tag">Pipeline map</span><span class="tag">Solutions</span><span class="tag">Git</span></div></div>
-          <details><summary>Inputs and output</summary><p>Bring team topology and release requirements. Leave with a delivery topology and control points.</p></details><div class="skill-actions"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+          <details open><summary>Inputs and intended output</summary><p>Bring team topology and release requirements. Aim for a delivery topology and agreed control points.</p></details>
+          <div class="guide-resources"><p><strong>Product-specific supporting skill</strong><br><code>plan-alm</code> covers solution boundaries, pipelines, and deployment topology for Power Pages. For other workloads, use the platform ALM guidance.</p><a href="https://learn.microsoft.com/power-platform/alm/overview-alm" target="_blank" rel="noopener">Microsoft Learn: Platform ALM guidance</a></div>
+          <div class="skill-actions"><a class="btn" href="https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/plan-alm" target="_blank" rel="noopener">View Power Pages ALM skill <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="architecture" data-outcomes="review govern modernize" style="--accent:var(--brand-2)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Assurance</span><span class="skill-time">5-15 min</span></div><h3>Well-Architected Design Check</h3><p>Challenge a proposed solution across reliability, security, operations, performance, and experience.</p><div class="tags"><span class="tag">Risk report</span><span class="tag">WAF</span><span class="tag">Review</span></div></div>
-          <details><summary>Inputs and output</summary><p>Bring the proposed design and known constraints. Leave with findings, risk levels, and next actions.</p></details><div class="skill-actions"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill <span aria-hidden="true">&nearr;</span></a></div>
+          <details open><summary>Inputs and intended output</summary><p>Bring the proposed design and known constraints. Aim for findings, risk priorities, and next actions.</p></details>
+          <div class="guide-resources"><p><strong>Assessment-led guide</strong><br>No published skill with this guide's name is verified in the imported catalog. Use the Power Platform Well-Architected assessment to structure the review; it is not automatic approval.</p><a href="https://learn.microsoft.com/power-platform/well-architected/" target="_blank" rel="noopener">Microsoft Learn: Well-Architected guidance</a></div>
+          <div class="skill-actions"><a class="btn" href="https://aka.ms/powa" target="_blank" rel="noopener">Open Well-Architected assessment <span aria-hidden="true">&nearr;</span></a></div>
         </article>
+      </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section aria-labelledby="process-heading">
     <div class="wrap">
-      <div class="section-head"><div><div class="kicker">A repeatable design loop</div><h2 id="process-heading">From ambiguity to an actionable blueprint</h2></div><p>Use one skill or chain several together. Keep decisions, assumptions, and evidence with the solution.</p></div>
+      <div class="section-head"><div><div class="kicker">A repeatable design loop</div><h2 id="process-heading">From uncertainty to a clear next step.</h2></div><p>Combine design guides, supporting skills, and reference material. Keep decisions, assumptions, and evidence with the solution.</p></div>
       <div class="process">
         <div class="step"><span class="step-number">01 / FRAME</span><h3>Define the outcome</h3><p>State the business result, users, boundaries, constraints, and measures of success.</p></div>
         <div class="step"><span class="step-number">02 / EXPLORE</span><h3>Compare patterns</h3><p>Compare viable platform, data, experience, and integration choices using evidence.</p></div>
@@ -179,12 +211,14 @@
     </div>
   </section>
 
-  <section class="decision-band"><div class="wrap"><div class="decision-inner"><div><h2>Not sure which skill fits?</h2><p>Use an outcome above for an immediate preview, or open Skills Mission Control for the current catalog.</p></div><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill catalog <span aria-hidden="true">&nearr;</span></a></div></div></section>
+  <section class="decision-band"><div class="wrap"><div class="decision-inner"><div><h2>Not sure where to begin?</h2><p>Choose a design topic for a guided resource sequence, or open Skills Mission Control for the current skill catalog.</p></div><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Open skill catalog <span aria-hidden="true">&nearr;</span></a></div></div></section>
 </main>
 
 <footer><div class="wrap row"><span>Self-Service Portal - Curated by Power CAT</span><div class="footer-links"><a href="ssp-search.html#architecture-guidance">Architecture resources</a><a href="https://github.com/microsoft/power-platform-resources/issues/new?title=Design%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a></div></div>
   <p class="wrap">This site uses Azure Application Insights to measure page visits and approximate location derived from your IP address. No analytics cookies are used. <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
 </footer>
-<script src="assets/js/ssp-design.js"></script>
+<script src="assets/js/ssp-design-advisor.js?v=20260918-advisor-ranked"></script>
+<script src="assets/js/ssp-search-engine.js?v=20260918-relevance"></script>
+<script src="assets/js/ssp-design.js?v=20260918-relevance"></script>
 </body>
 </html>

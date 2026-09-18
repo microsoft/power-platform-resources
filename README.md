@@ -34,6 +34,8 @@ Opening `index.html` directly may work for basic viewing, but using a local serv
 
 ## Scenario search
 
+Start here begins with five goal-based paths: learn, build, fix, review, and expand adoption. Each asks one follow-up question and returns a curated next action with up to two supporting resources. Every path includes an unsure choice, Back, and Start over. These routes are defined in `assets/js/ssp-search-engine.js`, work without fetching the search index, and never send answers to a service. Search remains below the guide, with three initial results and an optional advanced section for technical filters and the Skills Advisor catalog.
+
 Open [Start here](ssp-search.html) through the local server. Search indexes its own resource catalog and fetches the four other SSP HTML pages from the same origin to index skills, page summaries, and the linked Power Series labs destination. It does not crawl external websites or index individual labs. Direct `file:` previews cannot reliably fetch these pages; use HTTP. The catalog retains the original Resources category sidebar and numbered content panels beneath search. JavaScript switches categories, filters matching panels, and opens category deep links; without JavaScript all panels remain readable.
 
 The index is rebuilt from current page content on each search-page load. Duplicate resource URLs are combined. Skill-card anchors are derived from their headings by the shared search entry script. Keep skill headings unique within each pillar.
@@ -43,6 +45,16 @@ Ranking uses whole words, curated synonyms, and term rarity. Common scenarios ha
 Scenario text is held in memory on Start here and is not included in URLs, network requests, or analytics. Do not enter sensitive information. About no longer contains a scenario form.
 
 Run search regression tests with `node --test tests/ssp-search.test.js`. Browser checks should cover resource browsing and category deep links, result filters, pagination, skill anchors, unavailable content, unknown queries, and desktop/mobile layouts in both themes.
+
+## Interactive Design Guide
+
+[Design guide](ssp-design.html#design-advisor) asks seven questions for makers, architects, or mixed delivery teams to suggest a path through design guides and resources, not to prescribe a final solution or app type. Question six accepts up to three ranked constraints (or a standalone unsure answer); all selected constraints inform recommendations, with matching guides ordered by priority after the initial design guide. The other questions are single-choice, and the final question branches for new solutions, modernization, governance, or design review. Back, Edit answers, and Start over keep the flow reversible; changing the goal discards its previous branch answer. Ranked priorities are retained in the downloadable brief.
+
+Rules in [assets/js/ssp-design-advisor.js](assets/js/ssp-design-advisor.js) produce a design starting point with reasons, assumptions, guide links, Microsoft Learn references, and a Markdown brief. Published skill links and scope notes are reused from the existing Design guide content; they open instructions, not an executing skill. Recommendations are authored heuristics, not an architecture assessment or licensing determination. Review rule changes against current Microsoft guidance before publishing.
+
+Answers remain in page memory, with no service calls, URL serialization, telemetry events, or browser storage. Reloading clears them. Download creates a local Markdown file containing the selected answers and recommendations. JavaScript is required for the interactive guide; the surrounding guide catalog remains available without it.
+
+Run `node --test tests/ssp-search.test.js` for interactive guide and search regressions. Browser checks should cover all four goals, unsure answers, Back/Edit/Start over, branch changes, download, keyboard navigation, and both themes at desktop/mobile widths. The existing `design-advisor` fragment and internal identifiers remain unchanged to preserve links and integrations.
 
 ## Repository structure
 

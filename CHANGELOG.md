@@ -6,13 +6,59 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## 2026-09-18
 
+### Added
+
+- Added a local Design Advisor for makers and architects with seven branching questions, reversible navigation, source-linked recommendations, scoped published skills, explicit assumptions, and a downloadable Markdown design brief. Answers stay in page memory and are not sent to services or analytics.
+- Added four bookmarkable Design topic guides combining decision sequences, portal-authored Design outlines, Microsoft Learn articles, assessment tools, and links to the published skills catalog.
+- Added five plain-language Start here goals with focused follow-up choices, an unsure path for every goal, Back and Start over controls, and a primary recommendation with up to two supporting links.
+
 ### Changed
 
+- Clarified generic Build and Review catalog actions as "Browse Skills Advisor" and marked deep review entry points as availability information while the submission portal is pending.
+- Added an About carousel pause/resume control, paused rotation during hover and keyboard focus, and respected reduced-motion preferences.
+- Reworded the Design process heading to "From uncertainty to a clear next step." to reflect the guide's scope.
+- Moved the Design topic, interactive guide, and guide catalog descriptions below their headings instead of alongside them.
+- Renamed the user-facing Design Advisor to Design guide and clarified that it suggests a path through guides and resources rather than prescribing a final solution. Preserved existing links and behavior.
+- Restored single-column Design Advisor answer choices at every screen width and added decorative, choice-specific icons, including cues for selected ranked priorities, while preserving labels and native controls.
+- Changed Design Advisor question six to accept up to three ranked priorities, reflected in recommendation order, assumptions, and the downloaded brief. Compacted the advisor with two-column desktop choices, tighter spacing, a narrower reading width, a prominent next action, and expandable supporting-skill details.
+- Replaced the Design Advisor sidebar with a compact horizontal stage indicator above the question counter, preserving active-stage announcements and giving questions and results the full panel width.
+- Moved Design topic choices above the Design Advisor, placing the advisor between the topics and the guide catalog while preserving navigation and content.
+- Restored left-aligned hero buttons while retaining right-aligned standalone resource and launch actions elsewhere.
+- Right-aligned standalone launch actions across the SSP pages, including Microsoft Learn references, ALM checklist links, guide resources, hero actions, and pillar launches; preserved left-aligned descriptive content and resource lists.
+- Replaced Build's generic process section with "Prepare your solution for release," a four-stage ALM checklist covering planning, solution versioning, validation, and deployment, linked to the ALM Topology, Solution Packaging, and Pipeline Setup guides, Review, and Microsoft Learn ALM guidance.
+- Right-aligned guide launch links in Design, Build, and Review, retaining wrapping for narrow screens.
+- Expanded the Design guides' inputs and intended output by default and reduced row padding and gaps around tags, inputs, and supporting resources while retaining all content and collapse controls.
+- Explicitly defaulted Design, Build, and Review to their first focus area and synchronized selection, panel heading, and tagline in the filter update. Versioned the pillar scripts so returning browsers load the updated category behavior; direct guide links still select their target area.
+- Applied Design's sidebar and numbered guide-panel layout to Build and Review, removed All filters, and added category-specific headings and taglines. Search stays within the selected area, clearing search retains it, and direct guide links select the matching category. Existing resources and deep-review submission content are preserved.
+- Added focus-specific taglines alongside the selected Architecture, Data, Experience, and Governance guide headings.
+- Removed All guides from the Design catalog; defaulted to Architecture, kept search within the selected focus area, and made direct guide links open their matching category.
+- Restyled the Design guide catalog to match Start here's resource layout, with a focus-area sidebar, counts, a shared panel of numbered guide rows, and direct resource links instead of large card buttons; retained search, filtering, content, and destinations.
+- Relabeled the eight Design planning cards as guides, replaced generic skill-catalog redirects with scoped published skill instructions or direct Learn/assessment resources, and documented unverified skill gaps and prerequisites. Corrected Design guide filtering so hidden cards are removed from view.
+- Added a prominent Back to Design button above every Design topic view, returning directly to the intent cards.
+- Unified Design topic-page links, icons, selected steps, and navigation buttons under the theme-aware purple brand accent, removing topic-specific green and amber shifts.
+- Redesigned Design topic pages with concise introductions, a visual three-step path, one focused step at a time, always-visible preparation, and distinct supporting-skill cards while retaining all resource links. Positioned the step count and Next control alongside the path heading above the changing content.
+- Changed Design intent cards from skill filters to links to their topic guides, keeping the existing skill catalog available separately.
+- Restyled the five Start here goals as compact outlined icon buttons with the original conversational labels, natural wrapping on desktop, and full-width stacking on mobile; preserved follow-up questions and recommendations.
+- Replaced About's duplicate resource-category grid with a single "Explore Power Platform resources" link to the catalog on Start here.
+- Separated Start here's guided choices, search, and resource catalog into full-width theme-aware bands, with a tinted search background and a stronger divider above the catalog.
+- Made guided choices the first step on Start here, with search secondary, three initial search results, and technical filters and Skills Advisor details under an optional advanced section. Preserved the resource catalog below.
 - Renamed Home to About and Search to Start here throughout SSP navigation.
 - Moved all 13 resource categories and their links below search on Start here, retaining the original category sidebar, icons, counts, numbered resource panels, search filtering, and responsive layout, with updated internal links.
 
+### Fixed
+
+- Required meaningful task and product matches in search, normalized common product misspellings, plurals, and hyphens, and suppressed canvas-specific performance paths for other app types. Pillar searches retain their selected category.
+- Changed resource search to show individual matching links with subsection context instead of entire categories; clearing restores the complete original resource catalog.
+- Revealed and focused search recommendations or results after submission, including searches entered before indexing completes.
+- Corrected About featured-card destinations and replaced the unverified migration offer with a published-skills catalog link.
+- Made Design search labels reflect the selected focus area, and added Escape dismissal with focus return to About and Start here mobile menus.
+- Restored all four About pillars on mobile, corrected Design and Build category totals, and routed legacy resource bookmarks to Start here.
+- Made catalog entry links scroll to and focus loaded results, and made Design topic step links reveal the requested step.
+
 ### Removed
 
+- Removed the pending Copilot Studio agent configuration from Design in favor of the local guided advisor.
+- Removed the separate Clear search buttons from Design, Build, and Review; search remains editable within the selected focus area.
 - Removed the scenario form from About and the separate Resources page and navigation item.
 
 ## 2026-09-15

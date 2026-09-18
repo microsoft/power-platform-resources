@@ -9,9 +9,11 @@
   const byId = id => document.getElementById(id);
   let entries = [];
   let query = '';
-  let limit = 12;
+  let limit = 3;
   let ready = false;
   let catalogMode = location.hash === '#skills';
+  let focusCatalog = false;
+  let focusSearch = false;
   const clean = text => text.replace(/\s+/g, ' ').trim();
   const slug = text => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const element = (tag, text, className) => {
@@ -29,20 +31,107 @@
     }
     return link;
   }
+  let selectedGoal = null;
+  let selectedAnswer = null;
+  function renderJourney(focus = true) {
+    byId('goalChoices').hidden = Boolean(selectedGoal);
+    byId('journeyStep').hidden = !selectedGoal;
+    if (!selectedGoal) {
+      if (focus) byId('startHeading').focus();
+      return;
+    }
+    const journey = SSPSearch.journeys.find(item => item.id === selectedGoal);
+    const recommendation = SSPSearch.nextStep(selectedGoal, selectedAnswer);
+    byId('journeyContext').textContent = journey.label;
+    byId('journeyHeading').textContent = recommendation ? recommendation.title : journey.question;
+    byId('answerChoices').hidden = Boolean(recommendation);
+    byId('journeyRecommendation').hidden = !recommendation;
+    byId('answerChoices').replaceChildren();
+    if (recommendation) {
+      byId('journeyWhy').textContent = recommendation.why;
+      const action = anchor(recommendation.action, recommendation.url);
+      action.id = 'journeyAction';
+      action.className = 'btn';
+      byId('journeyAction').replaceWith(action);
+      const related = byId('journeyRelated').querySelector('ul');
+      related.replaceChildren();
+      recommendation.related.forEach(id => {
+        const heading = byId(id)?.querySelector('h2');
+        if (!heading) return;
+        const item = element('li');
+        item.append(anchor(clean(heading.textContent), '#' + id));
+        related.append(item);
+      });
+    } else {
+      journey.options.forEach(option => {
+        const button = element('button', option.label, 'journey-choice');
+        button.type = 'button';
+        button.dataset.answer = option.id;
+        button.addEventListener('click', () => { selectedAnswer = option.id; renderJourney(); });
+        byId('answerChoices').append(button);
+      });
+    }
+    if (focus) byId('journeyHeading').focus();
+  }
+  function resetJourney() {
+    selectedGoal = null;
+    selectedAnswer = null;
+    renderJourney();
+  }
+  const goalPresentation = {
+    learn: { icon: 'training' },
+    build: { icon: 'building' },
+    fix: { icon: 'tools-samples' },
+    review: { icon: 'governance' },
+    scale: { icon: 'adoption' }
+  };
+  SSPSearch.journeys.forEach(journey => {
+    const presentation = goalPresentation[journey.id];
+    const button = element('button', null, 'journey-choice');
+    const icon = document.querySelector(`[data-target="${presentation.icon}"] svg`)?.cloneNode(true);
+    if (icon) {
+      icon.setAttribute('aria-hidden', 'true');
+      icon.setAttribute('focusable', 'false');
+      button.append(icon);
+    }
+    button.append(element('span', journey.label));
+    button.type = 'button';
+    button.dataset.goal = journey.id;
+    button.addEventListener('click', () => {
+      search('');
+      selectedGoal = journey.id;
+      selectedAnswer = null;
+      renderJourney();
+    });
+    byId('goalChoices').append(button);
+  });
+  byId('goalChoices').hidden = false;
+  byId('journeyBack').addEventListener('click', () => {
+    if (selectedAnswer) selectedAnswer = null;
+    else selectedGoal = null;
+    renderJourney();
+  });
+  byId('journeyReset').addEventListener('click', resetJourney);
+  byId('chooseGoal').addEventListener('click', resetJourney);
   function extract(doc, source) {
     const items = [];
-    doc.querySelectorAll('.panel-body li a[href]').forEach(link => {
+    doc.querySelectorAll('.panel-body:not(.resource-matches) li a[href]').forEach(link => {
       const url = new URL(link.getAttribute('href'), new URL(source.file, location.href));
       if (!['https:', 'http:'].includes(url.protocol)) return;
       const panel = link.closest('.panel');
       const row = clean(link.closest('li').textContent);
       const label = clean(link.textContent);
       const prefix = row.includes(' - ') ? row.split(' - ')[0] : '';
-      const title = prefix && !label.toLowerCase().includes(prefix.toLowerCase()) ? prefix + ': ' + label : label;
+      const heading = [...panel.querySelectorAll('h5')].filter(item => item.compareDocumentPosition(link) & 4).at(-1);
+      const section = clean(heading?.textContent || '');
+      const rowTitle = prefix && !label.toLowerCase().includes(prefix.toLowerCase()) ? prefix + ': ' + label : label;
+      const title = section && !rowTitle.toLowerCase().includes(section.toLowerCase()) ? section + ': ' + rowTitle : rowTitle;
       const context = link.closest('li').cloneNode(true);
       context.querySelectorAll('a').forEach(sibling => sibling.remove());
-      const text = clean(context.textContent.replace(/\|/g, ' ')) + ' ' + label;
-      items.push({ title, text, category: clean(panel.querySelector('h2').textContent), type: 'Resource', url: url.href, source: source.file + '#' + panel.id, sourceName: 'Resource catalog' });
+      const productPath = url.pathname.match(/^\/(?:[a-z]{2}-[a-z]{2}\/)?(power-apps|power-automate|power-pages|power-bi|microsoft-copilot-studio)(?:\/|$)/i)?.[1] || '';
+      const product = productPath.replace(/-/g, ' ');
+      const text = section + ' ' + clean(context.textContent.replace(/\|/g, ' ')) + ' ' + label + ' ' + product;
+      items.push({ title, text, category: clean(panel.querySelector('h2').textContent), categoryId: panel.id, type: 'Resource', url: url.href, source: source.file + '#' + panel.id, sourceName: 'Resource catalog' });
     });
     doc.querySelectorAll('.skill-card').forEach(card => {
       const title = clean(card.querySelector('h3').textContent);
@@ -106,6 +195,8 @@
     const counts = catalog ? ['skill', 'mcp-capability', 'reference'].map(tier => catalog.skills.filter(item => item.tier === tier).length) : [];
     byId('indexStatus').textContent = entries.length ? `${entries.length} indexed entries from ${sources.length - siteFailures} site pages${catalog ? ` and Skills Advisor (${counts[0]} skills, ${counts[1]} MCP capabilities, ${counts[2]} references; source verified ${catalog.sourceGenerated}; imported ${catalog.retrieved.slice(0, 10)})` : ''}.${failed.length ? ' Unavailable: ' + failed.join(', ') + '.' : ''}` : 'Site content could not be loaded. Open this site over HTTP and try again, or browse Resources.';
     byId('retryIndex').hidden = !failed.length;
+    byId('searchNotice').hidden = !failed.length;
+    byId('searchNotice').textContent = entries.length ? 'Some search content is unavailable. You can still choose a goal or browse resources below.' : 'Search is unavailable. Choose a goal or browse resources below.';
     render();
   }
   function render() {
@@ -114,14 +205,15 @@
     let ranked = catalogMode && !query ? pool.map(item => ({ ...item, matched: [] })).sort((first, second) => first.title.localeCompare(second.title)) : SSPSearch.rank(pool, query);
     const type = byId('typeFilter').value;
     const product = byId('productFilter').value;
-    const guide = ranked.length && !catalogMode && !product && !type ? SSPSearch.guidance(entries.filter(item => !item.advisorId), query) : null;
+    const candidate = ranked.length && !catalogMode && !product && !type ? SSPSearch.guidance(entries.filter(item => !item.advisorId), query) : null;
+    const guide = candidate && (candidate.id !== 'troubleshoot' || /\b(flow|flows|approval|automate)\b/i.test(query)) && (candidate.id !== 'performance' || /\b(app|apps|canvas)\b/i.test(query)) ? candidate : null;
     if (guide) {
       const recommended = guide.steps.map(step => step.result);
       const urls = new Set(recommended.map(item => item.url));
       ranked = [...recommended, ...ranked.filter(item => !urls.has(item.url))];
     }
     const filtered = ranked.filter(item => (!type || item.type === type) && (!product || SSPSearch.tokens(product).every(word => SSPSearch.tokens(item.title + ' ' + item.text).includes(word))));
-    byId('starterScenarios').hidden = Boolean(query) || catalogMode;
+    byId('searchClarify').hidden = !query || catalogMode || Boolean(guide) || Boolean(type || product);
     byId('searchResults').hidden = !query && !catalogMode;
     byId('resultsHeading').textContent = catalogMode ? 'Skills Advisor catalog' : 'Results across the site';
     byId('resetSearch').textContent = catalogMode ? 'Search across SSP' : 'Clear search';
@@ -130,7 +222,7 @@
     if (guide) {
       byId('guidanceTitle').textContent = guide.title;
       byId('guidanceWhy').textContent = guide.why;
-      guide.steps.forEach(step => {
+      guide.steps.slice(0, 1).forEach(step => {
         const item = element('li');
         item.append(element('h3', step.title), element('p', step.why), anchor(step.result.title, step.result.url));
         byId('guidanceSteps').append(item);
@@ -147,37 +239,56 @@
       const excerpt = description.length > 270 ? description.slice(0, 267) + '...' : description;
       const source = anchor('View in ' + item.sourceName, item.source);
       source.className = 'result-source';
-      article.append(element('div', item.type + ' / ' + item.category, 'result-meta'), heading, element('p', excerpt));
+      article.append(element('div', catalogMode ? item.type + ' / ' + item.category : item.sourceName, 'result-meta'), heading, element('p', excerpt));
       if (item.availability) article.append(element('p', item.availability + (item.verified ? ' / Source verified ' + item.verified : ''), 'result-match'));
-      if (item.matched.length) article.append(element('p', 'Matched topics: ' + item.matched.slice(0, 6).join(', '), 'result-match'));
       article.append(source);
       byId('resultList').append(article);
     });
     byId('emptyResults').hidden = filtered.length > 0;
     byId('moreResults').hidden = filtered.length <= limit;
+    if (focusCatalog && catalogMode) {
+      focusCatalog = false;
+      byId('resultsHeading').scrollIntoView({ block: 'start' });
+      byId('resultsHeading').focus({ preventScroll: true });
+    }
+    if (focusSearch && query && !catalogMode) {
+      focusSearch = false;
+      const heading = byId('guidance').hidden ? byId('resultsHeading') : byId('guidanceTitle');
+      heading.scrollIntoView({ block: 'start' });
+      heading.focus({ preventScroll: true });
+    }
   }
-  function search(value) {
+  function search(value, reveal = false) {
     catalogMode = false;
-    if (location.hash === '#skills') history.replaceState(null, '', location.pathname);
+    focusCatalog = false;
+    if (location.hash === '#skills') history.replaceState(null, '', location.pathname + location.search);
     query = value.trim();
+    focusSearch = reveal && Boolean(query);
     byId('scenario').value = query;
     byId('typeFilter').value = '';
     byId('productFilter').value = '';
-    limit = 12;
+    limit = 3;
     render();
   }
   byId('scenarioForm').addEventListener('submit', event => {
     event.preventDefault();
-    search(byId('scenario').value);
-    if (ready && query) byId('resultsHeading').focus({ preventScroll: true });
+    selectedGoal = null;
+    selectedAnswer = null;
+    renderJourney(false);
+    search(byId('scenario').value, true);
   });
-  document.querySelectorAll('[data-scenario]').forEach(button => button.addEventListener('click', () => search(button.dataset.scenario)));
-  ['typeFilter', 'productFilter'].forEach(id => byId(id).addEventListener('change', () => { limit = 12; render(); }));
-  byId('moreResults').addEventListener('click', () => { limit += 12; render(); });
+  ['typeFilter', 'productFilter'].forEach(id => byId(id).addEventListener('change', () => { limit = catalogMode ? 12 : 3; render(); }));
+  byId('moreResults').addEventListener('click', () => { limit += catalogMode ? 12 : 3; render(); });
   byId('resetSearch').addEventListener('click', () => { search(''); byId('scenario').focus(); });
   byId('retryIndex').addEventListener('click', loadIndex);
   function browseCatalog() {
+    byId('advancedSearch').open = true;
+    selectedGoal = null;
+    selectedAnswer = null;
+    renderJourney(false);
     catalogMode = true;
+    focusCatalog = true;
+    focusSearch = false;
     query = '';
     byId('scenario').value = '';
     byId('typeFilter').value = 'Skill';
@@ -193,20 +304,50 @@
     document.documentElement.dataset.theme = theme;
     try { localStorage.setItem('sspTheme', theme); } catch {}
   });
-  document.querySelector('.menu-toggle').addEventListener('click', event => {
-    const open = byId('siteNav').classList.toggle('is-open');
-    event.currentTarget.setAttribute('aria-expanded', String(open));
-    event.currentTarget.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  const menuButton = document.querySelector('.menu-toggle');
+  function setMenu(open) {
+    byId('siteNav').classList.toggle('is-open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  }
+  menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+      setMenu(false);
+      menuButton.focus();
+    }
   });
   const resourceCategories = [...document.querySelectorAll('#resourceCategories > .panel')];
   const resourceLinks = [...document.querySelectorAll('#resources .cat-link')];
   const resourceQuery = byId('resourceQuery');
+  const resourceEntries = extract(document, { file: 'ssp-search.html', name: 'Start here' }).filter(item => item.type === 'Resource');
+  const resourceDescriptions = new Map(resourceCategories.map(category => [category.id, category.querySelector('.panel-sub').textContent]));
+  const resourceMatches = new Map(resourceCategories.map(category => {
+    const list = element('div', '', 'panel-body resource-matches');
+    list.append(element('ul'));
+    list.hidden = true;
+    category.append(list);
+    return [category.id, list];
+  }));
   let activeResource = 'get-started';
   function filterResources() {
-    const term = resourceQuery.value.trim().toLowerCase();
+    const term = resourceQuery.value.trim();
+    const results = term ? SSPSearch.rank(resourceEntries, term) : [];
     let count = 0;
     resourceCategories.forEach(category => {
-      const matches = !term || category.textContent.toLowerCase().includes(term);
+      const found = results.filter(item => item.categoryId === category.id);
+      const matches = !term || found.length > 0;
+      const list = resourceMatches.get(category.id);
+      const rows = list.querySelector('ul');
+      rows.replaceChildren();
+      found.forEach(item => {
+        const row = element('li');
+        row.append(anchor(item.title, item.url));
+        rows.append(row);
+      });
+      list.hidden = !term;
+      category.querySelector('.panel-body').hidden = Boolean(term);
+      category.querySelector('.panel-sub').textContent = term ? `${found.length} matching resource${found.length === 1 ? '' : 's'}` : resourceDescriptions.get(category.id);
       const selected = category.id === activeResource;
       category.hidden = term ? !matches : !selected;
       category.classList.toggle('active', selected);
@@ -216,7 +357,7 @@
       link.setAttribute('aria-pressed', String(selected));
       if (matches) count++;
     });
-    byId('resourceStatus').textContent = `${count} of ${resourceCategories.length} resource categories`;
+    byId('resourceStatus').textContent = term ? `${results.length} matching resources in ${count} categories` : `${count} of ${resourceCategories.length} resource categories`;
     byId('resourceEmpty').hidden = count > 0;
     byId('clearResources').hidden = !term;
   }
@@ -234,6 +375,18 @@
     history.replaceState(null, '', '#' + link.dataset.target);
     selectResource(link.dataset.target);
   }));
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const category = resourceCategories.find(item => '#' + item.id === link.getAttribute('href'));
+    if (!category) return;
+    event.preventDefault();
+    history.pushState(null, '', '#' + category.id);
+    selectResource(category.id);
+    const heading = category.querySelector('h2');
+    heading.tabIndex = -1;
+    heading.focus({ preventScroll: true });
+  });
   resourceQuery.addEventListener('input', filterResources);
   byId('clearResources').addEventListener('click', () => {
     resourceQuery.value = '';

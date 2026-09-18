@@ -6,10 +6,9 @@
   const filterButtons = Array.from(document.querySelectorAll(".filter"));
   const skillCards = Array.from(document.querySelectorAll(".skill-card"));
   const resultCount = document.getElementById("resultCount");
-  const clearFilters = document.getElementById("clearFilters");
   const reviewLaunch = document.getElementById("reviewLaunch");
   const skillLabel = document.body.dataset.skillLabel || "skill";
-  let activeCategory = "all";
+  let activeCategory = filterButtons[0].dataset.category;
 
   function syncThemeButton() {
     const dark = document.documentElement.getAttribute("data-theme") === "dark";
@@ -36,8 +35,8 @@
     const query = skillSearch.value.trim().toLowerCase();
     let visibleCount = 0;
     skillCards.forEach(card => {
-      const matchesQuery = !query || card.textContent.toLowerCase().includes(query);
-      const matchesCategory = activeCategory === "all" || card.dataset.category === activeCategory;
+      const matchesQuery = !query || SSPSearch.rank([{ title: card.querySelector('h3').textContent, text: card.textContent }], query).length > 0;
+      const matchesCategory = card.dataset.category === activeCategory;
       const visible = matchesQuery && matchesCategory;
       card.hidden = !visible;
       if (visible) visibleCount += 1;
@@ -50,7 +49,7 @@
       const heading = document.createElement("h3");
       heading.textContent = `No matching ${skillLabel} skills`;
       const message = document.createElement("p");
-      message.textContent = "Try another term or clear the active filters.";
+      message.textContent = "Try another term, clear the search, or choose another focus area.";
       empty.append(heading, message);
       document.getElementById("skillGrid").appendChild(empty);
     } else if (visibleCount && empty) {
@@ -58,14 +57,19 @@
     }
 
     resultCount.textContent = `${visibleCount} ${skillLabel} skill${visibleCount === 1 ? "" : "s"}`;
-    clearFilters.hidden = !query && activeCategory === "all";
+    const selectedFilter = filterButtons.find(button => button.dataset.category === activeCategory);
+    filterButtons.forEach(button => button.setAttribute("aria-pressed", String(button === selectedFilter)));
+    document.getElementById("guide-panel-heading").textContent = selectedFilter.querySelector(".guide-label").textContent + " guides";
+    document.getElementById("guide-panel-description").textContent = selectedFilter.dataset.description;
   }
 
-  function resetFilters() {
+  function openLinkedGuide() {
+    const card = skillCards.find(item => "#" + item.id === location.hash);
+    if (!card) return;
+    activeCategory = card.dataset.category;
     skillSearch.value = "";
-    activeCategory = "all";
-    filterButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.category === "all")));
     applyFilters();
+    card.scrollIntoView({ block: "start" });
   }
 
   themeButton.addEventListener("click", toggleTheme);
@@ -74,14 +78,16 @@
   skillSearch.addEventListener("input", applyFilters);
   filterButtons.forEach(button => button.addEventListener("click", () => {
     activeCategory = button.dataset.category;
-    filterButtons.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
     applyFilters();
   }));
-  clearFilters.addEventListener("click", resetFilters);
+  document.addEventListener("DOMContentLoaded", openLinkedGuide);
+  window.addEventListener("hashchange", openLinkedGuide);
   if (reviewLaunch) {
     const submissionUrl = document.querySelector('meta[name="review-submission-url"]')?.content.trim();
     reviewLaunch.disabled = !submissionUrl;
+    reviewLaunch.textContent = submissionUrl ? "Open submission portal" : "Submission portal pending";
     if (submissionUrl) reviewLaunch.addEventListener("click", () => window.open(submissionUrl, "ssp-deep-review", "noopener"));
   }
   syncThemeButton();
+  applyFilters();
 })();
