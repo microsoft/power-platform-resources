@@ -28,21 +28,21 @@ python -m http.server 8000
 
 Then open [http://localhost:8000/](http://localhost:8000/).
 
-The root entry redirects to [SSP Home](ssp-landing.html). [The resource catalog](ssp-resources.html) remains available from the Resources navigation link.
+The root entry redirects to [About SSP](ssp-landing.html). [Start here](ssp-search.html) combines scenario search with the complete [resource catalog](ssp-search.html#resources) below it. The separate Resources page has been removed.
 
 Opening `index.html` directly may work for basic viewing, but using a local server more closely matches the deployed experience.
 
 ## Scenario search
 
-Open [Search & Guidance](ssp-search.html) through the local server, or enter a scenario on [the SSP landing page](ssp-landing.html). Search fetches the five SSP HTML pages from the same origin and indexes individual resource links, skills, page summaries, and the linked Power Series labs destination. It does not crawl external websites or index individual labs. Direct `file:` previews cannot reliably fetch these pages; use HTTP.
+Open [Start here](ssp-search.html) through the local server. Search indexes its own resource catalog and fetches the four other SSP HTML pages from the same origin to index skills, page summaries, and the linked Power Series labs destination. It does not crawl external websites or index individual labs. Direct `file:` previews cannot reliably fetch these pages; use HTTP. The catalog retains the original Resources category sidebar and numbered content panels beneath search. JavaScript switches categories, filters matching panels, and opens category deep links; without JavaScript all panels remain readable.
 
 The index is rebuilt from current page content on each search-page load. Duplicate resource URLs are combined. Skill-card anchors are derived from their headings by the shared search entry script. Keep skill headings unique within each pillar.
 
 Ranking uses whole words, curated synonyms, and term rarity. Common scenarios have curated action sequences; recommendations always link to an available indexed source. This is local retrieval and authored guidance, not an AI-generated answer or an assessment of the user's actual solution. Product and content-type filters narrow the result list and hide the unfiltered action sequence.
 
-Scenario text is held in memory. Landing-page submissions use same-tab session storage for a one-time handoff, removed when the search page reads it. Search text is not included in URLs, network requests, or analytics. Do not enter sensitive information. If browser storage is disabled, enter the scenario directly on the search page.
+Scenario text is held in memory on Start here and is not included in URLs, network requests, or analytics. Do not enter sensitive information. About no longer contains a scenario form.
 
-Run search regression tests with `node --test tests/ssp-search.test.js`. Browser checks should cover landing-page handoff, result filters, pagination, skill anchors, unavailable content, unknown queries, and desktop/mobile layouts in both themes.
+Run search regression tests with `node --test tests/ssp-search.test.js`. Browser checks should cover resource browsing and category deep links, result filters, pagination, skill anchors, unavailable content, unknown queries, and desktop/mobile layouts in both themes.
 
 ## Repository structure
 

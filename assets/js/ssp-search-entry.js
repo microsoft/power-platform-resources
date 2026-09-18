@@ -3,7 +3,7 @@
   if (nav && !nav.querySelector('a[href="ssp-search.html"]')) {
     const link = document.createElement('a');
     link.href = 'ssp-search.html';
-    link.textContent = 'Search';
+    link.textContent = 'Start here';
     if (location.pathname.endsWith('/ssp-search.html')) link.setAttribute('aria-current', 'page');
     nav.prepend(link);
   }
@@ -24,13 +24,4 @@
     target.style.scrollMarginTop = '90px';
     target.scrollIntoView();
   }
-  document.querySelectorAll('[data-scenario-entry]').forEach(form => {
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      const query = form.querySelector('textarea').value.trim();
-      if (!query) return;
-      try { sessionStorage.setItem('sspScenario', query); } catch {}
-      location.href = 'ssp-search.html';
-    });
-  });
 })();

@@ -1,10 +1,10 @@
 (() => {
   const sources = [
-    { file: 'ssp-resources.html', name: 'Resources' },
+    { file: 'ssp-search.html', name: 'Start here' },
     { file: 'ssp-design.html', name: 'Design' },
     { file: 'ssp-build.html', name: 'Build' },
     { file: 'ssp-review.html', name: 'Review' },
-    { file: 'ssp-landing.html', name: 'Home' }
+    { file: 'ssp-landing.html', name: 'About' }
   ];
   const byId = id => document.getElementById(id);
   let entries = [];
@@ -52,7 +52,7 @@
     });
     const heading = doc.querySelector('h1');
     if (heading) items.push({ title: source.name + ': ' + clean(heading.textContent), text: clean(doc.querySelector('.lead, .sub, .pagehead p')?.textContent || ''), category: source.name, type: 'Page', url: source.file, source: source.file, sourceName: source.name });
-    if (source.name === 'Home') {
+    if (source.name === 'About') {
       const lab = doc.querySelector('a[href*="apps-agents-workshop/labs"]');
       if (lab) items.push({ title: 'Power Series hands-on labs', text: 'Power Platform apps agents workshop learning hands-on labs', category: 'Learn', type: 'Learning', url: lab.href, source: source.file + '#pillars', sourceName: 'Learn pillar' });
     }
@@ -64,6 +64,7 @@
     byId('retryIndex').hidden = true;
     const results = await Promise.all(sources.map(async source => {
       try {
+        if (source.file === 'ssp-search.html') return { items: extract(document, source) };
         const response = await fetch(source.file, { cache: 'no-cache', signal: AbortSignal.timeout(10000) });
         if (!response.ok) throw new Error('Unavailable page');
         return { items: extract(new DOMParser().parseFromString(await response.text(), 'text/html'), source) };
@@ -197,10 +198,53 @@
     event.currentTarget.setAttribute('aria-expanded', String(open));
     event.currentTarget.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
   });
-  try {
-    const pending = sessionStorage.getItem('sspScenario');
-    sessionStorage.removeItem('sspScenario');
-    if (pending) search(pending);
-  } catch {}
+  const resourceCategories = [...document.querySelectorAll('#resourceCategories > .panel')];
+  const resourceLinks = [...document.querySelectorAll('#resources .cat-link')];
+  const resourceQuery = byId('resourceQuery');
+  let activeResource = 'get-started';
+  function filterResources() {
+    const term = resourceQuery.value.trim().toLowerCase();
+    let count = 0;
+    resourceCategories.forEach(category => {
+      const matches = !term || category.textContent.toLowerCase().includes(term);
+      const selected = category.id === activeResource;
+      category.hidden = term ? !matches : !selected;
+      category.classList.toggle('active', selected);
+      const link = resourceLinks.find(item => item.dataset.target === category.id);
+      link.hidden = !matches;
+      link.classList.toggle('active', selected);
+      link.setAttribute('aria-pressed', String(selected));
+      if (matches) count++;
+    });
+    byId('resourceStatus').textContent = `${count} of ${resourceCategories.length} resource categories`;
+    byId('resourceEmpty').hidden = count > 0;
+    byId('clearResources').hidden = !term;
+  }
+  function selectResource(id) {
+    activeResource = id;
+    resourceQuery.value = '';
+    filterResources();
+    byId(id).scrollIntoView({ block: 'start' });
+  }
+  function openResourceHash() {
+    const category = resourceCategories.find(item => '#' + item.id === location.hash);
+    if (category) selectResource(category.id);
+  }
+  resourceLinks.forEach(link => link.addEventListener('click', () => {
+    history.replaceState(null, '', '#' + link.dataset.target);
+    selectResource(link.dataset.target);
+  }));
+  resourceQuery.addEventListener('input', filterResources);
+  byId('clearResources').addEventListener('click', () => {
+    resourceQuery.value = '';
+    filterResources();
+    resourceQuery.focus();
+  });
+  byId('resourceTools').hidden = false;
+  byId('resourceRail').hidden = false;
+  resourceQuery.value = new URLSearchParams(location.search).get('q') || '';
+  filterResources();
+  window.addEventListener('hashchange', openResourceHash);
+  openResourceHash();
   loadIndex();
 })();

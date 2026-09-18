@@ -3,6 +3,8 @@ const assert = require('node:assert/strict');
 const { rank, guidance } = require('../assets/js/ssp-search-engine.js');
 const { parseCatalog } = require('../scripts/sync-skills-advisor.js');
 const catalog = require('../assets/data/skills-advisor.json');
+const { readFileSync, existsSync } = require('node:fs');
+const { join } = require('node:path');
 
 const entries = [
   ['App Performance Review', 'Examine queries, delegation and monitor traces.', 'Skill'],
@@ -79,4 +81,30 @@ test('catalog parsing rejects changed formats, duplicate IDs and unsafe source U
 test('SSP guides remain eligible for curated scenario recommendations', () => {
   const guides = entries.map(item => ({ ...item, type: item.type === 'Skill' ? 'Guide' : item.type }));
   assert.equal(guidance(guides, 'slow app').steps[0].result.title, 'App Performance Review');
+});
+
+test('Start here owns the complete resource catalog below search', () => {
+  const html = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
+  assert.match(html, /<title>SSP - Start here<\/title>/);
+  assert.ok(html.indexOf('id="resources"') > html.indexOf('id="searchResults"'));
+  const categories = [...html.matchAll(/<article class="panel(?: active)?" id="([^"]+)"/g)];
+  assert.equal(categories.length, 13);
+  assert.equal(new Set(categories.map(match => match[1])).size, 13);
+  const categoryButtons = [...html.matchAll(/class="cat-link(?: active)?" data-target="([^"]+)"/g)];
+  assert.deepEqual(categoryButtons.map(match => match[1]), categories.map(match => match[1]));
+  assert.doesNotMatch(html, /resource-category|id="resourceCategory"/);
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(new Set(ids).size, ids.length);
+  assert.equal(existsSync(join(__dirname, '../ssp-resources.html')), false);
+});
+
+test('About has no scenario form and SSP pages no longer link to Resources', () => {
+  const about = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
+  assert.match(about, /<title>SSP - About<\/title>/);
+  assert.doesNotMatch(about, /data-scenario-entry|id="landingScenario"/);
+  for (const page of ['landing', 'search', 'design', 'build', 'review']) {
+    const html = readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8');
+    assert.doesNotMatch(html, /ssp-resources\.html|>Home<\/a>/);
+    assert.match(html, /href="ssp-landing.html"[^>]*>About<\/a>/);
+  }
 });

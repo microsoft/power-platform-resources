@@ -4,6 +4,17 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-09-18
+
+### Changed
+
+- Renamed Home to About and Search to Start here throughout SSP navigation.
+- Moved all 13 resource categories and their links below search on Start here, retaining the original category sidebar, icons, counts, numbered resource panels, search filtering, and responsive layout, with updated internal links.
+
+### Removed
+
+- Removed the scenario form from About and the separate Resources page and navigation item.
+
 ## 2026-09-15
 
 ### Added
