@@ -8,6 +8,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Added search keyword-match percentages, matched and related terms, and missing terms, alongside visible recommendation reasons. Percentages represent term coverage, not confidence or solution suitability; external previews retain the recommendation context.
+- Indexed published Power Series workshop labs from microsoft/apps-agents-workshop with source descriptions and direct links to rendered lab pages; added a repeatable catalog refresh command.
+- Added a new-tab indicator to the Learn menu link and made it open the Power Series catalog directly, while retaining previews for other external links.
+- Restricted Application Insights to the private SSP Pages origin. Disabled analytics on the public Power Platform Resources origin pending CELA clearance, while retaining cookie-free page telemetry and URL-query redaction.
+- Aligned tags and launch buttons consistently across all four About pillars and made expanded panels adapt to their content without overflowing.
+- Renamed Start here to Resources and moved it to the final navigation position across the site, preserving its existing URL.
+- Added a site-wide preview before opening external web links, with available listing summaries, destination URLs, Stay here and Continue actions, and accessible modal navigation. Internal links and downloads remain direct.
+- Integrated the About page's resource-catalog action below its statistics as a centered button, removing the isolated link section.
+- Set About as the default landing page, including the no-JavaScript fallback, while preserving legacy resource bookmark destinations.
+- Made single-answer Design guide questions advance immediately on selection, with Back available on questions and recommendations to revise answers. Kept Continue for the multi-priority ranking step.
+- Unified the Design topic-card lift and shadow across Start here goals, About featured cards, and Design topic-step cards, including keyboard focus and reduced-motion support.
+- Added a new-tab arrow indicator to search-result links that open in a new tab, leaving same-tab links and the resource catalog unchanged.
 - Aligned the Start here introduction with the shared page width and kept a single top-level search for guides, skills, and resources.
 - Made Start here the default site entry while preserving legacy resource bookmarks and the About pillars link.
 - Presented the five Start here goals as prominent numbered cards and combined search into the same section. Replaced the scenario textarea with a standard search field and removed scenario-oriented helper text.

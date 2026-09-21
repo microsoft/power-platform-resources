@@ -1,6 +1,5 @@
 (() => {
-	if (window.location.origin !== "https://microsoft.github.io" ||
-		!window.location.pathname.startsWith("/power-platform-resources/") ||
+	if (window.location.origin !== "https://animated-barnacle-pz75q9k.pages.github.io" ||
 		document.getElementById("app-insights-sdk")) {
 		return;
 	}

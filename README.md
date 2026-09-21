@@ -36,7 +36,15 @@ Opening `index.html` directly may work for basic viewing, but using a local serv
 
 Start here begins with five goal-based paths: learn, build, fix, review, and expand adoption. Each asks one follow-up question and returns a curated next action with up to two supporting resources. Every path includes an unsure choice, Back, and Start over. These routes are defined in `assets/js/ssp-search-engine.js`, work without fetching the search index, and never send answers to a service. Search remains below the guide, with three initial results and an optional advanced section for technical filters and the Skills Advisor catalog.
 
-Open [Start here](ssp-search.html) through the local server. Search indexes its own resource catalog and fetches the four other SSP HTML pages from the same origin to index skills, page summaries, and the linked Power Series labs destination. It does not crawl external websites or index individual labs. Direct `file:` previews cannot reliably fetch these pages; use HTTP. The catalog retains the original Resources category sidebar and numbered content panels beneath search. JavaScript switches categories, filters matching panels, and opens category deep links; without JavaScript all panels remain readable.
+Open [Resources](ssp-search.html) through the local server. Search indexes its own resource catalog, the four other SSP HTML pages, and local Skills Advisor and Power Series lab snapshots. Individual lab results link to the rendered workshop pages and retain their source descriptions for external-link previews. Searches do not crawl external websites or send queries to GitHub. Direct `file:` previews cannot reliably fetch these files; use HTTP. The catalog retains its category sidebar and numbered content panels beneath search.
+
+### Power Series Labs
+
+The snapshot in [assets/data/workshop-labs.json](assets/data/workshop-labs.json) imports published lab titles, descriptions, audiences, levels, and durations from [microsoft/apps-agents-workshop](https://github.com/microsoft/apps-agents-workshop). Source documentation is licensed under [CC BY 4.0](https://github.com/microsoft/apps-agents-workshop/blob/main/LICENSE-DOCS); metadata is normalized for search and attributed to Power Series. The snapshot records the source commit and import date. Only Markdown entries marked `lab: true` are included; supporting assets and unpublished material are not standalone search results.
+
+Refresh with `node scripts/sync-workshop-labs.js`; verify parity with `node scripts/sync-workshop-labs.js --check`. The importer follows the upstream catalog's file discovery rules and supported front-matter format, rejects missing or unsupported metadata before replacing the snapshot, and generates links under `https://microsoft.github.io/apps-agents-workshop/labs/lab.html`. Commit the regenerated snapshot after validation. It is not refreshed automatically in visitors' browsers.
+
+The Learn navigation link opens the workshop catalog directly in a new tab. Individual lab search results retain the summary preview before leaving this site.
 
 The index is rebuilt from current page content on each search-page load. Duplicate resource URLs are combined. Skill-card anchors are derived from their headings by the shared search entry script. Keep skill headings unique within each pillar.
 
@@ -81,7 +89,7 @@ The main resource page uses `assets/css/main.css`, `assets/js/main.js`, and the 
 
 ## Site analytics
 
-All site pages load `assets/js/telemetry.js`. Analytics runs only under `https://microsoft.github.io/power-platform-resources/`; localhost, direct file previews, and other hosts or paths do not load the SDK or send telemetry. Update the production check if the site moves to a custom domain.
+All site pages load `assets/js/telemetry.js`. Analytics runs only on the private SSP origin `https://animated-barnacle-pz75q9k.pages.github.io`. The public site at `https://microsoft.github.io/power-platform-resources/` is excluded pending CELA clearance. Localhost, direct file previews, and all other origins do not load the SDK or send telemetry. Do not enable public-site analytics before clearance.
 
 The script uses the configured Application Insights connection string and records a page view on each full page load, plus page-load performance when available. It reports page titles, URLs without queries or fragments, referrer origins only, and standard SDK browser/device context. It does not collect search or form input, link clicks, exceptions, or AJAX/fetch dependencies. Analytics cookies and local/session storage are disabled; user and session counts therefore cannot reliably identify repeat visitors across page loads. Page views are not unique people.
 

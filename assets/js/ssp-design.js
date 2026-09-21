@@ -193,15 +193,15 @@
         input.value = option.value;
         input.required = true;
         input.checked = answers[question.id] === option.value;
-        input.addEventListener("change", () => {
+        input.addEventListener("click", () => {
           answers = engine.normalize({ ...answers, [question.id]: option.value });
-          next.disabled = false;
-          byId("advisorReset").disabled = false;
+          advance();
         });
         label.append(input, choiceIcon(question.id, option.value), element("span", option.label));
         options.appendChild(label);
       });
-      next.replaceChildren(document.createTextNode(step === 6 ? "See recommendations " : "Continue "), element("span", null, "fas fa-arrow-right"));
+      next.hidden = !question.ranked;
+      next.replaceChildren(document.createTextNode("Continue "), element("span", null, "fas fa-arrow-right"));
       next.lastChild.setAttribute("aria-hidden", "true");
       next.disabled = !answers[question.id];
       byId("advisorBack").disabled = step === 0;
@@ -286,16 +286,19 @@
       step = 0;
       renderQuestion();
     }
-    form.addEventListener("submit", event => {
-      event.preventDefault();
+    function advance() {
       if (!answers[engine.questionsFor(answers)[step].id]) return;
       if (step === 6) renderResult();
       else { step += 1; renderQuestion(); }
+    }
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      advance();
     });
     byId("advisorBack").addEventListener("click", () => { if (step > 0) step -= 1; renderQuestion(); });
     byId("advisorReset").addEventListener("click", reset);
     byId("advisorRestart").addEventListener("click", reset);
-    byId("advisorEdit").addEventListener("click", () => { step = 0; renderQuestion(); });
+    byId("advisorEdit").addEventListener("click", () => { step = 6; renderQuestion(); });
     byId("advisorDownload").addEventListener("click", () => {
       if (!result?.complete) return;
       const markdown = engine.toMarkdown(result, location.href, skills);

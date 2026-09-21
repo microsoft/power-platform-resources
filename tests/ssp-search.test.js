@@ -8,6 +8,102 @@ const { join } = require('node:path');
 const { runInNewContext } = require('node:vm');
 const advisor = require('../assets/js/ssp-design-advisor.js');
 
+test('Application Insights runs only on the private SSP origin and strips sensitive URL components', () => {
+  const script = readFileSync(join(__dirname, '../assets/js/telemetry.js'), 'utf8');
+  function execute(href, existing = false) {
+    const scripts = [];
+    const views = [];
+    let config;
+    let initializer;
+    runInNewContext(script, {
+      URL, console,
+      window: { location: new URL(href) },
+      document: {
+        title: 'SSP - Resources', referrer: 'https://example.org/private?query=secret',
+        getElementById: () => existing,
+        createElement: () => ({}),
+        head: { appendChild: node => scripts.push(node) }
+      },
+      Microsoft: { ApplicationInsights: { ApplicationInsights: class {
+        constructor(options) { config = options.config; }
+        loadAppInsights() {}
+        addTelemetryInitializer(callback) { initializer = callback; }
+        trackPageView(view) { views.push(view); }
+      } } }
+    });
+    if (scripts.length) scripts[0].onload();
+    return { scripts, views, config, initializer };
+  }
+  for (const href of [
+    'https://microsoft.github.io/power-platform-resources/',
+    'https://microsoft.github.io/power-platform-resources/ssp-search.html',
+    'http://127.0.0.1:8018/ssp-search.html',
+    'https://example.org/ssp-search.html',
+    'https://animated-barnacle-pz75q9k.pages.github.io.example.org/',
+    'http://animated-barnacle-pz75q9k.pages.github.io/'
+  ]) assert.equal(execute(href).scripts.length, 0, href);
+  const origin = 'https://animated-barnacle-pz75q9k.pages.github.io';
+  const result = execute(origin + '/ssp-search.html?q=private#resources');
+  assert.equal(result.scripts.length, 1);
+  assert.equal(result.views[0].uri, origin + '/ssp-search.html');
+  assert.equal(result.views[0].refUri, 'https://example.org');
+  assert.equal(result.config.disableCookiesUsage, true);
+  assert.equal(result.config.disableAjaxTracking, true);
+  assert.equal(result.config.disableFetchTracking, true);
+  assert.equal(result.initializer({ baseType: 'EventData' }), false);
+  const telemetry = { baseType: 'PageviewData', baseData: {}, ext: { trace: {} } };
+  result.initializer(telemetry);
+  assert.equal(telemetry.baseData.uri, origin + '/ssp-search.html');
+  assert.equal(telemetry.ext.trace.name, '/ssp-search.html');
+  assert.equal(execute(origin + '/ssp-landing.html').scripts.length, 1);
+  assert.equal(execute(origin + '/', true).scripts.length, 0);
+});
+
+test('Workshop labs are searchable and point to the published lab viewer', () => {
+  const workshop = require('../assets/data/workshop-labs.json');
+  const { parseLab } = require('../scripts/sync-workshop-labs.js');
+  assert.ok(workshop.labs.length >= 20);
+  assert.equal(new Set(workshop.labs.map(lab => lab.path)).size, workshop.labs.length);
+  for (const lab of workshop.labs) {
+    const url = new URL(lab.url);
+    assert.equal(url.origin + url.pathname, 'https://microsoft.github.io/apps-agents-workshop/labs/lab.html');
+    assert.equal(url.searchParams.get('path'), lab.path);
+    assert.equal(url.searchParams.get('branch'), 'main');
+    assert.equal(rank(workshop.labs, lab.title)[0]?.url, lab.url);
+  }
+  for (const [query, expected] of [
+    ['cloud flow approval lab', 'automation-01-cloud-flow/01-cloud-flow.md'],
+    ['Power Pages workshop', 'byoc-powerpages/byoc-powerpages.md'],
+    ['work queues advanced', 'automation-05b-work-queues-advanced/05-b-work-queues.md']
+  ]) assert.ok(rank(workshop.labs, query).some(lab => lab.path === expected), query);
+  assert.equal(parseLab('# Not a lab', 'README.md'), null);
+  assert.throws(() => parseLab('---\nlab: true\ntitle: Missing fields\n---', 'test.md'), /Missing/);
+  assert.throws(() => parseLab('---\nlab: true\n---', '../test.md'), /Invalid lab path/);
+});
+
+test('Search match percentages expose keyword coverage rather than ranking confidence', () => {
+  const { matchDetails, explain } = require('../assets/js/ssp-search-engine.js');
+  const entry = { title: 'Cloud flow approvals', text: 'Power Automate approval training lab' };
+  assert.equal(matchDetails(entry, 'approval lab').percent, 100);
+  assert.deepEqual(matchDetails(entry, 'approval lab').keywords, ['approval', 'lab']);
+  assert.equal(matchDetails(entry, 'approval migration').percent, 50);
+  assert.deepEqual(matchDetails(entry, 'approval migration').missing, ['migration']);
+  assert.equal(matchDetails(entry, 'SAP migration').percent, 0);
+  assert.equal(matchDetails(entry, '').percent, null);
+  assert.equal(matchDetails(entry, 'please help').percent, 0);
+  assert.equal(matchDetails(entry, 'approval approval lab').percent, 100);
+  const related = matchDetails({ title: 'App performance' }, 'slow app');
+  assert.equal(related.percent, 75);
+  assert.deepEqual(related.related, [{ keyword: 'slow', match: 'performance' }]);
+  assert.match(explain(entry, 'approval lab'), /"approval", "lab"/);
+  assert.equal(explain(entry, ''), '');
+  assert.equal(explain(entry, 'SAP'), '');
+  assert.equal(explain({ ...entry, recommendationReason: 'Check the trigger first.' }, 'approval'), 'Check the trigger first.');
+  const renderer = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
+  assert.match(renderer, /SSPSearch\.matchDetails\(item, query\)/);
+  assert.match(renderer, /resourceLink\.dataset\.previewReason = reason/);
+});
+
 test('Featured cards link to their named guides or an accurately labeled catalog', () => {
   const html = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
   const design = readFileSync(join(__dirname, '../ssp-design.html'), 'utf8');
@@ -70,7 +166,7 @@ test('About and Start here menus close on Escape and return keyboard focus', () 
   }
 });
 
-test('Legacy resource bookmarks redirect to Start here while preserving theme and fragments', () => {
+test('Root defaults to About while legacy resource bookmarks preserve their destinations and theme', () => {
   const html = readFileSync(join(__dirname, '../index.html'), 'utf8');
   const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
   const resources = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
@@ -83,7 +179,7 @@ test('Legacy resource bookmarks redirect to Start here while preserving theme an
       search: '?clawpilotTheme=dark', hash: fragment ? '#' + fragment : '',
       replace: value => { redirect = new URL(value); }
     } } });
-    assert.equal(redirect.pathname, '/ssp/' + (fragment === 'pillars' ? 'ssp-landing.html' : 'ssp-search.html'));
+    assert.equal(redirect.pathname, '/ssp/' + (!fragment || fragment === 'pillars' ? 'ssp-landing.html' : 'ssp-search.html'));
     assert.equal(redirect.hash, fragment ? '#' + fragment : '');
     assert.equal(redirect.searchParams.get('scoutTheme'), 'dark');
   }
@@ -213,6 +309,17 @@ test('Design guide uses accurate naming and stages above the question counter', 
   assert.ok(app >= 0 && stages > app && counter > stages);
   assert.match(html, /class="advisor-stages" aria-label="Design guide stages"/);
   assert.match(html, /Next steps<\/li>/);
+});
+
+test('Design guide advances on answer activation and reserves Continue for ranked priorities', () => {
+  const script = readFileSync(join(__dirname, '../assets/js/ssp-design.js'), 'utf8');
+  const html = readFileSync(join(__dirname, '../ssp-design.html'), 'utf8');
+  assert.match(script, /input\.addEventListener\("click", \(\) => \{\s*answers = engine\.normalize\([^\n]+\);\s*advance\(\);/);
+  assert.match(script, /next\.hidden = !question\.ranked/);
+  assert.match(script, /if \(step === 6\) renderResult\(\)/);
+  assert.match(script, /byId\("advisorEdit"\)\.addEventListener\("click", \(\) => \{ step = 6; renderQuestion\(\); \}\)/);
+  assert.match(html, /id="advisorEdit"[^\n]+ Back<\/button>/);
+  assert.match(html, /ssp-design\.js\?v=20260921-auto-advance/);
 });
 
 test('Design topic choices precede the advisor and guide catalog', () => {
@@ -499,9 +606,9 @@ test('SSP guides remain eligible for curated scenario recommendations', () => {
   assert.equal(guidance(guides, 'slow app').steps[0].result.title, 'App Performance Review');
 });
 
-test('Start here owns the complete resource catalog below search', () => {
+test('Resources owns the complete resource catalog below search', () => {
   const html = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
-  assert.match(html, /<title>SSP - Start here<\/title>/);
+  assert.match(html, /<title>SSP - Resources<\/title>/);
   assert.ok(html.indexOf('id="resources"') > html.indexOf('id="searchResults"'));
   const categories = [...html.matchAll(/<article class="panel(?: active)?" id="([^"]+)"/g)];
   assert.equal(categories.length, 13);
@@ -514,7 +621,26 @@ test('Start here owns the complete resource catalog below search', () => {
   assert.equal(existsSync(join(__dirname, '../ssp-resources.html')), false);
 });
 
-test('About has no scenario form and SSP pages no longer link to Resources', () => {
+test('Resources is appended as the final navigation tab', () => {
+  const script = readFileSync(join(__dirname, '../assets/js/ssp-search-entry.js'), 'utf8');
+  const navigation = script.slice(0, script.indexOf("  document.querySelectorAll('.skill-card')")) + '})();';
+  for (const pathname of ['/ssp-search.html', '/ssp-landing.html']) {
+    const links = [{ textContent: 'About' }, { textContent: 'Learn' }];
+    const nav = { querySelector: () => null, append: link => links.push(link) };
+    runInNewContext(navigation, {
+      location: { pathname },
+      document: {
+        getElementById: () => nav,
+        createElement: () => ({ setAttribute(name, value) { this[name] = value; } })
+      }
+    });
+    assert.equal(links.at(-1).textContent, 'Resources');
+    assert.equal(links.at(-1).href, 'ssp-search.html');
+    assert.equal(links.at(-1)['aria-current'], pathname === '/ssp-search.html' ? 'page' : undefined);
+  }
+});
+
+test('About has no scenario form and SSP pages no longer link to the retired resource page', () => {
   const about = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
   assert.match(about, /<title>SSP - About<\/title>/);
   assert.doesNotMatch(about, /data-scenario-entry|id="landingScenario"/);
@@ -550,6 +676,80 @@ test('every guided goal has a clear next action and an unsure path', () => {
   assert.equal(nextStep('learn', 'unknown'), null);
 });
 
+test('Interactive cards share Design lift with keyboard and reduced-motion support', () => {
+  const css = readFileSync(join(__dirname, '../assets/css/header-brand.css'), 'utf8');
+  assert.match(css, /:is\(\.outcome, #goalChoices \.journey-choice, \.fcard, \.path-choice\)/);
+  assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)/);
+  assert.match(css, /:focus-visible\s*\{\s*transform: translateY\(-3px\)/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?transform: none;\s*transition: none;/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?:is\(:hover, :focus-visible\)/);
+  for (const page of ['search', 'design', 'build', 'review', 'landing', 'design-guide']) {
+    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /header-brand\.css\?v=20260921-external-preview/);
+  }
+});
+
+test('External previews use listing summaries and skip internal, non-web, and download links', () => {
+  const script = readFileSync(join(__dirname, '../assets/js/ssp-search-entry.js'), 'utf8');
+  const describe = runInNewContext(script.slice(script.indexOf('  function describeExternalLink'), script.indexOf('  let preview;')) + '\ndescribeExternalLink;', {
+    URL, location: { href: 'https://example.org/ssp/ssp-search.html', origin: 'https://example.org' }
+  });
+  function link(href, summary = '', download = false) {
+    return {
+      href, dataset: { previewSummary: summary },
+      hasAttribute: name => name === 'download' && download,
+      getAttribute: () => null,
+      cloneNode: () => ({ textContent: 'Resource title', querySelectorAll: () => [] }),
+      closest: () => null
+    };
+  }
+  for (const href of ['#resources', 'ssp-design.html', 'mailto:someone@example.org', 'tel:123', 'blob:https://example.org/brief']) assert.equal(describe(link(href)), null);
+  assert.equal(describe(link('https://learn.microsoft.com/file', '', true)), null);
+  const resource = describe(link('https://learn.microsoft.com/power-platform/', 'Full published description.'));
+  assert.equal(resource.title, 'Resource title');
+  assert.equal(resource.summary, 'Full published description.');
+  assert.equal(resource.url.hostname, 'learn.microsoft.com');
+  assert.match(describe(link('https://example.net/unknown')).summary, /No additional summary/);
+  assert.match(describe(link('https://aka.ms/powerplatformskillsadvisor')).summary, /not an individual guide/);
+  const learn = link('https://microsoft.github.io/apps-agents-workshop/labs/');
+  learn.closest = selector => selector === '#siteNav' ? {} : null;
+  assert.equal(describe(learn), null);
+  const lab = describe(link('https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=test.md', 'Specific lab description'));
+  assert.equal(lab.title, 'Resource title');
+  assert.equal(lab.summary, 'Specific lab description');
+  assert.match(script, /learnLink\.target = '_blank'/);
+  assert.match(script, /Learn \(opens in a new tab\)/);
+  for (const page of ['search', 'design', 'build', 'review', 'landing', 'design-guide']) {
+    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20260921-external-preview/);
+  }
+});
+
+test('About pillars share aligned actions and flexible content tracks', () => {
+  const html = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
+  assert.match(html, /\.pillar\.open\{flex:1 1 0;/);
+  assert.match(html, /\.pillar-body\{display:grid;grid-template-columns:minmax\(0,\.85fr\) minmax\(0,1\.25fr\) minmax\(0,\.8fr\)/);
+  assert.match(html, /\.pillar \.meta\{display:flex;justify-content:flex-end;/);
+  assert.match(html, /\.pb-actions \.pillar-launch\{box-sizing:border-box;width:100%;max-width:200px;min-height:44px;text-align:center/);
+  assert.equal((html.match(/class="pb-actions"/g) || []).length, 4);
+});
+
+test('About resource action is grouped with the statistics', () => {
+  const html = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
+  const section = html.slice(html.indexOf('<section id="categories"'), html.indexOf('<!-- FEATURED -->'));
+  assert.equal((section.match(/<section/g) || []).length, 1);
+  assert.match(section, /class="stats"[\s\S]+class="catalog-action"/);
+  assert.match(section, /class="btn ghost" href="ssp-search.html#resources"/);
+});
+
+test('New-tab indicators are scoped to search results', () => {
+  const css = readFileSync(join(__dirname, '../assets/css/ssp-search.css'), 'utf8');
+  const indicator = css.split('\n').find(line => line.includes('\\2197'));
+  assert.ok(indicator);
+  assert.ok(indicator.startsWith('#resultList a[target="_blank"]::after'));
+  assert.ok(indicator.includes('opens in a new tab'));
+  const shared = readFileSync(join(__dirname, '../assets/css/header-brand.css'), 'utf8');
+  assert.doesNotMatch(shared, /\\2197/);
+});
+
 test('guided choices precede search and advanced controls stay optional', () => {
   const html = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
   const introduction = html.slice(html.indexOf('<section class="scenario-entry"'), html.indexOf('<div class="resource-band">'));
@@ -560,7 +760,7 @@ test('guided choices precede search and advanced controls stay optional', () => 
   assert.doesNotMatch(html, /id="(?:resourceQuery|resourceTools|clearResources|resourceEmpty)"/);
   const css = readFileSync(join(__dirname, '../assets/css/ssp-search.css'), 'utf8');
   assert.doesNotMatch(css, /\.scenario-entry\s*>\s*\.wrap\s*\{/);
-  assert.match(readFileSync(join(__dirname, '../index.html'), 'utf8'), /<noscript><meta http-equiv="refresh" content="0; url=ssp-search.html"/);
+  assert.match(readFileSync(join(__dirname, '../index.html'), 'utf8'), /<noscript><meta http-equiv="refresh" content="0; url=ssp-landing.html"/);
   assert.ok(html.indexOf('id="goalChoices"') < html.indexOf('id="scenarioForm"'));
   assert.match(html, /<details id="advancedSearch" class="advanced-search">/);
   assert.ok(html.indexOf('id="advancedSearch"') < html.indexOf('id="typeFilter"'));

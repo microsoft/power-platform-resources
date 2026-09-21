@@ -113,6 +113,37 @@
     }).filter(entry => entry.score > 0).sort((first, second) => second.score - first.score || first.title.localeCompare(second.title));
   }
 
+  function matchDetails(entry, query) {
+    const words = searchWords(query);
+    const evidence = new Set(tokens([entry.title, entry.text, entry.category].filter(Boolean).join(' ')));
+    const keywords = [];
+    const related = [];
+    const missing = [];
+    words.forEach(word => {
+      if (evidence.has(word)) keywords.push(word);
+      else {
+        const match = (aliases[word] || []).find(alias => evidence.has(alias));
+        if (match) related.push({ keyword: word, match });
+        else missing.push(word);
+      }
+    });
+    return {
+      percent: words.length ? Math.round(100 * (keywords.length + related.length * .5) / words.length) : null,
+      keywords, related, missing
+    };
+  }
+
+  function explain(entry, query) {
+    if (entry.recommendationReason) return entry.recommendationReason;
+    const match = matchDetails(entry, query);
+    if (match.percent === null) return '';
+    const reasons = [];
+    if (normalize(entry.title) === normalize(query)) reasons.push('Its title matches your search.');
+    else if (match.keywords.length) reasons.push(`Its title or catalog description covers ${match.keywords.map(word => `"${word}"`).join(', ')} from your search.`);
+    if (match.related.length) reasons.push('Related topics: ' + match.related.map(item => `"${item.keyword}" relates to "${item.match}"`).join('; ') + '.');
+    return reasons.join(' ');
+  }
+
   function guidance(entries, query) {
     const scenario = scenarios.find(item => item.test.test(normalize(query)));
     if (!scenario) return null;
@@ -165,7 +196,7 @@
     return journeys.find(journey => journey.id === goalId)?.options.find(option => option.id === answerId) || null;
   }
 
-  const api = { rank, guidance, tokens, journeys, nextStep };
+  const api = { rank, guidance, explain, matchDetails, tokens, journeys, nextStep };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.SSPSearch = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

@@ -1,6 +1,6 @@
 (() => {
   const sources = [
-    { file: 'ssp-search.html', name: 'Start here' },
+    { file: 'ssp-search.html', name: 'Resources' },
     { file: 'ssp-design.html', name: 'Design' },
     { file: 'ssp-build.html', name: 'Build' },
     { file: 'ssp-review.html', name: 'Review' },
@@ -52,6 +52,7 @@
       const action = anchor(recommendation.action, recommendation.url);
       action.id = 'journeyAction';
       action.className = 'btn';
+      action.dataset.previewReason = recommendation.why;
       byId('journeyAction').replaceWith(action);
       const related = byId('journeyRelated').querySelector('ul');
       related.replaceChildren();
@@ -182,6 +183,13 @@
         verified: item.verified
       })) });
     } catch { results.push({ failed: 'Skills Advisor catalog', items: [] }); }
+    let workshop;
+    try {
+      const response = await fetch('assets/data/workshop-labs.json', { cache: 'no-cache', signal: AbortSignal.timeout(10000) });
+      if (!response.ok) throw new Error('Unavailable workshop catalog');
+      workshop = await response.json();
+      results.push({ items: workshop.labs });
+    } catch { results.push({ failed: 'Power Series labs', items: [] }); }
     const unique = new Map();
     results.flatMap(result => result.items).forEach(item => {
       const key = item.advisorId ? 'advisor:' + item.advisorId : new URL(item.url, location.href).href;
@@ -196,6 +204,7 @@
     const siteFailures = results.slice(0, sources.length).filter(result => result.failed).length;
     const counts = catalog ? ['skill', 'mcp-capability', 'reference'].map(tier => catalog.skills.filter(item => item.tier === tier).length) : [];
     byId('indexStatus').textContent = entries.length ? `${entries.length} indexed entries from ${sources.length - siteFailures} site pages${catalog ? ` and Skills Advisor (${counts[0]} skills, ${counts[1]} MCP capabilities, ${counts[2]} references; source verified ${catalog.sourceGenerated}; imported ${catalog.retrieved.slice(0, 10)})` : ''}.${failed.length ? ' Unavailable: ' + failed.join(', ') + '.' : ''}` : 'Site content could not be loaded. Open this site over HTTP and try again, or browse Resources.';
+    if (workshop) byId('indexStatus').textContent += ` Power Series: ${workshop.labs.length} labs.`;
     byId('retryIndex').hidden = !failed.length;
     byId('searchNotice').hidden = !failed.length;
     byId('searchNotice').textContent = entries.length ? 'Some search content is unavailable. You can still choose a goal or browse resources below.' : 'Search is unavailable. Choose a goal or browse resources below.';
@@ -210,7 +219,7 @@
     const candidate = ranked.length && !catalogMode && !product && !type ? SSPSearch.guidance(entries.filter(item => !item.advisorId), query) : null;
     const guide = candidate && (candidate.id !== 'troubleshoot' || /\b(flow|flows|approval|automate)\b/i.test(query)) && (candidate.id !== 'performance' || /\b(app|apps|canvas)\b/i.test(query)) ? candidate : null;
     if (guide) {
-      const recommended = guide.steps.map(step => step.result);
+      const recommended = guide.steps.map(step => ({ ...step.result, recommendationReason: `Suggested next step: ${step.why}` }));
       const urls = new Set(recommended.map(item => item.url));
       ranked = [...recommended, ...ranked.filter(item => !urls.has(item.url))];
     }
@@ -226,7 +235,10 @@
       byId('guidanceWhy').textContent = guide.why;
       guide.steps.slice(0, 1).forEach(step => {
         const item = element('li');
-        item.append(element('h3', step.title), element('p', step.why), anchor(step.result.title, step.result.url));
+        const link = anchor(step.result.title, step.result.url);
+        link.dataset.previewSummary = step.result.description || step.result.text || step.result.title;
+        link.dataset.previewReason = step.why;
+        item.append(element('h3', step.title), element('p', step.why), link);
         byId('guidanceSteps').append(item);
       });
     }
@@ -236,12 +248,35 @@
       const article = element('article', '', 'search-result');
       if (item.advisorId) article.dataset.advisorId = item.advisorId;
       const heading = element('h3');
-      heading.append(anchor(item.title, item.url));
       const description = item.description || item.text;
+      const reason = SSPSearch.explain(item, query);
+      const match = SSPSearch.matchDetails(item, query);
+      const resourceLink = anchor(item.title, item.url);
+      resourceLink.dataset.previewSummary = description;
+      resourceLink.dataset.previewReason = reason;
+      heading.append(resourceLink);
       const excerpt = description.length > 270 ? description.slice(0, 267) + '...' : description;
       const source = anchor('View in ' + item.sourceName, item.source);
       source.className = 'result-source';
       article.append(element('div', catalogMode ? item.type + ' / ' + item.category : item.sourceName, 'result-meta'), heading, element('p', excerpt));
+      if (match.percent !== null) {
+        const matches = element('div', '', 'result-keywords');
+        const percentage = element('span', `${match.percent}% keyword match`, 'result-coverage');
+        percentage.title = 'Coverage of normalized search terms: exact matches count fully; related terms count half. Not a suitability or confidence score.';
+        percentage.setAttribute('aria-label', percentage.textContent + '. ' + percentage.title);
+        percentage.tabIndex = 0;
+        matches.append(percentage);
+        match.keywords.forEach(word => matches.append(element('span', word, 'result-keyword')));
+        match.related.forEach(item => matches.append(element('span', `${item.keyword} / ${item.match} (related)`, 'result-keyword')));
+        article.append(matches);
+        if (match.missing.length) article.append(element('p', 'Not matched: ' + match.missing.join(', '), 'result-match'));
+      }
+      if (reason) {
+        const explanation = element('p', '', 'result-reason');
+        explanation.append(element('strong', 'Why suggested: '), document.createTextNode(reason));
+        article.append(explanation);
+      }
+      if (item.duration && item.persona) article.append(element('p', `${item.persona} / Level ${item.level} / ${item.duration}`, 'result-match'));
       if (item.availability) article.append(element('p', item.availability + (item.verified ? ' / Source verified ' + item.verified : ''), 'result-match'));
       article.append(source);
       byId('resultList').append(article);
