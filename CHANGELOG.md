@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-09-21
+
+### Changed
+
+- Aligned the Start here introduction with the shared page width and kept a single top-level search for guides, skills, and resources.
+- Made Start here the default site entry while preserving legacy resource bookmarks and the About pillars link.
+- Presented the five Start here goals as prominent numbered cards and combined search into the same section. Replaced the scenario textarea with a standard search field and removed scenario-oriented helper text.
+
 ## 2026-09-18
 
 ### Added

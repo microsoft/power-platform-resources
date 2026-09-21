@@ -83,7 +83,7 @@ test('Legacy resource bookmarks redirect to Start here while preserving theme an
       search: '?clawpilotTheme=dark', hash: fragment ? '#' + fragment : '',
       replace: value => { redirect = new URL(value); }
     } } });
-    assert.equal(redirect.pathname, '/ssp/' + (fragment && fragment !== 'pillars' ? 'ssp-search.html' : 'ssp-landing.html'));
+    assert.equal(redirect.pathname, '/ssp/' + (fragment === 'pillars' ? 'ssp-landing.html' : 'ssp-search.html'));
     assert.equal(redirect.hash, fragment ? '#' + fragment : '');
     assert.equal(redirect.searchParams.get('scoutTheme'), 'dark');
   }
@@ -552,6 +552,15 @@ test('every guided goal has a clear next action and an unsure path', () => {
 
 test('guided choices precede search and advanced controls stay optional', () => {
   const html = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
+  const introduction = html.slice(html.indexOf('<section class="scenario-entry"'), html.indexOf('<div class="resource-band">'));
+  assert.ok(introduction.includes('id="scenarioForm"'));
+  assert.doesNotMatch(introduction, /search-band|<textarea|placeholder=|privacy-note|describe your scenario/i);
+  assert.match(introduction, /<input id="scenario" type="search"/);
+  assert.equal([...html.matchAll(/<input\b[^>]*type="search"/g)].length, 1);
+  assert.doesNotMatch(html, /id="(?:resourceQuery|resourceTools|clearResources|resourceEmpty)"/);
+  const css = readFileSync(join(__dirname, '../assets/css/ssp-search.css'), 'utf8');
+  assert.doesNotMatch(css, /\.scenario-entry\s*>\s*\.wrap\s*\{/);
+  assert.match(readFileSync(join(__dirname, '../index.html'), 'utf8'), /<noscript><meta http-equiv="refresh" content="0; url=ssp-search.html"/);
   assert.ok(html.indexOf('id="goalChoices"') < html.indexOf('id="scenarioForm"'));
   assert.match(html, /<details id="advancedSearch" class="advanced-search">/);
   assert.ok(html.indexOf('id="advancedSearch"') < html.indexOf('id="typeFilter"'));

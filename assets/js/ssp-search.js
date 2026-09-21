@@ -79,22 +79,24 @@
     renderJourney();
   }
   const goalPresentation = {
-    learn: { icon: 'training' },
-    build: { icon: 'building' },
-    fix: { icon: 'tools-samples' },
-    review: { icon: 'governance' },
-    scale: { icon: 'adoption' }
+    learn: { label: 'Learn', description: 'Explore the platform, build skills, and get hands-on practice.' },
+    build: { label: 'Build', description: 'Create an app, automate a task, or build a website or agent.' },
+    fix: { label: 'Fix', description: 'Investigate errors, slow apps, and flows that fail.' },
+    review: { label: 'Review', description: 'Check quality, performance, and security before release.' },
+    scale: { label: 'Scale', description: 'Plan adoption, environments, and access for more people.' }
   };
-  SSPSearch.journeys.forEach(journey => {
+  SSPSearch.journeys.forEach((journey, index) => {
     const presentation = goalPresentation[journey.id];
     const button = element('button', null, 'journey-choice');
-    const icon = document.querySelector(`[data-target="${presentation.icon}"] svg`)?.cloneNode(true);
-    if (icon) {
-      icon.setAttribute('aria-hidden', 'true');
-      icon.setAttribute('focusable', 'false');
-      button.append(icon);
-    }
-    button.append(element('span', journey.label));
+    const number = element('span', String(index + 1).padStart(2, '0') + ' / ' + presentation.label, 'goal-number');
+    number.setAttribute('aria-hidden', 'true');
+    const title = element('span', journey.label, 'goal-title');
+    title.id = 'goal-title-' + journey.id;
+    const description = element('span', presentation.description, 'goal-description');
+    description.id = 'goal-description-' + journey.id;
+    button.setAttribute('aria-labelledby', title.id);
+    button.setAttribute('aria-describedby', description.id);
+    button.append(number, title, description);
     button.type = 'button';
     button.dataset.goal = journey.id;
     button.addEventListener('click', () => {
@@ -115,7 +117,7 @@
   byId('chooseGoal').addEventListener('click', resetJourney);
   function extract(doc, source) {
     const items = [];
-    doc.querySelectorAll('.panel-body:not(.resource-matches) li a[href]').forEach(link => {
+    doc.querySelectorAll('.panel-body li a[href]').forEach(link => {
       const url = new URL(link.getAttribute('href'), new URL(source.file, location.href));
       if (!['https:', 'http:'].includes(url.protocol)) return;
       const panel = link.closest('.panel');
@@ -319,52 +321,21 @@
   });
   const resourceCategories = [...document.querySelectorAll('#resourceCategories > .panel')];
   const resourceLinks = [...document.querySelectorAll('#resources .cat-link')];
-  const resourceQuery = byId('resourceQuery');
-  const resourceEntries = extract(document, { file: 'ssp-search.html', name: 'Start here' }).filter(item => item.type === 'Resource');
-  const resourceDescriptions = new Map(resourceCategories.map(category => [category.id, category.querySelector('.panel-sub').textContent]));
-  const resourceMatches = new Map(resourceCategories.map(category => {
-    const list = element('div', '', 'panel-body resource-matches');
-    list.append(element('ul'));
-    list.hidden = true;
-    category.append(list);
-    return [category.id, list];
-  }));
   let activeResource = 'get-started';
-  function filterResources() {
-    const term = resourceQuery.value.trim();
-    const results = term ? SSPSearch.rank(resourceEntries, term) : [];
-    let count = 0;
+  function renderResources() {
     resourceCategories.forEach(category => {
-      const found = results.filter(item => item.categoryId === category.id);
-      const matches = !term || found.length > 0;
-      const list = resourceMatches.get(category.id);
-      const rows = list.querySelector('ul');
-      rows.replaceChildren();
-      found.forEach(item => {
-        const row = element('li');
-        row.append(anchor(item.title, item.url));
-        rows.append(row);
-      });
-      list.hidden = !term;
-      category.querySelector('.panel-body').hidden = Boolean(term);
-      category.querySelector('.panel-sub').textContent = term ? `${found.length} matching resource${found.length === 1 ? '' : 's'}` : resourceDescriptions.get(category.id);
       const selected = category.id === activeResource;
-      category.hidden = term ? !matches : !selected;
+      category.hidden = !selected;
       category.classList.toggle('active', selected);
       const link = resourceLinks.find(item => item.dataset.target === category.id);
-      link.hidden = !matches;
       link.classList.toggle('active', selected);
       link.setAttribute('aria-pressed', String(selected));
-      if (matches) count++;
     });
-    byId('resourceStatus').textContent = term ? `${results.length} matching resources in ${count} categories` : `${count} of ${resourceCategories.length} resource categories`;
-    byId('resourceEmpty').hidden = count > 0;
-    byId('clearResources').hidden = !term;
+    byId('resourceStatus').textContent = `${resourceCategories.length} resource categories`;
   }
   function selectResource(id) {
     activeResource = id;
-    resourceQuery.value = '';
-    filterResources();
+    renderResources();
     byId(id).scrollIntoView({ block: 'start' });
   }
   function openResourceHash() {
@@ -387,17 +358,11 @@
     heading.tabIndex = -1;
     heading.focus({ preventScroll: true });
   });
-  resourceQuery.addEventListener('input', filterResources);
-  byId('clearResources').addEventListener('click', () => {
-    resourceQuery.value = '';
-    filterResources();
-    resourceQuery.focus();
-  });
-  byId('resourceTools').hidden = false;
   byId('resourceRail').hidden = false;
-  resourceQuery.value = new URLSearchParams(location.search).get('q') || '';
-  filterResources();
+  renderResources();
   window.addEventListener('hashchange', openResourceHash);
   openResourceHash();
+  const initialQuery = new URLSearchParams(location.search).get('q');
+  if (initialQuery && !catalogMode) search(initialQuery, true);
   loadIndex();
 })();

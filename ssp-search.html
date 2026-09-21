@@ -14,16 +14,16 @@
   </script>
 	<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260918-local-advisor">
   <link rel="stylesheet" href="assets/css/header-brand.css">
-	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20260918-first-visit">
+	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20260921-width">
 	<script src="assets/js/ssp-search-engine.js?v=20260918-relevance" defer></script>
   <script src="assets/js/ssp-search-entry.js" defer></script>
-	<script src="assets/js/ssp-search.js?v=20260918-relevance" defer></script>
+	<script src="assets/js/ssp-search.js?v=20260921-single-search" defer></script>
   <script src="assets/js/telemetry.js" defer></script>
 </head>
 <body class="search-page">
   <header class="topbar">
     <div class="wrap row">
-      <a class="logo" href="ssp-landing.html" aria-label="About Self-Service Portal">
+	<a class="logo" href="ssp-search.html" aria-label="Self-Service Portal - Start here">
         <img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="200" height="60">
         <span class="cat-divider" aria-hidden="true"></span>
         <picture class="powercat-logo"><img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24"><img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24"></picture>
@@ -37,7 +37,7 @@
     </div>
   </header>
   <main>
-    <section class="scenario-entry">
+	<section class="scenario-entry" aria-labelledby="startHeading">
       <div class="wrap">
         <p class="search-eyebrow">Power Platform / Start here</p>
 				<h1 id="startHeading" tabindex="-1">What are you trying to accomplish?</h1>
@@ -54,18 +54,13 @@
 					</div>
 				</div>
 				<noscript><p><a href="#get-started">New to Power Platform</a> &middot; <a href="ssp-design.html">Plan a solution</a> &middot; <a href="ssp-build.html">Build a solution</a> &middot; <a href="ssp-review.html">Review a solution</a></p></noscript>
-			</div>
-		</section>
-		<div class="search-band">
-		<div class="wrap">
 			<section id="searchSection" class="secondary-search" aria-labelledby="searchHeading">
-				<h2 id="searchHeading">Or search for what you need</h2>
+				<h2 id="searchHeading">Search resources and guides</h2>
         <form id="scenarioForm" class="scenario-form">
-          <label class="sr-only" for="scenario">Search or describe your scenario</label>
-          <textarea id="scenario" rows="2" maxlength="1500" placeholder="Type your search or describe your scenario..." required aria-describedby="privacy-note"></textarea>
+					<label class="sr-only" for="scenario">Search resources and guides</label>
+					<input id="scenario" type="search" maxlength="1500" autocomplete="off" required>
 		  <button class="btn" type="submit">Search <span aria-hidden="true">&rarr;</span></button>
         </form>
-        <p id="privacy-note" class="search-note">Keep customer data and credentials out of your scenario. Search text stays in this browser.</p>
 				<p id="searchNotice" class="search-note" role="status" hidden></p>
 				<button id="retryIndex" class="btn ghost" type="button" hidden>Retry search</button>
 				<details id="advancedSearch" class="advanced-search">
@@ -91,17 +86,12 @@
       </section>
       <noscript><p>Search needs JavaScript. <a href="#resources">Browse the resource catalog below</a>.</p></noscript>
 				</div>
-				</div>
+				</section>
 				<div class="resource-band">
 				<div class="wrap search-workspace">
       <section id="resources" class="resource-catalog" aria-labelledby="resourcesHeading">
         <h2 id="resourcesHeading">Resource catalog</h2>
         <p>Curated learning, adoption, architecture, governance, development, AI, and community resources for every stage of your Power Platform journey.</p>
-        <div id="resourceTools" class="resource-searchbar" hidden>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-          <input id="resourceQuery" type="search" placeholder="Search all resources..." autocomplete="off" aria-label="Search resources">
-          <button id="clearResources" class="clear-filter" type="button" hidden>Clear</button>
-        </div>
         <p id="resourceStatus" class="search-note" role="status" aria-live="polite"></p>
         <div class="resource-layout">
           <aside class="rail" id="resourceRail" hidden role="group" aria-label="Resource categories">
@@ -121,7 +111,6 @@
       <button class="cat-link" data-target="community" type="button" aria-pressed="false"><span class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="cat-txt">Community</span><span class="cat-count">20</span></button>
   </aside>
           <div id="resourceCategories" class="content">
-            <div id="resourceEmpty" class="noresults" hidden><h3>No matching resources</h3><p>Try a different term, or clear the search to browse everything.</p><button class="btn" type="button" onclick="document.getElementById('clearResources').click()">Clear search</button></div>
 <article class="panel active" id="get-started" aria-labelledby="resource-heading-get-started">
 				<header class="panel-head"><h2 id="resource-heading-get-started">Get started with <b>Power Platform</b></h2><p class="panel-sub">13 topics · 44 curated links</p></header>
         <div class="panel-body"><ul>

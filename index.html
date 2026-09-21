@@ -4,8 +4,7 @@
 <head>
 	<script>
 		(() => {
-			const resourceFragments = new Set(["resources", "get-started", "products", "news", "adoption", "training", "building", "ai-copilot", "architecture-guidance", "governance", "tools-samples", "stories", "events", "community"]);
-			const destination = resourceFragments.has(window.location.hash.slice(1)) ? "ssp-search.html" : "ssp-landing.html";
+			const destination = window.location.hash === "#pillars" ? "ssp-landing.html" : "ssp-search.html";
 			const home = new URL(destination, window.location.href);
 			home.search = window.location.search;
 			home.hash = window.location.hash;
@@ -16,7 +15,7 @@
 			window.location.replace(home.href);
 		})();
 	</script>
-	<noscript><meta http-equiv="refresh" content="0; url=ssp-landing.html" /></noscript>
+	<noscript><meta http-equiv="refresh" content="0; url=ssp-search.html" /></noscript>
 	<title>Microsoft Power Platform Resources</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
