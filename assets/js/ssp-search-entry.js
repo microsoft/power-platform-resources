@@ -77,6 +77,26 @@
   let preview;
   let sourceLink;
   let continueLink;
+  const skillsAdvisorUrl = 'https://aka.ms/powerplatformskillsadvisor';
+  function staticSkillDetails(link) {
+    const owner = link.dataset.skillOwner || (link.href === skillsAdvisorUrl ? 'non-power-cat' : '');
+    if (!owner) return null;
+    const card = link.closest('.skill-card, li');
+    const clean = value => (value || '').replace(/\s+/g, ' ').trim();
+    const title = clean(link.dataset.previewTitle || link.textContent);
+    const context = clean(link.dataset.previewSummary || card?.querySelector('p')?.textContent || card?.textContent);
+    return {
+      type: 'Skill',
+      products: [],
+      purpose: context,
+      status: 'See destination for availability',
+      publisher: owner === 'power-cat' ? 'Power CAT' : 'Microsoft',
+      marketplace: owner === 'power-cat' ? 'Power CAT Skills' : 'Skills Advisor catalog',
+      canonicalSource: link.dataset.canonicalSource || link.href,
+      route: owner === 'power-cat' ? 'Power CAT canonical source' : 'Power Platform Skills Advisor',
+      title
+    };
+  }
   function openPreview(link, newTab) {
     const resource = describeExternalLink(link);
     if (!resource) return false;
@@ -87,12 +107,33 @@
       preview.setAttribute('aria-describedby', 'externalPreviewSummary externalPreviewNote');
       preview.innerHTML = '<p class="external-preview-kicker">External resource</p><h2 id="externalPreviewTitle"></h2><p id="externalPreviewSummary"></p><div class="external-preview-destination"><strong>Destination</strong><p id="externalPreviewDestination"></p></div><p id="externalPreviewNote"></p><div class="external-preview-actions"><button type="button" class="btn ghost" autofocus>Stay here</button><a class="btn" rel="noopener noreferrer">Continue to site</a></div>';
       document.body.appendChild(preview);
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.className = 'external-preview-close';
+      close.setAttribute('aria-label', 'Close details');
+      close.title = 'Close details';
+      const icon = document.createElement('span');
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = '\u00d7';
+      close.append(icon);
+      preview.prepend(close);
       const reason = document.createElement('p');
       reason.id = 'externalPreviewReason';
       preview.querySelector('#externalPreviewSummary').after(reason);
+      const details = document.createElement('div');
+      details.id = 'externalPreviewSkill';
+      reason.after(details);
       preview.setAttribute('aria-describedby', 'externalPreviewSummary externalPreviewReason externalPreviewNote');
       continueLink = preview.querySelector('a');
-      preview.querySelector('button').addEventListener('click', () => preview.close());
+      preview.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+        preview.close();
+        sourceLink?.focus({ preventScroll: true });
+      }));
+      preview.addEventListener('keydown', event => {
+        if (event.key !== 'Escape') return;
+        event.preventDefault();
+        preview.close();
+      });
       continueLink.addEventListener('click', () => preview.close());
       preview.addEventListener('close', () => sourceLink?.focus({ preventScroll: true }));
     }
@@ -102,11 +143,57 @@
     const reason = link.dataset.previewReason || '';
     preview.querySelector('#externalPreviewReason').textContent = reason ? 'Why suggested: ' + reason : '';
     preview.querySelector('#externalPreviewReason').hidden = !reason;
-    preview.querySelector('#externalPreviewDestination').textContent = resource.url.href;
+    const skill = link.dataset.skillDetails ? JSON.parse(link.dataset.skillDetails) : staticSkillDetails(link);
+    const lab = link.dataset.labDetails ? JSON.parse(link.dataset.labDetails) : null;
+    const details = preview.querySelector('#externalPreviewSkill');
+    details.replaceChildren();
+    details.hidden = !skill && !lab;
+    preview.querySelector('.external-preview-kicker').textContent = skill ? skill.type + ' details' : 'External resource';
+    continueLink.textContent = skill ? (skill.route === 'Power CAT canonical source' ? 'Open Power CAT canonical source' : 'Open Power Platform Skills Advisor') : 'Continue to site';
+    if (lab) {
+      preview.querySelector('.external-preview-kicker').textContent = 'Lab details';
+      continueLink.textContent = 'Open lab';
+    }
+    if (skill || lab) {
+      const metadata = document.createElement('dl');
+      metadata.className = 'skill-detail-metadata';
+      const fields = skill ? [
+        ['Products', skill.products.join(', ')], ['Purpose', skill.purpose],
+        ['Availability', skill.status], ['Publisher', skill.publisher], ['Catalog', skill.marketplace],
+        ['License', skill.license], ['Source verified', skill.verified]
+      ] : [
+        ['Audience', lab.persona], ['Level', lab.level], ['Duration', lab.duration],
+        ['Source', 'Microsoft Power Series'], ['License', lab.license], ['Catalog imported', lab.imported]
+      ];
+      for (const [label, value] of fields) {
+        if (!value) continue;
+        const term = document.createElement('dt');
+        term.textContent = label;
+        const description = document.createElement('dd');
+        description.textContent = value;
+        metadata.append(term, description);
+      }
+      details.append(metadata);
+      for (const [label, value] of (skill ? [['Usage', skill.note], ['Suggested prompt', skill.prompt]] : [])) {
+        if (!value) continue;
+        const heading = document.createElement('h3');
+        heading.textContent = label;
+        const paragraph = document.createElement('p');
+        paragraph.textContent = value;
+        details.append(heading, paragraph);
+      }
+      const caveat = document.createElement('p');
+      caveat.textContent = skill
+        ? 'Opens published instructions, not a running skill. Review prerequisites and access requirements in the source before using it in a compatible host.'
+        : 'Review the prerequisites and required environment in the published lab before starting. Duration is the estimate provided by the workshop authors.';
+      details.append(caveat);
+    }
+    const destination = skill && skill.route !== 'Power CAT canonical source' ? skillsAdvisorUrl : resource.url.href;
+    preview.querySelector('#externalPreviewDestination').textContent = destination;
     const target = link.getAttribute('target');
     const opensNewTab = newTab || (target && !['_self', '_top', '_parent'].includes(target.toLowerCase()));
     preview.querySelector('#externalPreviewNote').textContent = opensNewTab ? 'Opens on another site in a new tab.' : 'Opens on another site in this tab.';
-    continueLink.href = resource.url.href;
+    continueLink.href = destination;
     continueLink.target = opensNewTab ? '_blank' : '_self';
     preview.showModal();
     preview.querySelector('button').focus();

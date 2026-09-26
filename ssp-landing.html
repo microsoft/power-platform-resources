@@ -80,6 +80,7 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 .hero .btn.ghost{background:var(--surface);border:1px solid var(--border);color:var(--text)}
 .hero-controls{display:flex;align-items:center;gap:8px;flex:none}
 .hero-control{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--text);cursor:pointer;display:grid;place-items:center;font:700 20px/1 var(--font)}
+.hero-control svg{display:block;width:18px;height:18px}
 .hero-control:hover{border-color:var(--brand);color:var(--brand)}
 .hero-dots{display:flex;align-items:center;gap:6px;margin:0 4px}
 .hero-dot{width:24px;height:4px;padding:0;border:0;border-radius:2px;background:var(--border);cursor:pointer;transition:background .2s ease}
@@ -107,7 +108,7 @@ section{padding:36px 0}
 .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start}
 /* Pillars — horizontal accordion */
 .pillars{display:flex;gap:16px;min-height:300px;align-items:stretch}
-.pillar{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);color:var(--text);transition:flex .38s cubic-bezier(.4,0,.2,1),box-shadow .18s ease;flex:0 0 96px;min-width:0}
+.pillar{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);color:var(--text);transition:box-shadow .18s ease;flex:0 0 96px;min-width:0}
 .pillar.open{flex:1 1 0;box-shadow:0 18px 44px rgba(91,58,138,.24)}
 .pillar .bar{position:absolute;top:0;left:0;right:0;height:5px;z-index:2}
 .pillar .ic{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;color:#fff;box-shadow:0 8px 20px rgba(91,58,138,.25);flex:none}
@@ -196,11 +197,10 @@ footer .powercat-logo img{height:30px}
 @media(max-width:560px){section{padding:28px 0}.hero .inner{padding:16px 24px 20px}.hero h1{font-size:40px}.hero p.sub{font-size:16px}.hero-metrics{grid-template-columns:1fr 1fr;row-gap:16px}.hero-metric{padding:0 14px}.hero-metric:nth-child(odd){padding-left:0;border-left:0}.hero-metric strong{font-size:40px}.rgrid{grid-template-columns:1fr}}
 @media(max-width:560px){.topbar .row{gap:8px}.logo{gap:6px;font-size:11px;line-height:1.15}.logo>span:nth-child(2){max-width:68px}.logo .mark{min-width:30px;height:24px;padding:0 5px;font-size:11px}.cat-divider{height:22px;margin:0 1px}header .powercat-logo img{height:24px}.icon-btn{width:32px;height:32px;flex:none}.btn.sm{padding:6px 9px;font-size:11px;white-space:nowrap}}
 @media(max-width:360px){.topbar .row{gap:6px}.logo{gap:4px;font-size:10px}.logo>span:nth-child(2){max-width:54px}.logo .mark{min-width:26px;height:22px;padding:0 4px;font-size:10px}.cat-divider{height:20px;margin:0}header .powercat-logo img{height:20px}.icon-btn{width:30px;height:30px}.btn.sm{padding:5px 7px;font-size:10px}.stats{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){.hero-slide{transition:none}}
+@media(prefers-reduced-motion:reduce){.hero-slide,.pillar,.pillar-launch{transition:none}.pillar-launch:hover{transform:none}}
 </style>
-<script src="assets/js/telemetry.js" defer></script>
-<script src="assets/js/ssp-search-entry.js?v=20260921-external-preview-resources-match" defer></script>
-<link rel="stylesheet" href="assets/css/header-brand.css?v=20260921-external-preview">
+<script src="assets/js/ssp-search-entry.js?v=20260926-skill-routing-2" defer></script>
+<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-detail-drawer">
 <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 </head>
 <body>
@@ -265,26 +265,27 @@ footer .powercat-logo img{height:30px}
       <article class="hero-slide" aria-hidden="true">
         <span class="eyebrow">The catalog at a glance</span>
         <h1>Everything you need to keep moving forward</h1>
+<!-- BEGIN GENERATED ABOUT METRICS -->
         <div class="hero-metrics" aria-label="Portal catalog statistics">
-          <div class="hero-metric"><strong>385+</strong><span>Curated resources</span></div>
+          <div class="hero-metric"><strong>391</strong><span>Curated links</span></div>
           <div class="hero-metric"><strong>13</strong><span>Categories</span></div>
-          <div class="hero-metric"><strong>39</strong><span>Hands-on labs</span></div>
-          <div class="hero-metric"><strong>100%</strong><span>Free and open</span></div>
+          <div class="hero-metric"><strong>20</strong><span>Power Series labs</span></div>
+          <div class="hero-metric"><strong>127</strong><span>Catalog entries</span></div>
         </div>
+<!-- END GENERATED ABOUT METRICS -->
       </article>
     </div>
     <div class="hero-toolbar">
       <div class="hero-action-options"></div>
       <div class="hero-controls" aria-label="Featured messages">
-      <button class="hero-control" id="heroPause" type="button" aria-label="Pause automatic rotation" title="Pause automatic rotation"><span class="fas fa-pause" aria-hidden="true"></span></button>
-      <button class="hero-control" id="heroPrev" type="button" aria-label="Previous message" title="Previous message">‹</button>
+      <button class="hero-control" id="heroPrev" type="button" aria-label="Previous message" title="Previous message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
       <div class="hero-dots">
         <button class="hero-dot is-active" type="button" aria-label="Show message 1" aria-current="true"></button>
         <button class="hero-dot" type="button" aria-label="Show message 2"></button>
         <button class="hero-dot" type="button" aria-label="Show message 3"></button>
         <button class="hero-dot" type="button" aria-label="Show message 4"></button>
       </div>
-      <button class="hero-control" id="heroNext" type="button" aria-label="Next message" title="Next message">›</button>
+      <button class="hero-control" id="heroNext" type="button" aria-label="Next message" title="Next message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
       </div>
     </div>
   </div>
@@ -395,13 +396,17 @@ footer .powercat-logo img{height:30px}
           <div class="pb-detail">
             <p>The Learn pillar opens the Power Series catalog — hands-on labs, curated learning paths, certifications, customer stories and community.</p>
             <ul class="p-list">
-              <li>39 hands-on labs</li>
+<!-- BEGIN GENERATED ABOUT LEARN LAB COUNT -->
+              <li>20 hands-on labs</li>
+<!-- END GENERATED ABOUT LEARN LAB COUNT -->
               <li>Learning paths &amp; certifications</li>
               <li>Customer stories &amp; community</li>
             </ul>
           </div>
           <div class="pb-actions">
-            <div class="meta"><span class="chip">39 labs</span><span class="chip">385+ resources</span></div>
+<!-- BEGIN GENERATED ABOUT LEARN META -->
+            <div class="meta"><span class="chip">20 labs</span><span class="chip">391 resources</span></div>
+<!-- END GENERATED ABOUT LEARN META -->
             <a class="pillar-launch" href="https://microsoft.github.io/apps-agents-workshop/labs/" target="ssp-learn" rel="noopener">Launch Power Series <span aria-hidden="true">↗</span></a>
           </div>
         </div>
@@ -413,51 +418,55 @@ footer .powercat-logo img{height:30px}
 
 <section id="categories" class="alt">
   <div class="wrap">
+<!-- BEGIN GENERATED ABOUT RESOURCE STATS -->
     <div class="stats">
-    <div class="stat"><div class="n">385<sup>+</sup></div><div class="l">Curated resources</div></div>
+    <div class="stat"><div class="n">391</div><div class="l">Curated resources</div></div>
     <div class="stat"><div class="n">13</div><div class="l">Resource categories</div></div>
-    <div class="stat"><div class="n">39</div><div class="l">Hands-on labs</div></div>
+    <div class="stat"><div class="n">20</div><div class="l">Hands-on labs</div></div>
     <div class="stat"><div class="n">24/7</div><div class="l">Always available</div></div>
     </div>
+<!-- END GENERATED ABOUT RESOURCE STATS -->
     <div class="catalog-action"><a class="btn ghost" href="ssp-search.html#resources">Explore Power Platform resources</a></div>
   </div>
 </section>
 
 <!-- FEATURED -->
 <section id="featured">
+<!-- BEGIN GENERATED ABOUT FEATURED -->
   <div class="wrap">
     <div class="sec-head">
-      <div class="kicker">Featured this week</div>
-      <h2>Popular skills &amp; guidance</h2>
-      <p>Hand-picked from the SSP pillars — jump straight into what teams are using most.</p>
+      <div class="kicker">Featured guidance</div>
+      <h2>Selected skills, labs &amp; guidance</h2>
+      <p>Curated by Power CAT on a weekly cadence. Last reviewed <time datetime="2026-09-26">26 September 2026</time>.</p>
     </div>
     <div class="feat-grid">
-      <a class="fcard" href="ssp-search.html#skills">
+      <a class="fcard" href="ssp-search.html#skills" data-feature-reason="Provides one entry point to the complete published skills catalog.">
         <div class="ftop"><span class="fbadge">Build</span><span class="fkind">Catalog</span></div>
         <div class="fbody">
           <h4>Browse published skills</h4>
-          <p>Find published skills by product and task, with source instructions and availability details.</p>
-          <div class="ffoot"><span>Skills Advisor catalog</span></div>
+          <p>Explore 127 published skills by product and task, with source instructions and availability details.</p>
+          <div class="ffoot"><span>127 catalog entries</span></div>
         </div>
       </a>
-      <a class="fcard" href="ssp-design.html#skill-well-architected-design-check">
+      <a class="fcard" href="ssp-design.html#skill-well-architected-design-check" data-feature-reason="Helps teams identify material design risks before delivery.">
         <div class="ftop"><span class="fbadge">Review</span><span class="fkind">Guide</span></div>
         <div class="fbody">
           <h4>Well-Architected Design Check</h4>
-          <p>Review design risks across the five Well-Architected pillars using guidance and assessment resources.</p>
-          <div class="ffoot"><span>Design guide</span></div>
+          <p>Challenge a proposed solution across reliability, security, operations, performance, and experience.</p>
+          <div class="ffoot"><span>Architecture guide</span></div>
         </div>
       </a>
-      <a class="fcard" href="ssp-design.html#skill-environment-strategy-blueprint">
-        <div class="ftop"><span class="fbadge">Design</span><span class="fkind">Guidance</span></div>
+      <a class="fcard" href="https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=managed-platform-governance%2FREADME.md&amp;branch=main" target="_blank" rel="noopener" data-feature-reason="Provides a hands-on path for current environment governance practices.">
+        <div class="ftop"><span class="fbadge">Learn</span><span class="fkind">Lab</span></div>
         <div class="fbody">
-          <h4>Environment Strategy Blueprint</h4>
-          <p>Reference architecture for environments, DLP and ALM at scale.</p>
-          <div class="ffoot"><span>Design guide</span></div>
+          <h4>Managed Governance: Environment Strategy &amp; Governance</h4>
+          <p>Build guardrails for your environment group, turning ungoverned sprawl into a place where makers can move fast while risk stays contained.</p>
+          <div class="ffoot"><span>Power Apps makers, admins · 120 minutes</span></div>
         </div>
       </a>
     </div>
   </div>
+<!-- END GENERATED ABOUT FEATURED -->
 </section>
 
 <footer>
@@ -471,7 +480,6 @@ footer .powercat-logo img{height:30px}
     </div>
     <div>Power Platform resources — open to everyone, worldwide</div>
   </div>
-  <p class="wrap">This site uses Azure Application Insights to measure page visits and approximate location derived from your IP address. No analytics cookies are used. <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
 </footer>
 
 <script>
@@ -500,9 +508,7 @@ document.addEventListener('keydown',event=>{
 const heroSlides=Array.from(document.querySelectorAll('.hero-slide'));
 const heroDots=Array.from(document.querySelectorAll('.hero-dot'));
 const hero=document.querySelector('.hero');
-const heroPause=document.getElementById('heroPause');
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-let heroPaused=reducedMotion.matches;
 let heroFocused=false;
 let heroHovered=false;
 const heroActions=heroSlides.map(slide=>slide.querySelector('.cta'));
@@ -526,25 +532,17 @@ function showHeroSlide(index){
 }
 function startHeroRotation(){
   clearInterval(heroTimer);
-  const label=heroPaused?'Resume automatic rotation':'Pause automatic rotation';
-  heroPause.setAttribute('aria-label',label);
-  heroPause.title=label;
-  heroPause.querySelector('span').className=heroPaused?'fas fa-play':'fas fa-pause';
-  if(!heroPaused&&!heroFocused&&!heroHovered&&!document.hidden){
-    heroTimer=setInterval(()=>showHeroSlide(heroIndex+1),9000);
+  if(!reducedMotion.matches&&!heroFocused&&!heroHovered&&!document.hidden){
+    heroTimer=setInterval(()=>showHeroSlide(heroIndex+1),4000);
   }
 }
-heroPause.addEventListener('click',()=>{heroPaused=!heroPaused;startHeroRotation();});
 hero.addEventListener('focusin',()=>{heroFocused=true;startHeroRotation();});
 hero.addEventListener('focusout',event=>{
   if(!hero.contains(event.relatedTarget)){heroFocused=false;startHeroRotation();}
 });
 hero.addEventListener('mouseenter',()=>{heroHovered=true;startHeroRotation();});
 hero.addEventListener('mouseleave',()=>{heroHovered=false;startHeroRotation();});
-reducedMotion.addEventListener('change',event=>{
-  if(event.matches)heroPaused=true;
-  startHeroRotation();
-});
+reducedMotion.addEventListener('change',startHeroRotation);
 document.getElementById('heroPrev').addEventListener('click',()=>{showHeroSlide(heroIndex-1);startHeroRotation();});
 document.getElementById('heroNext').addEventListener('click',()=>{showHeroSlide(heroIndex+1);startHeroRotation();});
 heroDots.forEach((dot,index)=>dot.addEventListener('click',()=>{showHeroSlide(index);startHeroRotation();}));

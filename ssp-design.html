@@ -14,11 +14,10 @@
     try { localStorage.setItem("sspTheme", theme); } catch (error) {}
   })();
 </script>
-<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260918-heading-copy">
+<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-pdf-brief">
 <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-<script src="assets/js/telemetry.js" defer></script>
-<script src="assets/js/ssp-search-entry.js?v=20260921-external-preview-resources-match" defer></script>
-<link rel="stylesheet" href="assets/css/header-brand.css?v=20260921-external-preview">
+<script src="assets/js/ssp-search-entry.js?v=20260926-skill-routing-2" defer></script>
+<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-detail-drawer">
 </head>
 <body class="pillar-design">
 <header class="topbar">
@@ -73,10 +72,10 @@
         <p>Choose a topic for a suggested sequence of design guides, Microsoft Learn articles, and tools.</p>
       </div>
       <div class="outcomes" role="group" aria-label="Design topics">
-        <a class="outcome" style="--tone:var(--design)" href="ssp-design-guide.html#new"><span class="outcome-code">01 / NEW</span><strong>Launch a new solution</strong><span>Clarify architecture, data, experience, and security before delivery.</span></a>
-        <a class="outcome" style="--tone:var(--teal)" href="ssp-design-guide.html#modernize"><span class="outcome-code">02 / MODERNIZE</span><strong>Modernize an existing app</strong><span>Assess constraints and choose a lower-risk target architecture.</span></a>
-        <a class="outcome" style="--tone:var(--amber)" href="ssp-design-guide.html#govern"><span class="outcome-code">03 / GOVERN</span><strong>Design for enterprise scale</strong><span>Plan environments, ALM, access, operations, and guardrails.</span></a>
-        <a class="outcome" style="--tone:var(--brand-2)" href="ssp-design-guide.html#review"><span class="outcome-code">04 / REVIEW</span><strong>Validate a proposed design</strong><span>Challenge assumptions and document risks before commitment.</span></a>
+        <a class="outcome" style="--tone:var(--design)" href="ssp-design-guide.html?return=ssp-design.html%23outcomes-heading#new"><span class="outcome-code">01 / NEW</span><strong>Launch a new solution</strong><span>Clarify architecture, data, experience, and security before delivery.</span></a>
+        <a class="outcome" style="--tone:var(--teal)" href="ssp-design-guide.html?return=ssp-design.html%23outcomes-heading#modernize"><span class="outcome-code">02 / MODERNIZE</span><strong>Modernize an existing app</strong><span>Assess constraints and choose a lower-risk target architecture.</span></a>
+        <a class="outcome" style="--tone:var(--amber)" href="ssp-design-guide.html?return=ssp-design.html%23outcomes-heading#govern"><span class="outcome-code">03 / GOVERN</span><strong>Design for enterprise scale</strong><span>Plan environments, ALM, access, operations, and guardrails.</span></a>
+        <a class="outcome" style="--tone:var(--brand-2)" href="ssp-design-guide.html?return=ssp-design.html%23outcomes-heading#review"><span class="outcome-code">04 / REVIEW</span><strong>Validate a proposed design</strong><span>Challenge assumptions and document risks before commitment.</span></a>
       </div>
     </div>
   </section>
@@ -112,7 +111,8 @@
               <div class="advisor-controls">
                 <button class="btn ghost" id="advisorEdit" type="button"><span class="fas fa-arrow-left" aria-hidden="true"></span> Back</button>
                 <button class="btn ghost" id="advisorRestart" type="button"><span class="fas fa-undo" aria-hidden="true"></span> Start over</button>
-                <button class="btn" id="advisorDownload" type="button"><span class="fas fa-download" aria-hidden="true"></span> Download brief</button>
+                <button class="btn ghost" id="advisorDownload" type="button"><span class="fas fa-download" aria-hidden="true"></span> Download Markdown</button>
+                <button class="btn" id="advisorPdf" type="button" title="Open the print dialog to save this brief as a PDF"><span class="fas fa-file-pdf" aria-hidden="true"></span> Save as PDF</button>
               </div>
             </section>
           </div>
@@ -149,19 +149,19 @@
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Architecture</span><span class="skill-time">15-25 min</span></div><h3>Solution Architecture Blueprint</h3><p>Translate a business scenario into platform boundaries, components, integrations, and key decisions.</p><div class="tags"><span class="tag">Decision map</span><span class="tag">Architecture</span></div></div>
           <details open><summary>Inputs and intended output</summary><p>Bring goals, users, constraints, and systems. Aim for a component blueprint and decision log.</p></details>
           <div class="guide-resources"><p><strong>Supporting skill</strong><br><code>powercat-pp-architecture-advisor</code> supports discovery and architecture review for a composed Power Platform solution.</p><a href="https://learn.microsoft.com/power-platform/architecture/" target="_blank" rel="noopener">Microsoft Learn: Architecture Center</a></div>
-          <div class="skill-actions"><a class="btn" href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">View architecture skill instructions <span aria-hidden="true">&nearr;</span></a></div>
+          <div class="skill-actions"><a class="btn" data-skill-owner="power-cat" data-preview-title="Power CAT architecture advisor" data-preview-summary="Use Power CAT's architecture advisor for guided discovery and review of a composed Power Platform solution." href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">Open Power CAT canonical source <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="governance" data-outcomes="new govern review" style="--accent:var(--amber)">
-          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Governance</span><span class="skill-time">20-30 min</span></div><h3>Environment Strategy Blueprint</h3><p>Define environment purpose, ownership, routing, DLP boundaries, and deployment paths at scale.</p><div class="tags"><span class="tag">Environment map</span><span class="tag">DLP</span><span class="tag">ALM</span></div></div>
-          <details open><summary>Inputs and intended output</summary><p>Bring tenant constraints and delivery teams. Aim for an environment topology and governance decisions.</p></details>
-          <div class="guide-resources"><p><strong>Documentation-led guide</strong><br>No dedicated environment-strategy skill is verified in the imported catalog. Use adoption guidance to define boundaries and ownership.</p><a href="https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention" target="_blank" rel="noopener">Microsoft Learn: Data policies</a></div>
+          <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Governance</span><span class="skill-time">30-45 min</span></div><h3>Environment Strategy Blueprint</h3><p>Plan Managed Environments, environment groups and inherited rules, maker routing, personal developer environments, and a deliberate reduction of default-environment use.</p><div class="tags"><span class="tag">Managed Environments</span><span class="tag">Routing</span><span class="tag">Group rules</span></div></div>
+          <details open><summary>Inputs and intended output</summary><p>Bring the environment inventory, maker populations, business-unit and region boundaries, licensing constraints, current default-environment assets, data policies, and delivery model. Aim for a target topology, group-and-rule matrix, routing scope, exception path, default-environment reduction plan, and named owners.</p></details>
+          <div class="guide-resources"><p><strong>Documentation-led guide</strong><br>Use Managed Environments as the governance foundation. Group environments by purpose, business unit, project, or region; published group rules are inherited and cannot be overridden per environment. Use a separate group when a legitimate exception needs different rules. Route eligible makers to managed personal developer environments, and inventory, govern, migrate, quarantine, or retire default-environment assets according to business need. Confirm Managed Environments licensing before rollout.</p><ul><li><a href="https://learn.microsoft.com/power-platform/admin/managed-environment-overview" target="_blank" rel="noopener">Microsoft Learn: Managed Environments</a></li><li><a href="https://learn.microsoft.com/power-platform/admin/environment-groups" target="_blank" rel="noopener">Microsoft Learn: Environment groups</a></li><li><a href="https://learn.microsoft.com/power-platform/admin/environment-groups-rules" target="_blank" rel="noopener">Microsoft Learn: Group rules and inheritance</a></li><li><a href="https://learn.microsoft.com/power-platform/admin/default-environment-routing" target="_blank" rel="noopener">Microsoft Learn: Environment routing and personal developer environments</a></li><li><a href="https://learn.microsoft.com/power-platform/guidance/adoption/manage-default-environment" target="_blank" rel="noopener">Microsoft Learn: Manage and reduce default-environment use</a></li></ul></div>
           <div class="skill-actions"><a class="btn" href="https://learn.microsoft.com/power-platform/guidance/adoption/environment-strategy" target="_blank" rel="noopener">Read environment strategy <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="data" data-outcomes="new modernize review" style="--accent:var(--teal)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Data</span><span class="skill-time">15-20 min</span></div><h3>Dataverse Data Model Designer</h3><p>Turn business concepts into tables, relationships, ownership choices, and a maintainable data model.</p><div class="tags"><span class="tag">ERD</span><span class="tag">Dataverse</span><span class="tag">Ownership</span></div></div>
           <details open><summary>Inputs and intended output</summary><p>Bring entities, rules, and reporting needs. Aim for a logical model and implementation notes.</p></details>
           <div class="guide-resources"><p><strong>Supporting skill</strong><br><code>dv-metadata</code> covers Dataverse tables, columns, relationships, forms, and views. Review environment permissions before applying changes.</p><a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intro" target="_blank" rel="noopener">Microsoft Learn: Dataverse overview</a></div>
-          <div class="skill-actions"><a class="btn" href="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-metadata/SKILL.md" target="_blank" rel="noopener">View Dataverse skill instructions <span aria-hidden="true">&nearr;</span></a></div>
+          <div class="skill-actions"><a class="btn" data-skill-owner="non-power-cat" data-canonical-source="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-metadata/SKILL.md" data-preview-title="Dataverse metadata skill" data-preview-summary="Use this supporting skill to work with Dataverse tables, columns, relationships, forms, and views." href="https://aka.ms/powerplatformskillsadvisor" target="_blank" rel="noopener">Open in Power Platform Skills Advisor <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="experience" data-outcomes="new modernize" style="--accent:var(--brand-2)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Experience</span><span class="skill-time">10-20 min</span></div><h3>Experience Pattern Selector</h3><p>Choose between canvas, model-driven, Power Pages, code app, or agent-led experiences.</p><div class="tags"><span class="tag">UX pattern</span><span class="tag">Surface choice</span></div></div>
@@ -179,13 +179,13 @@
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Security</span><span class="skill-time">15-25 min</span></div><h3>Security Role Mapper</h3><p>Map personas, responsibilities, records, and operations into least-privilege access decisions.</p><div class="tags"><span class="tag">Role matrix</span><span class="tag">Least privilege</span></div></div>
           <details open><summary>Inputs and intended output</summary><p>Bring personas, data sensitivity, and actions. Aim for an access matrix and a list of open security decisions.</p></details>
           <div class="guide-resources"><p><strong>Supporting skill</strong><br><code>dv-security</code> covers Dataverse roles, users, business units, and access. It is not a security mapper for every Power Platform product; review permissions before changes.</p><a href="https://learn.microsoft.com/power-platform/admin/security-roles-privileges" target="_blank" rel="noopener">Microsoft Learn: Security roles and privileges</a></div>
-          <div class="skill-actions"><a class="btn" href="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-security/SKILL.md" target="_blank" rel="noopener">View security skill instructions <span aria-hidden="true">&nearr;</span></a></div>
+          <div class="skill-actions"><a class="btn" data-skill-owner="non-power-cat" data-canonical-source="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-security/SKILL.md" data-preview-title="Dataverse security skill" data-preview-summary="Use this supporting skill for Dataverse roles, users, business units, and access." href="https://aka.ms/powerplatformskillsadvisor" target="_blank" rel="noopener">Open in Power Platform Skills Advisor <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="governance" data-outcomes="modernize govern" style="--accent:var(--teal)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Operations</span><span class="skill-time">15-20 min</span></div><h3>ALM Topology Planner</h3><p>Plan source control, solution boundaries, pipelines, approvals, and release responsibilities.</p><div class="tags"><span class="tag">Pipeline map</span><span class="tag">Solutions</span><span class="tag">Git</span></div></div>
           <details open><summary>Inputs and intended output</summary><p>Bring team topology and release requirements. Aim for a delivery topology and agreed control points.</p></details>
           <div class="guide-resources"><p><strong>Product-specific supporting skill</strong><br><code>plan-alm</code> covers solution boundaries, pipelines, and deployment topology for Power Pages. For other workloads, use the platform ALM guidance.</p><a href="https://learn.microsoft.com/power-platform/alm/overview-alm" target="_blank" rel="noopener">Microsoft Learn: Platform ALM guidance</a></div>
-          <div class="skill-actions"><a class="btn" href="https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/plan-alm" target="_blank" rel="noopener">View Power Pages ALM skill <span aria-hidden="true">&nearr;</span></a></div>
+          <div class="skill-actions"><a class="btn" data-skill-owner="non-power-cat" data-canonical-source="https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/plan-alm" data-preview-title="Power Pages ALM skill" data-preview-summary="Use this product-specific skill to plan solution boundaries, pipelines, and deployment topology for Power Pages." href="https://aka.ms/powerplatformskillsadvisor" target="_blank" rel="noopener">Open in Power Platform Skills Advisor <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="architecture" data-outcomes="review govern modernize" style="--accent:var(--brand-2)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Assurance</span><span class="skill-time">5-15 min</span></div><h3>Well-Architected Design Check</h3><p>Challenge a proposed solution across reliability, security, operations, performance, and experience.</p><div class="tags"><span class="tag">Risk report</span><span class="tag">WAF</span><span class="tag">Review</span></div></div>
@@ -215,10 +215,24 @@
 </main>
 
 <footer><div class="wrap row"><span>Self-Service Portal - Curated by Power CAT</span><div class="footer-links"><a href="ssp-search.html#architecture-guidance">Architecture resources</a><a href="https://github.com/microsoft/power-platform-resources/issues/new?title=Design%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a></div></div>
-  <p class="wrap">This site uses Azure Application Insights to measure page visits and approximate location derived from your IP address. No analytics cookies are used. <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
 </footer>
 <script src="assets/js/ssp-design-advisor.js?v=20260918-advisor-ranked"></script>
 <script src="assets/js/ssp-search-engine.js?v=20260918-relevance"></script>
-<script src="assets/js/ssp-design.js?v=20260921-auto-advance"></script>
+<script src="assets/js/ssp-design.js?v=20260926-pdf-brief"></script>
+<script>
+  (() => {
+    window.addEventListener('DOMContentLoaded', () => {
+      const returnTarget = new URLSearchParams(location.search).get('return');
+      const card = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+      if (!returnTarget || !/^ssp-design-guide\.html(?:[?#]|$)/.test(returnTarget) || !card?.classList.contains('skill-card')) return;
+      const link = document.createElement('a');
+      link.className = 'design-return-context';
+      link.href = returnTarget;
+      link.textContent = 'Return to your Design topic and step';
+      link.setAttribute('aria-label', 'Return to your previous Design topic and step');
+      card.prepend(link);
+    });
+  })();
+</script>
 </body>
 </html>

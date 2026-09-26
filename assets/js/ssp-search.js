@@ -3,6 +3,7 @@
     { file: 'ssp-search.html', name: 'Resources' },
     { file: 'ssp-design.html', name: 'Design' },
     { file: 'ssp-build.html', name: 'Build' },
+    { file: 'ssp-build-guide.html', name: 'Build journeys' },
     { file: 'ssp-review.html', name: 'Review' },
     { file: 'ssp-landing.html', name: 'About' }
   ];
@@ -32,51 +33,60 @@
     return link;
   }
   let selectedGoal = null;
-  let selectedAnswer = null;
   function renderJourney(focus = true) {
-    byId('goalChoices').hidden = Boolean(selectedGoal);
+    byId('goalChoices').hidden = false;
     byId('journeyStep').hidden = !selectedGoal;
+    byId('goalChoices').classList.toggle('has-selection', Boolean(selectedGoal));
+    byId('goalChoices').querySelectorAll('[data-goal]').forEach(button => {
+      const selected = button.dataset.goal === selectedGoal;
+      button.classList.toggle('selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
     if (!selectedGoal) {
       if (focus) byId('startHeading').focus();
       return;
     }
     const journey = SSPSearch.journeys.find(item => item.id === selectedGoal);
-    const recommendation = SSPSearch.nextStep(selectedGoal, selectedAnswer);
-    byId('journeyContext').textContent = journey.label;
-    byId('journeyHeading').textContent = recommendation ? recommendation.title : journey.question;
-    byId('answerChoices').hidden = Boolean(recommendation);
-    byId('journeyRecommendation').hidden = !recommendation;
-    byId('answerChoices').replaceChildren();
-    if (recommendation) {
-      byId('journeyWhy').textContent = recommendation.why;
-      const action = anchor(recommendation.action, recommendation.url);
-      action.id = 'journeyAction';
+    byId('journeyContext').textContent = 'Paths for ' + journey.label.toLowerCase();
+    byId('journeyHeading').textContent = journey.question;
+    byId('journeyIntro').textContent = journey.intro;
+    const paths = byId('answerChoices');
+    paths.replaceChildren();
+    journey.options.forEach(option => {
+      const card = element('article', null, 'journey-path' + (option.id === 'unsure' ? ' journey-path-unsure' : ''));
+      const label = element('p', option.label, 'journey-path-label');
+      const title = element('h3', option.title);
+      const explanation = element('p', option.why, 'journey-path-explanation');
+      const details = element('dl', null, 'journey-path-details');
+      for (const [term, value] of [['Best for', option.bestFor], ["You'll leave with", option.outcome]]) {
+        details.append(element('dt', term), element('dd', value));
+      }
+      const footer = element('div', null, 'journey-path-footer');
+      const action = anchor(option.action, option.url);
       action.className = 'btn';
-      action.dataset.previewReason = recommendation.why;
-      byId('journeyAction').replaceWith(action);
-      const related = byId('journeyRelated').querySelector('ul');
-      related.replaceChildren();
-      recommendation.related.forEach(id => {
-        const heading = byId(id)?.querySelector('h2');
-        if (!heading) return;
-        const item = element('li');
-        item.append(anchor(clean(heading.textContent), '#' + id));
-        related.append(item);
-      });
-    } else {
-      journey.options.forEach(option => {
-        const button = element('button', option.label, 'journey-choice');
-        button.type = 'button';
-        button.dataset.answer = option.id;
-        button.addEventListener('click', () => { selectedAnswer = option.id; renderJourney(); });
-        byId('answerChoices').append(button);
-      });
-    }
+      action.dataset.previewReason = option.why;
+      footer.append(action);
+      if (option.related.length) {
+        const related = element('div', null, 'journey-path-related');
+        related.append(element('strong', 'Related resources'));
+        const list = element('ul');
+        option.related.forEach(id => {
+          const heading = byId(id)?.querySelector('h2');
+          if (!heading) return;
+          const item = element('li');
+          item.append(anchor(clean(heading.textContent), '#' + id));
+          list.append(item);
+        });
+        related.append(list);
+        footer.append(related);
+      }
+      card.append(label, title, explanation, details, footer);
+      paths.append(card);
+    });
     if (focus) byId('journeyHeading').focus();
   }
   function resetJourney() {
     selectedGoal = null;
-    selectedAnswer = null;
     renderJourney();
   }
   const goalPresentation = {
@@ -97,24 +107,18 @@
     description.id = 'goal-description-' + journey.id;
     button.setAttribute('aria-labelledby', title.id);
     button.setAttribute('aria-describedby', description.id);
+    button.setAttribute('aria-pressed', 'false');
     button.append(number, title, description);
     button.type = 'button';
     button.dataset.goal = journey.id;
     button.addEventListener('click', () => {
       search('');
       selectedGoal = journey.id;
-      selectedAnswer = null;
       renderJourney();
     });
     byId('goalChoices').append(button);
   });
-  byId('goalChoices').hidden = false;
-  byId('journeyBack').addEventListener('click', () => {
-    if (selectedAnswer) selectedAnswer = null;
-    else selectedGoal = null;
-    renderJourney();
-  });
-  byId('journeyReset').addEventListener('click', resetJourney);
+  renderJourney(false);
   byId('chooseGoal').addEventListener('click', resetJourney);
   function extract(doc, source) {
     const items = [];
@@ -142,6 +146,13 @@
       const tags = [...card.querySelectorAll('.tag, .skill-kind')].map(tag => clean(tag.textContent)).join(' ');
       items.push({ title, description, text: description + ' ' + tags, category: source.name + ' / ' + card.dataset.category, type: 'Guide', url: source.file + '#skill-' + slug(title), source: source.file + '#skills', sourceName: source.name + ' pillar' });
     });
+    doc.querySelectorAll('.build-journey').forEach(journey => {
+      const heading = journey.querySelector('h1, h2');
+      if (!heading || !journey.id) return;
+      const summary = clean(journey.querySelector('.journey-heading p')?.textContent || '');
+      const stages = [...journey.querySelectorAll('.coached-step h3')].map(stage => clean(stage.textContent)).join(' ');
+      items.push({ title: clean(heading.textContent), description: summary, text: summary + ' ' + stages, category: 'Build / Journey', categoryId: 'build-journeys', type: 'Guide', url: source.file + '#' + journey.id, source: source.file, sourceName: source.name });
+    });
     const heading = doc.querySelector('h1');
     if (heading) items.push({ title: source.name + ': ' + clean(heading.textContent), text: clean(doc.querySelector('.lead, .sub, .pagehead p')?.textContent || ''), category: source.name, type: 'Page', url: source.file, source: source.file, sourceName: source.name });
     if (source.name === 'About') {
@@ -168,27 +179,41 @@
       if (!response.ok) throw new Error('Unavailable skills catalog');
       catalog = await response.json();
       const types = { skill: 'Skill', 'mcp-capability': 'MCP capability', reference: 'Reference' };
-      results.push({ items: catalog.skills.map(item => ({
-        advisorId: item.id,
-        title: item.displayName || item.name,
-        description: item.description,
-        text: [item.name, item.description, ...item.products, ...item.locations, item.purpose, item.action?.note || ''].join(' '),
-        category: [item.purpose, ...item.products].join(' / '),
-        type: types[item.tier],
-        availability: item.status,
-        products: item.products,
-        url: item.source,
-        source: catalog.source,
-        sourceName: 'Skills Advisor',
-        verified: item.verified
-      })) });
+      results.push({ items: catalog.skills.map(item => {
+        const isPowerCat = item.marketplace === 'Power CAT Skills';
+        const destination = isPowerCat ? item.source : 'https://aka.ms/powerplatformskillsadvisor';
+        return {
+          advisorId: item.id,
+          skillDetails: {
+            type: types[item.tier], products: item.products, purpose: item.purpose,
+            status: item.status, publisher: item.publisher, marketplace: item.marketplace,
+            license: item.license, verified: item.verified, note: item.action?.note || '',
+            prompt: item.action?.prompt || '', canonicalSource: item.source,
+            route: isPowerCat ? 'Power CAT canonical source' : 'Power Platform Skills Advisor'
+          },
+          title: item.displayName || item.name,
+          description: item.description,
+          text: [item.name, item.description, ...item.products, ...item.locations, item.purpose, item.action?.note || ''].join(' '),
+          category: [item.purpose, ...item.products].join(' / '),
+          type: types[item.tier],
+          availability: item.status,
+          products: item.products,
+          url: destination,
+          source: catalog.source,
+          sourceName: 'Skills Advisor',
+          verified: item.verified
+        };
+      }) });
     } catch { results.push({ failed: 'Skills Advisor catalog', items: [] }); }
     let workshop;
     try {
       const response = await fetch('assets/data/workshop-labs.json', { cache: 'no-cache', signal: AbortSignal.timeout(10000) });
       if (!response.ok) throw new Error('Unavailable workshop catalog');
       workshop = await response.json();
-      results.push({ items: workshop.labs });
+      results.push({ items: workshop.labs.map(lab => ({ ...lab, labDetails: {
+        persona: lab.persona, level: lab.level, duration: lab.duration,
+        license: workshop.license, imported: workshop.retrieved.slice(0, 10)
+      } })) });
     } catch { results.push({ failed: 'Power Series labs', items: [] }); }
     const unique = new Map();
     results.flatMap(result => result.items).forEach(item => {
@@ -254,9 +279,18 @@
       const resourceLink = anchor(item.title, item.url);
       resourceLink.dataset.previewSummary = description;
       resourceLink.dataset.previewReason = reason;
+      if (item.skillDetails) resourceLink.dataset.skillDetails = JSON.stringify(item.skillDetails);
+      if (item.labDetails) resourceLink.dataset.labDetails = JSON.stringify(item.labDetails);
       heading.append(resourceLink);
       const excerpt = description.length > 270 ? description.slice(0, 267) + '...' : description;
-      const source = anchor('View in ' + item.sourceName, item.source);
+      const source = anchor(item.advisorId ? 'View skill details' : item.labDetails ? 'View lab details' : 'View in ' + item.sourceName, item.advisorId || item.labDetails ? item.url : item.source);
+      if (item.skillDetails || item.labDetails) {
+        if (item.skillDetails) source.dataset.skillDetails = JSON.stringify(item.skillDetails);
+        if (item.labDetails) source.dataset.labDetails = JSON.stringify(item.labDetails);
+        source.dataset.previewTitle = item.title;
+        source.dataset.previewSummary = description;
+        source.dataset.previewReason = reason;
+      }
       source.className = 'result-source';
       article.append(element('div', catalogMode ? item.type + ' / ' + item.category : item.sourceName, 'result-meta'), heading, element('p', excerpt));
       if (match.percent !== null) {
@@ -310,7 +344,6 @@
   byId('scenarioForm').addEventListener('submit', event => {
     event.preventDefault();
     selectedGoal = null;
-    selectedAnswer = null;
     renderJourney(false);
     search(byId('scenario').value, true);
   });
@@ -321,7 +354,6 @@
   function browseCatalog() {
     byId('advancedSearch').open = true;
     selectedGoal = null;
-    selectedAnswer = null;
     renderJourney(false);
     catalogMode = true;
     focusCatalog = true;

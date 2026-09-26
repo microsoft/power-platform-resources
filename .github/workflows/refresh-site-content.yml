@@ -1,0 +1,94 @@
+name: Refresh site content
+
+on:
+  schedule:
+    - cron: "0 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REFRESH_BRANCH: automation/refresh-site-content
+      BASE_BRANCH: ${{ github.event.repository.default_branch }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Refresh changed upstream snapshots
+        shell: pwsh
+        run: |
+          function Update-Snapshot([string] $Script) {
+            & node $Script --check
+            if ($LASTEXITCODE -eq 0) {
+              return
+            }
+            & node $Script
+            if ($LASTEXITCODE -ne 0) {
+              throw "Could not refresh $Script"
+            }
+          }
+
+          Update-Snapshot "scripts/sync-skills-advisor.js"
+          Update-Snapshot "scripts/sync-workshop-labs.js"
+          Update-Snapshot "scripts/sync-latest-content.js"
+          node scripts/update-about.js
+          if ($LASTEXITCODE -ne 0) {
+            throw "Could not regenerate About content"
+          }
+
+      - name: Validate refreshed content
+        shell: pwsh
+        run: |
+          node scripts/update-about.js --check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node --test tests/ssp-search.test.js
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git diff --check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Detect changes
+        id: changes
+        shell: pwsh
+        run: |
+          $changed = if (git status --porcelain) { "true" } else { "false" }
+          "changed=$changed" >> $env:GITHUB_OUTPUT
+
+      - name: Open or update refresh pull request
+        if: steps.changes.outputs.changed == 'true'
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B $env:REFRESH_BRANCH
+          git add assets/data/skills-advisor.json assets/data/workshop-labs.json assets/data/latest-content.json ssp-search.html ssp-landing.html
+          git commit -m "Refresh site content snapshots"
+
+          git ls-remote --exit-code --heads origin $env:REFRESH_BRANCH | Out-Null
+          if ($LASTEXITCODE -eq 0) {
+            git fetch origin $env:REFRESH_BRANCH
+            git push --force-with-lease origin "HEAD:$env:REFRESH_BRANCH"
+          } else {
+            git push --set-upstream origin $env:REFRESH_BRANCH
+          }
+
+          $pullRequest = gh pr list --head $env:REFRESH_BRANCH --base $env:BASE_BRANCH --state open --json number --jq '.[0].number'
+          if (-not $pullRequest) {
+            gh pr create `
+              --base $env:BASE_BRANCH `
+              --head $env:REFRESH_BRANCH `
+              --title "Refresh site content snapshots" `
+              --body "Automated weekly refresh of Skills Advisor, Power Series labs, resource counts, and generated About content. Review the source changes and generated output before merging."
+          }

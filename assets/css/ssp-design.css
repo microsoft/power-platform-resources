@@ -157,6 +157,40 @@ html[data-theme="dark"] .advisor-rail { background: #10283d; }
 .advisor-controls, .advisor-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 12px; }
 .advisor-controls .btn { gap: 8px; max-width: 100%; white-space: normal; }
 .advisor-controls .btn:disabled { opacity: .5; cursor: not-allowed; }
+
+@media print {
+  @page { margin: 16mm; }
+  body.print-design-brief { background: #fff; color: #111; }
+  body.print-design-brief > * { display: none !important; }
+  body.print-design-brief main > * { display: none !important; }
+  body.print-design-brief main,
+  body.print-design-brief #design-advisor,
+  body.print-design-brief #design-advisor .wrap,
+  body.print-design-brief .advisor-shell,
+  body.print-design-brief .advisor-main,
+  body.print-design-brief #advisorApp,
+  body.print-design-brief #advisorResult { display: block !important; }
+  body.print-design-brief #design-advisor { padding: 0; }
+  body.print-design-brief #design-advisor .section-head,
+  body.print-design-brief .advisor-privacy,
+  body.print-design-brief .advisor-stages,
+  body.print-design-brief .advisor-progress,
+  body.print-design-brief .advisor-controls { display: none !important; }
+  body.print-design-brief .advisor-shell,
+  body.print-design-brief #advisorResult {
+    background: #fff;
+    border: 0;
+    box-shadow: none;
+    color: #111;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+  }
+  body.print-design-brief #advisorResult a { color: #333; text-decoration: underline; }
+  body.print-design-brief #advisorResult details,
+  body.print-design-brief #advisorResult details > * { display: block !important; }
+  body.print-design-brief #advisorResult summary { font-weight: 700; list-style: none; }
+}
 .advisor-result { padding: 0; scroll-margin-top: 90px; }
 .local-advisor .advisor-result h3 { margin: 0 0 10px; font-size: 24px; }
 .advisor-result h4 { font-size: 17px; margin: 16px 0 6px; }

@@ -312,6 +312,23 @@
       setTimeout(() => URL.revokeObjectURL(url), 1000);
       progress.textContent = "Design brief download requested";
     });
+    byId("advisorPdf").addEventListener("click", () => {
+      if (!result?.complete) return;
+      const details = Array.from(resultPanel.querySelectorAll("details"));
+      const openStates = details.map(item => item.open);
+      const originalTitle = document.title;
+      const restore = () => {
+        document.body.classList.remove("print-design-brief");
+        details.forEach((item, index) => { item.open = openStates[index]; });
+        document.title = originalTitle;
+      };
+      details.forEach(item => { item.open = true; });
+      document.body.classList.add("print-design-brief");
+      document.title = "SSP Design Brief";
+      progress.textContent = "Print dialog opened; choose Save as PDF";
+      window.addEventListener("afterprint", restore, { once: true });
+      window.print();
+    });
     byId("advisorApp").hidden = false;
     renderQuestion(false);
   }

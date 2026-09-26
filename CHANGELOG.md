@@ -4,10 +4,40 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-09-26
+
+### Changed
+
+- Kept the About carousel rotating automatically without a pause/resume control and replaced its text arrows with consistently centered SVG chevrons.
+- Generated every About catalog statistic, including the Learn pillar and lower statistics row, from the resource, lab, and Skills Advisor snapshots; moved featured selections into a validated editorial configuration; and added pull-request and scheduled refresh automation.
+- Added generated Latest News and Latest Event Announcements lists sourced from official Microsoft Power Platform RSS feeds and included them in the weekly reviewable refresh workflow.
+- Added a print-optimized Save as PDF option alongside the existing Markdown export for completed Design briefs.
+- Removed the About pillar width animation, added reduced-motion handling, rewrote every Before you start prompt as a complete instruction, and made each Design step present one primary action with supporting resources visible in a consistent secondary panel.
+- Added four outcome-first Build journeys with sixteen coached stages covering apps, automation, extensions, and safe delivery, while keeping supporting resources visible and indexing the journeys in site search.
+- Replaced centered external previews with an Azure-style right-side detail panel that supports desktop and mobile layouts, Escape, explicit close controls, and focus restoration.
+- Routed non-Power CAT skills to Skills Advisor and Power CAT skills to their canonical sources after a concise SSP explanation.
+- Preserved the originating Design topic and step during internal guide navigation using best-effort return context.
+- Standardized Review tool guidance: OverPage and OverFlow launch their canonical hosted viewers after SSP context, while OverCode clearly reports that no verified hosted viewer is available.
+- Simplified Resources navigation so one goal selection immediately shows rich, comparable paths with intended audiences, expected outcomes, direct actions, and related resources; kept all five goals visible for one-click switching and removed the required follow-up step.
+- Reduced the About carousel interval from nine seconds to four seconds while preserving its hover, focus, hidden-tab, and reduced-motion pauses.
+- Refreshed enterprise environment guidance to cover Managed Environments, environment groups, inherited group rules and exception handling, environment routing, personal developer environments, default-environment reduction, licensing checks, and controlled promotion.
+
+## 2026-09-25
+
+### Changed
+
+- Simplified the new-solution design path to Plan, Model, and Validate, and made the final step continue to supporting skills instead of looping back to the beginning.
+
+### Removed
+
+- Removed the Application Insights configuration, browser SDK loader, page-view telemetry, and analytics notices from the site.
+
 ## 2026-09-21
 
 ### Changed
 
+- Added in-page lab details with audience, level, duration, and a direct Open lab action. Added a labeled top-right close button to all resource, skill, and lab dialogs.
+- Added in-page details for imported skill search results, including product scope, availability, usage notes, and suggested prompts, with a direct action to the selected skill source instead of the general catalog.
 - Added search keyword-match percentages, matched and related terms, and missing terms, alongside visible recommendation reasons. Percentages represent term coverage, not confidence or solution suitability; external previews retain the recommendation context.
 - Indexed published Power Series workshop labs from microsoft/apps-agents-workshop with source descriptions and direct links to rendered lab pages; added a repeatable catalog refresh command.
 - Added a new-tab indicator to the Learn menu link and made it open the Power Series catalog directly, while retaining previews for other external links.

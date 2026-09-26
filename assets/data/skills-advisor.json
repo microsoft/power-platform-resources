@@ -1,34 +1,9 @@
 {
   "source": "https://microsoft.github.io/power-cat-skills/skill-advisor/",
-  "sourceGenerated": "7 Sep 2026",
-  "retrieved": "2026-09-15T21:34:46.432Z",
-  "sha256": "830e93244be7f3fe2b7397bda19782557bd24ec498850b300bd59adcee9c2e44",
+  "sourceGenerated": "21 Sep 2026",
+  "retrieved": "2026-09-26T21:38:30.793Z",
+  "sha256": "b0e796d10fcdb073cfd6fce70792be2072fce2fe85877380872d6e403743d019",
   "skills": [
-    {
-      "id": "skill-103",
-      "name": "Adapt",
-      "description": "Filesystem paths, tool names, dynamic injection, invocation controls.",
-      "kind": "migrate",
-      "purpose": "Migrate",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / PORTABILITY RULE"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
     {
       "id": "skill-66",
       "name": "add-cloud-flow",
@@ -78,7 +53,7 @@
         "Power Apps Skills Index / Mobile Apps · CONNECT"
       ],
       "tier": "skill",
-      "displayName": "Add Connector",
+      "displayName": "add-connector · Mobile",
       "action": {
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
@@ -107,7 +82,7 @@
         "Power Platform Cross-Cutting Skills Index / CONNECTORS"
       ],
       "tier": "skill",
-      "displayName": "Add Connector",
+      "displayName": "add-connector · Connectors",
       "action": {
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
@@ -125,7 +100,7 @@
       "marketplace": "Power Platform Skills",
       "maturity": "GA",
       "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/canvas-apps",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/canvas-apps/skills/add-data-source",
       "license": "MIT licensed",
       "publisher": "Microsoft",
       "verified": "7 Sep 2026",
@@ -234,42 +209,17 @@
       }
     },
     {
-      "id": "skill-140",
-      "name": "Agent Skill",
-      "description": "Usually portable instructions and resources.",
-      "kind": "build",
-      "purpose": "Build",
-      "marketplace": "Agent Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://agentskills.io/home",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "MCP & Tooling"
-      ],
-      "locations": [
-        "MCP & Agent Tooling Skills Index / PORTABILITY"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
       "id": "skill-90",
-      "name": "Agent Skills standard",
-      "description": "Open format for instructions, scripts, and references.",
+      "name": "agent-skills-standard",
+      "description": "The open authoring format for skills: SKILL.md structure, packaging, and portability.",
       "kind": "author",
       "purpose": "Author",
       "marketplace": "Agent Skills",
       "maturity": "GA",
       "status": "Generally available",
       "source": "https://agentskills.io/home",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
+      "license": "Open standard — see source",
+      "publisher": "Agent Skills (open standard)",
       "verified": "7 Sep 2026",
       "products": [
         "Agent Skills"
@@ -281,7 +231,8 @@
       "action": {
         "kind": "docs",
         "note": "No verified standalone invocation; open the source for prerequisites."
-      }
+      },
+      "displayName": "Agent Skills open standard"
     },
     {
       "id": "skill-121",
@@ -306,31 +257,6 @@
       "displayName": "Airtable To Power Platform",
       "action": {
         "kind": "unverified",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-138",
-      "name": "Allowlisting",
-      "description": "Limit tools, environments, and shell patterns.",
-      "kind": "govern",
-      "purpose": "Govern",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "MCP & Tooling"
-      ],
-      "locations": [
-        "MCP & Agent Tooling Skills Index / HOST DUTIES"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
         "note": "No verified standalone invocation; open the source for prerequisites."
       }
     },
@@ -490,8 +416,8 @@
     },
     {
       "id": "skill-137",
-      "name": "Authentication",
-      "description": "Use approved identity and credential storage.",
+      "name": "pp-skills-setup-host",
+      "description": "How to install, run, secure and govern the skills across supported hosts.",
       "kind": "govern",
       "purpose": "Govern",
       "marketplace": "Power Platform Skills",
@@ -511,7 +437,8 @@
       "action": {
         "kind": "docs",
         "note": "No verified standalone invocation; open the source for prerequisites."
-      }
+      },
+      "displayName": "Power Platform Skills: setup & host guide"
     },
     {
       "id": "skill-130",
@@ -699,7 +626,7 @@
       "marketplace": "Power Platform Skills",
       "maturity": "GA",
       "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/canvas-apps",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/canvas-apps/skills/canvas-app",
       "license": "MIT licensed",
       "publisher": "Microsoft",
       "verified": "7 Sep 2026",
@@ -747,56 +674,6 @@
         "skillName": "check-updates",
         "sourceSha256": "f47c46a6bbe95643e0f344ab3687a83b86a28d98f5807276c3cbc014d22ad8b0",
         "prompt": "Use check-updates: Check the plugin, native host, Microsoft packages, and direct npm dependencies with per-package approval and rollback."
-      }
-    },
-    {
-      "id": "skill-93",
-      "name": "CLI & terminal",
-      "description": "Copilot CLI, Claude Code, Codex, Gemini CLI, OpenCode.",
-      "kind": "deploy",
-      "purpose": "Deploy",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / INSTALL SURFACES"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-95",
-      "name": "Cloud & hosted",
-      "description": "Copilot cloud agent, code review, GitHub Copilot app.",
-      "kind": "deploy",
-      "purpose": "Deploy",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / INSTALL SURFACES"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
       }
     },
     {
@@ -869,7 +746,7 @@
         "MCP & Agent Tooling Skills Index / CANVAS MCP"
       ],
       "tier": "mcp-capability",
-      "displayName": "Connect",
+      "displayName": "connect · Canvas",
       "action": {
         "kind": "unverified",
         "note": "No verified standalone invocation; open the source for prerequisites."
@@ -895,7 +772,7 @@
         "MCP & Agent Tooling Skills Index / DATAVERSE MCP"
       ],
       "tier": "mcp-capability",
-      "displayName": "Connect",
+      "displayName": "connect · Dataverse",
       "action": {
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
@@ -981,12 +858,11 @@
       ],
       "tier": "skill",
       "action": {
-        "kind": "skill",
+        "kind": "unverified",
         "note": "No verified standalone invocation; open the source for prerequisites.",
         "evidence": [
           "https://github.com/microsoft/copilot-studio-plugin/blob/882aa4ee2a0dfa0d98b490057e5e907b7ab38eeb/commands/chat.md"
-        ],
-        "prompt": "Use Copilot Studio chat: Experimental classic-to-modern Copilot Studio migration: Test the published modern agent."
+        ]
       }
     },
     {
@@ -1038,13 +914,11 @@
       ],
       "tier": "skill",
       "action": {
-        "kind": "skill",
+        "kind": "unverified",
         "note": "No verified standalone invocation; open the source for prerequisites.",
         "evidence": [
           "https://github.com/microsoft/copilot-studio-plugin/blob/882aa4ee2a0dfa0d98b490057e5e907b7ab38eeb/commands/migrate.md"
-        ],
-        "command": "/migrate",
-        "prompt": "Use Copilot Studio migrate: Experimental classic-to-modern Copilot Studio migration: Create a reviewed modern-orchestration copy of a classic agent."
+        ]
       }
     },
     {
@@ -1386,7 +1260,7 @@
         "Power Apps Skills Index / Code Apps · DEPLOY / EVOLVE"
       ],
       "tier": "skill",
-      "displayName": "Deploy",
+      "displayName": "deploy · Apps",
       "action": {
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
@@ -1415,7 +1289,7 @@
         "Governance, Quality & ALM Skills Index / DEPLOY"
       ],
       "tier": "skill",
-      "displayName": "Deploy",
+      "displayName": "deploy · Governance",
       "action": {
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
@@ -2125,31 +1999,6 @@
       }
     },
     {
-      "id": "skill-100",
-      "name": "Evals",
-      "description": "Score descriptions, builders, fixtures, and repeatability.",
-      "kind": "review",
-      "purpose": "Review",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / VALIDATE"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
       "id": "skill-57",
       "name": "expression help",
       "description": "Validate Workflow Definition Language expressions.",
@@ -2176,8 +2025,8 @@
     },
     {
       "id": "skill-135",
-      "name": "fallback tools",
-      "description": "Select MCP, Dataverse CLI, Python SDK, or PAC by capability; raw Web API is a last resort.",
+      "name": "dv-tool-selection",
+      "description": "When to use MCP, the Dataverse CLI, the Python SDK or PAC for Dataverse work.",
       "kind": "operate",
       "purpose": "Operate",
       "marketplace": "Dataverse Skills",
@@ -2202,7 +2051,8 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-query/SKILL.md",
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-data/SKILL.md"
         ]
-      }
+      },
+      "displayName": "Dataverse tool selection"
     },
     {
       "id": "skill-58",
@@ -2497,81 +2347,6 @@
       }
     },
     {
-      "id": "skill-101",
-      "name": "Host test",
-      "description": "Verify paths, tools, permissions, and feature extensions on each host.",
-      "kind": "review",
-      "purpose": "Review",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / VALIDATE"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-99",
-      "name": "Human review",
-      "description": "Approve generated procedures, YAML, migration plans, and destructive actions.",
-      "kind": "review",
-      "purpose": "Review",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / VALIDATE"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-94",
-      "name": "IDE & editor",
-      "description": "VS Code, JetBrains, Cursor, Junie.",
-      "kind": "deploy",
-      "purpose": "Deploy",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / INSTALL SURFACES"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
       "id": "skill-20",
       "name": "infopath-to-canvas",
       "description": "Convert InfoPath forms into modern Canvas Apps.",
@@ -2813,54 +2588,30 @@
       }
     },
     {
-      "id": "skill-141",
-      "name": "MCP integration",
-      "description": "Reconfigure server launch, auth, and permissions.",
-      "kind": "migrate",
-      "purpose": "Migrate",
-      "marketplace": "Power Platform Skills",
+      "id": "skill-96",
+      "name": "mcp-servers",
+      "description": "The open protocol that lets agents connect to live tools and data.",
+      "kind": "reference",
+      "purpose": "Reference",
+      "marketplace": "Model Context Protocol",
       "maturity": "GA",
       "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
+      "source": "https://modelcontextprotocol.io/",
+      "license": "Open protocol — see source",
+      "publisher": "Model Context Protocol",
       "verified": "7 Sep 2026",
       "products": [
         "MCP & Tooling"
       ],
       "locations": [
-        "MCP & Agent Tooling Skills Index / PORTABILITY"
+        "Agent Skills & Tooling Index / CONNECT"
       ],
       "tier": "reference",
       "action": {
         "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-96",
-      "name": "MCP servers",
-      "description": "Live tool and data access beyond static instructions.",
-      "kind": "mcp",
-      "purpose": "Mcp",
-      "marketplace": "Model Context Protocol",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://modelcontextprotocol.io/",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / CONNECT"
-      ],
-      "tier": "mcp-capability",
-      "action": {
-        "kind": "unverified",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
+        "note": "MCP protocol documentation, not an executable skill or tool. Open the source for reference material."
+      },
+      "displayName": "Model Context Protocol"
     },
     {
       "id": "skill-10",
@@ -3011,31 +2762,6 @@
       "displayName": "Migrate WebAPI SelectAll",
       "action": {
         "kind": "unverified",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-98",
-      "name": "Native tools",
-      "description": "Prefer CLI/API/web tools over replaying recorded clicks.",
-      "kind": "operate",
-      "purpose": "Operate",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / CONNECT"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
         "note": "No verified standalone invocation; open the source for prerequisites."
       }
     },
@@ -3218,81 +2944,6 @@
       }
     },
     {
-      "id": "skill-142",
-      "name": "Plugin extension",
-      "description": "Verify hooks, commands, agents, and namespace behavior.",
-      "kind": "migrate",
-      "purpose": "Migrate",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "MCP & Tooling"
-      ],
-      "locations": [
-        "MCP & Agent Tooling Skills Index / PORTABILITY"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-97",
-      "name": "Plugin package",
-      "description": "Distribute skills, agents, commands, hooks, and resources.",
-      "kind": "deploy",
-      "purpose": "Deploy",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / CONNECT"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-102",
-      "name": "Portable",
-      "description": "Instructions, references, and standard skill structure.",
-      "kind": "build",
-      "purpose": "Build",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / PORTABILITY RULE"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
       "id": "skill-112",
       "name": "Power CAT Admin Digest",
       "description": "Curate health, issues, messages, and deprecations.",
@@ -3348,15 +2999,15 @@
     },
     {
       "id": "skill-105",
-      "name": "Power Platform Well-Architected",
-      "description": "Evaluate reliability, security, operations, performance, and experience.",
+      "name": "pp-well-architected",
+      "description": "Microsoft Learn guidance for evaluating solution design across the five pillars.",
       "kind": "review",
       "purpose": "Review",
       "marketplace": "Microsoft Learn",
       "maturity": "GA",
       "status": "Generally available",
       "source": "https://learn.microsoft.com/en-us/power-platform/well-architected/",
-      "license": "MIT licensed",
+      "license": "Microsoft Learn (CC BY 4.0)",
       "publisher": "Microsoft",
       "verified": "7 Sep 2026",
       "products": [
@@ -3369,7 +3020,8 @@
       "action": {
         "kind": "docs",
         "note": "No verified standalone invocation; open the source for prerequisites."
-      }
+      },
+      "displayName": "Power Platform Well-Architected"
     },
     {
       "id": "skill-11",
@@ -3480,7 +3132,7 @@
       "marketplace": "Power Platform Skills",
       "maturity": "GA",
       "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-adoption/skills/powercat-storytelling",
       "license": "MIT licensed",
       "publisher": "Microsoft",
       "verified": "7 Sep 2026",
@@ -3494,56 +3146,6 @@
       "displayName": "Powercat Storytelling",
       "action": {
         "kind": "unverified",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-108",
-      "name": "preferred environment",
-      "description": "Resolve the correct target before deployment.",
-      "kind": "govern",
-      "purpose": "Govern",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Cross-Cutting"
-      ],
-      "locations": [
-        "Power Platform Cross-Cutting Skills Index / ENVIRONMENTS"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
-      "id": "skill-139",
-      "name": "Prerequisites",
-      "description": "Install required runtimes and CLI versions.",
-      "kind": "govern",
-      "purpose": "Govern",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "MCP & Tooling"
-      ],
-      "locations": [
-        "MCP & Agent Tooling Skills Index / HOST DUTIES"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
         "note": "No verified standalone invocation; open the source for prerequisites."
       }
     },
@@ -3653,38 +3255,13 @@
       ],
       "tier": "mcp-capability",
       "action": {
-        "kind": "MCP-operation",
+        "kind": "unverified",
         "note": "No verified standalone invocation; open the source for prerequisites.",
         "evidence": [
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-overview/SKILL.md",
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-query/SKILL.md",
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-data/SKILL.md"
         ]
-      }
-    },
-    {
-      "id": "skill-104",
-      "name": "Reconfigure",
-      "description": "Authentication, allowlisting, server launch, and tenant access.",
-      "kind": "mcp",
-      "purpose": "Mcp",
-      "marketplace": "Power Platform Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://github.com/microsoft/power-platform-skills",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / PORTABILITY RULE"
-      ],
-      "tier": "mcp-capability",
-      "action": {
-        "kind": "unverified",
-        "note": "No verified standalone invocation; open the source for prerequisites."
       }
     },
     {
@@ -3989,31 +3566,6 @@
       }
     },
     {
-      "id": "skill-91",
-      "name": "SKILL.md",
-      "description": "Reusable on-demand procedure with description and supporting resources.",
-      "kind": "author",
-      "purpose": "Author",
-      "marketplace": "Agent Skills",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://agentskills.io/home",
-      "license": "MIT licensed",
-      "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
-      "products": [
-        "Agent Skills"
-      ],
-      "locations": [
-        "Agent Skills & Tooling Index / AUTHOR"
-      ],
-      "tier": "reference",
-      "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
-      }
-    },
-    {
       "id": "skill-36",
       "name": "telemetry",
       "description": "Enable, disable, or check the mobile-app plugin's usage-data telemetry.",
@@ -4102,28 +3654,139 @@
       }
     },
     {
-      "id": "skill-115",
-      "name": "Well-Architected",
-      "description": "Review workload design against five pillars.",
-      "kind": "review",
-      "purpose": "Review",
-      "marketplace": "Microsoft Learn",
-      "maturity": "GA",
-      "status": "Generally available",
-      "source": "https://learn.microsoft.com/en-us/power-platform/well-architected/",
+      "id": "skill-143",
+      "name": "generate-codeful-mcp-tool",
+      "displayName": "Generate Codeful MCP Tool",
+      "description": "Generate a self-contained JavaScript MCP tool runtime and matching registration metadata.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/474e614e1f4c0ec193a9ca01caf86b701c79bc26/plugins/mcp-apps/skills/generate-codeful-mcp-tool/SKILL.md",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "21 Sep 2026",
       "products": [
-        "Governance"
+        "MCP & Tooling"
       ],
       "locations": [
-        "Governance, Quality & ALM Skills Index / PLAN"
+        "MCP & Agent Tooling Skills Index / MCP APPS"
       ],
-      "tier": "reference",
+      "tier": "skill",
       "action": {
-        "kind": "docs",
-        "note": "No verified standalone invocation; open the source for prerequisites."
+        "kind": "skill",
+        "skillName": "generate-codeful-mcp-tool",
+        "note": "Requires a compatible installed host and plugin. The repository documents this slash token. Documented alias: /codeful-tool. Generates runtime and metadata, not Agent Skills.",
+        "evidence": [
+          "https://github.com/microsoft/power-platform-skills/blob/474e614e1f4c0ec193a9ca01caf86b701c79bc26/plugins/mcp-apps/skills/generate-codeful-mcp-tool/SKILL.md"
+        ],
+        "sourceSha256": "6de16d53e0dc4e541d3a08579b8a1a67c1b4a4838f8831bd9f27447da33f3451",
+        "sourceRevision": "474e614e1f4c0ec193a9ca01caf86b701c79bc26",
+        "prompt": "Create a codeful MCP tool with JavaScript server logic and registration metadata."
+      }
+    },
+    {
+      "id": "skill-144",
+      "name": "setup-app-insights",
+      "displayName": "Set Up Application Insights",
+      "description": "Configure optional observability for a Power Apps mobile app using an existing, customer-owned Application Insights resource. Off by default; no resource creation.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/474e614e1f4c0ec193a9ca01caf86b701c79bc26/plugins/mobile-apps/skills/setup-app-insights/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "21 Sep 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "setup-app-insights",
+        "note": "Requires a compatible installed host and plugin. The repository documents this slash token. Explicit opt-in; existing customer-owned workspace-based resource only; telemetry defaults off.",
+        "evidence": [
+          "https://github.com/microsoft/power-platform-skills/blob/474e614e1f4c0ec193a9ca01caf86b701c79bc26/plugins/mobile-apps/skills/setup-app-insights/SKILL.md"
+        ],
+        "sourceSha256": "5b2fb97e739845aa1b5d1342f5af84950336a8e9fb9788605000386252f2670b",
+        "sourceRevision": "474e614e1f4c0ec193a9ca01caf86b701c79bc26",
+        "prompt": "Enable Application Insights for this app"
+      }
+    },
+    {
+      "id": "skill-145",
+      "name": "powercat-accessmigration",
+      "displayName": "PowerCAT Access Migration",
+      "description": "Migrate an Access .mdb or .accdb database to Dataverse, with an optional model-driven app and approval before writes.",
+      "kind": "migrate",
+      "purpose": "Migrate",
+      "marketplace": "Power CAT Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-cat-skills/blob/c6c836259e7459bba01305e1d8bf2b9cdbb221e4/Power%20Platform%20Migration%20Factory/Access%20to%20Dataverse%20Migration/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "21 Sep 2026",
+      "products": [
+        "Modernization",
+        "Power CAT"
+      ],
+      "locations": [
+        "Modernization & Migration Skills Index / SharePoint / Dataverse · MIGRATE DATA",
+        "Power CAT Advisory Skills Index / MODERNIZE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "powercat-accessmigration",
+        "note": "Requires a compatible installed host and plugin. Illustrative skill-name mention, not documented slash syntax. Source version discrepancy remains: SKILL.md 1.0.0; skill.yaml 0.1.0. No GA inference.",
+        "evidence": [
+          "https://github.com/microsoft/power-cat-skills/blob/c6c836259e7459bba01305e1d8bf2b9cdbb221e4/Power%20Platform%20Migration%20Factory/Access%20to%20Dataverse%20Migration/SKILL.md"
+        ],
+        "sourceSha256": "9842d940c71acec670a95cd5c3202f39a818a28b121bcc9feb52a1cfb4942266",
+        "sourceRevision": "c6c836259e7459bba01305e1d8bf2b9cdbb221e4",
+        "prompt": "Migrate my Access database to Dataverse with an optional model-driven app."
+      }
+    },
+    {
+      "id": "skill-146",
+      "name": "add-skill",
+      "displayName": "Add Skill",
+      "description": "PLUGIN COMMAND: Acquire an existing skill from a local file or CAT gallery and optionally import it into a Copilot Studio CLI-agent workspace. Publishing is separate.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/a0833db3ca5fd1014849fea1b627a9c2b63c27c1/commands/add-skill.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "21 Sep 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Host Environments · INSTALL SURFACES"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "command",
+        "skillName": "add-skill",
+        "note": "Plugin command, not a SKILL.md skill. Requires the installed Copilot Studio plugin; optional import requires a cloned CLI-agent workspace. This command does not publish.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/a0833db3ca5fd1014849fea1b627a9c2b63c27c1/commands/add-skill.md"
+        ],
+        "sourceSha256": "4998cae40fa305993378e4a8c6dbe3df87d3c29720fca5a284c45cc55335e8af",
+        "sourceRevision": "a0833db3ca5fd1014849fea1b627a9c2b63c27c1",
+        "prompt": "Add an existing agent skill from my local files or the CAT gallery to my Copilot Studio workspace.",
+        "command": "/add-skill",
+        "userInvocable": true
       }
     }
   ]
