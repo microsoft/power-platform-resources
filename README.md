@@ -36,7 +36,7 @@ Opening `index.html` directly may work for basic viewing, but using a local serv
 
 Start here begins with five goal-based paths: learn, build, fix, review, and expand adoption. Selecting a goal immediately displays all relevant starting paths in a comparison view—there is no required follow-up question. Each path explains who it is for, what the user will leave with, its direct next action, and related SSP resources. The five goals remain visible for one-click switching, and unsure choices remain available. These routes are defined in `assets/js/ssp-search-engine.js`, work without fetching the search index, and never send selections to a service. Search remains below the guide, with three initial results and an optional advanced section for technical filters and the Skills Advisor catalog.
 
-Open [Resources](ssp-search.html) through the local server. Search indexes its own resource catalog, the five other SSP HTML pages (including the coached Build journeys), and local Skills Advisor and Power Series lab snapshots. Individual lab results link to the rendered workshop pages and retain their source descriptions for external-link previews. Searches do not crawl external websites or send queries to GitHub. Direct `file:` previews cannot reliably fetch these files; use HTTP. The catalog retains its category sidebar and numbered content panels beneath search.
+Open [Resources](ssp-search.html) through the local server. Search indexes its own resource catalog, the five other SSP HTML pages (including the coached Build journeys), and local Skills Advisor, Power CAT marketplace, and Power Series lab snapshots. Power CAT skills and migration tracks include their marketplace categories, products, install commands, and authoritative detail destinations. Individual lab results link to the rendered workshop pages and retain their source descriptions for external-link previews. Searches do not crawl external websites or send queries to GitHub. Direct `file:` previews cannot reliably fetch these files; use HTTP. The catalog retains its category sidebar and numbered content panels beneath search.
 
 ### Power Series Labs
 
@@ -48,9 +48,15 @@ The Learn navigation link opens the workshop catalog directly in a new tab. Indi
 
 The index is rebuilt from current page content on each search-page load. Duplicate resource URLs are combined. Skill-card anchors are derived from their headings by the shared search entry script. Keep skill headings unique within each pillar.
 
+### Power CAT Skills Marketplace and Migration Factory
+
+SSP is the guided front door for Power CAT skills: it organizes relevant skills alongside labs and resources under Design, Build, Review, and Learn, gives concise input/outcome guidance, and then opens the authoritative [Power CAT Skills Marketplace and Migration Factory](https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/) for full details and installation. The complete synchronized snapshot in [assets/data/powercat-marketplace.json](assets/data/powercat-marketplace.json) contains every published marketplace skill and migration track without copying the marketplace's long-form documentation into SSP.
+
+Refresh with `node scripts/sync-powercat-marketplace.js`; verify parity with `node scripts/sync-powercat-marketplace.js --check`. The importer validates categories, plugins, skills, migration tracks, source URLs, and detail identities before replacing the snapshot. Visitors never fetch the external marketplace directly. The weekly/manual refresh workflow updates the snapshot and opens a reviewable pull request when upstream content changes.
+
 ## About page generated content
 
-The About page statistics and featured cards are committed as static HTML so they render without runtime requests. `scripts/update-about.js` derives the exact curated-link and category counts from the resource panels in `ssp-search.html`, reads the lab and catalog-entry totals from the committed snapshots, and validates the resource category counters and summaries.
+The About page statistics and featured cards are committed as static HTML so they render without runtime requests. `scripts/update-about.js` derives the exact curated-link and category counts from the resource panels in `ssp-search.html`, reads the lab, Skills Advisor, Power CAT skill, and migration-track totals from the committed snapshots, and validates the resource category counters and summaries.
 
 Featured selections are editorial, not analytics-derived popularity. Configure exactly three entries in `assets/data/about-featured.json`; each entry must include a curation reason and resolve to the current catalog, a local guide, or a published lab. The generated section shows its owner and review date. Refresh after changing resources, snapshots, guides, or featured selections:
 
@@ -59,7 +65,7 @@ node scripts\update-about.js
 node scripts\update-about.js --check
 ```
 
-The update command rewrites only the marked generated blocks in `ssp-landing.html` and the derived resource counts in `ssp-search.html`. Commit those generated changes with their source changes. Pull requests validate the committed output. The scheduled refresh workflow checks the upstream Skills Advisor and Power Series sources weekly, regenerates the About content when needed, runs the regression suite, and opens or updates a reviewable pull request rather than publishing directly.
+The update command rewrites only the marked generated blocks in `ssp-landing.html` and the derived resource counts in `ssp-search.html`. Commit those generated changes with their source changes. Pull requests validate the committed output. The scheduled refresh workflow checks the upstream Skills Advisor, Power CAT marketplace, Power Series, News, and Events sources weekly, regenerates the About content when needed, runs the regression suite, and opens or updates a reviewable pull request rather than publishing directly.
 
 ## Latest news and events
 
@@ -87,7 +93,7 @@ Run `node --test tests/ssp-search.test.js` for interactive guide and search regr
 
 [Build](ssp-build.html#journeys) starts with four outcome-oriented journeys: create an app, automate a process, extend an experience, and ship safely. Each journey uses four visible coaching stages and introduces technology choices only after the intended outcome is clear. App choices cover Canvas, model-driven, code apps, and generative pages; automation choices cover cloud and desktop flows. Supporting resources remain visible beside each journey.
 
-The final skill action opens a contextual right-side panel before navigation. Non-Power CAT skills continue to Skills Advisor, while Power CAT skills continue to their canonical source. The panel becomes full-width on small screens, closes with Escape or its close controls, and returns focus to the originating link.
+The final skill action opens a contextual right-side panel before navigation. Non-Power CAT skills continue to Skills Advisor, while Power CAT skills continue to their matching marketplace detail and install page. The panel becomes full-width on small screens, closes with Escape or its close controls, and returns focus to the originating link.
 
 Design journey links preserve the current topic and step while the user moves between internal Design pages. This restoration is best effort and is not expected to survive an external authentication boundary.
 
@@ -99,7 +105,7 @@ Review provides SSP context before launching the canonical hosted OverPage and O
 
 ### Skills Advisor catalog
 
-[Browse all advisor skills](ssp-search.html#skills) includes the complete imported catalog from [Power Platform Skills Advisor](https://aka.ms/powerplatformskillsadvisor). Skills, MCP capabilities, and reference entries have separate content types; the existing pillar cards remain SSP guides. Every skill first opens a concise SSP detail panel. Power CAT entries then open their canonical source, while non-Power CAT entries continue to Skills Advisor. Canonical source and availability metadata, including Private Preview, remain visible in the panel. Inclusion does not guarantee access to a source repository or preview program.
+[Browse all advisor skills](ssp-search.html#skills) includes the imported catalog from [Power Platform Skills Advisor](https://aka.ms/powerplatformskillsadvisor) plus the dedicated Power CAT marketplace snapshot. Skills, migration tracks, MCP capabilities, and reference entries have separate content types; the existing pillar cards remain SSP guides. Every skill first opens a concise SSP detail panel. Power CAT entries open their marketplace detail page, while non-Power CAT entries continue to Skills Advisor. Source and availability metadata, including Private Preview, remain visible in the panel. Inclusion does not guarantee access to a source repository or preview program.
 
 The local snapshot in [assets/data/skills-advisor.json](assets/data/skills-advisor.json) contains all published entries and upstream IDs, including entries that share names or URLs. Search uses this snapshot without fetching external data or sending scenario text to the Advisor. The import date and upstream verification date are shown in search. The snapshot is not automatically refreshed at runtime.
 

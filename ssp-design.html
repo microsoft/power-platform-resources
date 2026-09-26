@@ -14,20 +14,16 @@
     try { localStorage.setItem("sspTheme", theme); } catch (error) {}
   })();
 </script>
-<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-pdf-brief">
+<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-presentation">
 <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-<script src="assets/js/ssp-search-entry.js?v=20260926-skill-routing-2" defer></script>
-<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-detail-drawer">
+<script src="assets/js/ssp-search-entry.js?v=20260926-powercat-marketplace" defer></script>
+<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
 </head>
 <body class="pillar-design">
 <header class="topbar">
   <div class="wrap row">
     <a class="logo" href="ssp-landing.html" aria-label="About Self-Service Portal">
-      <img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="200" height="60"><span class="cat-divider" aria-hidden="true"></span>
-      <picture class="powercat-logo" title="Power CAT">
-        <img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24">
-        <img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24">
-      </picture>
+      <img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="220" height="92">
     </a>
     <nav class="main" id="siteNav" aria-label="Primary navigation">
       <a href="ssp-landing.html">About</a>
@@ -42,6 +38,10 @@
     <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">&#9776;</button>
     <button class="icon-btn" type="button" aria-label="Toggle theme" title="Toggle theme" id="themeBtn">&#9790;</button>
     <a class="btn sm desktop-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=Design%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a>
+    <picture class="powercat-logo header-powercat" title="Power CAT">
+      <img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="46">
+      <img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="46">
+    </picture>
   </div>
 </header>
 
@@ -127,7 +127,7 @@
         <div><div class="kicker">Design guides</div><h2 id="skills-heading">Pick the decision you need to make</h2></div>
         <p>These are portal-authored planning guides, not published skill names. Each connects a design decision to relevant skills, documentation, or an assessment.</p>
       </div>
-      <p class="guide-note">Skill links open source instructions and prerequisites, not a running skill. Review requirements and permissions before using a skill in a compatible host. Skill mappings are based on the imported catalog verified 7 September 2026.</p>
+      <p class="guide-note">Power CAT links open marketplace details and prerequisites, not a running skill. Review requirements and permissions before using a skill in a compatible host.</p>
       <div class="skill-tools">
         <label class="skill-search"><span aria-hidden="true">&#9906;</span><span class="sr-only">Search within Architecture</span><input id="skillSearch" type="search" placeholder="Search within Architecture..." autocomplete="off"></label>
       </div>
@@ -149,7 +149,7 @@
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Architecture</span><span class="skill-time">15-25 min</span></div><h3>Solution Architecture Blueprint</h3><p>Translate a business scenario into platform boundaries, components, integrations, and key decisions.</p><div class="tags"><span class="tag">Decision map</span><span class="tag">Architecture</span></div></div>
           <details open><summary>Inputs and intended output</summary><p>Bring goals, users, constraints, and systems. Aim for a component blueprint and decision log.</p></details>
           <div class="guide-resources"><p><strong>Supporting skill</strong><br><code>powercat-pp-architecture-advisor</code> supports discovery and architecture review for a composed Power Platform solution.</p><a href="https://learn.microsoft.com/power-platform/architecture/" target="_blank" rel="noopener">Microsoft Learn: Architecture Center</a></div>
-          <div class="skill-actions"><a class="btn" data-skill-owner="power-cat" data-preview-title="Power CAT architecture advisor" data-preview-summary="Use Power CAT's architecture advisor for guided discovery and review of a composed Power Platform solution." href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">Open Power CAT canonical source <span aria-hidden="true">&nearr;</span></a></div>
+          <div class="skill-actions"><a class="btn" data-skill-owner="power-cat" data-preview-title="Power CAT architecture advisor" data-preview-summary="Use Power CAT's architecture advisor for guided discovery and review of a composed Power Platform solution." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-architecture-advisor__powercat-pp-architecture-advisor" target="_blank" rel="noopener">View marketplace details <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="governance" data-outcomes="new govern review" style="--accent:var(--amber)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Governance</span><span class="skill-time">30-45 min</span></div><h3>Environment Strategy Blueprint</h3><p>Plan Managed Environments, environment groups and inherited rules, maker routing, personal developer environments, and a deliberate reduction of default-environment use.</p><div class="tags"><span class="tag">Managed Environments</span><span class="tag">Routing</span><span class="tag">Group rules</span></div></div>
@@ -166,8 +166,8 @@
         <article class="skill-card" data-category="experience" data-outcomes="new modernize" style="--accent:var(--brand-2)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Experience</span><span class="skill-time">10-20 min</span></div><h3>Experience Pattern Selector</h3><p>Choose between canvas, model-driven, Power Pages, code app, or agent-led experiences.</p><div class="tags"><span class="tag">UX pattern</span><span class="tag">Surface choice</span></div></div>
           <details open><summary>Inputs and intended output</summary><p>Bring user context, tasks, devices, and access needs. Aim for a recommended experience pattern with tradeoffs.</p></details>
-          <div class="guide-resources"><p><strong>Documentation-led guide</strong><br>No dedicated cross-product experience-selector skill is verified in the imported catalog. Compare experience needs against architecture patterns.</p><a href="https://learn.microsoft.com/power-platform/well-architected/experience-optimization/" target="_blank" rel="noopener">Microsoft Learn: Experience optimization</a></div>
-          <div class="skill-actions"><a class="btn" href="https://learn.microsoft.com/power-platform/architecture/" target="_blank" rel="noopener">Compare architecture patterns <span aria-hidden="true">&nearr;</span></a></div>
+          <div class="guide-resources"><p><strong>Code app supporting skill</strong><br><code>design-guide</code> turns brand assets, audience needs, and experience goals into reusable design tokens and implementation guidance. Use it after selecting a code app; use the architecture patterns for other experiences.</p><a href="https://learn.microsoft.com/power-platform/well-architected/experience-optimization/" target="_blank" rel="noopener">Microsoft Learn: Experience optimization</a></div>
+          <div class="skill-actions"><a class="btn" data-skill-owner="power-cat" data-preview-title="Power CAT code app design guide" data-preview-summary="Bring brand assets, audience needs, and experience goals; receive a brand-aligned design guide for a new code app." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-code-apps__design-guide" target="_blank" rel="noopener">View marketplace details <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="architecture" data-outcomes="new modernize govern" style="--accent:var(--design)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Architecture</span><span class="skill-time">15-25 min</span></div><h3>Integration Pattern Selector</h3><p>Match latency, volume, ownership, and failure needs to the right Power Platform integration pattern.</p><div class="tags"><span class="tag">API</span><span class="tag">Events</span><span class="tag">Virtual tables</span></div></div>

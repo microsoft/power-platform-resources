@@ -202,7 +202,7 @@ html[data-theme="dark"] .advisor-rail { background: #10283d; }
 .advisor-sequence strong { color: var(--text); }
 .advisor-sequence p, .advisor-skill-list p { margin: 8px 0; }
 .advisor-links { margin-top: 10px; }
-.advisor-links a { color: var(--brand); text-align: right; text-decoration: underline; text-underline-offset: 3px; font-size: 13px; overflow-wrap: anywhere; }
+.advisor-links a { color: var(--brand); text-align: left; text-decoration: underline; text-underline-offset: 3px; font-size: 13px; overflow-wrap: anywhere; }
 .advisor-caveat { border-left: 3px solid var(--brand); padding-left: 12px; }
 .advisor-answer-summary { margin-top: 12px; color: var(--muted); font-size: 14px; }
 .advisor-answer-summary summary { cursor: pointer; color: var(--brand); }
@@ -304,9 +304,9 @@ html[data-theme="dark"] .review-submit-aside { background: #422334; }
 .skills-section .guide-panel details { padding: 0; border: 0; background: transparent; }
 .skills-section .guide-panel summary { padding: 8px 0; color: var(--brand); }
 .skills-section .guide-panel .guide-resources { padding: 12px 0; }
-.skills-section .guide-panel .skill-actions { justify-content: flex-end; padding: 0; }
-.skills-section .guide-panel .skill-actions .btn { display: inline; width: auto; max-width: 100%; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--brand); text-align: right; text-decoration: underline; text-underline-offset: 3px; }
-.skills-section .guide-panel .guide-resources a { display: block; color: var(--brand); text-align: right; }
+.skills-section .guide-panel .skill-actions { justify-content: flex-start; padding: 0; }
+.skills-section .guide-panel .skill-actions .btn { display: inline; width: auto; max-width: 100%; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--brand); text-align: left; text-decoration: underline; text-underline-offset: 3px; }
+.skills-section .guide-panel .guide-resources a { display: block; color: var(--brand); text-align: left; }
 .skills-section .guide-panel .skill-actions .btn:hover { transform: none; filter: none; }
 .skills-section .skill-search { max-width: 560px; }
 .pillar-design .guide-panel .skill-card { padding-block: 16px; }
@@ -341,9 +341,9 @@ html[data-theme="dark"] .review-submit-aside { background: #422334; }
 .alm-checklist .step-number, .alm-checklist h3 { margin: 0; }
 .alm-checklist ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
 .alm-checklist li li + li { margin-top: 8px; }
-.alm-checklist .step > a { margin-top: auto; align-self: flex-end; text-align: right; }
+.alm-checklist .step > a { margin-top: auto; align-self: flex-start; text-align: left; }
 .alm-checklist a, .alm-reference a { color: var(--brand); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
-.alm-reference { margin: 16px 0 0; text-align: right; }
+.alm-reference { margin: 16px 0 0; text-align: left; }
 .decision-inner > .btn { justify-self: end; max-width: 100%; white-space: normal; text-align: right; }
 .decision-band { padding-top: 0; }
 .decision-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; padding: 34px; border-left: 5px solid var(--design); background: var(--surface); box-shadow: var(--shadow); }

@@ -21,6 +21,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Simplified Resources navigation so one goal selection immediately shows rich, comparable paths with intended audiences, expected outcomes, direct actions, and related resources; kept all five goals visible for one-click switching and removed the required follow-up step.
 - Reduced the About carousel interval from nine seconds to four seconds while preserving its hover, focus, hidden-tab, and reduced-motion pauses.
 - Refreshed enterprise environment guidance to cover Managed Environments, environment groups, inherited group rules and exception handling, environment routing, personal developer environments, default-environment reduction, licensing checks, and controlled promotion.
+- Integrated the complete Power CAT Skills Marketplace catalog and Migration Factory into SSP search, contextual Design/Build/Review guidance, and generated About coverage while keeping marketplace detail and install pages authoritative.
+- Added weekly and manual synchronization for all published Power CAT skills and migration tracks, with validated local snapshots and reviewable refresh pull requests.
+- Matched the Power Series Labs header height and moved the Power CAT logo to the far right across all SSP pages, including responsive mobile navigation offsets.
+- Standardized supporting-skill, guide-resource, and release-checklist links on the shared left-aligned reading pattern after a cross-page desktop/mobile presentation audit.
+- Moved the desktop primary navigation to the right-side header group across every SSP page to match the shared Power CAT site presentation pattern.
 
 ## 2026-09-25
 

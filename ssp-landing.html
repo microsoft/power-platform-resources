@@ -199,8 +199,8 @@ footer .powercat-logo img{height:30px}
 @media(max-width:360px){.topbar .row{gap:6px}.logo{gap:4px;font-size:10px}.logo>span:nth-child(2){max-width:54px}.logo .mark{min-width:26px;height:22px;padding:0 4px;font-size:10px}.cat-divider{height:20px;margin:0}header .powercat-logo img{height:20px}.icon-btn{width:30px;height:30px}.btn.sm{padding:5px 7px;font-size:10px}.stats{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.hero-slide,.pillar,.pillar-launch{transition:none}.pillar-launch:hover{transform:none}}
 </style>
-<script src="assets/js/ssp-search-entry.js?v=20260926-skill-routing-2" defer></script>
-<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-detail-drawer">
+<script src="assets/js/ssp-search-entry.js?v=20260926-powercat-marketplace" defer></script>
+<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
 <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 </head>
 <body>
@@ -208,12 +208,7 @@ footer .powercat-logo img{height:30px}
 <header class="topbar">
   <div class="wrap row">
     <a class="logo" href="ssp-landing.html" aria-label="About Self-Service Portal">
-      <img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="200" height="60">
-      <span class="cat-divider" aria-hidden="true"></span>
-      <picture class="powercat-logo" title="Power CAT">
-        <img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24">
-        <img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24">
-      </picture>
+      <img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="220" height="92">
     </a>
     <nav class="main" id="siteNav" aria-label="Primary navigation">
       <a href="ssp-landing.html" aria-current="page">About</a>
@@ -228,6 +223,10 @@ footer .powercat-logo img{height:30px}
     <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false" onclick="toggleSiteMenu()">☰</button>
     <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme" id="themeBtn">🌙</button>
     <a class="btn sm desktop-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=SSP%20feedback%3A%20&amp;body=%23%23%20Page%0A%0A%23%23%20Feedback%0A%0A%23%23%20Suggested%20change%0A" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">↗</span></a>
+    <picture class="powercat-logo header-powercat" title="Power CAT">
+      <img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="46">
+      <img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="46">
+    </picture>
   </div>
 </header>
 
@@ -237,8 +236,8 @@ footer .powercat-logo img{height:30px}
     <div class="hero-viewport">
       <article class="hero-slide is-active" aria-hidden="false">
         <span class="eyebrow">✨ Curated by Power CAT · Open to everyone</span>
-        <h1>Your self-service starting point for Power Platform</h1>
-        <p class="sub">Find practical guidance for designing, building, reviewing, and learning — all organized around the work you need to accomplish.</p>
+        <h1>The guided front door for Power Platform</h1>
+        <p class="sub">SSP organizes Power CAT skills, Power Series labs, and curated resources by Design, Build, Review, and Learn. Start with concise guidance for basic concerns, then continue to authoritative, maintained destinations for full details.</p>
         <div class="cta">
           <button class="btn" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">Explore the pillars</button>
           <a class="btn ghost" href="ssp-search.html">Resources</a>
@@ -270,7 +269,7 @@ footer .powercat-logo img{height:30px}
           <div class="hero-metric"><strong>391</strong><span>Curated links</span></div>
           <div class="hero-metric"><strong>13</strong><span>Categories</span></div>
           <div class="hero-metric"><strong>20</strong><span>Power Series labs</span></div>
-          <div class="hero-metric"><strong>127</strong><span>Catalog entries</span></div>
+          <div class="hero-metric"><strong>16 + 4</strong><span>Power CAT skills · migration tracks</span></div>
         </div>
 <!-- END GENERATED ABOUT METRICS -->
       </article>
@@ -297,7 +296,7 @@ footer .powercat-logo img{height:30px}
     <div class="sec-head">
       <div class="kicker">The Self-Service Portal</div>
       <h2>Four pillars, one journey</h2>
-      <p>SSP guides you across every stage — from shaping the right solution to shipping, validating, and growing your skills. Tap a pillar to see what's inside, then launch it.</p>
+      <p>SSP is the synchronized, guided front door across Design, Build, Review, Learn, and curated Resources. It helps you choose a starting point, then hands you to the authoritative destination for complete, maintained guidance.</p>
     </div>
     <div class="pillars">
       <div class="pillar p-design open">
@@ -465,6 +464,7 @@ footer .powercat-logo img{height:30px}
         </div>
       </a>
     </div>
+    <div class="catalog-action"><a class="btn ghost" href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/" target="_blank" rel="noopener">Open the Power CAT marketplace (16 skills, 4 migration tracks) <span aria-hidden="true">↗</span></a></div>
   </div>
 <!-- END GENERATED ABOUT FEATURED -->
 </section>

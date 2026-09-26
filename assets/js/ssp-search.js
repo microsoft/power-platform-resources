@@ -179,17 +179,17 @@
       if (!response.ok) throw new Error('Unavailable skills catalog');
       catalog = await response.json();
       const types = { skill: 'Skill', 'mcp-capability': 'MCP capability', reference: 'Reference' };
-      results.push({ items: catalog.skills.map(item => {
-        const isPowerCat = item.marketplace === 'Power CAT Skills';
-        const destination = isPowerCat ? item.source : 'https://aka.ms/powerplatformskillsadvisor';
+      results.push({ items: catalog.skills.filter(item => item.marketplace !== 'Power CAT Skills').map(item => {
+        const destination = 'https://aka.ms/powerplatformskillsadvisor';
         return {
           advisorId: item.id,
+          catalogEntry: true,
           skillDetails: {
             type: types[item.tier], products: item.products, purpose: item.purpose,
             status: item.status, publisher: item.publisher, marketplace: item.marketplace,
             license: item.license, verified: item.verified, note: item.action?.note || '',
             prompt: item.action?.prompt || '', canonicalSource: item.source,
-            route: isPowerCat ? 'Power CAT canonical source' : 'Power Platform Skills Advisor'
+            route: 'Power Platform Skills Advisor'
           },
           title: item.displayName || item.name,
           description: item.description,
@@ -205,6 +205,80 @@
         };
       }) });
     } catch { results.push({ failed: 'Skills Advisor catalog', items: [] }); }
+    let powerCat;
+    try {
+      const response = await fetch('assets/data/powercat-marketplace.json', { cache: 'no-cache', signal: AbortSignal.timeout(10000) });
+      if (!response.ok) throw new Error('Unavailable Power CAT marketplace');
+      powerCat = await response.json();
+      const sourceName = 'Power CAT Skills Marketplace';
+      const skillsByDetailId = new Map(powerCat.skills.map(skill => [skill.detailId, skill]));
+      const detailsFor = (item, type, linkedSkill = item) => ({
+        type,
+        products: item.products || linkedSkill.products || [],
+        purpose: item.description || linkedSkill.description,
+        what: linkedSkill.what || item.description,
+        when: linkedSkill.when || [],
+        how: linkedSkill.how || [],
+        install: linkedSkill.install || '',
+        status: item.status || 'Available skill',
+        publisher: 'Power CAT',
+        marketplace: sourceName,
+        plugin: linkedSkill.pluginLabel || linkedSkill.plugin || '',
+        category: linkedSkill.category || 'Migration to Power Platform',
+        canonicalSource: item.source || linkedSkill.source,
+        docsSource: linkedSkill.docsSource || '',
+        verified: powerCat.retrieved?.slice(0, 10) || '',
+        route: sourceName
+      });
+      const skillEntries = powerCat.skills.map(skill => ({
+        identity: 'powercat-skill:' + skill.detailId,
+        catalogEntry: true,
+        powerCatId: skill.detailId,
+        skillDetails: detailsFor(skill, 'Skill'),
+        title: skill.title,
+        description: skill.description,
+        text: [
+          skill.id, skill.title, skill.description, skill.category, skill.categoryId,
+          skill.plugin, skill.pluginLabel, ...(skill.tags || []), ...(skill.products || []),
+          skill.what, ...(skill.when || []), ...(skill.how || []), skill.install
+        ].join(' '),
+        category: [skill.category, skill.pluginLabel].filter(Boolean).join(' / '),
+        type: 'Skill',
+        availability: 'Available in Power CAT Skills Marketplace',
+        products: skill.products,
+        url: skill.detailUrl,
+        source: powerCat.marketplace,
+        sourceName
+      }));
+      const trackEntries = powerCat.migrationTracks.map(track => {
+        const linkedSkill = skillsByDetailId.get(track.detailId)
+          || powerCat.skills.find(skill => skill.id === track.skillId)
+          || track;
+        return {
+          identity: 'powercat-track:' + track.detailId,
+          catalogEntry: true,
+          powerCatTrackId: track.detailId,
+          skillDetails: detailsFor(track, 'Migration track', linkedSkill),
+          title: track.title,
+          description: track.description,
+          text: [
+            'migration track migration path migration journey', track.id, track.title,
+            track.description, track.status, track.cta, ...(track.products || []),
+            linkedSkill.category, linkedSkill.plugin, linkedSkill.pluginLabel,
+            ...(linkedSkill.tags || []), linkedSkill.what, ...(linkedSkill.when || []),
+            ...(linkedSkill.how || []), linkedSkill.install
+          ].join(' '),
+          category: 'Migration to Power Platform',
+          type: 'Migration track',
+          availability: track.status,
+          products: track.products,
+          url: track.detailUrl,
+          source: powerCat.marketplace,
+          sourceName
+        };
+      });
+      results.push({ items: [...skillEntries, ...trackEntries] });
+    } catch { results.push({ failed: 'Power CAT Skills Marketplace', items: [] }); }
     let workshop;
     try {
       const response = await fetch('assets/data/workshop-labs.json', { cache: 'no-cache', signal: AbortSignal.timeout(10000) });
@@ -217,7 +291,7 @@
     } catch { results.push({ failed: 'Power Series labs', items: [] }); }
     const unique = new Map();
     results.flatMap(result => result.items).forEach(item => {
-      const key = item.advisorId ? 'advisor:' + item.advisorId : new URL(item.url, location.href).href;
+      const key = item.identity || (item.advisorId ? 'advisor:' + item.advisorId : new URL(item.url, location.href).href);
       if (unique.has(key)) {
         const previous = unique.get(key);
         previous.text += ' ' + item.text;
@@ -227,9 +301,10 @@
     const failed = results.filter(result => result.failed).map(result => result.failed);
     ready = true;
     const siteFailures = results.slice(0, sources.length).filter(result => result.failed).length;
-    const counts = catalog ? ['skill', 'mcp-capability', 'reference'].map(tier => catalog.skills.filter(item => item.tier === tier).length) : [];
+    const counts = catalog ? ['skill', 'mcp-capability', 'reference'].map(tier => catalog.skills.filter(item => item.marketplace !== 'Power CAT Skills' && item.tier === tier).length) : [];
     byId('indexStatus').textContent = entries.length ? `${entries.length} indexed entries from ${sources.length - siteFailures} site pages${catalog ? ` and Skills Advisor (${counts[0]} skills, ${counts[1]} MCP capabilities, ${counts[2]} references; source verified ${catalog.sourceGenerated}; imported ${catalog.retrieved.slice(0, 10)})` : ''}.${failed.length ? ' Unavailable: ' + failed.join(', ') + '.' : ''}` : 'Site content could not be loaded. Open this site over HTTP and try again, or browse Resources.';
     if (workshop) byId('indexStatus').textContent += ` Power Series: ${workshop.labs.length} labs.`;
+    if (powerCat) byId('indexStatus').textContent += ` Power CAT Skills Marketplace: ${powerCat.skills.length} skills and ${powerCat.migrationTracks.length} migration tracks (imported ${powerCat.retrieved.slice(0, 10)}).`;
     byId('retryIndex').hidden = !failed.length;
     byId('searchNotice').hidden = !failed.length;
     byId('searchNotice').textContent = entries.length ? 'Some search content is unavailable. You can still choose a goal or browse resources below.' : 'Search is unavailable. Choose a goal or browse resources below.';
@@ -237,11 +312,11 @@
   }
   function render() {
     if (!ready) return;
-    const pool = catalogMode ? entries.filter(item => item.advisorId) : entries;
+    const pool = catalogMode ? entries.filter(item => item.catalogEntry) : entries;
     let ranked = catalogMode && !query ? pool.map(item => ({ ...item, matched: [] })).sort((first, second) => first.title.localeCompare(second.title)) : SSPSearch.rank(pool, query);
     const type = byId('typeFilter').value;
     const product = byId('productFilter').value;
-    const candidate = ranked.length && !catalogMode && !product && !type ? SSPSearch.guidance(entries.filter(item => !item.advisorId), query) : null;
+    const candidate = ranked.length && !catalogMode && !product && !type ? SSPSearch.guidance(entries.filter(item => !item.catalogEntry), query) : null;
     const guide = candidate && (candidate.id !== 'troubleshoot' || /\b(flow|flows|approval|automate)\b/i.test(query)) && (candidate.id !== 'performance' || /\b(app|apps|canvas)\b/i.test(query)) ? candidate : null;
     if (guide) {
       const recommended = guide.steps.map(step => ({ ...step.result, recommendationReason: `Suggested next step: ${step.why}` }));
@@ -251,7 +326,7 @@
     const filtered = ranked.filter(item => (!type || item.type === type) && (!product || SSPSearch.tokens(product).every(word => SSPSearch.tokens(item.title + ' ' + item.text).includes(word))));
     byId('searchClarify').hidden = !query || catalogMode || Boolean(guide) || Boolean(type || product);
     byId('searchResults').hidden = !query && !catalogMode;
-    byId('resultsHeading').textContent = catalogMode ? 'Skills Advisor catalog' : 'Results across the site';
+    byId('resultsHeading').textContent = catalogMode ? 'Skills and migration catalog' : 'Results across the site';
     byId('resetSearch').textContent = catalogMode ? 'Search across SSP' : 'Clear search';
     byId('guidance').hidden = !guide || !query;
     byId('guidanceSteps').replaceChildren();
@@ -272,6 +347,8 @@
     filtered.slice(0, limit).forEach(item => {
       const article = element('article', '', 'search-result');
       if (item.advisorId) article.dataset.advisorId = item.advisorId;
+      if (item.powerCatId) article.dataset.powerCatId = item.powerCatId;
+      if (item.powerCatTrackId) article.dataset.powerCatTrackId = item.powerCatTrackId;
       const heading = element('h3');
       const description = item.description || item.text;
       const reason = SSPSearch.explain(item, query);
@@ -283,7 +360,7 @@
       if (item.labDetails) resourceLink.dataset.labDetails = JSON.stringify(item.labDetails);
       heading.append(resourceLink);
       const excerpt = description.length > 270 ? description.slice(0, 267) + '...' : description;
-      const source = anchor(item.advisorId ? 'View skill details' : item.labDetails ? 'View lab details' : 'View in ' + item.sourceName, item.advisorId || item.labDetails ? item.url : item.source);
+      const source = anchor(item.skillDetails ? (item.type === 'Migration track' ? 'View migration track details' : 'View skill details') : item.labDetails ? 'View lab details' : 'View in ' + item.sourceName, item.skillDetails || item.labDetails ? item.url : item.source);
       if (item.skillDetails || item.labDetails) {
         if (item.skillDetails) source.dataset.skillDetails = JSON.stringify(item.skillDetails);
         if (item.labDetails) source.dataset.labDetails = JSON.stringify(item.labDetails);

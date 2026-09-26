@@ -2,13 +2,15 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 
 const root = path.join(__dirname, '..');
+const powerCatMarketplaceUrl = 'https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/';
 const files = {
   about: path.join(root, 'ssp-landing.html'),
   resources: path.join(root, 'ssp-search.html'),
   skills: path.join(root, 'assets/data/skills-advisor.json'),
   labs: path.join(root, 'assets/data/workshop-labs.json'),
   featured: path.join(root, 'assets/data/about-featured.json'),
-  latest: path.join(root, 'assets/data/latest-content.json')
+  latest: path.join(root, 'assets/data/latest-content.json'),
+  marketplace: path.join(root, 'assets/data/powercat-marketplace.json')
 };
 
 function escapeRegex(value) {
@@ -60,6 +62,40 @@ function replaceGeneratedBlock(source, name, content) {
   const newline = source.includes('\r\n') ? '\r\n' : '\n';
   return source.slice(0, startIndex + start.length) + newline +
     content.split('\n').join(newline) + newline + source.slice(endIndex);
+}
+
+function parseSnapshot(value, label) {
+  try {
+    return JSON.parse(value);
+  } catch (error) {
+    throw new Error(`${label} snapshot is not valid JSON: ${error.message}`);
+  }
+}
+
+function validateMarketplace(marketplace) {
+  if (!marketplace || typeof marketplace !== 'object' || Array.isArray(marketplace)) {
+    throw new Error('Power CAT marketplace snapshot must be an object.');
+  }
+  if (marketplace.marketplace !== powerCatMarketplaceUrl) {
+    throw new Error(`Power CAT marketplace snapshot must use the canonical URL: ${powerCatMarketplaceUrl}`);
+  }
+  for (const field of ['skills', 'migrationTracks']) {
+    const entries = marketplace[field];
+    if (!Array.isArray(entries) || !entries.length) {
+      throw new Error(`Power CAT marketplace snapshot ${field} must be a non-empty array.`);
+    }
+    const detailIds = entries.map((entry, index) => {
+      if (!entry || typeof entry !== 'object' ||
+          typeof entry.id !== 'string' || !entry.id.trim() ||
+          typeof entry.detailId !== 'string' || !entry.detailId.trim()) {
+        throw new Error(`Power CAT marketplace snapshot ${field}[${index}] needs non-empty id and detailId values.`);
+      }
+      return entry.detailId;
+    });
+    if (new Set(detailIds).size !== detailIds.length) {
+      throw new Error(`Power CAT marketplace snapshot ${field} contains duplicate detailIds.`);
+    }
+  }
 }
 
 function deriveResourceStats(html) {
@@ -169,13 +205,13 @@ async function resolveFeaturedItem(item, sources) {
   throw new Error('Unsupported featured item type: ' + item.type);
 }
 
-function renderMetrics(stats, labs, skills) {
+function renderMetrics(stats, labs, marketplace) {
   return [
     '        <div class="hero-metrics" aria-label="Portal catalog statistics">',
     `          <div class="hero-metric"><strong>${stats.links}</strong><span>Curated links</span></div>`,
     `          <div class="hero-metric"><strong>${stats.categories}</strong><span>Categories</span></div>`,
     `          <div class="hero-metric"><strong>${labs.labs.length}</strong><span>Power Series labs</span></div>`,
-    `          <div class="hero-metric"><strong>${skills.skills.length}</strong><span>Catalog entries</span></div>`,
+    `          <div class="hero-metric"><strong>${marketplace.skills.length} + ${marketplace.migrationTracks.length}</strong><span>Power CAT skills · migration tracks</span></div>`,
     '        </div>'
   ].join('\n');
 }
@@ -221,7 +257,7 @@ function renderLatest(items, heading, id) {
   ].join('\n');
 }
 
-function renderFeatured(config, items) {
+function renderFeatured(config, items, marketplace) {
   const cards = items.map((item, index) => {
     const configured = config.items[index];
     const external = /^https:\/\//.test(item.href);
@@ -247,25 +283,29 @@ function renderFeatured(config, items) {
     '    <div class="feat-grid">',
     cards,
     '    </div>',
+    `    <div class="catalog-action"><a class="btn ghost" href="${powerCatMarketplaceUrl}" target="_blank" rel="noopener">Open the Power CAT marketplace (${marketplace.skills.length} skills, ${marketplace.migrationTracks.length} migration tracks) <span aria-hidden="true">↗</span></a></div>`,
     '  </div>'
   ].join('\n');
 }
 
 async function generate() {
-  const [about, resources, skillsText, labsText, featuredText, latestText] = await Promise.all([
+  const [about, resources, skillsText, labsText, featuredText, latestText, marketplaceText] = await Promise.all([
     fs.readFile(files.about, 'utf8'),
     fs.readFile(files.resources, 'utf8'),
     fs.readFile(files.skills, 'utf8'),
     fs.readFile(files.labs, 'utf8'),
     fs.readFile(files.featured, 'utf8'),
-    fs.readFile(files.latest, 'utf8')
+    fs.readFile(files.latest, 'utf8'),
+    fs.readFile(files.marketplace, 'utf8')
   ]);
-  const skills = JSON.parse(skillsText);
-  const labs = JSON.parse(labsText);
-  const featured = JSON.parse(featuredText);
-  const latest = JSON.parse(latestText);
+  const skills = parseSnapshot(skillsText, 'Skills');
+  const labs = parseSnapshot(labsText, 'Workshop');
+  const featured = parseSnapshot(featuredText, 'Featured');
+  const latest = parseSnapshot(latestText, 'Latest content');
+  const marketplace = parseSnapshot(marketplaceText, 'Power CAT marketplace');
   if (!Array.isArray(skills.skills) || !skills.skills.length) throw new Error('Skills snapshot is empty.');
   if (!Array.isArray(labs.labs) || !labs.labs.length) throw new Error('Workshop snapshot is empty.');
+  validateMarketplace(marketplace);
   if (typeof featured.owner !== 'string' || !featured.owner.trim() ||
       typeof featured.cadence !== 'string' || !featured.cadence.trim() ||
       !Array.isArray(featured.items) || featured.items.length !== 3) {
@@ -277,12 +317,12 @@ async function generate() {
   latestResources = replaceGeneratedBlock(latestResources, 'LATEST EVENTS', renderLatest(latest.events, 'Latest event announcements', 'events'));
   const stats = deriveResourceStats(latestResources);
   const expectedResources = updateResourceCounts(latestResources, stats);
-  let expectedAbout = replaceGeneratedBlock(about, 'ABOUT METRICS', renderMetrics(stats, labs, skills));
+  let expectedAbout = replaceGeneratedBlock(about, 'ABOUT METRICS', renderMetrics(stats, labs, marketplace));
   expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT LEARN LAB COUNT', renderLearnLabCount(labs));
   expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT LEARN META', renderLearnMeta(stats, labs));
   expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT RESOURCE STATS', renderResourceStats(stats, labs));
-  expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT FEATURED', renderFeatured(featured, items));
-  return { about, resources, expectedAbout, expectedResources, stats, skills, labs };
+  expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT FEATURED', renderFeatured(featured, items, marketplace));
+  return { about, resources, expectedAbout, expectedResources, stats, skills, labs, marketplace };
 }
 
 async function main() {
@@ -301,7 +341,9 @@ async function main() {
     curatedLinks: result.stats.links,
     categories: result.stats.categories,
     labs: result.labs.labs.length,
-    catalogEntries: result.skills.skills.length
+    catalogEntries: result.skills.skills.length,
+    powerCatSkills: result.marketplace.skills.length,
+    migrationTracks: result.marketplace.migrationTracks.length
   }, null, 2));
 }
 

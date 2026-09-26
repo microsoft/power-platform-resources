@@ -1,0 +1,680 @@
+{
+  "source": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/data/catalog.json",
+  "marketplace": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/",
+  "retrieved": "2026-09-26T23:27:36.232Z",
+  "sha256": "fc996c98a7c4900b35063a3615a1374f2218cbe039a9a4760ed5616fdfa18507",
+  "categories": [
+    {
+      "id": "performance-quality",
+      "label": "Performance & Quality Review"
+    },
+    {
+      "id": "testing-release",
+      "label": "Testing & Release Readiness"
+    },
+    {
+      "id": "dataverse-development",
+      "label": "Dataverse Development"
+    },
+    {
+      "id": "app-design-ux",
+      "label": "App Design & UX"
+    },
+    {
+      "id": "governance-admin",
+      "label": "Governance & Admin Operations"
+    },
+    {
+      "id": "adoption-storytelling",
+      "label": "Adoption & Storytelling"
+    },
+    {
+      "id": "migration-power-platform",
+      "label": "Migration to Power Platform"
+    }
+  ],
+  "plugins": [
+    {
+      "id": "powercat-adoption",
+      "label": "Adoption",
+      "description": "Skills for Power Platform adoption storytelling — turn customer stories into polished, brand-matched HTML presentation decks."
+    },
+    {
+      "id": "powercat-canvas-apps",
+      "label": "Canvas Apps",
+      "description": "Skills to analyze Canvas App performance and quality."
+    },
+    {
+      "id": "powercat-code-apps",
+      "label": "Code Apps",
+      "description": "Skills to generate brand-aligned design guides for code apps built on the Power Platform."
+    },
+    {
+      "id": "powercat-dataverse",
+      "label": "Dataverse",
+      "description": "Skills for authoring and troubleshooting Microsoft Dataverse Web API queries — natural language to OData, FetchXML conversion, multi-surface targeting, and error diagnosis."
+    },
+    {
+      "id": "powercat-governance",
+      "label": "Governance",
+      "description": "Skills for Power Platform governance and administration — provision developer environments with standard governance defaults and automate admin center workflows."
+    },
+    {
+      "id": "powercat-procode-eval",
+      "label": "Pro-Code Eval",
+      "description": "Automated eval generation for Power Apps Code Apps and Generative Pages — feature presence checks, unit tests, static security analysis, and an HTML dashboard."
+    },
+    {
+      "id": "powercat-admin-digest",
+      "label": "Admin Digest",
+      "description": "Power Platform admin digest — Message Center notices, Service Health incidents, Known Issues, and deprecations that can affect production operations, with shareability tiering so customer-facing summaries never leak NDA content."
+    },
+    {
+      "id": "powercat-overflow",
+      "label": "OverFlow",
+      "description": "Reviews every Power Automate cloud flow inside a Power Platform solution (.zip) against Microsoft's coding guidelines, produces a [SolutionName].findings.json next to the uploaded solution, then opens the hosted PowerCAT-Overflow viewer at https://microsoft.github.io/power-cat-skills/PowerCAT-Overflow.html and uploads both files so the user can explore the results."
+    },
+    {
+      "id": "powercat-overpage",
+      "label": "OverPage",
+      "description": "Reviews the Power Pages site(s) inside a Power Platform solution (.zip) against best practices across Security, Performance, Accessibility, Maintainability, Architecture and Reliability, optionally using a browser HAR capture to investigate real performance bottlenecks. Produces a [SolutionName].findings.json with solution, per-site and per-component findings (descriptions, fixes, code/HAR anchors), then opens the hosted PowerCAT OverPage viewer at https://microsoft.github.io/power-cat-skills/PowerCAT-OverPage.html so the user can explore findings overlaid on a live page preview, on the actual code, and on the network waterfall."
+    },
+    {
+      "id": "powercat-architecture-advisor",
+      "label": "powercat-architecture-advisor",
+      "description": "Power CAT style architecture advisor for Power Platform scenarios with structured discovery and comprehensive implementation recommendations."
+    }
+  ],
+  "skills": [
+    {
+      "id": "powercat-storytelling",
+      "detailId": "powercat-adoption__powercat-storytelling",
+      "title": "powercat-storytelling",
+      "categoryId": "adoption-storytelling",
+      "category": "Adoption & Storytelling",
+      "plugin": "powercat-adoption",
+      "pluginLabel": "Adoption",
+      "description": "**Generate a polished 5-slide HTML customer story deck — brand-matched, self-contained, and presentation-ready.**",
+      "tags": [
+        "Adoption",
+        "storytelling",
+        "power platform"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "**Generate a polished 5-slide HTML customer story deck — brand-matched, self-contained, and presentation-ready.**",
+      "when": [
+        "Use this when you need **Generate a polished 5-slide HTML customer story deck — brand-matched, self-contained, and presentation-ready.**",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-adoption@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-adoption/skills/powercat-storytelling",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-adoption/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-adoption__powercat-storytelling"
+    },
+    {
+      "id": "analyze-canvas-performance",
+      "detailId": "powercat-canvas-apps__analyze-canvas-performance",
+      "title": "analyze-canvas-performance",
+      "categoryId": "performance-quality",
+      "category": "Performance & Quality Review",
+      "plugin": "powercat-canvas-apps",
+      "pluginLabel": "Canvas Apps",
+      "description": "Analyze and audit a Power Apps canvas app.",
+      "tags": [
+        "Canvas Apps",
+        "power platform",
+        "power apps"
+      ],
+      "products": [
+        "Power Apps"
+      ],
+      "what": "Analyze and audit a Power Apps canvas app.",
+      "when": [
+        "Use this when you need analyze and audit a Power Apps canvas app.",
+        "Use it when the work belongs in Performance & Quality Review.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-canvas-apps@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-canvas-apps/skills/analyze-canvas-performance",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-canvas-apps/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-canvas-apps__analyze-canvas-performance"
+    },
+    {
+      "id": "design-guide",
+      "detailId": "powercat-code-apps__design-guide",
+      "title": "design-guide",
+      "categoryId": "app-design-ux",
+      "category": "App Design & UX",
+      "plugin": "powercat-code-apps",
+      "pluginLabel": "Code Apps",
+      "description": "Generate a brand-aligned design guide for a new code app instead of using the default template styling.",
+      "tags": [
+        "Code Apps",
+        "power platform",
+        "power apps"
+      ],
+      "products": [
+        "Power Apps"
+      ],
+      "what": "Generate a brand-aligned design guide for a new code app instead of using the default template styling.",
+      "when": [
+        "Use this when you need generate a brand-aligned design guide for a new code app instead of using the default template styling.",
+        "Use it when the work belongs in App Design & UX.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-code-apps@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-code-apps/skills/design-guide",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-code-apps/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-code-apps__design-guide"
+    },
+    {
+      "id": "dataverse-webapi-query",
+      "detailId": "powercat-dataverse__dataverse-webapi-query",
+      "title": "dataverse-webapi-query",
+      "categoryId": "dataverse-development",
+      "category": "Dataverse Development",
+      "plugin": "powercat-dataverse",
+      "pluginLabel": "Dataverse",
+      "description": "Helps you author and ship Microsoft Dataverse queries without falling into the usual traps — mis-cased logical names, wrong lookup annotations, missing `Prefer` headers, or accide…",
+      "tags": [
+        "Dataverse",
+        "web api",
+        "odata"
+      ],
+      "products": [
+        "Dataverse"
+      ],
+      "what": "Helps you author and ship Microsoft Dataverse queries without falling into the usual traps — mis-cased logical names, wrong lookup annotations, missing `Prefer` headers, or accide…",
+      "when": [
+        "Use this when you need helps you author and ship Microsoft Dataverse queries without falling into the usual traps — mis-cased logical names, wrong lookup annotations, missing `Prefer` headers, or accide…",
+        "Use it when the work belongs in Dataverse Development.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-dataverse@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-dataverse/skills/dataverse-webapi-query",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-dataverse/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-dataverse__dataverse-webapi-query"
+    },
+    {
+      "id": "powercat-storytelling",
+      "detailId": "powercat-dataverse__powercat-storytelling",
+      "title": "powercat-storytelling",
+      "categoryId": "adoption-storytelling",
+      "category": "Adoption & Storytelling",
+      "plugin": "powercat-dataverse",
+      "pluginLabel": "Dataverse",
+      "description": "This plugin provides open‑source skills based on years of Power CAT experience working with large and complex enterprise customers on Microsoft Power Platform. The skills capture…",
+      "tags": [
+        "Dataverse",
+        "web api",
+        "odata"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "This plugin provides open‑source skills based on years of Power CAT experience working with large and complex enterprise customers on Microsoft Power Platform. The skills capture…",
+      "when": [
+        "Use this when you need this plugin provides open‑source skills based on years of Power CAT experience working with large and complex enterprise customers on Microsoft Power Platform. The skills capture…",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-dataverse@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-dataverse/skills/powercat-storytelling",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-dataverse/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-dataverse__powercat-storytelling"
+    },
+    {
+      "id": "create-pp-dev-env",
+      "detailId": "powercat-governance__create-pp-dev-env",
+      "title": "create-pp-dev-env",
+      "categoryId": "governance-admin",
+      "category": "Governance & Admin Operations",
+      "plugin": "powercat-governance",
+      "pluginLabel": "Governance",
+      "description": "Spin up a fully-configured Power Platform Developer environment for any teammate in under 2 minutes — without clicking through the admin center.",
+      "tags": [
+        "Governance",
+        "power platform",
+        "admin"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "Spin up a fully-configured Power Platform Developer environment for any teammate in under 2 minutes — without clicking through the admin center.",
+      "when": [
+        "Use this when you need spin up a fully-configured Power Platform Developer environment for any teammate in under 2 minutes — without clicking through the admin center.",
+        "Use it when the work belongs in Governance & Admin Operations.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-governance@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-governance/skills/create-pp-dev-env",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-governance/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-governance__create-pp-dev-env"
+    },
+    {
+      "id": "eval-generator-code-app",
+      "detailId": "powercat-procode-eval__eval-generator-code-app",
+      "title": "eval-generator-code-app",
+      "categoryId": "testing-release",
+      "category": "Testing & Release Readiness",
+      "plugin": "powercat-procode-eval",
+      "pluginLabel": "Pro-Code Eval",
+      "description": "Generates a two-layer eval suite — feature presence checks and static security analysis — for a **Power Apps Code App**.",
+      "tags": [
+        "Pro-Code Eval",
+        "eval",
+        "testing"
+      ],
+      "products": [
+        "Power Apps"
+      ],
+      "what": "Generates a two-layer eval suite — feature presence checks and static security analysis — for a **Power Apps Code App**.",
+      "when": [
+        "Use this when you need generates a two-layer eval suite — feature presence checks and static security analysis — for a **Power Apps Code App**.",
+        "Use it when the work belongs in Testing & Release Readiness.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-procode-eval@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-procode-eval/skills/eval-generator-code-app",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-procode-eval/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-procode-eval__eval-generator-code-app"
+    },
+    {
+      "id": "eval-generator-gen-pages",
+      "detailId": "powercat-procode-eval__eval-generator-gen-pages",
+      "title": "eval-generator-gen-pages",
+      "categoryId": "testing-release",
+      "category": "Testing & Release Readiness",
+      "plugin": "powercat-procode-eval",
+      "pluginLabel": "Pro-Code Eval",
+      "description": "Generates a three-layer eval suite — feature presence checks, Vitest unit tests, and static security analysis — for a **Power Apps Generative Page** in a Model-Driven App.",
+      "tags": [
+        "Pro-Code Eval",
+        "eval",
+        "testing"
+      ],
+      "products": [
+        "Power Apps"
+      ],
+      "what": "Generates a three-layer eval suite — feature presence checks, Vitest unit tests, and static security analysis — for a **Power Apps Generative Page** in a Model-Driven App.",
+      "when": [
+        "Use this when you need generates a three-layer eval suite — feature presence checks, Vitest unit tests, and static security analysis — for a **Power Apps Generative Page** in a Model-Driven App.",
+        "Use it when the work belongs in Testing & Release Readiness.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-procode-eval@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-procode-eval/skills/eval-generator-gen-pages",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-procode-eval/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-procode-eval__eval-generator-gen-pages"
+    },
+    {
+      "id": "powercat-admin-digest",
+      "detailId": "powercat-admin-digest__powercat-admin-digest",
+      "title": "powercat-admin-digest",
+      "categoryId": "governance-admin",
+      "category": "Governance & Admin Operations",
+      "plugin": "powercat-admin-digest",
+      "pluginLabel": "Admin Digest",
+      "description": "",
+      "tags": [
+        "Admin Digest",
+        "admin",
+        "message center"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "",
+      "when": [
+        "Use this when you need ",
+        "Use it when the work belongs in Governance & Admin Operations.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-admin-digest@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-admin-digest/skills/powercat-admin-digest",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-admin-digest/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-admin-digest__powercat-admin-digest"
+    },
+    {
+      "id": "powercat-overflow",
+      "detailId": "powercat-overflow__powercat-overflow",
+      "title": "powercat-overflow",
+      "categoryId": "performance-quality",
+      "category": "Performance & Quality Review",
+      "plugin": "powercat-overflow",
+      "pluginLabel": "OverFlow",
+      "description": "Reviews every Power Automate cloud flow inside a Power Platform solution (`.zip`) against Microsoft's coding guidelines and produces a `[SolutionName].findings.json` next to the u…",
+      "tags": [
+        "OverFlow",
+        "power-platform",
+        "power-automate"
+      ],
+      "products": [
+        "Power Automate"
+      ],
+      "what": "Reviews every Power Automate cloud flow inside a Power Platform solution (`.zip`) against Microsoft's coding guidelines and produces a `[SolutionName].findings.json` next to the u…",
+      "when": [
+        "Use this when you need reviews every Power Automate cloud flow inside a Power Platform solution (`.zip`) against Microsoft's coding guidelines and produces a `[SolutionName].findings.json` next to the u…",
+        "Use it when the work belongs in Performance & Quality Review.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-overflow@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-overflow/skills/powercat-overflow",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-overflow/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-overflow__powercat-overflow"
+    },
+    {
+      "id": "powercat-overpage",
+      "detailId": "powercat-overpage__powercat-overpage",
+      "title": "powercat-overpage",
+      "categoryId": "performance-quality",
+      "category": "Performance & Quality Review",
+      "plugin": "powercat-overpage",
+      "pluginLabel": "OverPage",
+      "description": "Review a **Power Pages site export** against best-practice guidance and explore every finding overlaid on a live preview of the page it affects.",
+      "tags": [
+        "OverPage",
+        "power-platform",
+        "power-pages"
+      ],
+      "products": [
+        "Power Pages"
+      ],
+      "what": "Review a **Power Pages site export** against best-practice guidance and explore every finding overlaid on a live preview of the page it affects.",
+      "when": [
+        "Use this when you need review a **Power Pages site export** against best-practice guidance and explore every finding overlaid on a live preview of the page it affects.",
+        "Use it when the work belongs in Performance & Quality Review.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-overpage@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-overpage/skills/powercat-overpage",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-overpage/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-overpage__powercat-overpage"
+    },
+    {
+      "id": "powercat-pp-architecture-advisor",
+      "detailId": "powercat-architecture-advisor__powercat-pp-architecture-advisor",
+      "title": "powercat-pp-architecture-advisor",
+      "categoryId": "adoption-storytelling",
+      "category": "Adoption & Storytelling",
+      "plugin": "powercat-architecture-advisor",
+      "pluginLabel": "architecture advisor",
+      "description": "Transforms categorized discovery answers into a comprehensive architecture recommendation, similar to an in-person Power CAT Solution Architect review.",
+      "tags": [
+        "architecture advisor",
+        "power platform",
+        "architecture"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "Transforms categorized discovery answers into a comprehensive architecture recommendation, similar to an in-person Power CAT Solution Architect review.",
+      "when": [
+        "Use this when you need transforms categorized discovery answers into a comprehensive architecture recommendation, similar to an in-person Power CAT Solution Architect review.",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-architecture-advisor@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-architecture-advisor__powercat-pp-architecture-advisor"
+    },
+    {
+      "id": "Access to Dataverse Migration",
+      "detailId": "powercat-migration-factory__Access to Dataverse Migration",
+      "title": "Access to Dataverse Migration",
+      "categoryId": "migration-power-platform",
+      "category": "Migration to Power Platform",
+      "plugin": "powercat-migration-factory",
+      "pluginLabel": "migration factory",
+      "description": "The **named Access-to-Dataverse entry point** of the migration factory. It migrates a Microsoft Access database (`.mdb`/`.accdb`) into a Dataverse solution and, when `app.name` is…",
+      "tags": [
+        "migration factory",
+        "migration",
+        "power platform"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "The **named Access-to-Dataverse entry point** of the migration factory. It migrates a Microsoft Access database (`.mdb`/`.accdb`) into a Dataverse solution and, when `app.name` is…",
+      "when": [
+        "Use this when you need the **named Access-to-Dataverse entry point** of the migration factory. It migrates a Microsoft Access database (`.mdb`/`.accdb`) into a Dataverse solution and, when `app.name` is…",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-migration-factory@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/Access%20to%20Dataverse%20Migration",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/Access%20to%20Dataverse%20Migration/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__Access%20to%20Dataverse%20Migration"
+    },
+    {
+      "id": "Airtable to Power Platform Migration",
+      "detailId": "powercat-migration-factory__Airtable to Power Platform Migration",
+      "title": "Airtable to Power Platform Migration",
+      "categoryId": "migration-power-platform",
+      "category": "Migration to Power Platform",
+      "plugin": "powercat-migration-factory",
+      "pluginLabel": "migration factory",
+      "description": "Migrate an Airtable app into Microsoft platform targets:",
+      "tags": [
+        "migration factory",
+        "migration",
+        "power platform"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "Migrate an Airtable app into Microsoft platform targets:",
+      "when": [
+        "Use this when you need migrate an Airtable app into Microsoft platform targets:",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-migration-factory@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/Airtable%20to%20Power%20Platform%20Migration",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/Airtable%20to%20Power%20Platform%20Migration/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__Airtable%20to%20Power%20Platform%20Migration"
+    },
+    {
+      "id": "infopath-to-canvas",
+      "detailId": "powercat-migration-factory__infopath-to-canvas",
+      "title": "infopath-to-canvas",
+      "categoryId": "migration-power-platform",
+      "category": "Migration to Power Platform",
+      "plugin": "powercat-migration-factory",
+      "pluginLabel": "migration factory",
+      "description": "Assess InfoPath forms, identify fields, rules, views, submit behavior, and workflow dependencies, then shape a Canvas App modernization plan with migration risks called out early.",
+      "tags": [
+        "migration factory",
+        "migration",
+        "power platform"
+      ],
+      "products": [
+        "Power Apps"
+      ],
+      "what": "Guides modernization from InfoPath forms to Canvas Apps by assessing the legacy form, identifying data and logic patterns, and shaping a Power Apps target experience.",
+      "when": [
+        "You need to retire or replace InfoPath forms.",
+        "You want to understand migration complexity before rebuilding.",
+        "You need a structured plan for modern forms, data, and workflow."
+      ],
+      "how": [
+        "Breaks down fields, rules, views, and submit behavior.",
+        "Maps legacy form intent to Canvas App patterns.",
+        "Surfaces migration risks and implementation decisions early."
+      ],
+      "install": "copilot plugin install powercat-migration-factory@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/infopath-to-canvas",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/infopath-to-canvas/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__infopath-to-canvas"
+    },
+    {
+      "id": "migrate-to-dataverse",
+      "detailId": "powercat-migration-factory__migrate-to-dataverse",
+      "title": "migrate-to-dataverse",
+      "categoryId": "migration-power-platform",
+      "category": "Migration to Power Platform",
+      "plugin": "powercat-migration-factory",
+      "pluginLabel": "migration factory",
+      "description": "Analyze SharePoint list-backed app data sources, recommend Dataverse table mappings, and document the app, security, relationship, and ALM changes needed for a safer migration.",
+      "tags": [
+        "migration factory",
+        "migration",
+        "power platform"
+      ],
+      "products": [
+        "Dataverse",
+        "Power Apps"
+      ],
+      "what": "Helps replace SharePoint list-backed app data sources with Dataverse tables, relationships, and implementation guidance that better support scale, security, and app lifecycle needs.",
+      "when": [
+        "A Canvas App has outgrown SharePoint lists.",
+        "You need Dataverse security, relationships, ALM, or stronger data modeling.",
+        "You are planning a low-risk move from list data to managed tables."
+      ],
+      "how": [
+        "Analyzes list structures and app usage patterns.",
+        "Suggests Dataverse table and column mappings.",
+        "Documents migration steps and app update considerations."
+      ],
+      "install": "copilot plugin install powercat-migration-factory@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/migrate-to-dataverse",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/migrate-to-dataverse/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__migrate-to-dataverse"
+    }
+  ],
+  "migrationTracks": [
+    {
+      "id": "Access to Dataverse Migration",
+      "title": "Access to Dataverse Migration",
+      "description": "Migrate a Microsoft Access database (.mdb/.accdb) into Microsoft Dataverse with an optional model-driven app.",
+      "products": [
+        "Dataverse"
+      ],
+      "status": "Available skill",
+      "cta": "Available skill",
+      "skillId": "Access to Dataverse Migration",
+      "detailId": "powercat-migration-factory__Access to Dataverse Migration",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/Access%20to%20Dataverse%20Migration",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__Access%20to%20Dataverse%20Migration"
+    },
+    {
+      "id": "Airtable to Power Platform Migration",
+      "title": "Airtable to Power Platform Migration",
+      "description": "Migrate an Airtable app into Microsoft platform targets:",
+      "products": [
+        "Airtable",
+        "Dataverse",
+        "Power Platform"
+      ],
+      "status": "Available skill",
+      "cta": "Available skill",
+      "skillId": "Airtable to Power Platform Migration",
+      "detailId": "powercat-migration-factory__Airtable to Power Platform Migration",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/Airtable%20to%20Power%20Platform%20Migration",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__Airtable%20to%20Power%20Platform%20Migration"
+    },
+    {
+      "id": "infopath-to-canvas",
+      "title": "infopath-to-canvas",
+      "description": "Assess InfoPath forms, identify fields, rules, views, submit behavior, and workflow dependencies, then shape a Canvas App modernization plan with migration risks called out early.",
+      "products": [
+        "Power Apps"
+      ],
+      "status": "Available skill",
+      "cta": "Forms migration skill",
+      "skillId": "infopath-to-canvas",
+      "detailId": "powercat-migration-factory__infopath-to-canvas",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/infopath-to-canvas",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__infopath-to-canvas"
+    },
+    {
+      "id": "migrate-to-dataverse",
+      "title": "migrate-to-dataverse",
+      "description": "Analyze SharePoint list-backed app data sources, recommend Dataverse table mappings, and document the app, security, relationship, and ALM changes needed for a safer migration.",
+      "products": [
+        "Dataverse",
+        "Power Apps"
+      ],
+      "status": "Available skill",
+      "cta": "Dataverse migration skill",
+      "skillId": "migrate-to-dataverse",
+      "detailId": "powercat-migration-factory__migrate-to-dataverse",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/migrate-to-dataverse",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__migrate-to-dataverse"
+    }
+  ]
+}

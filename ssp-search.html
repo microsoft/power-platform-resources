@@ -12,20 +12,18 @@
       document.documentElement.dataset.theme = new URLSearchParams(location.search).get('scoutTheme') || saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     })();
   </script>
-	<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260918-local-advisor">
-	<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-detail-drawer">
+	<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-presentation">
+	<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
 	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20260926-one-click-paths">
 	<script src="assets/js/ssp-search-engine.js?v=20260926-one-click-paths" defer></script>
-	  <script src="assets/js/ssp-search-entry.js?v=20260926-skill-routing-2" defer></script>
-		<script src="assets/js/ssp-search.js?v=20260926-one-click-paths" defer></script>
+	  <script src="assets/js/ssp-search-entry.js?v=20260926-powercat-marketplace" defer></script>
+		<script src="assets/js/ssp-search.js?v=20260926-powercat-marketplace" defer></script>
 </head>
 <body class="search-page">
   <header class="topbar">
     <div class="wrap row">
 	<a class="logo" href="ssp-search.html" aria-label="Self-Service Portal - Resources">
-        <img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="200" height="60">
-        <span class="cat-divider" aria-hidden="true"></span>
-        <picture class="powercat-logo"><img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24"><img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24"></picture>
+        <img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="220" height="92">
       </a>
       <nav class="main" id="siteNav" aria-label="Primary navigation">
         <a href="ssp-landing.html">About</a><a href="ssp-design.html">Design</a><a href="ssp-build.html">Build</a><a href="ssp-review.html">Review</a><a href="https://microsoft.github.io/apps-agents-workshop/labs/" target="ssp-learn" rel="noopener">Learn</a>
@@ -33,6 +31,7 @@
       <div class="spacer"></div>
       <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">&#9776;</button>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme" title="Toggle theme">&#9790;</button>
+      <picture class="powercat-logo header-powercat"><img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="46"><img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="46"></picture>
     </div>
   </header>
   <main>
@@ -59,9 +58,9 @@
 				<button id="retryIndex" class="btn ghost" type="button" hidden>Retry search</button>
 				<details id="advancedSearch" class="advanced-search">
 					<summary>Advanced search and skills catalog</summary>
-					<button id="browseSkills" class="btn ghost" type="button">Browse all advisor skills</button>
+					<button id="browseSkills" class="btn ghost" type="button">Browse all skills and migration tracks</button>
 					<div class="search-filters">
-						<label>Content type<select id="typeFilter"><option value="">All content</option><option>Skill</option><option>MCP capability</option><option>Reference</option><option value="Guide">SSP guide</option><option>Resource</option><option>Learning</option><option>Page</option></select></label>
+						<label>Content type<select id="typeFilter"><option value="">All content</option><option>Skill</option><option>Migration track</option><option>MCP capability</option><option>Reference</option><option value="Guide">SSP guide</option><option>Resource</option><option>Learning</option><option>Page</option></select></label>
 						<label>Product<select id="productFilter"><option value="">Any product</option><option value="power apps">Power Apps</option><option value="canvas">Canvas apps</option><option value="model driven">Model-driven apps</option><option value="automate">Power Automate</option><option value="dataverse">Dataverse</option><option value="pages">Power Pages</option><option value="copilot">Copilot Studio</option><option value="power bi">Power BI</option></select></label>
 					</div>
 					<div id="indexStatus" class="index-status">Loading site content...</div>
@@ -85,7 +84,7 @@
 				<div class="wrap search-workspace">
       <section id="resources" class="resource-catalog" aria-labelledby="resourcesHeading">
         <h2 id="resourcesHeading">Resource catalog</h2>
-        <p>Curated learning, adoption, architecture, governance, development, AI, and community resources for every stage of your Power Platform journey.</p>
+        <p>SSP is your front door to curated learning, adoption, architecture, governance, development, AI, and community resources. The Power CAT Skills Marketplace is the maintained source for Power CAT skill details and install instructions.</p>
         <p id="resourceStatus" class="search-note" role="status" aria-live="polite"></p>
         <div class="resource-layout">
           <aside class="rail" id="resourceRail" hidden role="group" aria-label="Resource categories">

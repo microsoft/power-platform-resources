@@ -42,6 +42,7 @@ jobs:
           }
 
           Update-Snapshot "scripts/sync-skills-advisor.js"
+          Update-Snapshot "scripts/sync-powercat-marketplace.js"
           Update-Snapshot "scripts/sync-workshop-labs.js"
           Update-Snapshot "scripts/sync-latest-content.js"
           node scripts/update-about.js
@@ -73,7 +74,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B $env:REFRESH_BRANCH
-          git add assets/data/skills-advisor.json assets/data/workshop-labs.json assets/data/latest-content.json ssp-search.html ssp-landing.html
+          git add assets/data/skills-advisor.json assets/data/powercat-marketplace.json assets/data/workshop-labs.json assets/data/latest-content.json ssp-search.html ssp-landing.html
           git commit -m "Refresh site content snapshots"
 
           git ls-remote --exit-code --heads origin $env:REFRESH_BRANCH | Out-Null
@@ -90,5 +91,5 @@ jobs:
               --base $env:BASE_BRANCH `
               --head $env:REFRESH_BRANCH `
               --title "Refresh site content snapshots" `
-              --body "Automated weekly refresh of Skills Advisor, Power Series labs, resource counts, and generated About content. Review the source changes and generated output before merging."
+              --body "Automated weekly refresh of Skills Advisor, Power CAT Marketplace and Migration Factory, Power Series labs, resource counts, and generated About content. Review the source changes and generated output before merging."
           }

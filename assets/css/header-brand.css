@@ -137,9 +137,9 @@ body :is(.outcome, #goalChoices .journey-choice, .fcard, .path-choice):focus-vis
 
 .platform-logo {
 	display: block;
-	width: 200px;
-	height: 60px;
-	object-fit: cover;
+	width: 220px;
+	height: 92px;
+	object-fit: contain;
 	flex: none;
 }
 
@@ -148,7 +148,34 @@ body :is(.outcome, #goalChoices .journey-choice, .fcard, .path-choice):focus-vis
 }
 
 .topbar .row {
+	height: 92px;
 	gap: 16px;
+}
+
+.topbar .header-powercat {
+	display: inline-flex;
+	align-items: center;
+	flex: none;
+	margin-left: 8px;
+}
+
+.topbar .header-powercat img {
+	display: block;
+	width: 118px;
+	height: 46px;
+	object-fit: contain;
+}
+
+.topbar .header-powercat .logo-on-dark {
+	display: none;
+}
+
+html[data-theme="dark"] .topbar .header-powercat .logo-on-light {
+	display: none;
+}
+
+html[data-theme="dark"] .topbar .header-powercat .logo-on-dark {
+	display: block;
 }
 
 #header {
@@ -165,18 +192,53 @@ body :is(.outcome, #goalChoices .journey-choice, .fcard, .path-choice):focus-vis
 	max-width: 180px;
 }
 
+@media (min-width: 1081px) {
+	.topbar nav.main {
+		margin-left: auto;
+	}
+
+	.topbar .spacer {
+		display: none;
+	}
+}
+
+@media (max-width: 1080px) {
+	.topbar nav.main {
+		top: 92px;
+	}
+}
+
 @media (max-width: 560px) {
 	.platform-logo {
-		width: 144px;
-		height: 48px;
+		width: 150px;
+		height: 63px;
 	}
 
 	.topbar .row {
+		height: 87px;
 		gap: 8px;
 	}
 
-	.topbar .powercat-logo img {
-		height: 20px;
+	.topbar nav.main {
+		top: 87px;
+	}
+
+	.topbar .header-powercat {
+		order: 2;
+		margin-left: 0;
+	}
+
+	.topbar .header-powercat img {
+		width: 76px;
+		height: 30px;
+	}
+
+	.topbar .menu-toggle {
+		order: 3;
+	}
+
+	.topbar #themeBtn {
+		order: 4;
 	}
 
 	#header {
@@ -190,14 +252,15 @@ body :is(.outcome, #goalChoices .journey-choice, .fcard, .path-choice):focus-vis
 
 @media (max-width: 360px) {
 	.platform-logo {
-		width: 120px;
+		width: 126px;
 	}
 
 	.topbar .row {
 		gap: 6px;
 	}
 
-	.topbar .powercat-logo img {
-		height: 18px;
+	.topbar .header-powercat img {
+		width: 63px;
+		height: 25px;
 	}
 }

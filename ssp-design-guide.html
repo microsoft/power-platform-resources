@@ -11,10 +11,10 @@
       document.documentElement.dataset.theme = new URLSearchParams(location.search).get('scoutTheme') || saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/ssp-design.css?v=20260918-local-advisor">
-  <link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-detail-drawer">
+  <link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-presentation">
+  <link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-  <script src="assets/js/ssp-search-entry.js?v=20260926-skill-routing-2" defer></script>
+  <script src="assets/js/ssp-search-entry.js?v=20260926-powercat-marketplace" defer></script>
   <style>
     body{--design:var(--brand)}
     .topic-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;padding:16px 0;border-bottom:1px solid var(--border)}
@@ -34,8 +34,8 @@
     .topic-steps{list-style:none;padding:0;counter-reset:topic-step}
     .topic-steps>li{counter-increment:topic-step;position:relative;border-top:1px solid var(--border);padding:22px 0 22px 44px;scroll-margin-top:90px}
     .topic-steps>li::before{content:counter(topic-step,decimal-leading-zero);position:absolute;left:0;top:24px;font:600 13px var(--mono);color:var(--design)}
-    .topic-links{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px 24px;padding:0;list-style:none}
-    .topic-steps .topic-links li,.topic-support .topic-links li{text-align:right}
+    .topic-links{display:flex;justify-content:flex-start;flex-wrap:wrap;gap:12px 24px;padding:0;list-style:none}
+    .topic-steps .topic-links li,.topic-support .topic-links li{text-align:left}
     .topic-links a,.topic-support a{color:var(--design);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
     .topic-support{border-top:1px solid var(--border);padding:24px 0 36px;max-width:960px}
     .topic-support h2{font-size:22px}
@@ -75,7 +75,7 @@
     .topic-preparation p{color:var(--muted);max-width:760px;font-size:14px;margin:12px 0 0}
     .topic.enhanced>.topic-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
     .topic.enhanced>.topic-links>li{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:14px;line-height:1.6}
-    .topic.enhanced>.topic-links a{display:block;font-size:15px;font-weight:600;margin-bottom:8px;text-align:right}
+    .topic.enhanced>.topic-links a{display:block;font-size:15px;font-weight:600;margin-bottom:8px;text-align:left}
     .topic-support{font-size:14px;color:var(--muted)}
     @media(max-width:700px){.topic.enhanced h1{font-size:28px}.topic.enhanced .lead{font-size:16px;margin-bottom:20px}.topic-path{gap:8px}.path-choice{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px 10px;min-height:132px}.path-choice strong{font-size:14px}.path-choice small{font-size:12px}.path-choice .path-icon{width:24px;height:24px;font-size:20px}.topic.enhanced .topic-steps>li{grid-template-columns:minmax(0,1fr);gap:16px;padding:20px 0}.topic.enhanced .topic-steps h3{font-size:21px;margin:0}.topic-step-actions{grid-column:1;grid-row:auto}.topic.enhanced>.topic-links{grid-template-columns:minmax(0,1fr)}}
     @media(max-width:700px){.topic h1{font-size:28px}.topic-nav{gap:8px 16px}.topic-links{flex-direction:column;gap:10px}.topic-steps>li{padding-left:34px}}
@@ -83,11 +83,12 @@
 </head>
 <body>
   <header class="topbar"><div class="wrap row">
-    <a class="logo" href="ssp-landing.html" aria-label="About Self-Service Portal"><img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="200" height="60"><span class="cat-divider" aria-hidden="true"></span><picture class="powercat-logo"><img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="24"><img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="24"></picture></a>
+    <a class="logo" href="ssp-landing.html" aria-label="About Self-Service Portal"><img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="220" height="92"></a>
     <nav class="main" id="siteNav" aria-label="Primary navigation"><a href="ssp-landing.html">About</a><a href="ssp-design.html" aria-current="page">Design</a><a href="ssp-build.html">Build</a><a href="ssp-review.html">Review</a><a href="https://microsoft.github.io/apps-agents-workshop/labs/" target="ssp-learn" rel="noopener">Learn</a></nav>
     <div class="spacer"></div>
     <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">&#9776;</button>
     <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme" title="Toggle theme">&#9790;</button>
+    <picture class="powercat-logo header-powercat" title="Power CAT"><img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="46"><img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="46"></picture>
   </div></header>
   <main class="wrap">
     <div class="topic-toolbar">
@@ -101,7 +102,7 @@
       <h2>Before you start</h2>
       <p>Bring your intended outcome, user groups, existing systems, sensitive-data requirements, timeline, and measures of success to the design session.</p>
       <h2>Supporting published skills</h2>
-      <ul class="topic-links"><li><a data-skill-owner="power-cat" data-preview-summary="Use Power CAT's architecture advisor for discovery and architecture review of a composed Power Platform solution." href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor — Power CAT source</a> - Discovery and architecture review for a composed Power Platform solution.</li><li><a data-skill-owner="non-power-cat" data-canonical-source="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-metadata/SKILL.md" data-preview-summary="Use this supporting skill for Dataverse tables, relationships, forms, and views." href="https://aka.ms/powerplatformskillsadvisor" target="_blank" rel="noopener">dv-metadata — Skills Advisor</a> - Dataverse tables, relationships, forms, and views.</li></ul>
+      <ul class="topic-links"><li><a data-skill-owner="power-cat" data-preview-summary="Use Power CAT's architecture advisor for discovery and architecture review of a composed Power Platform solution." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-architecture-advisor__powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor — marketplace details</a> - Bring goals, users, constraints, and systems; receive a structured architecture recommendation and decision record.</li><li><a data-skill-owner="power-cat" data-preview-summary="Generate a brand-aligned design guide before building a new Power Apps code app." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-code-apps__design-guide" target="_blank" rel="noopener">design-guide — marketplace details</a> - For a code app, bring brand assets, audience needs, and experience goals; receive design tokens and implementation guidance.</li><li><a data-skill-owner="non-power-cat" data-canonical-source="https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-metadata/SKILL.md" data-preview-summary="Use this supporting skill for Dataverse tables, relationships, forms, and views." href="https://aka.ms/powerplatformskillsadvisor" target="_blank" rel="noopener">dv-metadata — Skills Advisor</a> - Dataverse tables, relationships, forms, and views.</li></ul>
       <h2>Suggested sequence</h2>
       <ol class="topic-steps">
         <li><h3>Plan the solution boundary</h3><p>Identify the work to improve and the systems that must remain. Record the scope, assumptions, and constraints in a short solution brief.</p><ul class="topic-links"><li><a href="https://learn.microsoft.com/power-apps/maker/plan-designer/create-plan" target="_blank" rel="noopener">Microsoft Learn: Create a plan</a></li><li><a href="ssp-design.html#skill-solution-architecture-blueprint">Design guide: Solution Architecture Blueprint</a></li></ul></li>
@@ -116,7 +117,17 @@
       <h2>Before you start</h2>
       <p>Bring the current architecture, user pain points, performance evidence, dependencies, data volumes, release process, and support commitments to the design session.</p>
       <h2>Supporting published skills</h2>
-      <ul class="topic-links"><li><a data-skill-owner="power-cat" data-preview-summary="Use Power CAT's architecture advisor to compare architecture choices before implementation changes." href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor — Power CAT source</a> - Compare architecture choices before changing the implementation.</li><li><a data-skill-owner="power-cat" data-preview-summary="Use this Power CAT migration skill when moving a SharePoint-backed canvas app toward Dataverse." href="https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/migrate-to-dataverse" target="_blank" rel="noopener">migrate-to-dataverse — Power CAT source</a> - Relevant when moving a SharePoint-backed canvas app toward Dataverse, not a general-purpose app migration.</li></ul>
+      <ul class="topic-links"><li><a data-skill-owner="power-cat" data-preview-summary="Use Power CAT's architecture advisor to compare architecture choices before implementation changes." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-architecture-advisor__powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor — marketplace details</a> - Compare architecture choices before changing the implementation.</li></ul>
+      <section class="topic-preparation" aria-labelledby="migration-tracks-heading">
+      <h3 id="migration-tracks-heading">Choose a Migration Factory track</h3>
+      <p>Complete the basic SSP framing above first, then choose the track that matches the legacy source. Bring a sanitized source artifact and current dependencies; each track produces a target plan or implementation assets plus migration risks to validate.</p>
+      <ul class="topic-links">
+        <li><a data-skill-owner="power-cat" data-preview-summary="Migrate a Microsoft Access database into Dataverse with an optional model-driven app." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__Access%20to%20Dataverse%20Migration" target="_blank" rel="noopener">Access to Dataverse — marketplace details</a> - Bring an .mdb or .accdb file; continue with a Dataverse solution and optional model-driven app path.</li>
+        <li><a data-skill-owner="power-cat" data-preview-summary="Migrate an Airtable app into Microsoft platform targets." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__Airtable%20to%20Power%20Platform%20Migration" target="_blank" rel="noopener">Airtable to Power Platform — marketplace details</a> - Bring the Airtable structure and automation context; continue with mapped Microsoft platform targets.</li>
+        <li><a data-skill-owner="power-cat" data-preview-summary="Assess an InfoPath form and shape a Canvas App modernization plan." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__infopath-to-canvas" target="_blank" rel="noopener">InfoPath to Canvas — marketplace details</a> - Bring the form, rules, views, submit behavior, and workflow dependencies; receive a Canvas App modernization plan and risks.</li>
+        <li><a data-skill-owner="power-cat" data-preview-summary="Plan a SharePoint-backed Canvas App migration to Dataverse." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__migrate-to-dataverse" target="_blank" rel="noopener">SharePoint to Dataverse — marketplace details</a> - Bring Canvas App YAML and list structures; receive Dataverse mappings and app, security, relationship, and ALM changes.</li>
+      </ul>
+      </section>
       <h2>Suggested sequence</h2>
       <ol class="topic-steps">
         <li><h3>Assess the current system</h3><p>Separate design limitations from implementation issues. Record a baseline and the constraints a replacement or incremental change must satisfy.</p><ul class="topic-links"><li><a href="https://learn.microsoft.com/power-platform/well-architected/" target="_blank" rel="noopener">Microsoft Learn: Well-Architected guidance</a></li><li><a href="ssp-design.html#skill-well-architected-design-check">Design guide: Well-Architected Design Check</a></li></ul></li>
@@ -146,7 +157,7 @@
       <h2>Before you start</h2>
       <p>Bring the proposed architecture, key decisions, user journeys, security model, service expectations, known risks, and any prototype or test evidence to the review.</p>
       <h2>Supporting published skills</h2>
-      <ul class="topic-links"><li><a data-skill-owner="power-cat" data-preview-summary="Use Power CAT's architecture advisor for discovery and architecture review of a proposed solution." href="https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-architecture-advisor/skills/powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor — Power CAT source</a> - Discovery and architecture review for a proposed solution.</li><li><a data-skill-owner="non-power-cat" data-canonical-source="https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/security-review" data-preview-summary="Use this supporting skill for a security-focused assessment when a Power Pages site exists." href="https://aka.ms/powerplatformskillsadvisor" target="_blank" rel="noopener">security-review — Skills Advisor</a> - Security-focused assessment when a Power Pages site exists; not a substitute for reviewing an unbuilt design.</li></ul>
+      <ul class="topic-links"><li><a data-skill-owner="power-cat" data-preview-summary="Use Power CAT's architecture advisor for discovery and architecture review of a proposed solution." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-architecture-advisor__powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor — marketplace details</a> - Discovery and architecture review for a proposed solution.</li><li><a data-skill-owner="non-power-cat" data-canonical-source="https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/security-review" data-preview-summary="Use this supporting skill for a security-focused assessment when a Power Pages site exists." href="https://aka.ms/powerplatformskillsadvisor" target="_blank" rel="noopener">security-review — Skills Advisor</a> - Security-focused assessment when a Power Pages site exists; not a substitute for reviewing an unbuilt design.</li></ul>
       <h2>Suggested sequence</h2>
       <ol class="topic-steps">
         <li><h3>Assess the design across quality areas</h3><p>Review reliability, security, operational excellence, performance efficiency, and experience optimization. Record gaps and their business impact.</p><ul class="topic-links"><li><a href="https://aka.ms/powa" target="_blank" rel="noopener">Assessment: Power Platform Well-Architected</a></li><li><a href="https://learn.microsoft.com/power-platform/well-architected/" target="_blank" rel="noopener">Microsoft Learn: Well-Architected guidance</a></li><li><a href="ssp-design.html#skill-well-architected-design-check">Design guide: Well-Architected Design Check</a></li></ul></li>
@@ -156,7 +167,7 @@
     </article>
     <section class="topic-support" aria-labelledby="skills-heading">
       <h2 id="skills-heading">Find supporting skills</h2>
-      <p>Published skill links open source instructions and prerequisites, not a running skill. Review them before installation or execution in a compatible host, particularly when a skill can change an environment.</p>
+      <p>Power CAT skill links open marketplace details and prerequisites, not a running skill. Other published skills route through Skills Advisor. Review requirements before installation or execution in a compatible host, particularly when a skill can change an environment.</p>
       <p>The Design guides above are portal-authored planning outlines, not one-to-one names of published skills. Use the current catalog to find skills that support the decisions in your chosen sequence.</p>
       <ul class="topic-links"><li><a href="ssp-search.html#skills">Browse published advisor skills</a></li><li><a href="https://aka.ms/powerplatformskillsadvisor" target="_blank" rel="noopener">Open Skills Advisor</a></li><li><a href="ssp-design.html#outcomes-heading">Back to Design topics</a></li></ul>
     </section>

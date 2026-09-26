@@ -149,7 +149,9 @@
     details.replaceChildren();
     details.hidden = !skill && !lab;
     preview.querySelector('.external-preview-kicker').textContent = skill ? skill.type + ' details' : 'External resource';
-    continueLink.textContent = skill ? (skill.route === 'Power CAT canonical source' ? 'Open Power CAT canonical source' : 'Open Power Platform Skills Advisor') : 'Continue to site';
+    continueLink.textContent = skill
+      ? (skill.route === 'Power CAT Skills Marketplace' ? 'Open marketplace details' : skill.route === 'Power CAT canonical source' ? 'Open Power CAT canonical source' : 'Open Power Platform Skills Advisor')
+      : 'Continue to site';
     if (lab) {
       preview.querySelector('.external-preview-kicker').textContent = 'Lab details';
       continueLink.textContent = 'Open lab';
@@ -160,7 +162,9 @@
       const fields = skill ? [
         ['Products', skill.products.join(', ')], ['Purpose', skill.purpose],
         ['Availability', skill.status], ['Publisher', skill.publisher], ['Catalog', skill.marketplace],
-        ['License', skill.license], ['Source verified', skill.verified]
+        ['Category', skill.category], ['Plugin', skill.plugin], ['Expected route', skill.route],
+        ['License', skill.license], ['Snapshot imported', skill.verified],
+        ['Skill source', skill.canonicalSource], ['Plugin documentation', skill.docsSource]
       ] : [
         ['Audience', lab.persona], ['Level', lab.level], ['Duration', lab.duration],
         ['Source', 'Microsoft Power Series'], ['License', lab.license], ['Catalog imported', lab.imported]
@@ -174,13 +178,39 @@
         metadata.append(term, description);
       }
       details.append(metadata);
-      for (const [label, value] of (skill ? [['Usage', skill.note], ['Suggested prompt', skill.prompt]] : [])) {
+      for (const [label, value] of (skill ? [
+        ['What it does', skill.what],
+        ['When to use it', skill.when],
+        ['How it works', skill.how],
+        ['Usage', skill.note],
+        ['Suggested prompt', skill.prompt]
+      ] : [])) {
         if (!value) continue;
         const heading = document.createElement('h3');
         heading.textContent = label;
-        const paragraph = document.createElement('p');
-        paragraph.textContent = value;
-        details.append(heading, paragraph);
+        details.append(heading);
+        if (Array.isArray(value)) {
+          const list = document.createElement('ul');
+          value.forEach(item => {
+            const row = document.createElement('li');
+            row.textContent = item;
+            list.append(row);
+          });
+          details.append(list);
+        } else {
+          const paragraph = document.createElement('p');
+          paragraph.textContent = value;
+          details.append(paragraph);
+        }
+      }
+      if (skill?.install) {
+        const heading = document.createElement('h3');
+        heading.textContent = 'Install command';
+        const code = document.createElement('code');
+        code.textContent = skill.install;
+        const pre = document.createElement('pre');
+        pre.append(code);
+        details.append(heading, pre);
       }
       const caveat = document.createElement('p');
       caveat.textContent = skill
@@ -188,7 +218,7 @@
         : 'Review the prerequisites and required environment in the published lab before starting. Duration is the estimate provided by the workshop authors.';
       details.append(caveat);
     }
-    const destination = skill && skill.route !== 'Power CAT canonical source' ? skillsAdvisorUrl : resource.url.href;
+    const destination = skill && !['Power CAT canonical source', 'Power CAT Skills Marketplace'].includes(skill.route) ? skillsAdvisorUrl : resource.url.href;
     preview.querySelector('#externalPreviewDestination').textContent = destination;
     const target = link.getAttribute('target');
     const opensNewTab = newTab || (target && !['_self', '_top', '_parent'].includes(target.toLowerCase()));

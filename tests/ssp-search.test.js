@@ -2,8 +2,10 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { rank, guidance, journeys, nextStep } = require('../assets/js/ssp-search-engine.js');
 const { parseCatalog } = require('../scripts/sync-skills-advisor.js');
+const { parseCatalog: parsePowerCatCatalog, detailUrl } = require('../scripts/sync-powercat-marketplace.js');
 const { parseFeed } = require('../scripts/sync-latest-content.js');
 const catalog = require('../assets/data/skills-advisor.json');
+const powerCatCatalog = require('../assets/data/powercat-marketplace.json');
 const { readFileSync, existsSync } = require('node:fs');
 const { join } = require('node:path');
 const { execFileSync } = require('node:child_process');
@@ -69,17 +71,59 @@ test('Search match percentages expose keyword coverage rather than ranking confi
 test('Imported skill details retain exact identity, source, and published usage metadata', () => {
   const script = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
   assert.equal(new Set(catalog.skills.map(item => item.id)).size, catalog.skills.length);
-  assert.match(script, /const isPowerCat = item\.marketplace === 'Power CAT Skills'/);
-  assert.match(script, /const destination = isPowerCat \? item\.source : 'https:\/\/aka\.ms\/powerplatformskillsadvisor'/);
+  assert.match(script, /catalog\.skills\.filter\(item => item\.marketplace !== 'Power CAT Skills'\)/);
+  assert.match(script, /const destination = 'https:\/\/aka\.ms\/powerplatformskillsadvisor'/);
   assert.match(script, /canonicalSource: item\.source/);
-  assert.match(script, /route: isPowerCat \? 'Power CAT canonical source' : 'Power Platform Skills Advisor'/);
+  assert.match(script, /route: 'Power Platform Skills Advisor'/);
   assert.match(script, /status: item\.status, publisher: item\.publisher, marketplace: item\.marketplace/);
   assert.match(script, /prompt: item\.action\?\.prompt \|\| ''/);
-  assert.match(script, /item\.advisorId \? 'View skill details'/);
+  assert.match(script, /item\.type === 'Migration track' \? 'View migration track details' : 'View skill details'/);
   assert.match(script, /source\.dataset\.previewTitle = item\.title/);
   const preview = readFileSync(join(__dirname, '../assets/js/ssp-search-entry.js'), 'utf8');
   assert.match(preview, /details\.replaceChildren\(\)/);
-  assert.match(preview, /skill\.route === 'Power CAT canonical source' \? 'Open Power CAT canonical source' : 'Open Power Platform Skills Advisor'/);
+  assert.match(preview, /skill\.route === 'Power CAT Skills Marketplace' \? 'Open marketplace details'/);
+});
+
+test('Power CAT marketplace snapshot preserves every skill and migration track', () => {
+  assert.equal(powerCatCatalog.skills.length, 16);
+  assert.equal(powerCatCatalog.migrationTracks.length, 4);
+  assert.equal(new Set(powerCatCatalog.skills.map(item => item.detailId)).size, powerCatCatalog.skills.length);
+  for (const item of [...powerCatCatalog.skills, ...powerCatCatalog.migrationTracks]) {
+    assert.equal(item.detailUrl, detailUrl(item.detailId));
+    assert.match(item.source, /^https:\/\/github\.com\/microsoft\/power-cat-skills\//);
+  }
+  const publishedShape = {
+    categories: powerCatCatalog.categories,
+    plugins: powerCatCatalog.plugins,
+    skills: powerCatCatalog.skills.map(item => ({
+      ...item,
+      categoryLabel: item.category,
+      products: item.products.map(label => ({ label }))
+    })),
+    migrationTracks: powerCatCatalog.migrationTracks.map(item => ({
+      ...item,
+      products: item.products.map(label => ({ label }))
+    }))
+  };
+  const parsed = parsePowerCatCatalog(JSON.stringify(publishedShape));
+  assert.equal(parsed.skills.length, powerCatCatalog.skills.length);
+  assert.equal(parsed.migrationTracks.length, powerCatCatalog.migrationTracks.length);
+  const duplicate = structuredClone(publishedShape);
+  duplicate.skills[1].detailId = duplicate.skills[0].detailId;
+  assert.throws(() => parsePowerCatCatalog(JSON.stringify(duplicate)), /Invalid Power CAT skill/);
+  const unsafe = structuredClone(publishedShape);
+  unsafe.skills[0].source = 'javascript:alert(1)';
+  assert.throws(() => parsePowerCatCatalog(JSON.stringify(unsafe)), /Invalid Power CAT skill/);
+
+  const search = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
+  assert.match(search, /fetch\('assets\/data\/powercat-marketplace\.json'/);
+  assert.match(search, /powerCat\.skills\.map/);
+  assert.match(search, /powerCat\.migrationTracks\.map/);
+  assert.match(search, /identity: 'powercat-track:' \+ track\.detailId/);
+  assert.match(search, /route: sourceName/);
+  const workflow = readFileSync(join(__dirname, '../.github/workflows/refresh-site-content.yml'), 'utf8');
+  assert.match(workflow, /scripts\/sync-powercat-marketplace\.js/);
+  assert.match(workflow, /assets\/data\/powercat-marketplace\.json/);
 });
 
 test('Lab details preserve published metadata and dialogs expose a labeled close control', () => {
@@ -129,7 +173,7 @@ test('About statistics and featured guidance match their canonical sources', () 
   const resources = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
   const workshop = require('../assets/data/workshop-labs.json');
   const latest = require('../assets/data/latest-content.json');
-  assert.match(html, new RegExp(`<strong>${catalog.skills.length}</strong><span>Catalog entries</span>`));
+  assert.match(html, new RegExp(`<strong>${powerCatCatalog.skills.length} \\+ ${powerCatCatalog.migrationTracks.length}</strong><span>Power CAT skills · migration tracks</span>`));
   assert.match(html, new RegExp(`<strong>${workshop.labs.length}</strong><span>Power Series labs</span>`));
   assert.match(html, new RegExp(`<li>${workshop.labs.length} hands-on labs</li>`));
   assert.match(html, new RegExp(`<span class="chip">${workshop.labs.length} labs</span>`));
@@ -277,7 +321,7 @@ test('About carousel rotates automatically and suspends for focus, hover, visibi
 });
 
 test('Generic catalog actions and pending review availability are labeled accurately', () => {
-  for (const [pillar, count] of [['build', 9], ['review', 4]]) {
+  for (const [pillar, count] of [['build', 9], ['review', 3]]) {
     const html = readFileSync(join(__dirname, `../ssp-${pillar}.html`), 'utf8');
     assert.doesNotMatch(html, />Open skill /);
     assert.equal((html.match(/>Browse Skills Advisor </g) || []).length, count);
@@ -443,7 +487,7 @@ test('Build release checklist connects ALM stages to guides and review', () => {
 });
 
 test('Build and Review catalogs use category-only panels with matching counts and copy', () => {
-  for (const [pillar, initialCategory, total] of [['build', 'apps', 9], ['review', 'architecture', 7]]) {
+  for (const [pillar, initialCategory, total] of [['build', 'apps', 14], ['review', 'architecture', 9]]) {
     const html = readFileSync(join(__dirname, `../ssp-${pillar}.html`), 'utf8');
     const cards = [...html.matchAll(/<article class="skill-card"[^>]*data-category="([^"]+)"/g)];
     const filters = [...html.matchAll(/<button class="filter"[^>]*data-category="([^"]+)"[^>]*aria-pressed="([^"]+)"[^>]*data-description="([^"]+)"[^>]*>[\s\S]*?<span class="guide-label">([^<]+)<\/span><span class="guide-count">(\d+)<\/span><\/button>/g)];
@@ -479,13 +523,13 @@ test('Design guides route skills by owner after providing local context', () => 
     assert.match(card, /class="guide-resources"/);
     assert.match(card, /<details open><summary>Inputs and intended output/);
     assert.match(card, /https:\/\/learn\.microsoft\.com\//);
-    const powerCat = card.match(/data-skill-owner="power-cat"[\s\S]*?href="(https:\/\/github\.com\/[^"]+)"/);
+    const powerCat = card.match(/data-skill-owner="power-cat"[\s\S]*?href="(https:\/\/microsoft\.github\.io\/power-cat-skills\/power-platform-migration-factory\/skill\.html\?id=[^"]+)"/);
     const nonPowerCat = card.match(/data-skill-owner="non-power-cat"[\s\S]*?data-canonical-source="(https:\/\/github\.com\/[^"]+)"[\s\S]*?href="https:\/\/aka\.ms\/powerplatformskillsadvisor"/);
-    if (powerCat) assert.ok(catalog.skills.some(entry => entry.marketplace === 'Power CAT Skills' && entry.source === powerCat[1]), powerCat[1]);
+    if (powerCat) assert.ok(powerCatCatalog.skills.some(entry => entry.detailUrl === powerCat[1]), powerCat[1]);
     else if (nonPowerCat) assert.ok(catalog.skills.some(entry => entry.marketplace !== 'Power CAT Skills' && entry.source === nonPowerCat[1]), nonPowerCat[1]);
     else assert.match(card, /Documentation-led guide|No (dedicated|published).*verified in the imported catalog/);
   }
-  assert.equal(cards.filter(card => card.includes('data-skill-owner=')).length, 4);
+  assert.equal(cards.filter(card => card.includes('data-skill-owner=')).length, 5);
 });
 
 test('Design intents open curated topic pages instead of filtering the skill catalog', () => {
@@ -746,14 +790,33 @@ test('every guided goal has a clear next action and an unsure path', () => {
 
 test('Interactive cards share Design lift with keyboard and reduced-motion support', () => {
   const css = readFileSync(join(__dirname, '../assets/css/header-brand.css'), 'utf8');
+  const designCss = readFileSync(join(__dirname, '../assets/css/ssp-design.css'), 'utf8');
   assert.match(css, /:is\(\.outcome, #goalChoices \.journey-choice, \.fcard, \.path-choice\)/);
   assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)/);
   assert.match(css, /:focus-visible\s*\{\s*transform: translateY\(-3px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?transform: none;\s*transition: none;/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?:is\(:hover, :focus-visible\)/);
   for (const page of ['search', 'design', 'build', 'review', 'landing', 'design-guide', 'build-guide']) {
-    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /header-brand\.css\?v=20260926-detail-drawer/);
+    const html = readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8');
+    const header = html.match(/<header class="topbar"[\s\S]*?<\/header>/)[0];
+    const logo = header.match(/<a class="logo"[\s\S]*?<\/a>/)[0];
+    assert.match(html, /header-brand\.css\?v=20260926-right-nav/);
+    assert.equal((header.match(/class="powercat-logo header-powercat"/g) || []).length, 1);
+    assert.doesNotMatch(logo, /powercat-logo|cat-divider/);
   }
+  assert.match(css, /\.topbar \.row\s*\{[\s\S]*?height: 92px;/);
+  assert.match(css, /\.platform-logo\s*\{[\s\S]*?width: 220px;[\s\S]*?height: 92px;/);
+  assert.match(css, /\.topbar \.header-powercat img\s*\{[\s\S]*?width: 118px;[\s\S]*?height: 46px;[\s\S]*?object-fit: contain;/);
+  assert.match(css, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.topbar nav\.main\s*\{[\s\S]*?top: 92px;/);
+  assert.match(css, /@media \(min-width: 1081px\)\s*\{[\s\S]*?\.topbar nav\.main\s*\{[\s\S]*?margin-left: auto;[\s\S]*?\.topbar \.spacer\s*\{[\s\S]*?display: none;/);
+  assert.match(css, /@media \(max-width: 560px\)\s*\{[\s\S]*?\.topbar \.row\s*\{[\s\S]*?height: 87px;/);
+  assert.match(css, /@media \(max-width: 560px\)[\s\S]*?\.topbar nav\.main\s*\{[\s\S]*?top: 87px;/);
+  assert.match(designCss, /\.skills-section \.guide-panel \.skill-actions\s*\{\s*justify-content: flex-start;/);
+  assert.match(designCss, /\.skills-section \.guide-panel \.guide-resources a\s*\{[^}]*text-align: left;/);
+  assert.match(designCss, /\.alm-checklist \.step > a\s*\{[^}]*align-self: flex-start;[^}]*text-align: left;/);
+  const guide = readFileSync(join(__dirname, '../ssp-design-guide.html'), 'utf8');
+  assert.match(guide, /\.topic-links\{[^}]*justify-content:flex-start;/);
+  assert.doesNotMatch(guide, /\.topic(?:-steps|\\.enhanced)>?[^{}]*topic-links[^{}]*text-align:right/);
   assert.match(css, /\.external-preview\s*\{[\s\S]*?inset: 0 0 0 auto;/);
   assert.match(css, /@media \(max-width: 600px\)[\s\S]*?\.external-preview\s*\{[\s\S]*?width: 100%;/);
 });
@@ -790,9 +853,9 @@ test('External previews use listing summaries and skip internal, non-web, and do
   assert.match(script, /Learn \(opens in a new tab\)/);
   assert.match(script, /const skillsAdvisorUrl = 'https:\/\/aka\.ms\/powerplatformskillsadvisor'/);
   assert.match(script, /link\.dataset\.skillOwner \|\| \(link\.href === skillsAdvisorUrl \? 'non-power-cat' : ''\)/);
-  assert.match(script, /skill && skill\.route !== 'Power CAT canonical source' \? skillsAdvisorUrl : resource\.url\.href/);
+  assert.match(script, /!\['Power CAT canonical source', 'Power CAT Skills Marketplace'\]\.includes\(skill\.route\) \? skillsAdvisorUrl : resource\.url\.href/);
   for (const page of ['search', 'design', 'build', 'review', 'landing', 'design-guide', 'build-guide']) {
-    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20260926-skill-routing-2/);
+    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20260926-powercat-marketplace/);
   }
 });
 
