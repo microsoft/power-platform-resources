@@ -113,6 +113,15 @@
     }).filter(entry => entry.score > 0).sort((first, second) => second.score - first.score || first.title.localeCompare(second.title));
   }
 
+  function relaxedRank(entries, query) {
+    if (searchWords(query).length < 2) return { terms: [], results: [] };
+    const results = rank(entries, query, { partial: true });
+    if (!results.length) return { terms: [], results: [] };
+    const details = matchDetails(results[0], query);
+    const terms = [...details.keywords, ...details.related.map(item => item.keyword)];
+    return { terms, results };
+  }
+
   function matchDetails(entry, query) {
     const words = searchWords(query);
     const evidence = new Set(tokens([entry.title, entry.text, entry.category].filter(Boolean).join(' ')));
@@ -162,15 +171,15 @@
 
   const journeys = [
     { id: 'learn', label: "I'm new to Power Platform", question: 'Choose a learning path', intro: 'Compare the main starting points here. You do not need to choose a product before you understand the platform or try a guided exercise.', options: [
-      { id: 'overview', label: 'Understand what it can do', title: 'Get to know Power Platform', why: 'Explore the products, their roles, and the kinds of business work they support before choosing one.', bestFor: 'People evaluating the platform or deciding where an idea belongs.', outcome: 'A clearer view of the products and the next topic to explore.', action: 'Explore platform resources', url: '#get-started', related: ['products', 'training'] },
-      { id: 'practice', label: 'Try a hands-on exercise', title: 'Build alongside a guided lab', why: 'Use a structured exercise to see how the pieces work together instead of learning only from reference material.', bestFor: 'Makers who learn by following a complete scenario.', outcome: 'A working example and practical familiarity with the maker experience.', action: 'Browse hands-on learning', url: '#training', related: ['building'] },
-      { id: 'unsure', label: "I'm not sure", title: 'Start with the foundations', why: 'Review beginner resources and common product paths without committing to a build approach.', bestFor: 'Anyone who needs vocabulary, examples, and a low-pressure starting point.', outcome: 'Enough context to select a product, lab, or guided Build journey.', action: 'See beginner resources', url: '#get-started', related: ['products'] }
+      { id: 'overview', label: 'Understand what it can do', title: 'Get to know Power Platform', why: 'Follow one short route that explains the platform, introduces the catalog terms, and ends with a working automation.', bestFor: 'People evaluating the platform or deciding where an idea belongs.', outcome: 'A working approval flow and enough context to choose a next product path.', action: 'Start the recommended beginner route', url: '#beginner-route', related: ['products'] },
+      { id: 'practice', label: 'Try a hands-on exercise', title: 'Build an approval flow in a guided lab', why: 'Start with a specific 45-minute foundation lab instead of browsing the complete training directory.', bestFor: 'Makers who learn by following a complete scenario and have access to a Power Platform environment.', outcome: 'A working automated approval process built with a Power Automate cloud flow.', destination: 'Power Series lab / 45 minutes / opens with prerequisites and guided steps.', action: 'Start the cloud flow foundation lab', url: 'https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=automation-01-cloud-flow%2F01-cloud-flow.md&branch=main', related: ['building'] },
+      { id: 'unsure', label: "I'm not sure", title: 'Start with the recommended route', why: 'Use a product-neutral introduction before completing one bounded hands-on exercise.', bestFor: 'Anyone who needs vocabulary, examples, and a low-pressure starting point.', outcome: 'Enough context to select a product, skill, or coached Build journey.', action: 'Start the recommended beginner route', url: '#beginner-route', related: ['products'] }
     ] },
     { id: 'build', label: 'I want to build something', question: 'Choose what you want to make', intro: 'Start from the outcome, not the technology. Each path explains the first useful increment and then introduces the relevant Power Platform experience.', options: [
       { id: 'app', label: 'An app for my team', title: 'Create a usable app increment', why: 'Frame one user task, choose the lightest-fit app experience, and build a testable end-to-end slice.', bestFor: 'Team tasks that need tailored screens, structured records, or a custom experience.', outcome: 'A demonstrated first increment and a clear choice among Canvas, model-driven, code app, or generative page.', action: 'Start the coached app journey', url: 'ssp-build-guide.html#create-app', related: ['building', 'architecture-guidance'] },
       { id: 'flow', label: 'An automated task or approval', title: 'Automate one repeatable process', why: 'Define the trigger, result, and exception owner before choosing a cloud or desktop flow.', bestFor: 'Repeatable work, approvals, system handoffs, and attended desktop tasks.', outcome: 'A tested success path, visible failure handling, and an owned recovery process.', action: 'Start the automation journey', url: 'ssp-build-guide.html#automate-process', related: ['building'] },
-      { id: 'site', label: 'A website', title: 'Plan a secure external experience', why: 'Clarify the audience, information, identity, and actions before configuring a Power Pages site.', bestFor: 'Customer, partner, or public experiences that expose controlled business data and processes.', outcome: 'A bounded site scenario with its access and information needs identified.', action: 'Explore Power Pages guidance', url: '#building', related: ['architecture-guidance'] },
-      { id: 'agent', label: 'An AI assistant or agent', title: 'Define a grounded agent outcome', why: 'Choose one conversational outcome and identify its knowledge, actions, permissions, fallback, and evaluation needs.', bestFor: 'Knowledge discovery or action scenarios that benefit from conversation.', outcome: 'A focused agent boundary and the evidence needed to test useful, grounded behavior.', action: 'Explore agent resources', url: '#ai-copilot', related: ['building'] },
+      { id: 'site', label: 'A website', title: 'Build a code-first Power Pages site', why: 'Use a focused lab to create a Power Pages website, connect it to Dataverse, and see the complete external-experience path.', bestFor: 'Pro-code developers and Power Apps makers who can use GitHub Copilot.', outcome: 'A working code-first website connected to Dataverse.', destination: 'Power Series lab / 40 minutes / opens with prerequisites and guided steps.', action: 'Start the Power Pages lab', url: 'https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=byoc-powerpages%2Fbyoc-powerpages.md&branch=main', related: ['architecture-guidance'] },
+      { id: 'agent', label: 'An AI assistant or agent', title: 'Build a supervised agent experience', why: 'Use a Level 100 lab to automate an app task while keeping human review and approval in the loop.', bestFor: 'Information workers who want a bounded first agent scenario.', outcome: 'A working supervised-agent scenario with a concrete human-review path.', destination: 'Power Series lab / 1 hour / opens with prerequisites and guided steps.', action: 'Start the supervised agents lab', url: 'https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=powerapps-mcp%2Fpower-apps-mcp-server-agents-and-agent-feed.md&branch=main', related: ['building'] },
       { id: 'unsure', label: "I'm not sure which tool to use", title: 'Compare experiences by user outcome', why: 'Review the available product surfaces, then use the coached Build journeys when the intended task is clearer.', bestFor: 'Early ideas where the user, interaction, or automation boundary is still uncertain.', outcome: 'A short list of suitable experiences and a better-defined first increment.', action: 'Compare Power Platform products', url: '#products', related: ['architecture-guidance'] }
     ] },
     { id: 'fix', label: "Something isn't working", question: 'Start with the symptom you can verify', intro: 'Use the closest symptom to gather evidence before rebuilding or changing architecture. Each path identifies what to inspect and what a useful diagnosis should produce.', options: [
@@ -196,7 +205,7 @@
     return journeys.find(journey => journey.id === goalId)?.options.find(option => option.id === answerId) || null;
   }
 
-  const api = { rank, guidance, explain, matchDetails, tokens, journeys, nextStep };
+  const api = { rank, relaxedRank, guidance, explain, matchDetails, tokens, journeys, nextStep };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.SSPSearch = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

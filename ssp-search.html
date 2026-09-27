@@ -14,10 +14,10 @@
   </script>
 	<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-powercat-hero">
 	<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
-	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20260926-powercat-hero">
-	<script src="assets/js/ssp-search-engine.js?v=20260926-one-click-paths" defer></script>
-	  <script src="assets/js/ssp-search-entry.js?v=20260926-powercat-marketplace" defer></script>
-		<script src="assets/js/ssp-search.js?v=20260926-powercat-marketplace" defer></script>
+	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20260926-stateful-search">
+	<script src="assets/js/ssp-search-engine.js?v=20260926-stateful-search" defer></script>
+	  <script src="assets/js/ssp-search-entry.js?v=20260926-stateful-search" defer></script>
+		<script src="assets/js/ssp-search.js?v=20260926-stateful-search" defer></script>
 </head>
 <body class="search-page">
   <header class="topbar">
@@ -51,7 +51,7 @@
 				<h2 id="searchHeading">Search resources and guides</h2>
         <form id="scenarioForm" class="scenario-form">
 					<label class="sr-only" for="scenario">Search resources and guides</label>
-					<input id="scenario" type="search" maxlength="1500" autocomplete="off" required>
+					<input id="scenario" type="search" maxlength="1500" autocomplete="off" placeholder="For example, expense approval or slow canvas app">
 		  <button class="btn" type="submit">Search <span aria-hidden="true">&rarr;</span></button>
         </form>
 				<p id="searchNotice" class="search-note" role="status" hidden></p>
@@ -66,10 +66,6 @@
 					<div id="indexStatus" class="index-status">Loading site content...</div>
 				</details>
       </section>
-      <section id="guidance" class="guidance" aria-labelledby="guidanceTitle" hidden>
-		<div class="guidance-intro"><p class="search-eyebrow">Suggested next step</p><h2 id="guidanceTitle" tabindex="-1"></h2><p id="guidanceWhy"></p></div>
-        <ol id="guidanceSteps" class="guidance-steps"></ol>
-      </section>
       <section id="searchResults" class="search-results" aria-labelledby="resultsHeading" hidden>
         <div class="results-heading"><div><h2 id="resultsHeading" tabindex="-1">Results across the site</h2><p id="resultSummary" role="status" aria-live="polite"></p></div><button id="resetSearch" class="clear-filter" type="button">Clear search</button></div>
 				<p id="searchClarify" class="search-note" hidden>No clear starting point yet. <a href="#startHeading" id="chooseGoal">Choose what you want to do</a>.</p>
@@ -77,8 +73,40 @@
 		<div id="emptyResults" class="empty-results" hidden><h3>No close matches</h3><p>Try a product name or the main task, or broaden the filters.</p><a href="#resources">Browse the resource catalog &rarr;</a></div>
         <button id="moreResults" class="btn ghost" type="button" hidden>Show more results</button>
       </section>
+      <section id="guidance" class="guidance" aria-labelledby="guidanceTitle" hidden>
+		<div class="guidance-intro"><p class="search-eyebrow">Related guidance</p><h2 id="guidanceTitle" tabindex="-1"></h2><p id="guidanceWhy"></p></div>
+        <ol id="guidanceSteps" class="guidance-steps"></ol>
+      </section>
       <noscript><p>Search needs JavaScript. <a href="#resources">Browse the resource catalog below</a>.</p></noscript>
 				</div>
+				</section>
+				<section id="beginner-route" class="beginner-route" aria-labelledby="beginnerRouteHeading">
+					<div class="wrap">
+						<div class="beginner-route-card">
+							<div>
+								<p class="search-eyebrow">Recommended beginner route</p>
+								<h2 id="beginnerRouteHeading">Understand the platform, then build one approval flow</h2>
+								<p>Start with the product overview, then complete one bounded Power Automate exercise. This route gives you shared vocabulary and a working outcome without asking you to browse dozens of links first.</p>
+								<dl class="beginner-facts">
+									<div><dt>Prerequisites</dt><dd>A work or school account and access to a Power Platform environment where you can create a cloud flow.</dd></div>
+									<div><dt>Estimated time</dt><dd>About 60 minutes: 15 minutes for orientation and 45 minutes for the guided lab.</dd></div>
+									<div><dt>Concrete outcome</dt><dd>A working automated approval process and a clearer choice of what to learn or build next.</dd></div>
+								</dl>
+								<div class="beginner-actions">
+									<a class="btn ghost" href="#products">Review the products</a>
+									<a class="btn" href="https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=automation-01-cloud-flow%2F01-cloud-flow.md&amp;branch=main" target="_blank" rel="noopener">Start the 45-minute lab <span aria-hidden="true">&nearr;</span></a>
+								</div>
+							</div>
+							<aside class="catalog-glossary" aria-labelledby="catalogTermsHeading">
+								<h3 id="catalogTermsHeading">What the catalog terms mean</h3>
+								<dl>
+									<dt>Skill</dt><dd>Reusable instructions that guide an AI coding or maker assistant through a specific task. A skill runs in a compatible host; it is not an app on this site.</dd>
+									<dt>Skills Advisor</dt><dd>The searchable catalog used to discover skills, MCP capabilities, and references across Power Platform.</dd>
+									<dt>Power CAT Skills Marketplace</dt><dd>The authoritative location for Power CAT skill descriptions, prerequisites, and installation instructions.</dd>
+								</dl>
+							</aside>
+						</div>
+					</div>
 				</section>
 				<div class="resource-band">
 				<div class="wrap search-workspace">

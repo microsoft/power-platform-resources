@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Moved the desktop primary navigation to the right-side header group across every SSP page to match the shared Power CAT site presentation pattern.
 - Removed the About hero's “Curated by Power CAT · Open to everyone” label and aligned all SSP hero areas with the Skills and Labs light-purple and dark-navy presentation.
 - Removed the implied Power CAT deep-review and submission service, including its dormant configuration and UI, and made the Build-to-Review handoff explicitly self-service.
+- Improved Resources search with strict direct-match ranking, controlled related-term fallback, clear relevance labels instead of percentages, filter-only browsing, and bookmarkable restoration of queries, filters, result expansion, goals, detail panels, and scroll position.
+- Moved Resources search ahead of compact goal choices on mobile, routed selected learning and Build paths directly to maintained Power Series labs, and added a recommended beginner route with prerequisites, duration, outcome, and plain-language catalog definitions.
 
 ## 2026-09-25
 

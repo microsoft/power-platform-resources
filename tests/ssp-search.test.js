@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { rank, guidance, journeys, nextStep } = require('../assets/js/ssp-search-engine.js');
+const { rank, relaxedRank, guidance, journeys, nextStep } = require('../assets/js/ssp-search-engine.js');
 const { parseCatalog } = require('../scripts/sync-skills-advisor.js');
 const { parseCatalog: parsePowerCatCatalog, detailUrl } = require('../scripts/sync-powercat-marketplace.js');
 const { parseFeed } = require('../scripts/sync-latest-content.js');
@@ -45,7 +45,7 @@ test('Latest-content feeds accept complete Microsoft RSS items and reject unsafe
   assert.throws(() => parseFeed('<rss><channel></channel></rss>'), /empty|format changed/);
 });
 
-test('Search match percentages expose keyword coverage rather than ranking confidence', () => {
+test('Search explains matches without presenting token coverage as confidence', () => {
   const { matchDetails, explain } = require('../assets/js/ssp-search-engine.js');
   const entry = { title: 'Cloud flow approvals', text: 'Power Automate approval training lab' };
   assert.equal(matchDetails(entry, 'approval lab').percent, 100);
@@ -64,7 +64,8 @@ test('Search match percentages expose keyword coverage rather than ranking confi
   assert.equal(explain(entry, 'SAP'), '');
   assert.equal(explain({ ...entry, recommendationReason: 'Check the trigger first.' }, 'approval'), 'Check the trigger first.');
   const renderer = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
-  assert.match(renderer, /SSPSearch\.matchDetails\(item, query\)/);
+  assert.doesNotMatch(renderer, /% keyword match|result-coverage|result-keywords/);
+  assert.match(renderer, /Direct match.*Related result.*Filtered result/s);
   assert.match(renderer, /resourceLink\.dataset\.previewReason = reason/);
 });
 
@@ -677,6 +678,14 @@ test('a failing approval flow prioritizes troubleshooting over building', () => 
   assert.equal(path.id, 'troubleshoot');
   assert.equal(path.steps[0].result.type, 'Resource');
 });
+test('multi-word searches relax only after strict matching returns nothing', () => {
+  assert.deepEqual(rank(entries, 'expense approval'), []);
+  const relaxed = relaxedRank(entries, 'expense approval');
+  assert.deepEqual(relaxed.terms, ['approval']);
+  assert.equal(relaxed.results[0].title, 'Approval Workflow Accelerator');
+  assert.deepEqual(relaxedRank(entries, 'approval'), { terms: [], results: [] });
+  assert.deepEqual(relaxedRank(entries, 'unknown expense'), { terms: [], results: [] });
+});
 test('enterprise rollout starts with environment strategy', () => {
   assert.equal(guidance(entries, 'Roll out across our company').steps[0].result.title, 'Environment Strategy Blueprint');
 });
@@ -799,6 +808,28 @@ test('every guided goal has a clear next action and an unsure path', () => {
   assert.equal(nextStep('learn', 'unknown'), null);
   assert.match(script, /journey\.options\.forEach\(option => \{/);
   assert.match(script, /\["You'll leave with", option\.outcome\]/);
+  assert.match(script, /option\.destination/);
+  assert.match(nextStep('learn', 'practice').url, /automation-01-cloud-flow/);
+  assert.match(nextStep('build', 'site').url, /byoc-powerpages/);
+  assert.match(nextStep('build', 'agent').url, /power-apps-mcp-server-agents-and-agent-feed/);
+});
+
+test('search state, filter-only browsing, and beginner guidance are persistent', () => {
+  const html = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
+  const script = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
+  assert.doesNotMatch(html, /id="scenario"[^>]*\srequired(?:\s|>)/);
+  assert.match(html, /id="beginner-route"/);
+  assert.match(html, /About 60 minutes/);
+  assert.match(html, /A working automated approval process/);
+  for (const term of ['Skill', 'Skills Advisor', 'Power CAT Skills Marketplace']) assert.match(html, new RegExp(`<dt>${term}</dt>`));
+  assert.match(script, /const hasFilters = Boolean\(type \|\| product\)/);
+  assert.match(script, /!query && !catalogMode && !hasFilters/);
+  for (const parameter of ['q', 'type', 'product', 'mode', 'goal', 'limit', 'detail']) {
+    assert.match(script, new RegExp(`set\\('${parameter}'`));
+  }
+  assert.match(script, /window\.addEventListener\('popstate'/);
+  assert.match(script, /window\.addEventListener\('pagehide'/);
+  assert.doesNotMatch(script, /byId\('typeFilter'\)\.value = '';\s*byId\('productFilter'\)\.value = '';\s*limit = 3;\s*render\(\);/);
   assert.doesNotMatch(script, /selectedAnswer|journeyBack|journeyReset/);
 });
 
@@ -869,7 +900,7 @@ test('External previews use listing summaries and skip internal, non-web, and do
   assert.match(script, /link\.dataset\.skillOwner \|\| \(link\.href === skillsAdvisorUrl \? 'non-power-cat' : ''\)/);
   assert.match(script, /!\['Power CAT canonical source', 'Power CAT Skills Marketplace'\]\.includes\(skill\.route\) \? skillsAdvisorUrl : resource\.url\.href/);
   for (const page of ['search', 'design', 'build', 'review', 'landing', 'design-guide', 'build-guide']) {
-    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20260926-powercat-marketplace/);
+    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20260926-stateful-search/);
   }
 });
 
@@ -932,16 +963,21 @@ test('New-tab indicators are scoped to search results', () => {
   assert.doesNotMatch(shared, /\\2197/);
 });
 
-test('guided choices precede search and advanced controls stay optional', () => {
+test('guided choices and mobile-first search keep advanced controls optional', () => {
   const html = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
   const introduction = html.slice(html.indexOf('<section class="scenario-entry"'), html.indexOf('<div class="resource-band">'));
   assert.ok(introduction.includes('id="scenarioForm"'));
-  assert.doesNotMatch(introduction, /search-band|<textarea|placeholder=|privacy-note|describe your scenario/i);
+  assert.doesNotMatch(introduction, /search-band|<textarea|privacy-note|describe your scenario/i);
   assert.match(introduction, /<input id="scenario" type="search"/);
   assert.equal([...html.matchAll(/<input\b[^>]*type="search"/g)].length, 1);
   assert.doesNotMatch(html, /id="(?:resourceQuery|resourceTools|clearResources|resourceEmpty)"/);
   const css = readFileSync(join(__dirname, '../assets/css/ssp-search.css'), 'utf8');
-  assert.doesNotMatch(css, /\.scenario-entry\s*>\s*\.wrap\s*\{/);
+  assert.match(css, /@media\(max-width:520px\)\{\.scenario-entry>\.wrap\{display:flex;flex-direction:column\}/);
+  assert.match(css, /\.scenario-entry #searchSection\{order:1;/);
+  assert.match(css, /\.scenario-entry #searchResults\{order:2\}/);
+  assert.match(css, /\.scenario-entry #goalChoices\{order:4;/);
+  assert.ok(html.indexOf('id="searchResults"') < html.indexOf('id="guidance"'));
+  assert.match(html, /<p class="search-eyebrow">Related guidance<\/p>/);
   assert.match(readFileSync(join(__dirname, '../index.html'), 'utf8'), /<noscript><meta http-equiv="refresh" content="0; url=ssp-landing.html"/);
   assert.ok(html.indexOf('id="goalChoices"') < html.indexOf('id="scenarioForm"'));
   assert.match(introduction, /id="journeyIntro"/);

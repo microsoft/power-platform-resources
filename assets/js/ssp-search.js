@@ -8,13 +8,17 @@
     { file: 'ssp-landing.html', name: 'About' }
   ];
   const byId = id => document.getElementById(id);
+  const initialParams = new URLSearchParams(location.search);
   let entries = [];
-  let query = '';
-  let limit = 3;
+  let query = initialParams.get('q') || '';
+  let limit = Math.max(3, Number.parseInt(initialParams.get('limit') || '3', 10) || 3);
   let ready = false;
-  let catalogMode = location.hash === '#skills';
+  let catalogMode = initialParams.get('mode') === 'skills' || location.hash === '#skills';
   let focusCatalog = false;
   let focusSearch = false;
+  let restoreScroll = Number.isFinite(history.state?.scrollY) ? history.state.scrollY : null;
+  let activeDetail = initialParams.get('detail') || '';
+  let pendingDetail = activeDetail;
   const clean = text => text.replace(/\s+/g, ' ').trim();
   const slug = text => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const element = (tag, text, className) => {
@@ -32,7 +36,7 @@
     }
     return link;
   }
-  let selectedGoal = null;
+  let selectedGoal = initialParams.get('goal');
   function renderJourney(focus = true) {
     byId('goalChoices').hidden = false;
     byId('journeyStep').hidden = !selectedGoal;
@@ -61,6 +65,7 @@
       for (const [term, value] of [['Best for', option.bestFor], ["You'll leave with", option.outcome]]) {
         details.append(element('dt', term), element('dd', value));
       }
+      if (option.destination) details.append(element('dt', 'Next destination'), element('dd', option.destination));
       const footer = element('div', null, 'journey-path-footer');
       const action = anchor(option.action, option.url);
       action.className = 'btn';
@@ -87,6 +92,7 @@
   }
   function resetJourney() {
     selectedGoal = null;
+    syncUrl();
     renderJourney();
   }
   const goalPresentation = {
@@ -112,12 +118,19 @@
     button.type = 'button';
     button.dataset.goal = journey.id;
     button.addEventListener('click', () => {
-      search('');
+      catalogMode = false;
+      query = '';
+      limit = 3;
+      activeDetail = '';
+      byId('scenario').value = '';
       selectedGoal = journey.id;
+      syncUrl(true);
       renderJourney();
+      render();
     });
     byId('goalChoices').append(button);
   });
+  if (!SSPSearch.journeys.some(journey => journey.id === selectedGoal)) selectedGoal = null;
   renderJourney(false);
   byId('chooseGoal').addEventListener('click', resetJourney);
   function extract(doc, source) {
@@ -313,20 +326,27 @@
   function render() {
     if (!ready) return;
     const pool = catalogMode ? entries.filter(item => item.catalogEntry) : entries;
-    let ranked = catalogMode && !query ? pool.map(item => ({ ...item, matched: [] })).sort((first, second) => first.title.localeCompare(second.title)) : SSPSearch.rank(pool, query);
     const type = byId('typeFilter').value;
     const product = byId('productFilter').value;
+    const hasFilters = Boolean(type || product);
+    const direct = query ? SSPSearch.rank(pool, query) : [];
+    const relaxed = query && !direct.length ? SSPSearch.relaxedRank(pool, query) : { terms: [], results: [] };
+    const relevance = direct.length ? 'direct' : relaxed.results.length ? 'related' : query ? 'none' : 'filtered';
+    let ranked = query
+      ? (direct.length ? direct : relaxed.results)
+      : (catalogMode || hasFilters ? pool.map(item => ({ ...item, matched: [] })).sort((first, second) => first.title.localeCompare(second.title)) : []);
     const candidate = ranked.length && !catalogMode && !product && !type ? SSPSearch.guidance(entries.filter(item => !item.catalogEntry), query) : null;
     const guide = candidate && (candidate.id !== 'troubleshoot' || /\b(flow|flows|approval|automate)\b/i.test(query)) && (candidate.id !== 'performance' || /\b(app|apps|canvas)\b/i.test(query)) ? candidate : null;
-    if (guide) {
-      const recommended = guide.steps.map(step => ({ ...step.result, recommendationReason: `Suggested next step: ${step.why}` }));
-      const urls = new Set(recommended.map(item => item.url));
-      ranked = [...recommended, ...ranked.filter(item => !urls.has(item.url))];
-    }
     const filtered = ranked.filter(item => (!type || item.type === type) && (!product || SSPSearch.tokens(product).every(word => SSPSearch.tokens(item.title + ' ' + item.text).includes(word))));
     byId('searchClarify').hidden = !query || catalogMode || Boolean(guide) || Boolean(type || product);
-    byId('searchResults').hidden = !query && !catalogMode;
-    byId('resultsHeading').textContent = catalogMode ? 'Skills and migration catalog' : 'Results across the site';
+    byId('searchResults').hidden = !query && !catalogMode && !hasFilters;
+    byId('resultsHeading').textContent = catalogMode
+      ? 'Skills and migration catalog'
+      : relevance === 'related'
+        ? `Results related to ${relaxed.terms.join(' and ')}`
+        : query
+          ? 'Direct matches across the site'
+          : 'Resources matching these filters';
     byId('resetSearch').textContent = catalogMode ? 'Search across SSP' : 'Clear search';
     byId('guidance').hidden = !guide || !query;
     byId('guidanceSteps').replaceChildren();
@@ -342,7 +362,8 @@
         byId('guidanceSteps').append(item);
       });
     }
-    byId('resultSummary').textContent = `${filtered.length} matching entr${filtered.length === 1 ? 'y' : 'ies'}${type || product ? ' with these filters' : ''}`;
+    const relationship = relevance === 'related' ? ' related' : relevance === 'direct' ? ' direct' : '';
+    byId('resultSummary').textContent = `${filtered.length}${relationship} matching entr${filtered.length === 1 ? 'y' : 'ies'}${hasFilters ? ' with these filters' : ''}`;
     byId('resultList').replaceChildren();
     filtered.slice(0, limit).forEach(item => {
       const article = element('article', '', 'search-result');
@@ -352,7 +373,6 @@
       const heading = element('h3');
       const description = item.description || item.text;
       const reason = SSPSearch.explain(item, query);
-      const match = SSPSearch.matchDetails(item, query);
       const resourceLink = anchor(item.title, item.url);
       resourceLink.dataset.previewSummary = description;
       resourceLink.dataset.previewReason = reason;
@@ -369,19 +389,10 @@
         source.dataset.previewReason = reason;
       }
       source.className = 'result-source';
-      article.append(element('div', catalogMode ? item.type + ' / ' + item.category : item.sourceName, 'result-meta'), heading, element('p', excerpt));
-      if (match.percent !== null) {
-        const matches = element('div', '', 'result-keywords');
-        const percentage = element('span', `${match.percent}% keyword match`, 'result-coverage');
-        percentage.title = 'Coverage of normalized search terms: exact matches count fully; related terms count half. Not a suitability or confidence score.';
-        percentage.setAttribute('aria-label', percentage.textContent + '. ' + percentage.title);
-        percentage.tabIndex = 0;
-        matches.append(percentage);
-        match.keywords.forEach(word => matches.append(element('span', word, 'result-keyword')));
-        match.related.forEach(item => matches.append(element('span', `${item.keyword} / ${item.match} (related)`, 'result-keyword')));
-        article.append(matches);
-        if (match.missing.length) article.append(element('p', 'Not matched: ' + match.missing.join(', '), 'result-match'));
-      }
+      const meta = element('div', '', 'result-meta');
+      const relevanceLabel = element('span', relevance === 'direct' ? 'Direct match' : relevance === 'related' ? 'Related result' : 'Filtered result', `result-relevance ${relevance}`);
+      meta.append(relevanceLabel, document.createTextNode(catalogMode ? item.type + ' / ' + item.category : item.sourceName));
+      article.append(meta, heading, element('p', excerpt));
       if (reason) {
         const explanation = element('p', '', 'result-reason');
         explanation.append(element('strong', 'Why suggested: '), document.createTextNode(reason));
@@ -401,50 +412,96 @@
     }
     if (focusSearch && query && !catalogMode) {
       focusSearch = false;
-      const heading = byId('guidance').hidden ? byId('resultsHeading') : byId('guidanceTitle');
+      const heading = byId('searchResults').hidden ? byId('guidanceTitle') : byId('resultsHeading');
       heading.scrollIntoView({ block: 'start' });
       heading.focus({ preventScroll: true });
     }
+    if (restoreScroll !== null) {
+      const target = restoreScroll;
+      restoreScroll = null;
+      requestAnimationFrame(() => scrollTo({ top: target }));
+    }
+    if (pendingDetail) {
+      const target = pendingDetail;
+      pendingDetail = '';
+      const link = [...byId('resultList').querySelectorAll('a[href]')].find(item => item.href === target);
+      if (link) requestAnimationFrame(() => link.click());
+    }
   }
-  function search(value, reveal = false) {
+
+  function syncUrl(push = false) {
+    const url = new URL(location.href);
+    const type = byId('typeFilter').value;
+    const product = byId('productFilter').value;
+    const set = (name, value) => value ? url.searchParams.set(name, value) : url.searchParams.delete(name);
+    set('q', query);
+    set('type', type);
+    set('product', product);
+    set('mode', catalogMode ? 'skills' : '');
+    set('goal', selectedGoal || '');
+    set('limit', limit > (catalogMode ? 12 : 3) ? String(limit) : '');
+    set('detail', activeDetail);
+    if (url.hash === '#skills') url.hash = '';
+    const state = { ...history.state, scrollY: window.scrollY };
+    history[push ? 'pushState' : 'replaceState'](state, '', url);
+  }
+
+  function search(value, reveal = false, push = false) {
     catalogMode = false;
     focusCatalog = false;
-    if (location.hash === '#skills') history.replaceState(null, '', location.pathname + location.search);
     query = value.trim();
     focusSearch = reveal && Boolean(query);
     byId('scenario').value = query;
-    byId('typeFilter').value = '';
-    byId('productFilter').value = '';
     limit = 3;
+    activeDetail = '';
+    syncUrl(push);
     render();
   }
   byId('scenarioForm').addEventListener('submit', event => {
     event.preventDefault();
     selectedGoal = null;
     renderJourney(false);
-    search(byId('scenario').value, true);
+    search(byId('scenario').value, true, true);
   });
-  ['typeFilter', 'productFilter'].forEach(id => byId(id).addEventListener('change', () => { limit = catalogMode ? 12 : 3; render(); }));
-  byId('moreResults').addEventListener('click', () => { limit += catalogMode ? 12 : 3; render(); });
-  byId('resetSearch').addEventListener('click', () => { search(''); byId('scenario').focus(); });
+  ['typeFilter', 'productFilter'].forEach(id => byId(id).addEventListener('change', () => {
+    limit = catalogMode ? 12 : 3;
+    syncUrl();
+    render();
+  }));
+  byId('moreResults').addEventListener('click', () => {
+    limit += catalogMode ? 12 : 3;
+    syncUrl();
+    render();
+  });
+  byId('resetSearch').addEventListener('click', () => {
+    catalogMode = false;
+    selectedGoal = null;
+    query = '';
+    limit = 3;
+    activeDetail = '';
+    byId('scenario').value = '';
+    byId('typeFilter').value = '';
+    byId('productFilter').value = '';
+    renderJourney(false);
+    syncUrl(true);
+    render();
+    byId('scenario').focus();
+  });
   byId('retryIndex').addEventListener('click', loadIndex);
-  function browseCatalog() {
+  function browseCatalog(push = false) {
     byId('advancedSearch').open = true;
     selectedGoal = null;
     renderJourney(false);
     catalogMode = true;
     focusCatalog = true;
     focusSearch = false;
-    query = '';
-    byId('scenario').value = '';
-    byId('typeFilter').value = 'Skill';
-    byId('productFilter').value = '';
+    if (!byId('typeFilter').value) byId('typeFilter').value = 'Skill';
     limit = 12;
+    syncUrl(push);
     render();
   }
-  byId('browseSkills').addEventListener('click', () => { history.replaceState(null, '', '#skills'); browseCatalog(); });
+  byId('browseSkills').addEventListener('click', () => browseCatalog(true));
   window.addEventListener('hashchange', () => { if (location.hash === '#skills') browseCatalog(); });
-  if (catalogMode) browseCatalog();
   byId('themeBtn').addEventListener('click', () => {
     const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = theme;
@@ -487,7 +544,9 @@
     if (category) selectResource(category.id);
   }
   resourceLinks.forEach(link => link.addEventListener('click', () => {
-    history.replaceState(null, '', '#' + link.dataset.target);
+    const url = new URL(location.href);
+    url.hash = link.dataset.target;
+    history.replaceState({ ...history.state, scrollY: window.scrollY }, '', url);
     selectResource(link.dataset.target);
   }));
   document.addEventListener('click', event => {
@@ -496,7 +555,9 @@
     const category = resourceCategories.find(item => '#' + item.id === link.getAttribute('href'));
     if (!category) return;
     event.preventDefault();
-    history.pushState(null, '', '#' + category.id);
+    const url = new URL(location.href);
+    url.hash = category.id;
+    history.pushState({ ...history.state, scrollY: window.scrollY }, '', url);
     selectResource(category.id);
     const heading = category.querySelector('h2');
     heading.tabIndex = -1;
@@ -506,7 +567,46 @@
   renderResources();
   window.addEventListener('hashchange', openResourceHash);
   openResourceHash();
-  const initialQuery = new URLSearchParams(location.search).get('q');
-  if (initialQuery && !catalogMode) search(initialQuery, true);
+  const setInitialSelect = (id, value) => {
+    if (value && [...byId(id).options].some(option => option.value === value)) byId(id).value = value;
+  };
+  setInitialSelect('typeFilter', initialParams.get('type'));
+  setInitialSelect('productFilter', initialParams.get('product'));
+  byId('scenario').value = query;
+  if (catalogMode) {
+    byId('advancedSearch').open = true;
+    if (!byId('typeFilter').value) byId('typeFilter').value = 'Skill';
+    limit = Math.max(12, limit);
+  }
+  window.addEventListener('pagehide', () => {
+    history.replaceState({ ...history.state, scrollY: window.scrollY }, '', location.href);
+  });
+  window.addEventListener('popstate', event => {
+    const params = new URLSearchParams(location.search);
+    query = params.get('q') || '';
+    catalogMode = params.get('mode') === 'skills' || location.hash === '#skills';
+    selectedGoal = params.get('goal');
+    if (!SSPSearch.journeys.some(journey => journey.id === selectedGoal)) selectedGoal = null;
+    limit = Math.max(catalogMode ? 12 : 3, Number.parseInt(params.get('limit') || '0', 10) || 0);
+    activeDetail = params.get('detail') || '';
+    pendingDetail = activeDetail;
+    restoreScroll = Number.isFinite(event.state?.scrollY) ? event.state.scrollY : null;
+    byId('scenario').value = query;
+    byId('typeFilter').value = [...byId('typeFilter').options].some(option => option.value === (params.get('type') || '')) ? params.get('type') || '' : '';
+    byId('productFilter').value = [...byId('productFilter').options].some(option => option.value === (params.get('product') || '')) ? params.get('product') || '' : '';
+    byId('advancedSearch').open = catalogMode || Boolean(byId('typeFilter').value || byId('productFilter').value);
+    renderJourney(false);
+    render();
+    openResourceHash();
+  });
+  document.addEventListener('ssp:preview-open', event => {
+    activeDetail = event.detail?.url || '';
+    syncUrl();
+  });
+  document.addEventListener('ssp:preview-close', () => {
+    activeDetail = '';
+    syncUrl();
+  });
+  syncUrl();
   loadIndex();
 })();

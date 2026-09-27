@@ -135,7 +135,10 @@
         preview.close();
       });
       continueLink.addEventListener('click', () => preview.close());
-      preview.addEventListener('close', () => sourceLink?.focus({ preventScroll: true }));
+      preview.addEventListener('close', () => {
+        document.dispatchEvent(new CustomEvent('ssp:preview-close'));
+        sourceLink?.focus({ preventScroll: true });
+      });
     }
     sourceLink = link;
     preview.querySelector('#externalPreviewTitle').textContent = resource.title;
@@ -226,6 +229,7 @@
     continueLink.href = destination;
     continueLink.target = opensNewTab ? '_blank' : '_self';
     preview.showModal();
+    document.dispatchEvent(new CustomEvent('ssp:preview-open', { detail: { url: link.href } }));
     preview.querySelector('button').focus();
     return true;
   }

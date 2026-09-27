@@ -87,11 +87,10 @@
 .search-result h3{margin:6px 0 8px;font-weight:600}
 .search-result p{margin:5px 0;font-size:14px;color:var(--muted);max-width:850px}
 .search-result .result-meta{color:var(--brand-2);font-size:12px;font-weight:600}
+.result-relevance{display:inline-block;margin-right:8px;padding:2px 7px;border-radius:999px;background:color-mix(in srgb,var(--design) 12%,transparent);color:var(--design)}
+.result-relevance.related{background:color-mix(in srgb,var(--amber) 14%,transparent);color:var(--amber)}
+.result-relevance.filtered{background:var(--surface-2);color:var(--muted)}
 .search-result .result-match{font-size:12px;color:var(--soft)}
-.result-keywords{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:10px 0;font-size:13px}
-.result-coverage{font-weight:700;color:var(--design)}
-.result-keyword{color:var(--text);border-bottom:2px solid var(--border);overflow-wrap:anywhere}
-.result-coverage:focus-visible{outline:2px solid var(--design);outline-offset:3px}
 .skill-detail-metadata{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px 16px;margin:16px 0}
 .skill-detail-metadata dt{font-weight:600}
 .skill-detail-metadata dd{margin:0;min-width:0}
@@ -100,6 +99,19 @@
 #resultList a[target="_blank"]::after{content:"\00a0\2197";content:"\00a0\2197" / " (opens in a new tab)";display:inline-block;font-size:.85em;font-weight:600;line-height:1;white-space:nowrap}
 .search-results #moreResults{margin-top:22px}
 .empty-results{padding:30px 0}
+.beginner-route{padding:34px 0;background:var(--bg);border-bottom:1px solid var(--border);scroll-margin-top:92px}
+.beginner-route-card{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.75fr);gap:28px;padding:26px;border:1px solid var(--border);border-radius:8px;background:var(--surface);box-shadow:var(--shadow)}
+.beginner-route-card h2{margin:0 0 12px;font-size:30px}
+.beginner-route-card>div>p:not(.search-eyebrow){max-width:760px;color:var(--muted);line-height:1.65}
+.beginner-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}
+.beginner-facts div{padding:14px;border-left:3px solid var(--design);background:var(--surface-2)}
+.beginner-facts dt,.catalog-glossary dt{font-weight:700}
+.beginner-facts dd,.catalog-glossary dd{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+.beginner-actions{display:flex;flex-wrap:wrap;gap:10px}
+.catalog-glossary{padding:20px;border-radius:8px;background:var(--surface-2)}
+.catalog-glossary h3{margin:0 0 14px;font-size:19px}
+.catalog-glossary dl{margin:0}
+.catalog-glossary dd{margin-bottom:14px}
 .search-page footer{margin-top:0}
 .resource-catalog{scroll-margin-top:80px}
 .resource-catalog>p{color:var(--muted)}
@@ -136,4 +148,6 @@
 .resource-catalog .panel-body li::before{position:absolute;left:0;top:.15em;content:counter(row,decimal-leading-zero);color:var(--soft);font:11px var(--mono);font-variant-numeric:tabular-nums}
 .resource-catalog .noresults{background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);padding:40px;text-align:center}
 @media(max-width:920px){.resource-layout{grid-template-columns:minmax(0,1fr)}.resource-layout .rail{position:static;max-height:none;display:flex;flex-wrap:wrap;gap:6px}.resource-layout .rail-title{width:100%}.resource-layout .cat-link{width:auto}.resource-layout .cat-count{display:none}.resource-catalog .panel{padding:18px}}
+@media(max-width:850px){.beginner-route-card{grid-template-columns:minmax(0,1fr)}.beginner-facts{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:700px){.scenario-entry h1,.scenario-entry h2{font-size:27px}.scenario-form{gap:8px}.journey-choices{grid-template-columns:minmax(0,1fr)}.journey-step #journeyHeading{font-size:24px}.guidance{grid-template-columns:1fr;gap:24px}.search-filters{flex-direction:column;gap:12px}.search-filters label{justify-content:space-between}.search-filters select{width:65%}.results-heading{align-items:center}}
+@media(max-width:520px){.scenario-entry>.wrap{display:flex;flex-direction:column}.scenario-entry>.wrap>.search-eyebrow,.scenario-entry #startHeading{order:0}.scenario-entry #searchSection{order:1;padding-top:12px}.scenario-entry #searchResults{order:2}.scenario-entry #guidance{order:3}.scenario-entry #goalChoices{order:4;margin-top:24px}.scenario-entry #journeyStep{order:5}.scenario-entry noscript{order:6}#goalChoices .journey-choice{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;padding:13px 14px}#goalChoices .goal-number{grid-row:1/3;margin:2px 0 0}#goalChoices .goal-description{font-size:13px}.beginner-route-card{padding:20px}.beginner-route-card h2{font-size:25px}.beginner-actions .btn{width:100%;text-align:center}}
