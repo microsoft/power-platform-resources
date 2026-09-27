@@ -19,6 +19,7 @@
   --bg:#faf9fb; --surface:#ffffff; --surface-2:#f4f1f7; --border:#e6e2ea;
   --text:#1f1a24; --muted:#5b5566; --soft:#7a7385;
   --brand:#5b3a8a; --brand-2:#8a4f9e; --brand-3:#b06a8a;
+  --hero-bg:#f3ecfa; --hero-image:radial-gradient(700px 260px at 78% 25%,rgba(107,58,143,.16),transparent 68%);
   --grad:linear-gradient(135deg,#342050 0%,#5b3a7e 45%,#8a5a86 78%,#b07f8f 100%);
   --design:#0f6cbd; --build:#8332a8; --review:#c8791b; --learn:#0f7b6c;
   --shadow:0 2px 6px rgba(0,0,0,.08), 0 14px 40px rgba(60,40,90,.16);
@@ -29,6 +30,7 @@ html[data-theme="dark"]{
   --bg:#161318; --surface:#211d26; --surface-2:#2a2530; --border:#3a3342;
   --text:#efe9f3; --muted:#b3a9bf; --soft:#8f8699;
   --brand:#c9a7e0; --brand-2:#d59fc6; --brand-3:#c98fa8;
+  --hero-bg:#0c1430; --hero-image:none;
   --grad:linear-gradient(135deg,#2a1c44 0%,#4b3168 45%,#6f486f 78%,#8a6270 100%);
   --design:#4aa5e8; --build:#c78fe0; --review:#e8b366; --learn:#4fbfab;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.45);
@@ -64,7 +66,7 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 .header-feedback,.header-feedback:hover{color:#fff;text-decoration:none;white-space:nowrap}
 
 /* Hero */
-.hero{position:relative;overflow:hidden;padding:0;background:linear-gradient(180deg,#f6f2fa,#efe9f5);border-bottom:3px solid transparent;border-image:linear-gradient(90deg,var(--design),var(--build),var(--review),var(--learn)) 1}
+.hero{position:relative;overflow:hidden;padding:0;background-color:var(--hero-bg);background-image:var(--hero-image);border-bottom:3px solid transparent;border-image:linear-gradient(90deg,var(--design),var(--build),var(--review),var(--learn)) 1}
 .hero .inner{position:relative;color:var(--text);padding:20px 24px 24px}
 .hero-viewport{display:grid;align-items:start}
 .hero-slide{grid-area:1/1;max-width:940px;visibility:hidden;opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .5s ease,transform .5s ease,visibility .5s}
@@ -90,7 +92,6 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 .hero-metric:first-child{padding-left:0;border-left:0}
 .hero-metric strong{display:block;font-size:48px;line-height:1;font-weight:800;color:var(--brand);letter-spacing:0}
 .hero-metric span{display:block;margin-top:9px;color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
-html[data-theme="dark"] .hero{background:linear-gradient(180deg,#1c1726,#161318)}
 html[data-theme="dark"] .eyebrow{color:var(--brand);background:rgba(217,143,224,.12);border-color:rgba(217,143,224,.28)}
 .mini-pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .mini{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:14px;transition:transform .15s,background .15s}
@@ -235,7 +236,6 @@ footer .powercat-logo img{height:30px}
   <div class="wrap inner">
     <div class="hero-viewport">
       <article class="hero-slide is-active" aria-hidden="false">
-        <span class="eyebrow">✨ Curated by Power CAT · Open to everyone</span>
         <h1>The guided front door for Power Platform</h1>
         <p class="sub">SSP organizes Power CAT skills, Power Series labs, and curated resources by Design, Build, Review, and Learn. Start with concise guidance for basic concerns, then continue to authoritative, maintained destinations for full details.</p>
         <div class="cta">

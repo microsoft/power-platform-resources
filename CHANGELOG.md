@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Matched the Power Series Labs header height and moved the Power CAT logo to the far right across all SSP pages, including responsive mobile navigation offsets.
 - Standardized supporting-skill, guide-resource, and release-checklist links on the shared left-aligned reading pattern after a cross-page desktop/mobile presentation audit.
 - Moved the desktop primary navigation to the right-side header group across every SSP page to match the shared Power CAT site presentation pattern.
+- Removed the About hero's “Curated by Power CAT · Open to everyone” label and aligned all SSP hero areas with the Skills and Labs light-purple and dark-navy presentation.
+- Removed the implied Power CAT deep-review and submission service, including its dormant configuration and UI, and made the Build-to-Review handoff explicitly self-service.
 
 ## 2026-09-25
 

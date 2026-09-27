@@ -1,4 +1,4 @@
-.scenario-entry{background:var(--bg);border-bottom:1px solid var(--border)}
+.scenario-entry{background-color:var(--hero-bg);background-image:var(--hero-image);border-bottom:1px solid var(--border)}
 .scenario-entry .search-eyebrow,.search-eyebrow{margin:0 0 10px;color:var(--brand);font-size:12px;font-weight:700;letter-spacing:0}
 .scenario-entry h1,.scenario-entry h2{margin:0 0 16px;font-size:34px;line-height:1.2;letter-spacing:0;color:var(--text)}
 .scenario-form{display:flex;align-items:center;gap:14px;width:100%;padding:8px;border:1px solid var(--border);border-radius:8px;background:var(--surface)}

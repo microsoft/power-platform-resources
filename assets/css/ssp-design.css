@@ -10,6 +10,8 @@
   --soft: #7b7386;
   --brand: #5b3a8a;
   --brand-2: #8a4f9e;
+  --hero-bg: #f3ecfa;
+  --hero-image: radial-gradient(700px 260px at 78% 25%, rgba(107, 58, 143, .16), transparent 68%);
   --design: #0f6cbd;
   --teal: #0f7b6c;
   --amber: #b35c00;
@@ -27,6 +29,8 @@ html[data-theme="dark"] {
   --soft: #978ca1;
   --brand: #c9a7e0;
   --brand-2: #d59fc6;
+  --hero-bg: #0c1430;
+  --hero-image: none;
   --design: #61b5f0;
   --teal: #58c7b4;
   --amber: #f0b166;
@@ -82,8 +86,7 @@ html[data-theme="dark"] .powercat-logo .logo-on-dark { display: block; }
 .header-feedback, .header-feedback:hover { color: #fff; white-space: nowrap; }
 
 /* Hero */
-.design-hero { position: relative; overflow: hidden; padding: 0; border-bottom: 3px solid var(--design); background: var(--surface); }
-.design-hero::before { content: ""; position: absolute; inset: 0; opacity: .45; background-image: linear-gradient(color-mix(in srgb, var(--design) 9%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--design) 9%, transparent) 1px, transparent 1px); background-size: 28px 28px; mask-image: linear-gradient(90deg, #000, transparent 82%); }
+.design-hero { position: relative; overflow: hidden; padding: 0; border-bottom: 3px solid var(--design); background-color: var(--hero-bg); background-image: var(--hero-image); }
 .hero-inner { position: relative; padding: 20px 24px 28px; display: flex; flex-direction: column; justify-content: flex-start; }
 .breadcrumb { display: flex; gap: 8px; margin-bottom: 16px; color: var(--muted); font-size: 13px; font-weight: 600; }
 .breadcrumb a { color: var(--design); }
@@ -126,8 +129,7 @@ html[data-theme="dark"] .advisor-rail { background: #10283d; }
 .prompt strong { display: block; color: var(--text); margin-bottom: 3px; }
 .agent-config { display: flex; justify-content: flex-end; align-items: center; gap: 12px; flex-wrap: wrap; }
 .agent-config .agent-note { flex-basis: 100%; text-align: right; }
-.review-submit-aside .review-launch { display: flex; width: fit-content; max-width: 100%; margin-left: auto; white-space: normal; text-align: right; }
-.agent-launch:disabled, .review-launch:disabled { opacity: .55; cursor: not-allowed; }
+.agent-launch:disabled { opacity: .55; cursor: not-allowed; }
 .agent-note { color: var(--soft); font-size: 12px; }
 .local-advisor [hidden] { display: none !important; }
 .advisor-shell.local-advisor { grid-template-columns: minmax(0, 1fr); max-width: 960px; margin-inline: auto; }
@@ -216,20 +218,6 @@ html[data-theme="dark"] .advisor-rail { background: #10283d; }
   #advisorQuestion { font-size: 21px; }
 }
 
-/* Deep review submission */
-.review-submit { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
-.review-submit-main { padding: 24px; }
-.review-submit-main h3 { margin: 8px 0 12px; font-size: 30px; line-height: 1.18; }
-.review-submit-main > p { max-width: 700px; margin: 0 0 24px; color: var(--muted); }
-.submission-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.submission-list li { padding: 13px 15px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface-2); font-size: 13px; }
-.submission-list strong { display: block; margin-bottom: 3px; }
-.review-submit-aside { padding: 24px; color: #fff; background: #593044; }
-html[data-theme="dark"] .review-submit-aside { background: #422334; }
-.review-submit-aside h3 { margin: 0 0 10px; font-size: 22px; }
-.review-submit-aside p { margin: 0 0 22px; color: #ead8df; font-size: 13px; }
-.review-submit-aside .btn { width: 100%; background: #fff; color: #4c2534; }
-.review-submit-aside .btn:hover { color: #4c2534; }
 .submission-note { display: block; margin-top: 14px; color: #ead8df; font-size: 11px; }
 
 /* Outcomes and skills */
@@ -373,7 +361,6 @@ footer .row { display: flex; justify-content: space-between; gap: 14px; flex-wra
   .section-head { align-items: start; flex-direction: column; }
   .section-head h2 { font-size: 31px; }
   .advisor-shell { grid-template-columns: 1fr; }
-  .review-submit { grid-template-columns: 1fr; }
   .advisor-rail { padding: 20px; }
   .advisor-mark { margin-bottom: 18px; }
   .advisor-stages { display: flex; gap: 14px; }
@@ -403,8 +390,6 @@ footer .row { display: flex; justify-content: space-between; gap: 14px; flex-wra
   .proof { min-width: 0; padding: 0 14px; }
   .proof strong { font-size: 22px; }
   .advisor-main { padding: 20px; }
-  .review-submit-main, .review-submit-aside { padding: 20px; }
-  .submission-list { grid-template-columns: 1fr; }
   .advisor-main h3 { font-size: 25px; }
   .advisor-prompts { grid-template-columns: 1fr; }
   .outcomes, .skills-grid, .process { grid-template-columns: 1fr; }

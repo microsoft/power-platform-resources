@@ -173,6 +173,17 @@ test('About statistics and featured guidance match their canonical sources', () 
   const resources = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
   const workshop = require('../assets/data/workshop-labs.json');
   const latest = require('../assets/data/latest-content.json');
+  const pillarCss = readFileSync(join(__dirname, '../assets/css/ssp-design.css'), 'utf8');
+  const searchCss = readFileSync(join(__dirname, '../assets/css/ssp-search.css'), 'utf8');
+  const hero = html.slice(html.indexOf('<!-- HERO -->'), html.indexOf('<!-- PILLARS -->'));
+  assert.doesNotMatch(hero, /Curated by Power CAT\s*·\s*Open to everyone/i);
+  assert.match(html, /--hero-bg:#f3ecfa; --hero-image:radial-gradient\(700px 260px at 78% 25%,rgba\(107,58,143,.16\),transparent 68%\)/);
+  assert.match(html, /--hero-bg:#0c1430; --hero-image:none;/);
+  assert.match(html, /\.hero\{[^}]*background-color:var\(--hero-bg\);background-image:var\(--hero-image\)/);
+  assert.match(pillarCss, /--hero-bg: #f3ecfa;/);
+  assert.match(pillarCss, /--hero-bg: #0c1430;/);
+  assert.match(pillarCss, /\.design-hero \{[^}]*background-color: var\(--hero-bg\); background-image: var\(--hero-image\);/);
+  assert.match(searchCss, /\.scenario-entry\{background-color:var\(--hero-bg\);background-image:var\(--hero-image\);/);
   assert.match(html, new RegExp(`<strong>${powerCatCatalog.skills.length} \\+ ${powerCatCatalog.migrationTracks.length}</strong><span>Power CAT skills · migration tracks</span>`));
   assert.match(html, new RegExp(`<strong>${workshop.labs.length}</strong><span>Power Series labs</span>`));
   assert.match(html, new RegExp(`<li>${workshop.labs.length} hands-on labs</li>`));
@@ -320,7 +331,7 @@ test('About carousel rotates automatically and suspends for focus, hover, visibi
   }
 });
 
-test('Generic catalog actions and pending review availability are labeled accurately', () => {
+test('Generic catalog actions and self-service review guidance are labeled accurately', () => {
   for (const [pillar, count] of [['build', 9], ['review', 3]]) {
     const html = readFileSync(join(__dirname, `../ssp-${pillar}.html`), 'utf8');
     assert.doesNotMatch(html, />Open skill /);
@@ -328,9 +339,12 @@ test('Generic catalog actions and pending review availability are labeled accura
     assert.match(html, /catalog links do not/);
   }
   const review = readFileSync(join(__dirname, '../ssp-review.html'), 'utf8');
-  assert.match(review, /href="#deep-review">Deep review availability/);
-  assert.doesNotMatch(review, />Submit for deep review</);
-  assert.match(review, /id="reviewLaunch"[^>]*disabled>Submission portal pending/);
+  const build = readFileSync(join(__dirname, '../ssp-build.html'), 'utf8');
+  for (const source of [review, build, readFileSync(join(__dirname, '../assets/js/ssp-pillar.js'), 'utf8')]) {
+    assert.doesNotMatch(source, /Power CAT team|deep review availability|submission portal|review-submission-url|review team needs/i);
+  }
+  assert.match(review, /Use self-service guidance, automated checks, and dedicated viewers/);
+  assert.match(build, /Review's self-service guidance and tools/);
 });
 
 test('Hero category totals match the available focus filters', () => {

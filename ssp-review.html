@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="review-submission-url" content="">
 <title>SSP - Review Pillar</title>
 <script>
   (() => {
@@ -15,7 +14,7 @@
     try { localStorage.setItem("sspTheme", theme); } catch (error) {}
   })();
 </script>
-<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-presentation">
+<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-powercat-hero">
 <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 <script src="assets/js/ssp-search-entry.js?v=20260926-powercat-marketplace" defer></script>
 <link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
@@ -30,8 +29,8 @@
 <main>
   <section class="design-hero"><div class="wrap hero-inner">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-landing.html">SSP</a><span aria-hidden="true">/</span><span>Review</span></nav><span class="pillar-label">Review pillar</span>
-    <h1>Find risk before it reaches production.</h1><p class="lead">Explore focused review guidance and tools, or check availability of independent deep review by the Power CAT team.</p>
-    <div class="hero-actions"><a class="btn" href="#skills">Explore review guidance</a><a class="btn ghost" href="#deep-review">Deep review availability</a></div>
+    <h1>Find risk before it reaches production.</h1><p class="lead">Use self-service guidance, automated checks, and dedicated viewers to assess architecture, security, performance, and solution quality.</p>
+    <div class="hero-actions"><a class="btn" href="#skills">Explore review guidance</a></div>
     <div class="hero-proof" aria-label="Review pillar highlights"><div class="proof"><strong>9</strong><span>Review resources</span></div><div class="proof"><strong>5</strong><span>Quality lenses</span></div><div class="proof"><strong>0</strong><span>PII permitted</span></div><div class="proof"><strong>1</strong><span>Prioritized report</span></div></div>
   </div></section>
 
@@ -77,21 +76,11 @@
     </div>
   </div></section>
 
-  <section id="deep-review" aria-labelledby="deep-review-heading"><div class="wrap">
-    <div class="section-head"><div><div class="kicker">Power CAT deep review</div><h2 id="deep-review-heading">Independent review availability</h2></div><p>For teams that need an independent assessment across architecture, security, reliability, performance, and operations. Check submission availability below before preparing evidence.</p></div>
-    <div class="review-submit">
-      <div class="review-submit-main"><div class="kicker">Prepare before submitting</div><h3>Share the minimum sanitized evidence needed</h3><p>Remove or replace sensitive information before upload. The review team needs representative structure and behavior, not production records or secrets.</p>
-        <ul class="submission-list"><li><strong>No PII or personal data</strong>Do not include names, email addresses, phone numbers, identifiers, or user records.</li><li><strong>No secrets or credentials</strong>Remove connection strings, keys, tokens, passwords, and authentication material.</li><li><strong>No customer or production data</strong>Use synthetic sample data and sanitized screenshots, exports, and logs.</li><li><strong>Include review context</strong>Describe the outcome, architecture, known constraints, concerns, and target timeline.</li></ul>
-      </div>
-      <aside class="review-submit-aside" aria-label="Deep review access requirements"><h3>Submission access</h3><p>When submissions are available, organizational sign-in and eligibility requirements will apply.</p><button class="btn review-launch" id="reviewLaunch" type="button" disabled>Submission portal pending</button><span class="submission-note">The portal opens only after an approved organizational submission URL is configured. Never submit PII or sensitive content.</span></aside>
-    </div>
-  </div></section>
-
   <section aria-labelledby="process-heading"><div class="wrap"><div class="section-head"><div><div class="kicker">A responsible review path</div><h2 id="process-heading">Prepare, assess, prioritize, improve</h2></div><p>Keep the review bounded, evidence-based, and free of sensitive data from intake through remediation.</p></div><div class="process"><div class="step"><span class="step-number">01 / SANITIZE</span><h3>Remove sensitive data</h3><p>Replace production content, identities, secrets, logs, and screenshots with safe examples.</p></div><div class="step"><span class="step-number">02 / FRAME</span><h3>State the concern</h3><p>Describe the architecture, business outcome, constraints, and decisions needing scrutiny.</p></div><div class="step"><span class="step-number">03 / REVIEW</span><h3>Assess the evidence</h3><p>Apply focused checks and capture severity, impact, confidence, and supporting evidence.</p></div><div class="step"><span class="step-number">04 / RESOLVE</span><h3>Close material risks</h3><p>Assign actions, validate changes, record accepted risks, and retain the final report.</p></div></div></div></section>
 </main>
 <footer><div class="wrap row"><span>Self-Service Portal - Curated by Power CAT</span><div class="footer-links"><a href="ssp-search.html#architecture-guidance">Architecture resources</a><a href="https://github.com/microsoft/power-platform-resources/issues/new?title=Review%20pillar%20feedback%3A%20" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">&nearr;</span></a></div></div>
 </footer>
 <script src="assets/js/ssp-search-engine.js?v=20260918-relevance"></script>
-<script src="assets/js/ssp-pillar.js?v=20260918-relevance"></script>
+<script src="assets/js/ssp-pillar.js?v=20260926-self-service"></script>
 </body>
 </html>

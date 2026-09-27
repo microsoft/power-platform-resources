@@ -6,7 +6,6 @@
   const filterButtons = Array.from(document.querySelectorAll(".filter"));
   const skillCards = Array.from(document.querySelectorAll(".skill-card"));
   const resultCount = document.getElementById("resultCount");
-  const reviewLaunch = document.getElementById("reviewLaunch");
   const skillLabel = document.body.dataset.skillLabel || "skill";
   let activeCategory = filterButtons[0].dataset.category;
 
@@ -82,12 +81,6 @@
   }));
   document.addEventListener("DOMContentLoaded", openLinkedGuide);
   window.addEventListener("hashchange", openLinkedGuide);
-  if (reviewLaunch) {
-    const submissionUrl = document.querySelector('meta[name="review-submission-url"]')?.content.trim();
-    reviewLaunch.disabled = !submissionUrl;
-    reviewLaunch.textContent = submissionUrl ? "Open submission portal" : "Submission portal pending";
-    if (submissionUrl) reviewLaunch.addEventListener("click", () => window.open(submissionUrl, "ssp-deep-review", "noopener"));
-  }
   syncThemeButton();
   applyFilters();
 })();
