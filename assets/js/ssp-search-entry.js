@@ -43,10 +43,16 @@
     if (!['https:', 'http:'].includes(url.protocol) || url.origin === location.origin || link.hasAttribute('download')) return null;
     if (url.href === 'https://microsoft.github.io/apps-agents-workshop/labs/' && link.closest('#siteNav')) return null;
     const clean = value => (value || '').replace(/\s+/g, ' ').trim();
+    const plainText = value => clean(value)
+      .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/(\*\*|__)(.*?)\1/g, '$2')
+      .replace(/`([^`]+)`/g, '$1')
+      .replace(/~~([^~]+)~~/g, '$1');
     const label = link.cloneNode(true);
     label.querySelectorAll('[aria-hidden="true"]').forEach(node => node.remove());
     let title = clean(link.dataset.previewTitle || label.textContent || link.getAttribute('aria-label') || link.querySelector('img')?.alt) || url.hostname;
-    let summary = clean(link.dataset.previewSummary || link.getAttribute('title'));
+    let summary = plainText(link.dataset.previewSummary || link.getAttribute('title'));
     if (url.hostname === 'microsoft.github.io' && ['/apps-agents-workshop/labs/', '/apps-agents-workshop/labs/index.html'].includes(url.pathname)) {
       title = 'Power Series hands-on labs';
       summary ||= 'Explore hands-on labs for learning and practicing with Power Platform.';
@@ -78,6 +84,12 @@
   let sourceLink;
   let continueLink;
   const skillsAdvisorUrl = 'https://aka.ms/powerplatformskillsadvisor';
+  const plainText = value => (value || '').replace(/\s+/g, ' ').trim()
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/(\*\*|__)(.*?)\1/g, '$2')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/~~([^~]+)~~/g, '$1');
   function staticSkillDetails(link) {
     const owner = link.dataset.skillOwner || (link.href === skillsAdvisorUrl ? 'non-power-cat' : '');
     if (!owner) return null;
@@ -177,7 +189,7 @@
         const term = document.createElement('dt');
         term.textContent = label;
         const description = document.createElement('dd');
-        description.textContent = value;
+        description.textContent = plainText(value);
         metadata.append(term, description);
       }
       details.append(metadata);
@@ -196,13 +208,13 @@
           const list = document.createElement('ul');
           value.forEach(item => {
             const row = document.createElement('li');
-            row.textContent = item;
+            row.textContent = plainText(item);
             list.append(row);
           });
           details.append(list);
         } else {
           const paragraph = document.createElement('p');
-          paragraph.textContent = value;
+          paragraph.textContent = plainText(value);
           details.append(paragraph);
         }
       }

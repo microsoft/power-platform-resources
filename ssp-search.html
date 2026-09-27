@@ -16,13 +16,13 @@
 	<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
 	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20260926-stateful-search">
 	<script src="assets/js/ssp-search-engine.js?v=20260926-stateful-search" defer></script>
-	  <script src="assets/js/ssp-search-entry.js?v=20260926-stateful-search" defer></script>
-		<script src="assets/js/ssp-search.js?v=20260926-stateful-search" defer></script>
+	  <script src="assets/js/ssp-search-entry.js?v=20260926-handoff-polish" defer></script>
+		<script src="assets/js/ssp-search.js?v=20260926-handoff-polish" defer></script>
 </head>
 <body class="search-page">
   <header class="topbar">
     <div class="wrap row">
-	<a class="logo" href="ssp-search.html" aria-label="Self-Service Portal - Resources">
+	<a class="logo" href="ssp-landing.html" aria-label="About Self-Service Portal">
         <img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="220" height="92">
       </a>
       <nav class="main" id="siteNav" aria-label="Primary navigation">
@@ -68,7 +68,7 @@
       </section>
       <section id="searchResults" class="search-results" aria-labelledby="resultsHeading" hidden>
         <div class="results-heading"><div><h2 id="resultsHeading" tabindex="-1">Results across the site</h2><p id="resultSummary" role="status" aria-live="polite"></p></div><button id="resetSearch" class="clear-filter" type="button">Clear search</button></div>
-				<p id="searchClarify" class="search-note" hidden>No clear starting point yet. <a href="#startHeading" id="chooseGoal">Choose what you want to do</a>.</p>
+				<p id="searchClarify" class="search-note" hidden>No matching resource yet. <a href="#startHeading" id="chooseGoal">Choose what you want to do</a> or simplify the search.</p>
         <div id="resultList"></div>
 		<div id="emptyResults" class="empty-results" hidden><h3>No close matches</h3><p>Try a product name or the main task, or broaden the filters.</p><a href="#resources">Browse the resource catalog &rarr;</a></div>
         <button id="moreResults" class="btn ghost" type="button" hidden>Show more results</button>
@@ -94,7 +94,7 @@
 								</dl>
 								<div class="beginner-actions">
 									<a class="btn ghost" href="#products">Review the products</a>
-									<a class="btn" href="https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=automation-01-cloud-flow%2F01-cloud-flow.md&amp;branch=main" target="_blank" rel="noopener">Start the 45-minute lab <span aria-hidden="true">&nearr;</span></a>
+									<a class="btn" href="https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=automation-01-cloud-flow%2F01-cloud-flow.md&amp;branch=main" target="_blank" rel="noopener" data-preview-title="Automation: Cloud Flow (Foundations)" data-preview-summary="Build an automated approval process using a Power Automate cloud flow in this 45-minute foundation lab." data-preview-reason="This focused lab is the hands-on outcome for the recommended beginner route.">Start the 45-minute lab <span aria-hidden="true">&nearr;</span></a>
 								</div>
 							</div>
 							<aside class="catalog-glossary" aria-labelledby="catalogTermsHeading">

@@ -30,6 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removed the implied Power CAT deep-review and submission service, including its dormant configuration and UI, and made the Build-to-Review handoff explicitly self-service.
 - Improved Resources search with strict direct-match ranking, controlled related-term fallback, clear relevance labels instead of percentages, filter-only browsing, and bookmarkable restoration of queries, filters, result expansion, goals, detail panels, and scroll position.
 - Moved Resources search ahead of compact goal choices on mobile, routed selected learning and Build paths directly to maintained Power Series labs, and added a recommended beginner route with prerequisites, duration, outcome, and plain-language catalog definitions.
+- Reclassified the Cloud Flow Builder and Approval Workflow Accelerator cards as implementation guides with concrete coached-journey and lab handoffs instead of generic Skills Advisor links.
+- Hid beginner onboarding and unnecessary clarification during focused searches, supplied the beginner lab preview with useful context, normalized imported Markdown for display, and aligned the Resources logo and About accessibility landmarks and controls.
 
 ## 2026-09-25
 

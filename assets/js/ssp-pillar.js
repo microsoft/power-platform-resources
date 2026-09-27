@@ -7,6 +7,8 @@
   const skillCards = Array.from(document.querySelectorAll(".skill-card"));
   const resultCount = document.getElementById("resultCount");
   const skillLabel = document.body.dataset.skillLabel || "skill";
+  const itemLabel = document.body.dataset.itemLabel || `${skillLabel} skill`;
+  const itemLabelPlural = document.body.dataset.itemLabelPlural || `${itemLabel}s`;
   let activeCategory = filterButtons[0].dataset.category;
 
   function syncThemeButton() {
@@ -46,7 +48,7 @@
       empty = document.createElement("div");
       empty.className = "empty";
       const heading = document.createElement("h3");
-      heading.textContent = `No matching ${skillLabel} skills`;
+      heading.textContent = `No matching ${itemLabelPlural.toLowerCase()}`;
       const message = document.createElement("p");
       message.textContent = "Try another term, clear the search, or choose another focus area.";
       empty.append(heading, message);
@@ -55,7 +57,7 @@
       empty.remove();
     }
 
-    resultCount.textContent = `${visibleCount} ${skillLabel} skill${visibleCount === 1 ? "" : "s"}`;
+    resultCount.textContent = `${visibleCount} ${visibleCount === 1 ? itemLabel : itemLabelPlural}`;
     const selectedFilter = filterButtons.find(button => button.dataset.category === activeCategory);
     filterButtons.forEach(button => button.setAttribute("aria-pressed", String(button === selectedFilter)));
     document.getElementById("guide-panel-heading").textContent = selectedFilter.querySelector(".guide-label").textContent + " guides";

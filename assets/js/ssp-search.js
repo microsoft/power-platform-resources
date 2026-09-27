@@ -20,6 +20,12 @@
   let activeDetail = initialParams.get('detail') || '';
   let pendingDetail = activeDetail;
   const clean = text => text.replace(/\s+/g, ' ').trim();
+  const plainText = text => clean(text)
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/(\*\*|__)(.*?)\1/g, '$2')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/~~([^~]+)~~/g, '$1');
   const slug = text => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const element = (tag, text, className) => {
     const node = document.createElement(tag);
@@ -338,7 +344,8 @@
     const candidate = ranked.length && !catalogMode && !product && !type ? SSPSearch.guidance(entries.filter(item => !item.catalogEntry), query) : null;
     const guide = candidate && (candidate.id !== 'troubleshoot' || /\b(flow|flows|approval|automate)\b/i.test(query)) && (candidate.id !== 'performance' || /\b(app|apps|canvas)\b/i.test(query)) ? candidate : null;
     const filtered = ranked.filter(item => (!type || item.type === type) && (!product || SSPSearch.tokens(product).every(word => SSPSearch.tokens(item.title + ' ' + item.text).includes(word))));
-    byId('searchClarify').hidden = !query || catalogMode || Boolean(guide) || Boolean(type || product);
+    byId('searchClarify').hidden = !query || filtered.length > 0 || catalogMode || Boolean(guide) || hasFilters;
+    byId('beginner-route').hidden = Boolean(query || catalogMode || hasFilters || (selectedGoal && selectedGoal !== 'learn'));
     byId('searchResults').hidden = !query && !catalogMode && !hasFilters;
     byId('resultsHeading').textContent = catalogMode
       ? 'Skills and migration catalog'
@@ -371,7 +378,7 @@
       if (item.powerCatId) article.dataset.powerCatId = item.powerCatId;
       if (item.powerCatTrackId) article.dataset.powerCatTrackId = item.powerCatTrackId;
       const heading = element('h3');
-      const description = item.description || item.text;
+      const description = plainText(item.description || item.text);
       const reason = SSPSearch.explain(item, query);
       const resourceLink = anchor(item.title, item.url);
       resourceLink.dataset.previewSummary = description;

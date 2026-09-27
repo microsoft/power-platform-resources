@@ -333,14 +333,24 @@ test('About carousel rotates automatically and suspends for focus, hover, visibi
 });
 
 test('Generic catalog actions and self-service review guidance are labeled accurately', () => {
-  for (const [pillar, count] of [['build', 9], ['review', 3]]) {
+  for (const [pillar, count] of [['build', 7], ['review', 3]]) {
     const html = readFileSync(join(__dirname, `../ssp-${pillar}.html`), 'utf8');
     assert.doesNotMatch(html, />Open skill /);
     assert.equal((html.match(/>Browse Skills Advisor </g) || []).length, count);
-    assert.match(html, /catalog links do not/);
   }
   const review = readFileSync(join(__dirname, '../ssp-review.html'), 'utf8');
   const build = readFileSync(join(__dirname, '../ssp-build.html'), 'utf8');
+  for (const title of ['Cloud Flow Builder', 'Approval Workflow Accelerator']) {
+    const card = [...build.matchAll(/<article class="skill-card"[\s\S]*?<\/article>/g)].map(match => match[0]).find(item => item.includes(`<h3>${title}</h3>`));
+    assert.ok(card);
+    assert.match(card, /<span class="skill-kind">Implementation guide<\/span>/);
+    assert.doesNotMatch(card, /href="https:\/\/aka\.ms\/powerplatformskillsadvisor"/);
+  }
+  assert.match(build, /Start the coached automation journey/);
+  assert.match(build, /Start the approval flow lab/);
+  assert.match(build, /data-preview-summary="Build an automated approval process/);
+  assert.match(build, /data-item-label="Build guide" data-item-label-plural="Build guides"/);
+  assert.match(build, /ssp-pillar\.js\?v=20260926-guide-labels/);
   for (const source of [review, build, readFileSync(join(__dirname, '../assets/js/ssp-pillar.js'), 'utf8')]) {
     assert.doesNotMatch(source, /Power CAT team|deep review availability|submission portal|review-submission-url|review team needs/i);
   }
@@ -824,6 +834,10 @@ test('search state, filter-only browsing, and beginner guidance are persistent',
   for (const term of ['Skill', 'Skills Advisor', 'Power CAT Skills Marketplace']) assert.match(html, new RegExp(`<dt>${term}</dt>`));
   assert.match(script, /const hasFilters = Boolean\(type \|\| product\)/);
   assert.match(script, /!query && !catalogMode && !hasFilters/);
+  assert.match(script, /searchClarify'\)\.hidden = !query \|\| filtered\.length > 0/);
+  assert.match(script, /beginner-route'\)\.hidden = Boolean\(query \|\| catalogMode \|\| hasFilters/);
+  assert.match(script, /const plainText = text => clean\(text\)/);
+  assert.match(script, /const description = plainText\(item\.description \|\| item\.text\)/);
   for (const parameter of ['q', 'type', 'product', 'mode', 'goal', 'limit', 'detail']) {
     assert.match(script, new RegExp(`set\\('${parameter}'`));
   }
@@ -899,9 +913,22 @@ test('External previews use listing summaries and skip internal, non-web, and do
   assert.match(script, /const skillsAdvisorUrl = 'https:\/\/aka\.ms\/powerplatformskillsadvisor'/);
   assert.match(script, /link\.dataset\.skillOwner \|\| \(link\.href === skillsAdvisorUrl \? 'non-power-cat' : ''\)/);
   assert.match(script, /!\['Power CAT canonical source', 'Power CAT Skills Marketplace'\]\.includes\(skill\.route\) \? skillsAdvisorUrl : resource\.url\.href/);
+  assert.match(script, /plainText\(link\.dataset\.previewSummary/);
   for (const page of ['search', 'design', 'build', 'review', 'landing', 'design-guide', 'build-guide']) {
-    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20260926-stateful-search/);
+    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20260926-handoff-polish/);
   }
+});
+
+test('About and Resources use consistent navigation and landmarks', () => {
+  const about = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
+  const resources = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
+  assert.equal((about.match(/<main>/g) || []).length, 1);
+  assert.equal((about.match(/<\/main>/g) || []).length, 1);
+  assert.ok(about.indexOf('<main>') < about.indexOf('<!-- HERO -->'));
+  assert.ok(about.indexOf('</main>') < about.indexOf('<footer>'));
+  assert.match(about, /aria-label="Switch to dark theme"[^>]*id="themeBtn"/);
+  assert.match(about, /function syncThemeButton\(\)/);
+  assert.match(resources, /<a class="logo" href="ssp-landing\.html" aria-label="About Self-Service Portal">/);
 });
 
 test('Build offers four coached outcome journeys with sixteen visible stages', () => {

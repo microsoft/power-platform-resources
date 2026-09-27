@@ -200,7 +200,7 @@ footer .powercat-logo img{height:30px}
 @media(max-width:360px){.topbar .row{gap:6px}.logo{gap:4px;font-size:10px}.logo>span:nth-child(2){max-width:54px}.logo .mark{min-width:26px;height:22px;padding:0 4px;font-size:10px}.cat-divider{height:20px;margin:0}header .powercat-logo img{height:20px}.icon-btn{width:30px;height:30px}.btn.sm{padding:5px 7px;font-size:10px}.stats{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.hero-slide,.pillar,.pillar-launch{transition:none}.pillar-launch:hover{transform:none}}
 </style>
-<script src="assets/js/ssp-search-entry.js?v=20260926-stateful-search" defer></script>
+<script src="assets/js/ssp-search-entry.js?v=20260926-handoff-polish" defer></script>
 <link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
 <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 </head>
@@ -222,7 +222,7 @@ footer .powercat-logo img{height:30px}
     </nav>
     <div class="spacer"></div>
     <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false" onclick="toggleSiteMenu()">☰</button>
-    <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme" id="themeBtn">🌙</button>
+    <button class="icon-btn" onclick="toggleTheme()" aria-label="Switch to dark theme" title="Switch to dark theme" id="themeBtn">&#9790;</button>
     <a class="btn sm desktop-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=SSP%20feedback%3A%20&amp;body=%23%23%20Page%0A%0A%23%23%20Feedback%0A%0A%23%23%20Suggested%20change%0A" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">↗</span></a>
     <picture class="powercat-logo header-powercat" title="Power CAT">
       <img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="46">
@@ -231,6 +231,7 @@ footer .powercat-logo img{height:30px}
   </div>
 </header>
 
+<main>
 <!-- HERO -->
 <div class="hero">
   <div class="wrap inner">
@@ -469,6 +470,7 @@ footer .powercat-logo img{height:30px}
 <!-- END GENERATED ABOUT FEATURED -->
 </section>
 
+</main>
 <footer>
   <div class="wrap row">
     <div class="foot-brand">
@@ -483,14 +485,21 @@ footer .powercat-logo img{height:30px}
 </footer>
 
 <script>
+function syncThemeButton(){
+  const dark=document.documentElement.getAttribute('data-theme')==='dark';
+  const button=document.getElementById('themeBtn');
+  button.textContent=dark?'\u2600':'\u263E';
+  button.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');
+  button.title=button.getAttribute('aria-label');
+}
 function toggleTheme(){
   const el=document.documentElement;
   const next=el.getAttribute('data-theme')==='dark'?'light':'dark';
   el.setAttribute('data-theme',next);
   try{localStorage.setItem('sspTheme',next)}catch(e){}
-  document.getElementById('themeBtn').textContent=next==='dark'?'☀️':'🌙';
+  syncThemeButton();
 }
-document.getElementById('themeBtn').textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙';
+syncThemeButton();
 function toggleSiteMenu(){
   const nav=document.getElementById('siteNav');
   const button=document.querySelector('.menu-toggle');
