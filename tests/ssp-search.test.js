@@ -12,6 +12,23 @@ const { execFileSync } = require('node:child_process');
 const { runInNewContext } = require('node:vm');
 const advisor = require('../assets/js/ssp-design-advisor.js');
 
+const sspPages = ['ssp-landing.html', 'ssp-search.html', 'ssp-design.html', 'ssp-design-guide.html', 'ssp-build.html', 'ssp-build-guide.html', 'ssp-review.html'];
+const slug = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function navigationTargets(file) {
+  const html = readFileSync(join(__dirname, '..', file), 'utf8');
+  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
+  for (const card of html.matchAll(/<article class="skill-card"[\s\S]*?<\/article>/g)) {
+    const heading = card[0].match(/<h3>([^<]+)<\/h3>/)?.[1];
+    if (heading) ids.add('skill-' + slug(heading));
+  }
+  if (file === 'ssp-search.html') {
+    const searchScript = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
+    assert.match(searchScript, /location\.hash === '#skills'/);
+    ids.add('skills');
+  }
+  return { html, ids };
+}
+
 test('Workshop labs are searchable and point to the published lab viewer', () => {
   const workshop = require('../assets/data/workshop-labs.json');
   const { parseLab } = require('../scripts/sync-workshop-labs.js');
@@ -194,6 +211,7 @@ test('About statistics and featured guidance match their canonical sources', () 
   assert.match(html, /<div class="kicker">Featured guidance<\/div>/);
   assert.match(html, /Curated by Power CAT on a weekly cadence/);
   assert.doesNotMatch(html, /Featured this week|Popular skills &amp; guidance/);
+  assert.doesNotMatch(html, /Open the Power CAT marketplace \(\d+ skills, \d+ migration tracks\)/);
   for (const item of [...latest.news, ...latest.events]) {
     assert.ok(resources.includes(item.title));
     assert.ok(resources.includes(`datetime="${item.published}"`));
@@ -536,6 +554,7 @@ test('Build and Review catalogs use category-only panels with matching counts an
 
 test('Design guides route skills by owner after providing local context', () => {
   const html = readFileSync(join(__dirname, '../ssp-design.html'), 'utf8');
+  const searchScript = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
   const cards = [...html.matchAll(/<article class="skill-card"[\s\S]*?<\/article>/g)].map(match => match[0]);
   assert.equal(cards.length, 8);
   assert.doesNotMatch(html, /id="clearFilters"|>Clear search</);
@@ -552,9 +571,11 @@ test('Design guides route skills by owner after providing local context', () => 
     const nonPowerCat = card.match(/data-skill-owner="non-power-cat"[\s\S]*?data-canonical-source="(https:\/\/github\.com\/[^"]+)"[\s\S]*?href="https:\/\/aka\.ms\/powerplatformskillsadvisor"/);
     if (powerCat) assert.ok(powerCatCatalog.skills.some(entry => entry.detailUrl === powerCat[1]), powerCat[1]);
     else if (nonPowerCat) assert.ok(catalog.skills.some(entry => entry.marketplace !== 'Power CAT Skills' && entry.source === nonPowerCat[1]), nonPowerCat[1]);
-    else assert.match(card, /Documentation-led guide|No (dedicated|published).*verified in the imported catalog/);
+    else assert.match(card, /Documentation-led guide|Microsoft architecture guidance|Well-Architected assessment/);
   }
   assert.equal(cards.filter(card => card.includes('data-skill-owner=')).length, 5);
+  assert.doesNotMatch(html, /verified in the imported catalog|No dedicated integration-pattern selector|No published skill with this guide's name/);
+  assert.doesNotMatch(searchScript, /Source verified/);
 });
 
 test('Design intents open curated topic pages instead of filtering the skill catalog', () => {
@@ -746,7 +767,7 @@ test('SSP guides remain eligible for curated scenario recommendations', () => {
 
 test('Resources owns the complete resource catalog below search', () => {
   const html = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
-  assert.match(html, /<title>SSP - Resources<\/title>/);
+  assert.match(html, /<title>Self-Service Portal - Resources<\/title>/);
   assert.ok(html.indexOf('id="resources"') > html.indexOf('id="searchResults"'));
   const categories = [...html.matchAll(/<article class="panel(?: active)?" id="([^"]+)"/g)];
   assert.equal(categories.length, 13);
@@ -761,7 +782,7 @@ test('Resources owns the complete resource catalog below search', () => {
 
 test('Resources is appended as the final navigation tab', () => {
   const script = readFileSync(join(__dirname, '../assets/js/ssp-search-entry.js'), 'utf8');
-  const navigation = script.slice(0, script.indexOf("  document.querySelectorAll('.skill-card')")) + '})();';
+  const navigation = script.slice(0, script.indexOf('  const themeToggle')) + '})();';
   for (const pathname of ['/ssp-search.html', '/ssp-landing.html']) {
     const links = [{ textContent: 'About' }, { textContent: 'Learn' }];
     const nav = { querySelector: () => null, append: link => links.push(link) };
@@ -778,9 +799,20 @@ test('Resources is appended as the final navigation tab', () => {
   }
 });
 
-test('About has no scenario form and SSP pages no longer link to the retired resource page', () => {
+test('Search is available beside the theme control', () => {
+  const script = readFileSync(join(__dirname, '../assets/js/ssp-search-entry.js'), 'utf8');
+  assert.match(script, /searchLink\.className = 'icon-btn header-search'/);
+  assert.match(script, /searchLink\.href = 'ssp-search\.html\?focus=search'/);
+  assert.match(script, /themeToggle\.parentElement\.insertBefore\(searchLink, themeToggle\)/);
+  assert.match(script, /searchLink\.setAttribute\('aria-label', 'Search the Self-Service Portal'\)/);
+  const searchPage = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
+  assert.match(searchPage, /initialParams\.get\('focus'\) === 'search'/);
+  assert.match(searchPage, /byId\('scenario'\)\.focus\(\)/);
+});
+
+test('About has no scenario form and portal pages no longer link to the retired resource page', () => {
   const about = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
-  assert.match(about, /<title>SSP - About<\/title>/);
+  assert.match(about, /<title>Self-Service Portal - About<\/title>/);
   assert.doesNotMatch(about, /data-scenario-entry|id="landingScenario"/);
   assert.doesNotMatch(about, /class="rgrid"|class="rtile/);
   assert.match(about, /href="ssp-search.html#resources">Explore Power Platform resources<\/a>/);
@@ -822,6 +854,40 @@ test('every guided goal has a clear next action and an unsure path', () => {
   assert.match(nextStep('learn', 'practice').url, /automation-01-cloud-flow/);
   assert.match(nextStep('build', 'site').url, /byoc-powerpages/);
   assert.match(nextStep('build', 'agent').url, /power-apps-mcp-server-agents-and-agent-feed/);
+  assert.equal(nextStep('review', 'pages').url, 'ssp-review.html#skill-powercat-overpage');
+  assert.equal(nextStep('review', 'flows').url, 'ssp-review.html#skill-powercat-overflow');
+  assert.equal(nextStep('review', 'solution').url, 'ssp-review.html#skill-well-architected-solution-review');
+});
+
+test('internal fragment navigation resolves to specific site targets', () => {
+  const pages = new Map(sspPages.map(file => [file, navigationTargets(file)]));
+  const failures = [];
+  for (const [source, { html }] of pages) {
+    for (const match of html.matchAll(/\bhref="([^"]+)"/g)) {
+      const href = match[1].replace(/&amp;/g, '&');
+      const resolved = new URL(href, `https://example.test/${source}`);
+      if (resolved.origin !== 'https://example.test' || !resolved.hash) continue;
+      const targetFile = resolved.pathname.slice(1) || source;
+      if (!targetFile.startsWith('ssp-') || !targetFile.endsWith('.html')) continue;
+      const target = pages.get(targetFile);
+      const id = decodeURIComponent(resolved.hash.slice(1));
+      if (!target) failures.push(`${source}: ${href} points to missing page ${targetFile}`);
+      else if (!target.ids.has(id)) failures.push(`${source}: ${href} points to missing target #${id}`);
+    }
+  }
+  assert.deepEqual(failures, []);
+
+  const broadTargets = new Set(['skills', 'resources', 'building', 'architecture-guidance', 'products']);
+  for (const journey of journeys) {
+    for (const option of journey.options) {
+      if (option.id === 'unsure' || !option.url.startsWith('ssp-') || !option.url.includes('#')) continue;
+      const resolved = new URL(option.url, 'https://example.test/ssp-search.html');
+      const targetFile = resolved.pathname.slice(1);
+      const id = resolved.hash.slice(1);
+      assert.ok(!broadTargets.has(id), `${journey.id}/${option.id} should link to a specific target, not #${id}`);
+      assert.ok(pages.get(targetFile)?.ids.has(id), `${journey.id}/${option.id} points to missing ${targetFile}#${id}`);
+    }
+  }
 });
 
 test('search state, filter-only browsing, and beginner guidance are persistent', () => {
@@ -850,6 +916,7 @@ test('search state, filter-only browsing, and beginner guidance are persistent',
 test('Interactive cards share Design lift with keyboard and reduced-motion support', () => {
   const css = readFileSync(join(__dirname, '../assets/css/header-brand.css'), 'utf8');
   const designCss = readFileSync(join(__dirname, '../assets/css/ssp-design.css'), 'utf8');
+  const buildGuideCss = readFileSync(join(__dirname, '../assets/css/ssp-build-guide.css'), 'utf8');
   assert.match(css, /:is\(\.outcome, #goalChoices \.journey-choice, \.fcard, \.path-choice\)/);
   assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)/);
   assert.match(css, /:focus-visible\s*\{\s*transform: translateY\(-3px\)/);
@@ -859,7 +926,7 @@ test('Interactive cards share Design lift with keyboard and reduced-motion suppo
     const html = readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8');
     const header = html.match(/<header class="topbar"[\s\S]*?<\/header>/)[0];
     const logo = header.match(/<a class="logo"[\s\S]*?<\/a>/)[0];
-    assert.match(html, /header-brand\.css\?v=20260926-right-nav/);
+    assert.match(html, /header-brand\.css\?v=20261001-search-icon/);
     assert.equal((header.match(/class="powercat-logo header-powercat"/g) || []).length, 1);
     assert.doesNotMatch(logo, /powercat-logo|cat-divider/);
   }
@@ -870,7 +937,12 @@ test('Interactive cards share Design lift with keyboard and reduced-motion suppo
   assert.match(css, /@media \(min-width: 1081px\)\s*\{[\s\S]*?\.topbar nav\.main\s*\{[\s\S]*?margin-left: auto;[\s\S]*?\.topbar \.spacer\s*\{[\s\S]*?display: none;/);
   assert.match(css, /@media \(max-width: 560px\)\s*\{[\s\S]*?\.topbar \.row\s*\{[\s\S]*?height: 87px;/);
   assert.match(css, /@media \(max-width: 560px\)[\s\S]*?\.topbar nav\.main\s*\{[\s\S]*?top: 87px;/);
-  assert.match(designCss, /\.skills-section \.guide-panel \.skill-actions\s*\{\s*justify-content: flex-start;/);
+  assert.match(css, /@media \(max-width: 300px\)[\s\S]*?\.wrap\s*\{[\s\S]*?padding-right: 16px;[\s\S]*?padding-left: 16px;/);
+  assert.match(css, /@media \(max-width: 300px\)[\s\S]*?\.platform-logo\s*\{[\s\S]*?width: 80px;/);
+  assert.match(css, /@media \(max-width: 300px\)[\s\S]*?\.topbar \.header-powercat\s*\{[\s\S]*?display: none;/);
+  assert.match(designCss, /\.skills-section \.guide-panel \.skill-actions\s*\{\s*justify-content: flex-start;\s*gap: 18px;\s*flex-wrap: wrap;/);
+  assert.match(buildGuideCss, /\.coached-steps\s*\{[^}]*min-width: 0;/);
+  assert.match(buildGuideCss, /\.coached-step\s*\{[^}]*min-width: 0;[^}]*overflow-wrap: anywhere;/);
   assert.match(designCss, /\.skills-section \.guide-panel \.guide-resources a\s*\{[^}]*text-align: left;/);
   assert.match(designCss, /\.alm-checklist \.step > a\s*\{[^}]*align-self: flex-start;[^}]*text-align: left;/);
   const guide = readFileSync(join(__dirname, '../ssp-design-guide.html'), 'utf8');
@@ -915,7 +987,7 @@ test('External previews use listing summaries and skip internal, non-web, and do
   assert.match(script, /!\['Power CAT canonical source', 'Power CAT Skills Marketplace'\]\.includes\(skill\.route\) \? skillsAdvisorUrl : resource\.url\.href/);
   assert.match(script, /plainText\(link\.dataset\.previewSummary/);
   for (const page of ['search', 'design', 'build', 'review', 'landing', 'design-guide', 'build-guide']) {
-    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20260926-handoff-polish/);
+    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20261001-search-focus/);
   }
 });
 
@@ -929,6 +1001,28 @@ test('About and Resources use consistent navigation and landmarks', () => {
   assert.match(about, /aria-label="Switch to dark theme"[^>]*id="themeBtn"/);
   assert.match(about, /function syncThemeButton\(\)/);
   assert.match(resources, /<a class="logo" href="ssp-landing\.html" aria-label="About Self-Service Portal">/);
+});
+
+test('Self-Service Portal naming is consistent in user-facing copy', () => {
+  for (const page of sspPages) {
+    const html = readFileSync(join(__dirname, '..', page), 'utf8');
+    const visibleText = html
+      .replace(/<script\b[\s\S]*?<\/script>/gi, '')
+      .replace(/<style\b[\s\S]*?<\/style>/gi, '')
+      .replace(/<[^>]+>/g, ' ');
+    assert.doesNotMatch(visibleText, /\bSSP\b/);
+    for (const match of visibleText.matchAll(/self[\s-]service portal/gi)) {
+      assert.equal(match[0], 'Self-Service Portal', `${page} uses inconsistent portal naming`);
+    }
+  }
+
+  for (const script of ['ssp-design-advisor.js', 'ssp-design.js', 'ssp-search-engine.js', 'ssp-search.js']) {
+    const source = readFileSync(join(__dirname, '../assets/js', script), 'utf8');
+    assert.doesNotMatch(source, /\bSSP\b/);
+    for (const match of source.matchAll(/self[\s-]service portal/gi)) {
+      assert.equal(match[0], 'Self-Service Portal', `${script} uses inconsistent portal naming`);
+    }
+  }
 });
 
 test('Build offers four coached outcome journeys with sixteen visible stages', () => {
@@ -949,15 +1043,21 @@ test('Build offers four coached outcome journeys with sixteen visible stages', (
   assert.match(search, /querySelectorAll\('\.build-journey'\)/);
 });
 
-test('Review provides canonical OverPage and OverFlow launches without inventing an OverCode viewer', () => {
+test('Review provides canonical OverPage and OverFlow launches and actionable local OverCode guidance', () => {
   const html = readFileSync(join(__dirname, '../ssp-review.html'), 'utf8');
+  for (const id of ['skill-powercat-overpage', 'skill-powercat-overflow', 'skill-well-architected-solution-review']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
   assert.match(html, /href="https:\/\/microsoft\.github\.io\/power-cat-skills\/PowerCAT-OverPage\.html"/);
   assert.match(html, /href="https:\/\/microsoft\.github\.io\/power-cat-skills\/PowerCAT-Overflow\.html"/);
   const overCode = [...html.matchAll(/<article class="skill-card"[^>]*>[\s\S]*?<\/article>/g)]
     .map(match => match[0])
     .find(card => card.includes('<h3>PowerCAT OverCode</h3>'));
   assert.ok(overCode);
-  assert.match(overCode, /No canonical hosted OverCode viewer is published/);
+  assert.match(overCode, /Run locally/);
+  assert.match(overCode, /How to proceed:/);
+  assert.match(overCode, /approved local coding-assistant or code-review workflow/);
+  assert.doesNotMatch(overCode, /unavailable|No canonical hosted OverCode viewer|repository catalog/);
   assert.doesNotMatch(overCode, /<a class="btn"/);
 });
 

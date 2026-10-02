@@ -324,7 +324,7 @@
       };
       details.forEach(item => { item.open = true; });
       document.body.classList.add("print-design-brief");
-      document.title = "SSP Design Brief";
+      document.title = "Self-Service Portal Design Brief";
       progress.textContent = "Print dialog opened; choose Save as PDF";
       window.addEventListener("afterprint", restore, { once: true });
       window.print();

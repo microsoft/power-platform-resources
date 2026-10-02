@@ -13,7 +13,7 @@
     { ...question('constraint', 'What are your top priorities? Rank up to three.', [['sensitive', 'Sensitive data and access control'], ['integration', 'Integration with existing systems'], ['licensing', 'Licensing and budget'], ['scale', 'Scale, reliability, or performance'], ['unsure', 'Not decided yet']]), ranked: true }
   ];
   const branches = {
-    new: question('experience', 'Which experience matters most?', [['mobile', 'Task-focused or mobile work'], ['records', 'Managing structured business records'], ['portal', 'A website or self-service portal'], ['unsure', 'Not decided yet']]),
+    new: question('experience', 'Which experience matters most?', [['mobile', 'Task-focused or mobile work'], ['records', 'Managing structured business records'], ['portal', 'A website or Self-Service Portal'], ['unsure', 'Not decided yet']]),
     modernize: question('pain', 'Why does the current app need to change?', [['performance', 'Slow or unreliable behavior'], ['manual', 'Too much manual work'], ['legacy', 'Maintenance or technology constraints'], ['unsure', 'The cause is not clear yet']]),
     govern: question('scope', 'How broad is the rollout?', [['team', 'One team or department'], ['multiple', 'Several delivery teams'], ['tenant', 'An organization-wide program'], ['unsure', 'Not decided yet']]),
     review: question('evidence', 'What evidence is available?', [['design', 'Design documents only'], ['prototype', 'A prototype or proof of concept'], ['live', 'An existing implementation'], ['unsure', 'Evidence has not been collected yet']])

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer">
-	<title>SSP - Resources</title>
+	<title>Self-Service Portal - Resources</title>
   <script>
     (() => {
       let saved;
@@ -12,12 +12,12 @@
       document.documentElement.dataset.theme = new URLSearchParams(location.search).get('scoutTheme') || saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     })();
   </script>
-	<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-powercat-hero">
-	<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
-	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20260926-stateful-search">
-	<script src="assets/js/ssp-search-engine.js?v=20260926-stateful-search" defer></script>
-	  <script src="assets/js/ssp-search-entry.js?v=20260926-handoff-polish" defer></script>
-		<script src="assets/js/ssp-search.js?v=20260926-handoff-polish" defer></script>
+	<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260928-action-spacing">
+	<link rel="stylesheet" href="assets/css/header-brand.css?v=20261001-search-icon">
+	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20261001-search-first">
+	<script src="assets/js/ssp-search-engine.js?v=20260928-specific-review-links" defer></script>
+	  <script src="assets/js/ssp-search-entry.js?v=20261001-search-focus" defer></script>
+		<script src="assets/js/ssp-search.js?v=20261001-actionable-guidance" defer></script>
 </head>
 <body class="search-page">
   <header class="topbar">
@@ -60,7 +60,7 @@
 					<summary>Advanced search and skills catalog</summary>
 					<button id="browseSkills" class="btn ghost" type="button">Browse all skills and migration tracks</button>
 					<div class="search-filters">
-						<label>Content type<select id="typeFilter"><option value="">All content</option><option>Skill</option><option>Migration track</option><option>MCP capability</option><option>Reference</option><option value="Guide">SSP guide</option><option>Resource</option><option>Learning</option><option>Page</option></select></label>
+						<label>Content type<select id="typeFilter"><option value="">All content</option><option>Skill</option><option>Migration track</option><option>MCP capability</option><option>Reference</option><option value="Guide">Self-Service Portal guide</option><option>Resource</option><option>Learning</option><option>Page</option></select></label>
 						<label>Product<select id="productFilter"><option value="">Any product</option><option value="power apps">Power Apps</option><option value="canvas">Canvas apps</option><option value="model driven">Model-driven apps</option><option value="automate">Power Automate</option><option value="dataverse">Dataverse</option><option value="pages">Power Pages</option><option value="copilot">Copilot Studio</option><option value="power bi">Power BI</option></select></label>
 					</div>
 					<div id="indexStatus" class="index-status">Loading site content...</div>
@@ -112,7 +112,7 @@
 				<div class="wrap search-workspace">
       <section id="resources" class="resource-catalog" aria-labelledby="resourcesHeading">
         <h2 id="resourcesHeading">Resource catalog</h2>
-        <p>SSP is your front door to curated learning, adoption, architecture, governance, development, AI, and community resources. The Power CAT Skills Marketplace is the maintained source for Power CAT skill details and install instructions.</p>
+        <p>Self-Service Portal is your front door to curated learning, adoption, architecture, governance, development, AI, and community resources. The Power CAT Skills Marketplace is the maintained source for Power CAT skill details and install instructions.</p>
         <p id="resourceStatus" class="search-note" role="status" aria-live="polite"></p>
         <div class="resource-layout">
           <aside class="rail" id="resourceRail" hidden role="group" aria-label="Resource categories">

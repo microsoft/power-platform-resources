@@ -125,6 +125,7 @@
 
 .coached-steps {
   display: grid;
+  min-width: 0;
   gap: 16px;
   margin: 0;
   padding: 0;
@@ -133,11 +134,13 @@
 }
 
 .coached-step {
+  min-width: 0;
   counter-increment: coached-step;
   padding: 22px;
   border: 1px solid var(--border);
   border-radius: 9px;
   background: var(--surface);
+  overflow-wrap: anywhere;
   scroll-margin-top: 82px;
 }
 

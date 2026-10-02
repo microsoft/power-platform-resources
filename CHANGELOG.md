@@ -4,6 +4,25 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-10-01
+
+### Changed
+
+- Added a global search icon beside the theme control across portal pages. It opens the dedicated site-wide search and results page with the search field focused for immediate typing, while keeping the About hero focused on portal orientation.
+- Reduced unused About hero space by compacting the tallest carousel slide while preserving a stable carousel height.
+- Replaced internal catalog-validation and ingestion language with actionable Design, Review, and search guidance, including clear local next steps for OverCode.
+
+## 2026-09-28
+
+### Changed
+
+- Routed the guided Review choices for OverPage, OverFlow, and Well-Architected review directly to their specific Review cards instead of the broad Review catalog.
+- Added site-wide validation that internal fragment links resolve to real static or generated targets and that specific guided actions do not fall back to broad catalog sections.
+- Added consistent spacing between adjacent guide actions so separate links remain visually distinct.
+- Preserved visible page-edge gutters in very narrow browser panes by removing the shared header's minimum-width overflow.
+- Removed the redundant broad Power CAT marketplace action from Featured guidance while retaining contextual marketplace links for individual skills.
+- Expanded user-facing “SSP” abbreviations to “Self-Service Portal” across page titles, navigation labels, controls, and descriptive guidance.
+
 ## 2026-09-26
 
 ### Changed

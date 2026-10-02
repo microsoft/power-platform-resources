@@ -143,6 +143,15 @@ body :is(.outcome, #goalChoices .journey-choice, .fcard, .path-choice):focus-vis
 	flex: none;
 }
 
+.header-search svg {
+	width: 18px;
+	height: 18px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+
 .topbar .logo {
 	flex-shrink: 0;
 }
@@ -237,8 +246,12 @@ html[data-theme="dark"] .topbar .header-powercat .logo-on-dark {
 		order: 3;
 	}
 
-	.topbar #themeBtn {
+	.topbar .header-search {
 		order: 4;
+	}
+
+	.topbar #themeBtn {
+		order: 5;
 	}
 
 	#header {
@@ -246,6 +259,12 @@ html[data-theme="dark"] .topbar .header-powercat .logo-on-dark {
 	}
 
 	#header #logo span {
+		display: none;
+	}
+}
+
+@media (max-width: 440px) {
+	.topbar .header-powercat {
 		display: none;
 	}
 }
@@ -262,5 +281,25 @@ html[data-theme="dark"] .topbar .header-powercat .logo-on-dark {
 	.topbar .header-powercat img {
 		width: 63px;
 		height: 25px;
+	}
+}
+
+@media (max-width: 300px) {
+	.wrap {
+		padding-right: 16px;
+		padding-left: 16px;
+	}
+
+	.platform-logo {
+		width: 80px;
+		height: 48px;
+	}
+
+	.topbar .row {
+		gap: 6px;
+	}
+
+	.topbar .header-powercat {
+		display: none;
 	}
 }

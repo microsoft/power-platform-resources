@@ -321,12 +321,12 @@
     ready = true;
     const siteFailures = results.slice(0, sources.length).filter(result => result.failed).length;
     const counts = catalog ? ['skill', 'mcp-capability', 'reference'].map(tier => catalog.skills.filter(item => item.marketplace !== 'Power CAT Skills' && item.tier === tier).length) : [];
-    byId('indexStatus').textContent = entries.length ? `${entries.length} indexed entries from ${sources.length - siteFailures} site pages${catalog ? ` and Skills Advisor (${counts[0]} skills, ${counts[1]} MCP capabilities, ${counts[2]} references; source verified ${catalog.sourceGenerated}; imported ${catalog.retrieved.slice(0, 10)})` : ''}.${failed.length ? ' Unavailable: ' + failed.join(', ') + '.' : ''}` : 'Site content could not be loaded. Open this site over HTTP and try again, or browse Resources.';
+    byId('indexStatus').textContent = entries.length ? `${entries.length} searchable entries across ${sources.length - siteFailures} portal pages${catalog ? `, including ${counts[0]} skills, ${counts[1]} MCP capabilities, and ${counts[2]} references from Skills Advisor` : ''}.${failed.length ? ' Some sources could not be refreshed; available results remain searchable.' : ''}` : 'Search could not load right now. Choose a goal or browse the resource catalog below.';
     if (workshop) byId('indexStatus').textContent += ` Power Series: ${workshop.labs.length} labs.`;
-    if (powerCat) byId('indexStatus').textContent += ` Power CAT Skills Marketplace: ${powerCat.skills.length} skills and ${powerCat.migrationTracks.length} migration tracks (imported ${powerCat.retrieved.slice(0, 10)}).`;
+    if (powerCat) byId('indexStatus').textContent += ` Power CAT Skills Marketplace: ${powerCat.skills.length} skills and ${powerCat.migrationTracks.length} migration tracks.`;
     byId('retryIndex').hidden = !failed.length;
     byId('searchNotice').hidden = !failed.length;
-    byId('searchNotice').textContent = entries.length ? 'Some search content is unavailable. You can still choose a goal or browse resources below.' : 'Search is unavailable. Choose a goal or browse resources below.';
+    byId('searchNotice').textContent = entries.length ? 'Search is using the content currently available. You can also choose a goal or browse the resource catalog below.' : 'Search could not load right now. Choose a goal or browse the resource catalog below.';
     render();
   }
   function render() {
@@ -354,7 +354,7 @@
         : query
           ? 'Direct matches across the site'
           : 'Resources matching these filters';
-    byId('resetSearch').textContent = catalogMode ? 'Search across SSP' : 'Clear search';
+    byId('resetSearch').textContent = catalogMode ? 'Search across Self-Service Portal' : 'Clear search';
     byId('guidance').hidden = !guide || !query;
     byId('guidanceSteps').replaceChildren();
     if (guide) {
@@ -406,7 +406,7 @@
         article.append(explanation);
       }
       if (item.duration && item.persona) article.append(element('p', `${item.persona} / Level ${item.level} / ${item.duration}`, 'result-match'));
-      if (item.availability) article.append(element('p', item.availability + (item.verified ? ' / Source verified ' + item.verified : ''), 'result-match'));
+      if (item.availability) article.append(element('p', item.availability, 'result-match'));
       article.append(source);
       byId('resultList').append(article);
     });
@@ -580,6 +580,9 @@
   setInitialSelect('typeFilter', initialParams.get('type'));
   setInitialSelect('productFilter', initialParams.get('product'));
   byId('scenario').value = query;
+  if (initialParams.get('focus') === 'search') {
+    byId('scenario').focus();
+  }
   if (catalogMode) {
     byId('advancedSearch').open = true;
     if (!byId('typeFilter').value) byId('typeFilter').value = 'Skill';

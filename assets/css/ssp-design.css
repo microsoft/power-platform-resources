@@ -292,7 +292,7 @@ html[data-theme="dark"] .advisor-rail { background: #10283d; }
 .skills-section .guide-panel details { padding: 0; border: 0; background: transparent; }
 .skills-section .guide-panel summary { padding: 8px 0; color: var(--brand); }
 .skills-section .guide-panel .guide-resources { padding: 12px 0; }
-.skills-section .guide-panel .skill-actions { justify-content: flex-start; padding: 0; }
+.skills-section .guide-panel .skill-actions { justify-content: flex-start; gap: 18px; flex-wrap: wrap; padding: 0; }
 .skills-section .guide-panel .skill-actions .btn { display: inline; width: auto; max-width: 100%; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--brand); text-align: left; text-decoration: underline; text-underline-offset: 3px; }
 .skills-section .guide-panel .guide-resources a { display: block; color: var(--brand); text-align: left; }
 .skills-section .guide-panel .skill-actions .btn:hover { transform: none; filter: none; }

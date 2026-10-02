@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SSP - Design topics</title>
+  <title>Self-Service Portal - Design topics</title>
   <script>
     (() => {
       let saved;
@@ -11,10 +11,10 @@
       document.documentElement.dataset.theme = new URLSearchParams(location.search).get('scoutTheme') || saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-powercat-hero">
-  <link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
+  <link rel="stylesheet" href="assets/css/ssp-design.css?v=20260928-action-spacing">
+  <link rel="stylesheet" href="assets/css/header-brand.css?v=20261001-search-icon">
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-  <script src="assets/js/ssp-search-entry.js?v=20260926-handoff-polish" defer></script>
+  <script src="assets/js/ssp-search-entry.js?v=20261001-search-focus" defer></script>
   <style>
     body{--design:var(--brand)}
     .topic-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;padding:16px 0;border-bottom:1px solid var(--border)}
@@ -120,7 +120,7 @@
       <ul class="topic-links"><li><a data-skill-owner="power-cat" data-preview-summary="Use Power CAT's architecture advisor to compare architecture choices before implementation changes." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-architecture-advisor__powercat-pp-architecture-advisor" target="_blank" rel="noopener">powercat-pp-architecture-advisor — marketplace details</a> - Compare architecture choices before changing the implementation.</li></ul>
       <section class="topic-preparation" aria-labelledby="migration-tracks-heading">
       <h3 id="migration-tracks-heading">Choose a Migration Factory track</h3>
-      <p>Complete the basic SSP framing above first, then choose the track that matches the legacy source. Bring a sanitized source artifact and current dependencies; each track produces a target plan or implementation assets plus migration risks to validate.</p>
+      <p>Complete the basic Self-Service Portal framing above first, then choose the track that matches the legacy source. Bring a sanitized source artifact and current dependencies; each track produces a target plan or implementation assets plus migration risks to validate.</p>
       <ul class="topic-links">
         <li><a data-skill-owner="power-cat" data-preview-summary="Migrate a Microsoft Access database into Dataverse with an optional model-driven app." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__Access%20to%20Dataverse%20Migration" target="_blank" rel="noopener">Access to Dataverse — marketplace details</a> - Bring an .mdb or .accdb file; continue with a Dataverse solution and optional model-driven app path.</li>
         <li><a data-skill-owner="power-cat" data-preview-summary="Migrate an Airtable app into Microsoft platform targets." href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__Airtable%20to%20Power%20Platform%20Migration" target="_blank" rel="noopener">Airtable to Power Platform — marketplace details</a> - Bring the Airtable structure and automation context; continue with mapped Microsoft platform targets.</li>
@@ -305,7 +305,7 @@
           if (link.hash === '#' + selected.id) link.setAttribute('aria-current', 'page');
           else link.removeAttribute('aria-current');
         });
-        document.title = 'SSP - ' + selected.querySelector('h1').textContent;
+        document.title = 'Self-Service Portal - ' + selected.querySelector('h1').textContent;
         if (focus) {
           const heading = stepIndex >= 0 ? selected.querySelectorAll('.topic-steps > li')[stepIndex].querySelector('h3') : selected.querySelector('h1');
           heading.focus({ preventScroll: true });

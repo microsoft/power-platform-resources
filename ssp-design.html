@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSP - Design Pillar</title>
+<title>Self-Service Portal - Design Pillar</title>
 <script>
   (() => {
     const param = new URLSearchParams(window.location.search).get("scoutTheme");
@@ -14,10 +14,10 @@
     try { localStorage.setItem("sspTheme", theme); } catch (error) {}
   })();
 </script>
-<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260926-powercat-hero">
+<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260928-action-spacing">
 <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-<script src="assets/js/ssp-search-entry.js?v=20260926-handoff-polish" defer></script>
-<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
+<script src="assets/js/ssp-search-entry.js?v=20261001-search-focus" defer></script>
+<link rel="stylesheet" href="assets/css/header-brand.css?v=20261001-search-icon">
 </head>
 <body class="pillar-design">
 <header class="topbar">
@@ -48,7 +48,7 @@
 <main>
   <section class="design-hero">
     <div class="wrap hero-inner">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-landing.html">SSP</a><span aria-hidden="true">/</span><span>Design</span></nav>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="ssp-landing.html">Self-Service Portal</a><span aria-hidden="true">/</span><span>Design</span></nav>
       <span class="pillar-label">Design pillar</span>
       <h1>Shape the right solution before you build.</h1>
       <p class="lead">Turn business intent into a secure, supportable Power Platform design. Start with an outcome, explore a design guide, and choose supporting skills and resources.</p>
@@ -172,7 +172,7 @@
         <article class="skill-card" data-category="architecture" data-outcomes="new modernize govern" style="--accent:var(--design)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Architecture</span><span class="skill-time">15-25 min</span></div><h3>Integration Pattern Selector</h3><p>Match latency, volume, ownership, and failure needs to the right Power Platform integration pattern.</p><div class="tags"><span class="tag">API</span><span class="tag">Events</span><span class="tag">Virtual tables</span></div></div>
           <details open><summary>Inputs and intended output</summary><p>Bring source systems and service expectations. Aim for a pattern recommendation and documented tradeoffs.</p></details>
-          <div class="guide-resources"><p><strong>Documentation-led guide</strong><br>No dedicated integration-pattern selector is verified in the imported catalog. Compare system boundaries and data-access options before implementation.</p><a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-virtual-entities" target="_blank" rel="noopener">Microsoft Learn: Virtual tables</a></div>
+          <div class="guide-resources"><p><strong>Microsoft architecture guidance</strong><br>Compare system boundaries, latency, volume, data-access options, ownership, and failure handling before selecting an integration pattern.</p><a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-virtual-entities" target="_blank" rel="noopener">Microsoft Learn: Virtual tables</a></div>
           <div class="skill-actions"><a class="btn" href="https://learn.microsoft.com/power-platform/architecture/" target="_blank" rel="noopener">Explore integration architecture <span aria-hidden="true">&nearr;</span></a></div>
         </article>
         <article class="skill-card" data-category="governance" data-outcomes="new govern review" style="--accent:var(--amber)">
@@ -190,7 +190,7 @@
         <article class="skill-card" data-category="architecture" data-outcomes="review govern modernize" style="--accent:var(--brand-2)">
           <div class="skill-accent"></div><div class="skill-main"><div class="skill-meta"><span class="skill-kind">Assurance</span><span class="skill-time">5-15 min</span></div><h3>Well-Architected Design Check</h3><p>Challenge a proposed solution across reliability, security, operations, performance, and experience.</p><div class="tags"><span class="tag">Risk report</span><span class="tag">WAF</span><span class="tag">Review</span></div></div>
           <details open><summary>Inputs and intended output</summary><p>Bring the proposed design and known constraints. Aim for findings, risk priorities, and next actions.</p></details>
-          <div class="guide-resources"><p><strong>Assessment-led guide</strong><br>No published skill with this guide's name is verified in the imported catalog. Use the Power Platform Well-Architected assessment to structure the review; it is not automatic approval.</p><a href="https://learn.microsoft.com/power-platform/well-architected/" target="_blank" rel="noopener">Microsoft Learn: Well-Architected guidance</a></div>
+          <div class="guide-resources"><p><strong>Well-Architected assessment</strong><br>Review the proposed design across reliability, security, operational excellence, performance efficiency, and experience optimization. Use the findings to prioritize next actions; the assessment supports structured review rather than automatic approval.</p><a href="https://learn.microsoft.com/power-platform/well-architected/" target="_blank" rel="noopener">Microsoft Learn: Well-Architected guidance</a></div>
           <div class="skill-actions"><a class="btn" href="https://aka.ms/powa" target="_blank" rel="noopener">Open Well-Architected assessment <span aria-hidden="true">&nearr;</span></a></div>
         </article>
       </div>

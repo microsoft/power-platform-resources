@@ -12,6 +12,14 @@
 .search-page section{padding:20px 0}
 .resource-band .resource-catalog{padding-top:28px;padding-bottom:28px}
 .search-page .scenario-entry{padding:36px 0 24px}
+.scenario-entry>.wrap{display:flex;flex-direction:column}
+.scenario-entry>.wrap>.search-eyebrow,.scenario-entry #startHeading{order:0}
+.scenario-entry #searchSection{order:1}
+.scenario-entry #searchResults{order:2}
+.scenario-entry #guidance{order:3}
+.scenario-entry #goalChoices{order:4}
+.scenario-entry #journeyStep{order:5}
+.scenario-entry>.wrap>noscript{order:6}
 .scenario-entry #startHeading{font-size:44px;max-width:1000px;margin-bottom:28px}
 .scenario-entry>.wrap>.search-eyebrow{color:var(--design);text-transform:uppercase;font-weight:800}
 .search-page h2{font-size:24px;line-height:1.25;letter-spacing:0;margin:0 0 12px}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSP - About</title>
+<title>Self-Service Portal - About</title>
 <script>
   (() => {
     const param = new URLSearchParams(window.location.search).get("scoutTheme");
@@ -92,6 +92,8 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 .hero-metric:first-child{padding-left:0;border-left:0}
 .hero-metric strong{display:block;font-size:48px;line-height:1;font-weight:800;color:var(--brand);letter-spacing:0}
 .hero-metric span{display:block;margin-top:9px;color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.hero-stats-slide h1{font-size:48px;margin-bottom:10px}
+.hero-stats-slide .hero-metrics{margin-top:12px}
 html[data-theme="dark"] .eyebrow{color:var(--brand);background:rgba(217,143,224,.12);border-color:rgba(217,143,224,.28)}
 .mini-pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .mini{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:14px;transition:transform .15s,background .15s}
@@ -195,13 +197,13 @@ footer .powercat-logo img{height:30px}
 @media(max-width:1080px){.rgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1080px){.topbar .row{position:relative}.menu-toggle{display:grid}.desktop-feedback{display:none}nav.main{display:none;position:absolute;top:60px;left:24px;right:24px;margin:0;padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:0 0 10px 10px;box-shadow:var(--shadow);flex-direction:column;gap:2px}nav.main.is-open{display:flex}nav.main a{width:100%}nav.main .nav-feedback{display:block;width:100%;margin-top:6px;text-align:left;color:#fff}}
 @media(max-width:960px){.hero h1{font-size:52px}.pillars{display:flex;flex-direction:column;height:auto;gap:14px}.pillar,.pillar.open{flex:none}.pillar .pillar-mini{display:none}.pillar .pillar-body,.pillar:not(.open) .pillar-body{display:flex;flex-direction:column;align-items:flex-start;gap:16px;min-width:0;padding:24px}.pb-lead,.pb-actions{flex:none;width:100%}.rgrid{grid-template-columns:repeat(2,1fr)}.feat-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.assist{grid-template-columns:1fr}}
-@media(max-width:560px){section{padding:28px 0}.hero .inner{padding:16px 24px 20px}.hero h1{font-size:40px}.hero p.sub{font-size:16px}.hero-metrics{grid-template-columns:1fr 1fr;row-gap:16px}.hero-metric{padding:0 14px}.hero-metric:nth-child(odd){padding-left:0;border-left:0}.hero-metric strong{font-size:40px}.rgrid{grid-template-columns:1fr}}
+@media(max-width:560px){section{padding:28px 0}.hero .inner{padding:16px 24px 20px}.hero h1{font-size:40px}.hero p.sub{font-size:16px}.hero-metrics{grid-template-columns:1fr 1fr;row-gap:16px}.hero-metric{padding:0 14px}.hero-metric:nth-child(odd){padding-left:0;border-left:0}.hero-metric strong{font-size:40px}.hero-stats-slide h1{font-size:34px}.hero-stats-slide .hero-metrics{margin-top:8px;row-gap:8px}.hero-stats-slide .hero-metric strong{font-size:34px}.hero-stats-slide .hero-metric span{margin-top:4px;font-size:11px}.rgrid{grid-template-columns:1fr}}
 @media(max-width:560px){.topbar .row{gap:8px}.logo{gap:6px;font-size:11px;line-height:1.15}.logo>span:nth-child(2){max-width:68px}.logo .mark{min-width:30px;height:24px;padding:0 5px;font-size:11px}.cat-divider{height:22px;margin:0 1px}header .powercat-logo img{height:24px}.icon-btn{width:32px;height:32px;flex:none}.btn.sm{padding:6px 9px;font-size:11px;white-space:nowrap}}
 @media(max-width:360px){.topbar .row{gap:6px}.logo{gap:4px;font-size:10px}.logo>span:nth-child(2){max-width:54px}.logo .mark{min-width:26px;height:22px;padding:0 4px;font-size:10px}.cat-divider{height:20px;margin:0}header .powercat-logo img{height:20px}.icon-btn{width:30px;height:30px}.btn.sm{padding:5px 7px;font-size:10px}.stats{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.hero-slide,.pillar,.pillar-launch{transition:none}.pillar-launch:hover{transform:none}}
 </style>
-<script src="assets/js/ssp-search-entry.js?v=20260926-handoff-polish" defer></script>
-<link rel="stylesheet" href="assets/css/header-brand.css?v=20260926-right-nav">
+<script src="assets/js/ssp-search-entry.js?v=20261001-search-focus" defer></script>
+<link rel="stylesheet" href="assets/css/header-brand.css?v=20261001-search-icon">
 <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 </head>
 <body>
@@ -218,12 +220,12 @@ footer .powercat-logo img{height:30px}
       <a href="ssp-review.html">Review</a>
       <a href="https://microsoft.github.io/apps-agents-workshop/labs/" target="ssp-learn" rel="noopener">Learn</a>
 
-      <a class="btn sm nav-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=SSP%20feedback%3A%20&amp;body=%23%23%20Page%0A%0A%23%23%20Feedback%0A%0A%23%23%20Suggested%20change%0A" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">↗</span></a>
+      <a class="btn sm nav-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=Self-Service Portal%20feedback%3A%20&amp;body=%23%23%20Page%0A%0A%23%23%20Feedback%0A%0A%23%23%20Suggested%20change%0A" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">↗</span></a>
     </nav>
     <div class="spacer"></div>
     <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false" onclick="toggleSiteMenu()">☰</button>
     <button class="icon-btn" onclick="toggleTheme()" aria-label="Switch to dark theme" title="Switch to dark theme" id="themeBtn">&#9790;</button>
-    <a class="btn sm desktop-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=SSP%20feedback%3A%20&amp;body=%23%23%20Page%0A%0A%23%23%20Feedback%0A%0A%23%23%20Suggested%20change%0A" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">↗</span></a>
+    <a class="btn sm desktop-feedback header-feedback" href="https://github.com/microsoft/power-platform-resources/issues/new?title=Self-Service Portal%20feedback%3A%20&amp;body=%23%23%20Page%0A%0A%23%23%20Feedback%0A%0A%23%23%20Suggested%20change%0A" target="_blank" rel="noopener">Send feedback <span aria-hidden="true">↗</span></a>
     <picture class="powercat-logo header-powercat" title="Power CAT">
       <img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="46">
       <img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="46">
@@ -238,7 +240,7 @@ footer .powercat-logo img{height:30px}
     <div class="hero-viewport">
       <article class="hero-slide is-active" aria-hidden="false">
         <h1>The guided front door for Power Platform</h1>
-        <p class="sub">SSP organizes Power CAT skills, Power Series labs, and curated resources by Design, Build, Review, and Learn. Start with concise guidance for basic concerns, then continue to authoritative, maintained destinations for full details.</p>
+        <p class="sub">Self-Service Portal organizes Power CAT skills, Power Series labs, and curated resources by Design, Build, Review, and Learn. Start with concise guidance for basic concerns, then continue to authoritative, maintained destinations for full details.</p>
         <div class="cta">
           <button class="btn" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">Explore the pillars</button>
           <a class="btn ghost" href="ssp-search.html">Resources</a>
@@ -262,7 +264,7 @@ footer .powercat-logo img{height:30px}
           <a class="btn ghost" href="https://microsoft.github.io/apps-agents-workshop/labs/" target="ssp-learn" rel="noopener">Explore Power Series</a>
         </div>
       </article>
-      <article class="hero-slide" aria-hidden="true">
+      <article class="hero-slide hero-stats-slide" aria-hidden="true">
         <span class="eyebrow">The catalog at a glance</span>
         <h1>Everything you need to keep moving forward</h1>
 <!-- BEGIN GENERATED ABOUT METRICS -->
@@ -297,7 +299,7 @@ footer .powercat-logo img{height:30px}
     <div class="sec-head">
       <div class="kicker">The Self-Service Portal</div>
       <h2>Four pillars, one journey</h2>
-      <p>SSP is the synchronized, guided front door across Design, Build, Review, Learn, and curated Resources. It helps you choose a starting point, then hands you to the authoritative destination for complete, maintained guidance.</p>
+      <p>Self-Service Portal is the synchronized, guided front door across Design, Build, Review, Learn, and curated Resources. It helps you choose a starting point, then hands you to the authoritative destination for complete, maintained guidance.</p>
     </div>
     <div class="pillars">
       <div class="pillar p-design open">
@@ -465,7 +467,6 @@ footer .powercat-logo img{height:30px}
         </div>
       </a>
     </div>
-    <div class="catalog-action"><a class="btn ghost" href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/" target="_blank" rel="noopener">Open the Power CAT marketplace (16 skills, 4 migration tracks) <span aria-hidden="true">↗</span></a></div>
   </div>
 <!-- END GENERATED ABOUT FEATURED -->
 </section>

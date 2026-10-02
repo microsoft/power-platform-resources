@@ -7,6 +7,16 @@
     if (location.pathname.endsWith('/ssp-search.html')) link.setAttribute('aria-current', 'page');
     nav.append(link);
   }
+  const themeToggle = document.getElementById('themeBtn');
+  if (themeToggle && !document.querySelector('.header-search')) {
+    const searchLink = document.createElement('a');
+    searchLink.href = 'ssp-search.html?focus=search';
+    searchLink.className = 'icon-btn header-search';
+    searchLink.setAttribute('aria-label', 'Search the Self-Service Portal');
+    searchLink.title = 'Search';
+    searchLink.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
+    themeToggle.parentElement.insertBefore(searchLink, themeToggle);
+  }
   const learnLink = nav?.querySelector('a[href="https://microsoft.github.io/apps-agents-workshop/labs/"]');
   if (learnLink) {
     learnLink.target = '_blank';

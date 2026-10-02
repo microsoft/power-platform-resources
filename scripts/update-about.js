@@ -257,7 +257,7 @@ function renderLatest(items, heading, id) {
   ].join('\n');
 }
 
-function renderFeatured(config, items, marketplace) {
+function renderFeatured(config, items) {
   const cards = items.map((item, index) => {
     const configured = config.items[index];
     const external = /^https:\/\//.test(item.href);
@@ -283,7 +283,6 @@ function renderFeatured(config, items, marketplace) {
     '    <div class="feat-grid">',
     cards,
     '    </div>',
-    `    <div class="catalog-action"><a class="btn ghost" href="${powerCatMarketplaceUrl}" target="_blank" rel="noopener">Open the Power CAT marketplace (${marketplace.skills.length} skills, ${marketplace.migrationTracks.length} migration tracks) <span aria-hidden="true">↗</span></a></div>`,
     '  </div>'
   ].join('\n');
 }
@@ -321,7 +320,7 @@ async function generate() {
   expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT LEARN LAB COUNT', renderLearnLabCount(labs));
   expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT LEARN META', renderLearnMeta(stats, labs));
   expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT RESOURCE STATS', renderResourceStats(stats, labs));
-  expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT FEATURED', renderFeatured(featured, items, marketplace));
+  expectedAbout = replaceGeneratedBlock(expectedAbout, 'ABOUT FEATURED', renderFeatured(featured, items));
   return { about, resources, expectedAbout, expectedResources, stats, skills, labs, marketplace };
 }
 
