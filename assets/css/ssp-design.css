@@ -90,9 +90,7 @@ html[data-theme="dark"] .powercat-logo .logo-on-dark { display: block; }
 .hero-inner { position: relative; padding: 20px 24px 28px; display: flex; flex-direction: column; justify-content: flex-start; }
 .breadcrumb { display: flex; gap: 8px; margin-bottom: 16px; color: var(--muted); font-size: 13px; font-weight: 600; }
 .breadcrumb a { color: var(--design); }
-.pillar-label { display: inline-flex; align-items: center; gap: 9px; width: max-content; margin-bottom: 16px; color: var(--design); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; }
-.pillar-label::before { content: ""; width: 28px; height: 3px; background: var(--design); }
-.pillar-review .pillar-label::before { display: none; }
+.pillar-label { display: inline-block; width: max-content; margin-bottom: 16px; color: var(--design); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; }
 .design-hero h1 { max-width: 860px; margin: 0; font-size: 64px; line-height: 1.03; letter-spacing: 0; font-weight: 800; }
 .lead { max-width: 720px; margin: 16px 0 20px; color: var(--muted); font-size: 19px; }
 .hero-actions { display: flex; justify-content: flex-start; gap: 12px; flex-wrap: wrap; }
