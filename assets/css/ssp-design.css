@@ -96,10 +96,10 @@ html[data-theme="dark"] .powercat-logo .logo-on-dark { display: block; }
 .design-hero h1 { max-width: 860px; margin: 0; font-size: 64px; line-height: 1.03; letter-spacing: 0; font-weight: 800; }
 .lead { max-width: 720px; margin: 16px 0 20px; color: var(--muted); font-size: 19px; }
 .hero-actions { display: flex; justify-content: flex-start; gap: 12px; flex-wrap: wrap; }
-.hero-proof { display: flex; margin-top: 24px; max-width: 760px; }
-.proof { min-width: 150px; padding: 0 26px; border-left: 1px solid var(--border); }
+.hero-proof { display: flex; flex-wrap: wrap; align-items: center; margin-top: 24px; max-width: 760px; }
+.proof { display: inline-flex; align-items: baseline; gap: 7px; padding: 0 18px; border-left: 1px solid var(--border); }
 .proof:first-child { padding-left: 0; border-left: 0; }
-.proof strong { display: block; font-size: 26px; color: var(--design); }
+.proof strong { font-size: 22px; color: var(--design); }
 .proof span { font-size: 12px; color: var(--soft); text-transform: uppercase; font-weight: 700; letter-spacing: .5px; }
 
 /* Advisor */
@@ -358,8 +358,7 @@ footer .row { display: flex; justify-content: space-between; gap: 14px; flex-wra
 @media (max-width: 760px) {
   .design-hero h1 { font-size: 48px; }
   .hero-inner { padding-top: 20px; }
-  .hero-proof { display: grid; grid-template-columns: 1fr 1fr; row-gap: 16px; }
-  .proof:nth-child(3) { padding-left: 0; border-left: 0; }
+  .hero-proof { gap: 12px 0; }
   section { padding: 28px 0; }
   .section-head { align-items: start; flex-direction: column; }
   .section-head h2 { font-size: 31px; }
@@ -390,8 +389,8 @@ footer .row { display: flex; justify-content: space-between; gap: 14px; flex-wra
   .design-hero h1 { font-size: 40px; }
   .lead { font-size: 16px; }
   .hero-proof { margin-top: 20px; }
-  .proof { min-width: 0; padding: 0 14px; }
-  .proof strong { font-size: 22px; }
+  .proof { padding: 0 10px; }
+  .proof strong { font-size: 20px; }
   .advisor-main { padding: 20px; }
   .advisor-main h3 { font-size: 25px; }
   .advisor-prompts { grid-template-columns: 1fr; }

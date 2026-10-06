@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Replaced the low-resolution light-theme Power CAT logo with a high-resolution rendering.
 - Restructured the Resources guided journey so users choose a scenario, receive one clearly prioritized next action, and reveal prerequisites, outcomes, destinations, and related resources only when needed.
 - Removed the redundant Design hero actions for Design guides, architecture guidance, and the advisor skills catalog.
+- Displayed Design highlight numbers and labels as compact inline pairs separated by dividers.
 
 ## 2026-10-05
 
