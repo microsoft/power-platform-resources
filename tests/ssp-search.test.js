@@ -571,6 +571,28 @@ test('Build and Review catalogs use category-only panels with matching counts an
   }
 });
 
+test('Build and Review hero actions and highlights show only useful choices and values', () => {
+  const build = readFileSync(join(__dirname, '../ssp-build.html'), 'utf8');
+  const review = readFileSync(join(__dirname, '../ssp-review.html'), 'utf8');
+  const entryScript = readFileSync(join(__dirname, '../assets/js/ssp-search-entry.js'), 'utf8');
+  const buildActions = build.match(/<div class="hero-actions">([\s\S]*?)<\/div>/)[1];
+
+  assert.equal((buildActions.match(/class="btn"/g) || []).length, 2);
+  assert.doesNotMatch(buildActions, /class="btn ghost"/);
+  assert.doesNotMatch(entryScript, /Browse all advisor skills/);
+  assert.doesNotMatch(build + review, /Browse all advisor skills/);
+  assert.doesNotMatch(review, /PII permitted/);
+});
+
+test('Every portal footer shows the publication month semantically', () => {
+  for (const page of sspPages) {
+    const html = readFileSync(join(__dirname, '..', page), 'utf8');
+    const footer = html.match(/<footer[\s\S]*?<\/footer>/)?.[0];
+    assert.ok(footer, `${page} footer`);
+    assert.match(footer, /Last published: <time datetime="2026-10">Oct, 2026<\/time>/, page);
+  }
+});
+
 test('Design guides route skills by owner after providing local context', () => {
   const html = readFileSync(join(__dirname, '../ssp-design.html'), 'utf8');
   const searchScript = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
@@ -1009,7 +1031,7 @@ test('External previews use listing summaries and skip internal, non-web, and do
   assert.match(script, /skill\?\.route === 'Power Platform Skills Advisor' \? skillsAdvisorUrl : resource\.url\.href/);
   assert.match(script, /plainText\(link\.dataset\.previewSummary/);
   for (const page of ['search', 'design', 'build', 'review', 'landing', 'design-guide', 'build-guide']) {
-    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20261006-link-routing/);
+    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20261006-footer-actions/);
   }
 });
 
