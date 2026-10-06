@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Corrected featured-card and resource-group heading levels so the About and Resources pages follow a sequential semantic hierarchy.
 - Removed the redundant advisor-skills hero action from Build and Review, aligned the two remaining Build actions to the same color treatment, omitted the zero-value PII highlight, and added the October 2026 publication month to every portal footer.
 - Removed the previous and next arrow buttons from the About carousel while retaining direct dot navigation and Pause/Play controls.
+- Updated site ownership references to Power CAT and documented the public portal address as `https://aka.ms/PowerCATSSP`.
 
 ## 2026-10-05
 

@@ -2,9 +2,9 @@
 
 A guided front door for Power Platform customers and delivery teams, including makers, admins, developers, and solution architects. The portal helps people choose a next action across Design, Build, Review, Learn, troubleshooting, and scale before handing them to authoritative Microsoft, Power CAT, or Power Series destinations.
 
-The site is maintained by [Robert Standefer](https://linkedin.com/in/rstandefer) and is available at:
+The site is maintained by Power CAT and is available at:
 
-**https://animated-barnacle-pz75q9k.pages.github.io/**
+**[https://aka.ms/PowerCATSSP](https://aka.ms/PowerCATSSP)**
 
 ## What the site provides
 
