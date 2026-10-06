@@ -288,9 +288,8 @@ test('Root defaults to About while legacy resource bookmarks preserve their dest
 test('About carousel provides persistent Pause and Play and suspends for focus, hover, visibility, and reduced motion', () => {
   const html = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
   assert.match(html, /id="heroPause"[\s\S]*?aria-label="Pause featured messages"[\s\S]*?aria-pressed="false"/);
-  assert.match(html, /id="heroPrev"[\s\S]*?<svg[\s\S]*?<\/svg><\/button>/);
-  assert.match(html, /id="heroNext"[\s\S]*?<svg[\s\S]*?<\/svg><\/button>/);
-  assert.match(html, /\.hero-control:focus-visible,\.hero-pause:focus-visible,\.hero-dot:focus-visible/);
+  assert.doesNotMatch(html, /id="hero(?:Prev|Next)"/);
+  assert.match(html, /\.hero-pause:focus-visible,\.hero-dot:focus-visible/);
   assert.match(html, /\.hero-dot\{[^}]*width:24px;height:24px/);
   const script = html.slice(html.indexOf('const heroSlides='), html.indexOf('// Horizontal accordion'));
   function control() {
@@ -305,7 +304,7 @@ test('About carousel provides persistent Pause and Play and suspends for focus, 
     };
   }
   for (const reduced of [false, true]) {
-    const controls = Object.fromEntries(['heroNext', 'heroPrev', 'heroPause'].map(id => [id, control()]));
+    const controls = { heroPause: control() };
     const hero = control();
     const actions = Array.from({ length: 4 }, control);
     const slides = actions.map(action => ({ ...control(), querySelector: () => action }));
@@ -341,12 +340,12 @@ test('About carousel provides persistent Pause and Play and suspends for focus, 
       assert.equal(timers.size, 1);
       assert.equal(controls.heroPause.textContent, 'Pause');
     }
-    controls.heroNext.listeners.click();
+    dots[1].listeners.click();
     assert.equal(slides[1].attributes['aria-hidden'], 'false');
     assert.equal(timers.size, reduced ? 0 : 1);
     hero.listeners.focusin();
     assert.equal(timers.size, 0);
-    hero.listeners.focusout({ relatedTarget: controls.heroNext });
+    hero.listeners.focusout({ relatedTarget: controls.heroPause });
     assert.equal(timers.size, 0);
     hero.listeners.focusout({ relatedTarget: null });
     assert.equal(timers.size, reduced ? 0 : 1);

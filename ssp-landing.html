@@ -81,13 +81,10 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 .hero-action-options .cta.is-active{visibility:visible;pointer-events:auto}
 .hero .btn.ghost{background:var(--surface);border:1px solid var(--border);color:var(--text)}
 .hero-controls{display:flex;align-items:center;gap:8px;flex:none}
-.hero-control{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--text);cursor:pointer;display:grid;place-items:center;font:700 20px/1 var(--font)}
-.hero-control svg{display:block;width:18px;height:18px}
-.hero-control:hover{border-color:var(--brand);color:var(--brand)}
 .hero-pause{min-height:36px;padding:0 12px;border:1px solid var(--border);border-radius:18px;background:var(--surface);color:var(--text);cursor:pointer;font:700 12px var(--font)}
 .hero-pause:hover{border-color:var(--brand);color:var(--brand)}
 .hero-pause:disabled{cursor:not-allowed;color:var(--muted)}
-.hero-control:focus-visible,.hero-pause:focus-visible,.hero-dot:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.hero-pause:focus-visible,.hero-dot:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
 .hero-dots{display:flex;align-items:center;gap:6px;margin:0 4px}
 .hero-dot{display:grid;place-items:center;width:24px;height:24px;padding:0;border:0;background:transparent;cursor:pointer}
 .hero-dot::before{content:"";display:block;width:24px;height:4px;border-radius:2px;background:var(--border);transition:background .2s ease}
@@ -285,14 +282,12 @@ footer .powercat-logo img{height:30px}
     <div class="hero-toolbar">
       <div class="hero-action-options"></div>
       <div class="hero-controls" aria-label="Featured messages">
-      <button class="hero-control" id="heroPrev" type="button" aria-label="Previous message" title="Previous message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
       <div class="hero-dots">
         <button class="hero-dot is-active" type="button" aria-label="Show message 1" aria-current="true"></button>
         <button class="hero-dot" type="button" aria-label="Show message 2"></button>
         <button class="hero-dot" type="button" aria-label="Show message 3"></button>
         <button class="hero-dot" type="button" aria-label="Show message 4"></button>
       </div>
-      <button class="hero-control" id="heroNext" type="button" aria-label="Next message" title="Next message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
       <button class="hero-pause" id="heroPause" type="button" aria-label="Pause featured messages" aria-pressed="false">Pause</button>
       </div>
     </div>
@@ -581,8 +576,6 @@ heroPause.addEventListener('click',()=>{
   startHeroRotation();
 });
 reducedMotion.addEventListener('change',()=>{syncHeroPause();startHeroRotation();});
-document.getElementById('heroPrev').addEventListener('click',()=>{showHeroSlide(heroIndex-1);startHeroRotation();});
-document.getElementById('heroNext').addEventListener('click',()=>{showHeroSlide(heroIndex+1);startHeroRotation();});
 heroDots.forEach((dot,index)=>dot.addEventListener('click',()=>{showHeroSlide(index);startHeroRotation();}));
 document.addEventListener('visibilitychange',startHeroRotation);
 showHeroSlide(0);
