@@ -4,6 +4,17 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-10-05
+
+### Changed
+
+- Simplified supporting skill and migration cards by removing dash separators from titles and descriptions.
+- Removed the catalog inventory summary beneath the advanced search controls.
+- Compacted the advanced search controls by aligning filters and the skills catalog action on one desktop row.
+- Standardized Review release-eval cards with visible, separately labeled sanitized inputs and expected outputs.
+- Removed the decorative dash from the Review pillar label.
+- Moved Review catalog guidance beneath its heading and removed the redundant within-area search and result count while retaining focus-area filtering.
+
 ## 2026-10-01
 
 ### Changed

@@ -14,10 +14,10 @@
   </script>
 	<link rel="stylesheet" href="assets/css/ssp-design.css?v=20260928-action-spacing">
 	<link rel="stylesheet" href="assets/css/header-brand.css?v=20261001-search-icon">
-	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20261001-search-first">
+	<link rel="stylesheet" href="assets/css/ssp-search.css?v=20261005-compact-search">
 	<script src="assets/js/ssp-search-engine.js?v=20260928-specific-review-links" defer></script>
 	  <script src="assets/js/ssp-search-entry.js?v=20261001-search-focus" defer></script>
-		<script src="assets/js/ssp-search.js?v=20261001-actionable-guidance" defer></script>
+		<script src="assets/js/ssp-search.js?v=20261005-compact-search" defer></script>
 </head>
 <body class="search-page">
   <header class="topbar">
@@ -58,12 +58,13 @@
 				<button id="retryIndex" class="btn ghost" type="button" hidden>Retry search</button>
 				<details id="advancedSearch" class="advanced-search">
 					<summary>Advanced search and skills catalog</summary>
-					<button id="browseSkills" class="btn ghost" type="button">Browse all skills and migration tracks</button>
-					<div class="search-filters">
-						<label>Content type<select id="typeFilter"><option value="">All content</option><option>Skill</option><option>Migration track</option><option>MCP capability</option><option>Reference</option><option value="Guide">Self-Service Portal guide</option><option>Resource</option><option>Learning</option><option>Page</option></select></label>
-						<label>Product<select id="productFilter"><option value="">Any product</option><option value="power apps">Power Apps</option><option value="canvas">Canvas apps</option><option value="model driven">Model-driven apps</option><option value="automate">Power Automate</option><option value="dataverse">Dataverse</option><option value="pages">Power Pages</option><option value="copilot">Copilot Studio</option><option value="power bi">Power BI</option></select></label>
+					<div class="advanced-search-controls">
+						<div class="search-filters">
+							<label>Content type<select id="typeFilter"><option value="">All content</option><option>Skill</option><option>Migration track</option><option>MCP capability</option><option>Reference</option><option value="Guide">Self-Service Portal guide</option><option>Resource</option><option>Learning</option><option>Page</option></select></label>
+							<label>Product<select id="productFilter"><option value="">Any product</option><option value="power apps">Power Apps</option><option value="canvas">Canvas apps</option><option value="model driven">Model-driven apps</option><option value="automate">Power Automate</option><option value="dataverse">Dataverse</option><option value="pages">Power Pages</option><option value="copilot">Copilot Studio</option><option value="power bi">Power BI</option></select></label>
+						</div>
+						<button id="browseSkills" class="btn ghost" type="button">Browse all skills and migration tracks</button>
 					</div>
-					<div id="indexStatus" class="index-status">Loading site content...</div>
 				</details>
       </section>
       <section id="searchResults" class="search-results" aria-labelledby="resultsHeading" hidden>

@@ -182,7 +182,6 @@
   }
   async function loadIndex() {
     ready = false;
-    byId('indexStatus').textContent = 'Loading site content...';
     byId('retryIndex').hidden = true;
     const results = await Promise.all(sources.map(async source => {
       try {
@@ -319,11 +318,6 @@
     entries = [...unique.values()];
     const failed = results.filter(result => result.failed).map(result => result.failed);
     ready = true;
-    const siteFailures = results.slice(0, sources.length).filter(result => result.failed).length;
-    const counts = catalog ? ['skill', 'mcp-capability', 'reference'].map(tier => catalog.skills.filter(item => item.marketplace !== 'Power CAT Skills' && item.tier === tier).length) : [];
-    byId('indexStatus').textContent = entries.length ? `${entries.length} searchable entries across ${sources.length - siteFailures} portal pages${catalog ? `, including ${counts[0]} skills, ${counts[1]} MCP capabilities, and ${counts[2]} references from Skills Advisor` : ''}.${failed.length ? ' Some sources could not be refreshed; available results remain searchable.' : ''}` : 'Search could not load right now. Choose a goal or browse the resource catalog below.';
-    if (workshop) byId('indexStatus').textContent += ` Power Series: ${workshop.labs.length} labs.`;
-    if (powerCat) byId('indexStatus').textContent += ` Power CAT Skills Marketplace: ${powerCat.skills.length} skills and ${powerCat.migrationTracks.length} migration tracks.`;
     byId('retryIndex').hidden = !failed.length;
     byId('searchNotice').hidden = !failed.length;
     byId('searchNotice').textContent = entries.length ? 'Search is using the content currently available. You can also choose a goal or browse the resource catalog below.' : 'Search could not load right now. Choose a goal or browse the resource catalog below.';

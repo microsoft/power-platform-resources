@@ -92,6 +92,7 @@ html[data-theme="dark"] .powercat-logo .logo-on-dark { display: block; }
 .breadcrumb a { color: var(--design); }
 .pillar-label { display: inline-flex; align-items: center; gap: 9px; width: max-content; margin-bottom: 16px; color: var(--design); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; }
 .pillar-label::before { content: ""; width: 28px; height: 3px; background: var(--design); }
+.pillar-review .pillar-label::before { display: none; }
 .design-hero h1 { max-width: 860px; margin: 0; font-size: 64px; line-height: 1.03; letter-spacing: 0; font-weight: 800; }
 .lead { max-width: 720px; margin: 16px 0 20px; color: var(--muted); font-size: 19px; }
 .hero-actions { display: flex; justify-content: flex-start; gap: 12px; flex-wrap: wrap; }
@@ -107,6 +108,8 @@ section { padding: 36px 0; }
 .kicker { color: var(--design); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
 .section-head h2 { margin: 6px 0 0; font-size: 36px; line-height: 1.15; letter-spacing: 0; }
 .section-head p { max-width: 490px; margin: 0; color: var(--muted); }
+.pillar-review .section-head { align-items: flex-start; margin-bottom: 0; }
+.pillar-review .section-head p { max-width: 75ch; margin-top: 10px; }
 .pillar-design :is(section[aria-labelledby="outcomes-heading"], #design-advisor, #skills) .section-head { flex-direction: column; align-items: flex-start; gap: 10px; }
 .pillar-design :is(section[aria-labelledby="outcomes-heading"], #design-advisor, #skills) .section-head p { max-width: 75ch; }
 .advisor-shell { display: grid; grid-template-columns: 260px 1fr; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }

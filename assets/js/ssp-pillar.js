@@ -33,7 +33,7 @@
   }
 
   function applyFilters() {
-    const query = skillSearch.value.trim().toLowerCase();
+    const query = skillSearch?.value.trim().toLowerCase() || "";
     let visibleCount = 0;
     skillCards.forEach(card => {
       const matchesQuery = !query || SSPSearch.rank([{ title: card.querySelector('h3').textContent, text: card.textContent }], query).length > 0;
@@ -50,14 +50,16 @@
       const heading = document.createElement("h3");
       heading.textContent = `No matching ${itemLabelPlural.toLowerCase()}`;
       const message = document.createElement("p");
-      message.textContent = "Try another term, clear the search, or choose another focus area.";
+      message.textContent = skillSearch
+        ? "Try another term, clear the search, or choose another focus area."
+        : "Choose another focus area.";
       empty.append(heading, message);
       document.getElementById("skillGrid").appendChild(empty);
     } else if (visibleCount && empty) {
       empty.remove();
     }
 
-    resultCount.textContent = `${visibleCount} ${visibleCount === 1 ? itemLabel : itemLabelPlural}`;
+    if (resultCount) resultCount.textContent = `${visibleCount} ${visibleCount === 1 ? itemLabel : itemLabelPlural}`;
     const selectedFilter = filterButtons.find(button => button.dataset.category === activeCategory);
     filterButtons.forEach(button => button.setAttribute("aria-pressed", String(button === selectedFilter)));
     document.getElementById("guide-panel-heading").textContent = selectedFilter.querySelector(".guide-label").textContent + " guides";
@@ -68,7 +70,7 @@
     const card = skillCards.find(item => "#" + item.id === location.hash);
     if (!card) return;
     activeCategory = card.dataset.category;
-    skillSearch.value = "";
+    if (skillSearch) skillSearch.value = "";
     applyFilters();
     card.scrollIntoView({ block: "start" });
   }
@@ -76,7 +78,7 @@
   themeButton.addEventListener("click", toggleTheme);
   menuButton.addEventListener("click", () => setMenu(menuButton.getAttribute("aria-expanded") !== "true"));
   document.addEventListener("keydown", event => { if (event.key === "Escape") setMenu(false); });
-  skillSearch.addEventListener("input", applyFilters);
+  skillSearch?.addEventListener("input", applyFilters);
   filterButtons.forEach(button => button.addEventListener("click", () => {
     activeCategory = button.dataset.category;
     applyFilters();
