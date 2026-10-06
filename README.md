@@ -1,20 +1,35 @@
-# Microsoft Power Platform Resources
+# Power Platform Self-Service Portal
 
-A curated collection of learning, adoption, architecture, governance, development, AI, and community resources for Microsoft Power Platform.
+A guided front door for Power Platform customers and delivery teams, including makers, admins, developers, and solution architects. The portal helps people choose a next action across Design, Build, Review, Learn, troubleshooting, and scale before handing them to authoritative Microsoft, Power CAT, or Power Series destinations.
 
 The site is maintained by [Robert Standefer](https://linkedin.com/in/rstandefer) and is available at:
 
-**https://microsoft.github.io/power-platform-resources/**
+**https://animated-barnacle-pz75q9k.pages.github.io/**
 
 ## What the site provides
 
-- Search across resource categories.
-- Scenario-based Search & Guidance across SSP skills, resources, and learning destinations.
-- Journey-based navigation for new and experienced Power Platform users.
+- An About page that explains the portal and its Design, Build, Review, Learn, and Resources structure.
+- Guided, outcome-first journeys for learning, building, troubleshooting, reviewing, and scaling Power Platform solutions.
+- One recommended next action after a user chooses a goal and scenario.
+- Progressive disclosure for prerequisites, expected outcomes, destinations, and related resources.
+- Search across portal guides, resource categories, skills, migration tracks, and learning destinations.
 - Curated links for Power Apps, Power Automate, Power Pages, Copilot Studio, Dataverse, Power BI, and related technologies.
 - Guidance for adoption, architecture, administration, governance, development, and application lifecycle management.
 - Light and dark color themes.
-- Responsive, keyboard-accessible expandable resource sections.
+- Responsive and keyboard-accessible navigation, dialogs, guided choices, and resource sections.
+
+## Portal structure
+
+| Area | Purpose |
+|------|---------|
+| [About](ssp-landing.html) | Introduces the audience, portal model, featured guidance, and Design, Build, Review, and Learn pillars. |
+| [Design](ssp-design.html) | Supports architecture, data, experience, governance, security, ALM, and Well-Architected decisions. |
+| [Build](ssp-build.html) | Connects users to outcome-oriented implementation guidance, coached journeys, skills, and labs. |
+| [Review](ssp-review.html) | Routes users to Well-Architected and specialist review guidance with clear inputs and outcomes. |
+| [Learn](https://microsoft.github.io/apps-agents-workshop/labs/) | Opens the maintained Power Series hands-on lab catalog. |
+| [Resources](ssp-search.html) | Provides guided goal/scenario recommendations, site-wide search, advanced catalog search, and the complete curated resource library. |
+
+The portal is a routing and decision-support experience. It does not execute skills, submit solutions for review, replace product support, or make final architecture, security, licensing, or production-readiness decisions.
 
 ## Run locally
 
@@ -28,13 +43,13 @@ python -m http.server 8000
 
 Then open [http://localhost:8000/](http://localhost:8000/).
 
-The root entry redirects to [About SSP](ssp-landing.html). [Start here](ssp-search.html) combines scenario search with the complete [resource catalog](ssp-search.html#resources) below it. The separate Resources page has been removed.
+The root entry redirects to [About](ssp-landing.html). [Resources](ssp-search.html) combines guided recommendations, search, and the complete [resource catalog](ssp-search.html#resources). Use the local server because search loads committed portal pages and catalog snapshots over HTTP.
 
 Opening `index.html` directly may work for basic viewing, but using a local server more closely matches the deployed experience.
 
 ## Scenario search
 
-Start here begins with five goal-based paths: learn, build, fix, review, and expand adoption. Selecting a goal immediately displays all relevant starting paths in a comparison view—there is no required follow-up question. Each path explains who it is for, what the user will leave with, its direct next action, and related SSP resources. The five goals remain visible for one-click switching, and unsure choices remain available. These routes are defined in `assets/js/ssp-search-engine.js`, work without fetching the search index, and never send selections to a service. Search remains below the guide, with three initial results and an optional advanced section for technical filters and the Skills Advisor catalog.
+Resources begins with five goal-based paths: learn, build, fix, review, and scale. After selecting a goal, the user chooses a plain-language scenario and receives one prioritized next action. Prerequisites, how the recommendation helps, expected outcomes, destination details, and related resources remain collapsed until requested. Goal and scenario selections are stored in the URL as `goal` and `path`, so the recommendation can be bookmarked and restored; no selection is sent to a service. These routes are defined in `assets/js/ssp-search-engine.js` and work without fetching the search index. Search remains below the guide, with three initial results and an optional advanced section for technical filters and the Skills Advisor catalog.
 
 Open [Resources](ssp-search.html) through the local server. Search indexes its own resource catalog, the five other SSP HTML pages (including the coached Build journeys), and local Skills Advisor, Power CAT marketplace, and Power Series lab snapshots. Power CAT skills and migration tracks include their marketplace categories, products, install commands, and authoritative detail destinations. Individual lab results link to the rendered workshop pages and retain their source descriptions for external-link previews. Searches do not crawl external websites or send queries to GitHub. Direct `file:` previews cannot reliably fetch these files; use HTTP. The catalog retains its category sidebar and numbered content panels beneath search.
 
@@ -93,13 +108,13 @@ Run `node --test tests/ssp-search.test.js` for interactive guide and search regr
 
 [Build](ssp-build.html#journeys) starts with four outcome-oriented journeys: create an app, automate a process, extend an experience, and ship safely. Each journey uses four visible coaching stages and introduces technology choices only after the intended outcome is clear. App choices cover Canvas, model-driven, code apps, and generative pages; automation choices cover cloud and desktop flows. Supporting resources remain visible beside each journey.
 
-The final skill action opens a contextual right-side panel before navigation. Non-Power CAT skills continue to Skills Advisor, while Power CAT skills continue to their matching marketplace detail and install page. The panel becomes full-width on small screens, closes with Escape or its close controls, and returns focus to the originating link.
+The final skill action opens a contextual right-side panel before navigation. Named non-Power-CAT skills use their canonical source when a stable Skills Advisor detail route is unavailable, while Power CAT skills continue to their matching marketplace detail and install page. The panel becomes full-width on small screens, closes with Escape or its close controls, and returns focus to the originating link. Microsoft Learn links open directly in a new tab without the intermediate panel.
 
 Design journey links preserve the current topic and step while the user moves between internal Design pages. This restoration is best effort and is not expected to survive an external authentication boundary.
 
 ## Review tool destinations
 
-Review provides SSP context before launching the canonical hosted OverPage and OverFlow tools. OverCode remains an informational availability state because no canonical hosted viewer has been verified; SSP does not invent or duplicate a tool destination.. The existing `design-advisor` fragment and internal identifiers remain unchanged to preserve links and integrations.
+Review provides portal context before launching the canonical hosted OverPage and OverFlow tools. OverCode remains an informational availability state because no canonical hosted viewer has been verified; the portal does not invent or duplicate a tool destination. The existing `design-advisor` fragment and internal identifiers remain unchanged to preserve links and integrations.
 
 ## Repository structure
 
@@ -114,16 +129,27 @@ Refresh before publishing with `node scripts/sync-skills-advisor.js`. Verify exa
 
 | Path | Purpose |
 |------|---------|
-| `index.html` | Application shell and complete resource content |
-| `assets/css/main.css` | Responsive layout, design tokens, and light/dark themes |
-| `assets/js/main.js` | Theme switching, search filtering, and category navigation |
+| `index.html` | Compatibility entry point that redirects to About or preserves legacy resource fragments |
+| `ssp-landing.html` | About page, portal orientation, carousel, pillars, statistics, and featured guidance |
+| `ssp-design.html`, `ssp-design-guide.html` | Design catalog, advisor, and coached design topics |
+| `ssp-build.html`, `ssp-build-guide.html` | Build catalog and coached implementation journeys |
+| `ssp-review.html` | Review catalog and canonical review-tool handoffs |
+| `ssp-search.html` | Guided Resources journey, site-wide search, and complete resource catalog |
+| `assets/css/ssp-design.css`, `assets/css/ssp-search.css` | Shared portal presentation and Resources-specific layouts |
+| `assets/js/ssp-search-entry.js` | Shared navigation, external-resource panel, skill details, and direct Microsoft Learn routing |
+| `assets/js/ssp-search-engine.js` | Search ranking, guidance rules, and goal/scenario journey definitions |
+| `assets/js/ssp-search.js` | Resources journey rendering, URL state, search index loading, and catalog interaction |
 | `assets/data/about-featured.json` | Curated About-page selections, owner, reasons, and review date |
 | `scripts/update-about.js` | Static About statistics, featured-card, and resource-count generator |
 | `DESIGN.md` | Visual design system and interaction principles |
 | `CHANGELOG.md` | Notable content and site changes |
 | `TODOS.md` | Deferred maintenance and design work |
 
-The main resource page uses `assets/css/main.css` and `assets/js/main.js`. The SSP pages load their existing page-specific assets. Legacy template assets remain in the repository but are not part of the current runtime.
+The deployed portal uses the `ssp-*` pages and their page-specific assets. Legacy template, Sass, jQuery, webfont, `assets/css/main.css`, and `assets/js/main.js` files remain in the repository but are not part of the current portal runtime.
+
+## Publishing
+
+GitHub Pages publishes the repository root from `main`. Pushing to `main` starts a Pages build for the URL above. The `Validate site` workflow also runs generated-content checks, the regression suite, and patch-whitespace validation on pull requests and pushes to `main`. The weekly `Refresh site content` workflow updates committed catalog snapshots and generated About content through a reviewable pull request; it does not publish unreviewed upstream changes directly.
 
 ## Make changes
 
@@ -145,6 +171,8 @@ The site has no build step or package dependencies. Use the following checks:
 
 ```powershell
 node --check assets\js\main.js
+node --check assets\js\ssp-search-entry.js
+node --check assets\js\ssp-search.js
 node scripts\update-about.js --check
 node --test tests\ssp-search.test.js
 git diff --check

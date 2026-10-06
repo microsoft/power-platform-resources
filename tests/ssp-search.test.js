@@ -99,7 +99,8 @@ test('Imported skill details retain exact identity, source, and published usage 
   assert.match(script, /source\.dataset\.previewTitle = item\.title/);
   const preview = readFileSync(join(__dirname, '../assets/js/ssp-search-entry.js'), 'utf8');
   assert.match(preview, /details\.replaceChildren\(\)/);
-  assert.match(preview, /skill\.route === 'Power CAT Skills Marketplace' \? 'Open marketplace details'/);
+  assert.match(preview, /skill\.route === 'Power CAT Skills Marketplace'[\s\S]*?\? 'Open marketplace details'/);
+  assert.match(preview, /skill\.route === 'Canonical skill source' \? 'Open canonical skill source'/);
 });
 
 test('Power CAT marketplace snapshot preserves every skill and migration track', () => {
@@ -568,9 +569,12 @@ test('Design guides route skills by owner after providing local context', () => 
     assert.match(card, /<details open><summary>Inputs and intended output/);
     assert.match(card, /https:\/\/learn\.microsoft\.com\//);
     const powerCat = card.match(/data-skill-owner="power-cat"[\s\S]*?href="(https:\/\/microsoft\.github\.io\/power-cat-skills\/power-platform-migration-factory\/skill\.html\?id=[^"]+)"/);
-    const nonPowerCat = card.match(/data-skill-owner="non-power-cat"[\s\S]*?data-canonical-source="(https:\/\/github\.com\/[^"]+)"[\s\S]*?href="https:\/\/aka\.ms\/powerplatformskillsadvisor"/);
+    const nonPowerCat = card.match(/data-skill-owner="non-power-cat"[\s\S]*?data-canonical-source="(https:\/\/github\.com\/[^"]+)"[\s\S]*?href="(https:\/\/github\.com\/[^"]+)"/);
     if (powerCat) assert.ok(powerCatCatalog.skills.some(entry => entry.detailUrl === powerCat[1]), powerCat[1]);
-    else if (nonPowerCat) assert.ok(catalog.skills.some(entry => entry.marketplace !== 'Power CAT Skills' && entry.source === nonPowerCat[1]), nonPowerCat[1]);
+    else if (nonPowerCat) {
+      assert.equal(nonPowerCat[2], nonPowerCat[1]);
+      assert.ok(catalog.skills.some(entry => entry.marketplace !== 'Power CAT Skills' && entry.source === nonPowerCat[1]), nonPowerCat[1]);
+    }
     else assert.match(card, /Documentation-led guide|Microsoft architecture guidance|Well-Architected assessment/);
   }
   assert.equal(cards.filter(card => card.includes('data-skill-owner=')).length, 5);
@@ -849,8 +853,11 @@ test('every guided goal has a clear next action and an unsure path', () => {
   assert.equal(nextStep('unknown', 'unknown'), null);
   assert.equal(nextStep('learn', 'unknown'), null);
   assert.match(script, /journey\.options\.forEach\(option => \{/);
-  assert.match(script, /\["You'll leave with", option\.outcome\]/);
-  assert.match(script, /option\.destination/);
+  assert.match(script, /\["You'll leave with", selectedOption\.outcome\]/);
+  assert.match(script, /selectedOption\.destination/);
+  assert.match(script, /element\('p', 'Recommended next action', 'journey-recommendation-label'\)/);
+  assert.match(script, /element\('details', null, 'journey-recommendation-details'\)/);
+  assert.match(script, /set\('path', selectedGoal \? selectedPath : ''\)/);
   assert.match(nextStep('learn', 'practice').url, /automation-01-cloud-flow/);
   assert.match(nextStep('build', 'site').url, /byoc-powerpages/);
   assert.match(nextStep('build', 'agent').url, /power-apps-mcp-server-agents-and-agent-feed/);
@@ -968,10 +975,7 @@ test('External previews use listing summaries and skip internal, non-web, and do
   }
   for (const href of ['#resources', 'ssp-design.html', 'mailto:someone@example.org', 'tel:123', 'blob:https://example.org/brief']) assert.equal(describe(link(href)), null);
   assert.equal(describe(link('https://learn.microsoft.com/file', '', true)), null);
-  const resource = describe(link('https://learn.microsoft.com/power-platform/', 'Full published description.'));
-  assert.equal(resource.title, 'Resource title');
-  assert.equal(resource.summary, 'Full published description.');
-  assert.equal(resource.url.hostname, 'learn.microsoft.com');
+  assert.equal(describe(link('https://learn.microsoft.com/power-platform/', 'Full published description.')), null);
   assert.match(describe(link('https://example.net/unknown')).summary, /No additional summary/);
   assert.match(describe(link('https://aka.ms/powerplatformskillsadvisor')).summary, /not an individual guide/);
   const learn = link('https://microsoft.github.io/apps-agents-workshop/labs/');
@@ -984,10 +988,10 @@ test('External previews use listing summaries and skip internal, non-web, and do
   assert.match(script, /Learn \(opens in a new tab\)/);
   assert.match(script, /const skillsAdvisorUrl = 'https:\/\/aka\.ms\/powerplatformskillsadvisor'/);
   assert.match(script, /link\.dataset\.skillOwner \|\| \(link\.href === skillsAdvisorUrl \? 'non-power-cat' : ''\)/);
-  assert.match(script, /!\['Power CAT canonical source', 'Power CAT Skills Marketplace'\]\.includes\(skill\.route\) \? skillsAdvisorUrl : resource\.url\.href/);
+  assert.match(script, /skill\?\.route === 'Power Platform Skills Advisor' \? skillsAdvisorUrl : resource\.url\.href/);
   assert.match(script, /plainText\(link\.dataset\.previewSummary/);
   for (const page of ['search', 'design', 'build', 'review', 'landing', 'design-guide', 'build-guide']) {
-    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20261001-search-focus/);
+    assert.match(readFileSync(join(__dirname, `../ssp-${page}.html`), 'utf8'), /ssp-search-entry\.js\?v=20261006-link-routing/);
   }
 });
 
