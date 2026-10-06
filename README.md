@@ -17,6 +17,7 @@ The site is maintained by [Robert Standefer](https://linkedin.com/in/rstandefer)
 - Guidance for adoption, architecture, administration, governance, development, and application lifecycle management.
 - Light and dark color themes.
 - Responsive and keyboard-accessible navigation, dialogs, guided choices, and resource sections.
+- A user-controlled About carousel with persistent Pause/Play, enlarged navigation targets, visible focus, and reduced-motion support.
 
 ## Portal structure
 

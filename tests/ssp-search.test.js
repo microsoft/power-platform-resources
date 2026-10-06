@@ -178,7 +178,7 @@ test('Featured cards resolve configured catalog, guide, and lab destinations', (
   const guide = featured.items.find(item => item.type === 'guide');
   const guideCard = cards.find(([, href]) => href === `${guide.page}#${guide.anchor}`);
   assert.ok(guideCard);
-  assert.ok(design.includes('<h3>' + guideCard[2].match(/<h4>([^<]+)<\/h4>/)[1] + '</h3>'));
+  assert.ok(design.includes('<h3>' + guideCard[2].match(/<h3>([^<]+)<\/h3>/)[1] + '</h3>'));
   const lab = workshop.labs.find(item => item.path === featured.items.find(item => item.type === 'lab').path);
   const labCard = cards.find(([, href]) => href.replace(/&amp;/g, '&') === lab.url);
   assert.ok(labCard);
@@ -285,11 +285,13 @@ test('Root defaults to About while legacy resource bookmarks preserve their dest
   }
 });
 
-test('About carousel rotates automatically and suspends for focus, hover, visibility, and reduced motion', () => {
+test('About carousel provides persistent Pause and Play and suspends for focus, hover, visibility, and reduced motion', () => {
   const html = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
-  assert.doesNotMatch(html, /id="heroPause"/);
+  assert.match(html, /id="heroPause"[\s\S]*?aria-label="Pause featured messages"[\s\S]*?aria-pressed="false"/);
   assert.match(html, /id="heroPrev"[\s\S]*?<svg[\s\S]*?<\/svg><\/button>/);
   assert.match(html, /id="heroNext"[\s\S]*?<svg[\s\S]*?<\/svg><\/button>/);
+  assert.match(html, /\.hero-control:focus-visible,\.hero-pause:focus-visible,\.hero-dot:focus-visible/);
+  assert.match(html, /\.hero-dot\{[^}]*width:24px;height:24px/);
   const script = html.slice(html.indexOf('const heroSlides='), html.indexOf('// Horizontal accordion'));
   function control() {
     return {
@@ -303,7 +305,7 @@ test('About carousel rotates automatically and suspends for focus, hover, visibi
     };
   }
   for (const reduced of [false, true]) {
-    const controls = Object.fromEntries(['heroNext', 'heroPrev'].map(id => [id, control()]));
+    const controls = Object.fromEntries(['heroNext', 'heroPrev', 'heroPause'].map(id => [id, control()]));
     const hero = control();
     const actions = Array.from({ length: 4 }, control);
     const slides = actions.map(action => ({ ...control(), querySelector: () => action }));
@@ -317,12 +319,28 @@ test('About carousel rotates automatically and suspends for focus, hover, visibi
       querySelectorAll: selector => selector === '.hero-slide' ? slides : dots,
       querySelector: selector => selector === '.hero' ? hero : control()
     };
+    const storage = new Map();
     runInNewContext(script, {
       document, window: { matchMedia: () => media },
+      localStorage: {
+        getItem: key => storage.get(key) || null,
+        setItem: (key, value) => storage.set(key, value)
+      },
       setInterval: callback => { timers.set(++nextTimer, callback); return nextTimer; },
       clearInterval: id => timers.delete(id)
     });
     assert.equal(timers.size, reduced ? 0 : 1);
+    assert.equal(controls.heroPause.attributes['aria-pressed'], reduced ? 'true' : 'false');
+    assert.equal(controls.heroPause.textContent, reduced ? 'Auto-play off' : 'Pause');
+    if (!reduced) {
+      controls.heroPause.listeners.click();
+      assert.equal(timers.size, 0);
+      assert.equal(controls.heroPause.textContent, 'Play');
+      assert.equal(storage.get('sspHeroPaused'), 'true');
+      controls.heroPause.listeners.click();
+      assert.equal(timers.size, 1);
+      assert.equal(controls.heroPause.textContent, 'Pause');
+    }
     controls.heroNext.listeners.click();
     assert.equal(slides[1].attributes['aria-hidden'], 'false');
     assert.equal(timers.size, reduced ? 0 : 1);

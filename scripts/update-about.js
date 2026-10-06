@@ -106,7 +106,7 @@ function deriveResourceStats(html) {
   const panels = [...region.matchAll(/<article class="panel(?: active)?" id="([^"]+)"[^>]*>([\s\S]*?)(?=<article class="panel(?: active)?" id="|$)/g)]
     .map(match => ({
       id: match[1],
-      topics: (match[2].match(/<h5\b/g) || []).length,
+      topics: (match[2].match(/<h3 class="resource-group-title"(?:\s|>)/g) || []).length,
       links: (match[2].match(/<a\b/g) || []).length
     }));
   if (!panels.length || panels.some(panel => !panel.links)) {
@@ -250,7 +250,7 @@ function renderLatest(items, heading, id) {
     return `          <li><a href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.title)}</a> — published <time datetime="${item.published}">${formatDate(item.published)}</time></li>`;
   });
   return [
-    `        <h5 id="latest-${id}-heading">${heading}</h5>`,
+    `        <h3 class="resource-group-title" id="latest-${id}-heading">${heading}</h3>`,
     `        <ul aria-labelledby="latest-${id}-heading">`,
     ...entries,
     '        </ul>'
@@ -266,7 +266,7 @@ function renderFeatured(config, items) {
       `      <a class="fcard" href="${escapeHtml(item.href)}"${attributes} data-feature-reason="${escapeHtml(configured.reason)}">`,
       `        <div class="ftop"><span class="fbadge">${escapeHtml(configured.badge)}</span><span class="fkind">${escapeHtml(item.kind)}</span></div>`,
       '        <div class="fbody">',
-      `          <h4>${escapeHtml(item.title)}</h4>`,
+      `          <h3>${escapeHtml(item.title)}</h3>`,
       `          <p>${escapeHtml(item.description)}</p>`,
       `          <div class="ffoot"><span>${escapeHtml(item.footer)}</span></div>`,
       '        </div>',

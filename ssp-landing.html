@@ -84,9 +84,14 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 .hero-control{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--text);cursor:pointer;display:grid;place-items:center;font:700 20px/1 var(--font)}
 .hero-control svg{display:block;width:18px;height:18px}
 .hero-control:hover{border-color:var(--brand);color:var(--brand)}
+.hero-pause{min-height:36px;padding:0 12px;border:1px solid var(--border);border-radius:18px;background:var(--surface);color:var(--text);cursor:pointer;font:700 12px var(--font)}
+.hero-pause:hover{border-color:var(--brand);color:var(--brand)}
+.hero-pause:disabled{cursor:not-allowed;color:var(--muted)}
+.hero-control:focus-visible,.hero-pause:focus-visible,.hero-dot:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
 .hero-dots{display:flex;align-items:center;gap:6px;margin:0 4px}
-.hero-dot{width:24px;height:4px;padding:0;border:0;border-radius:2px;background:var(--border);cursor:pointer;transition:background .2s ease}
-.hero-dot.is-active{background:var(--brand)}
+.hero-dot{display:grid;place-items:center;width:24px;height:24px;padding:0;border:0;background:transparent;cursor:pointer}
+.hero-dot::before{content:"";display:block;width:24px;height:4px;border-radius:2px;background:var(--border);transition:background .2s ease}
+.hero-dot.is-active::before{background:var(--brand)}
 .hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:900px;margin-top:34px}
 .hero-metric{padding:4px 24px;border-left:1px solid var(--border)}
 .hero-metric:first-child{padding-left:0;border-left:0}
@@ -172,7 +177,7 @@ section{padding:36px 0}
 .fbadge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:#3a2050;font-size:11px;font-weight:800;padding:4px 11px;border-radius:20px;letter-spacing:.3px;text-transform:uppercase}
 .fkind{position:absolute;bottom:12px;left:14px;color:#fff;font-size:12px;font-weight:700;opacity:.95;letter-spacing:.3px;text-transform:uppercase}
 .fbody{padding:18px 18px 16px;display:flex;flex-direction:column;flex:1}
-.fcard h4{margin:0 0 6px;font-size:17px;font-weight:800}
+.fcard h3{margin:0 0 6px;font-size:17px;font-weight:800}
 .fcard p{margin:0 0 14px;color:var(--muted);font-size:13.5px;flex:1}
 .ffoot{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--soft)}
 .stars{color:#b06a7a;letter-spacing:1px}
@@ -288,6 +293,7 @@ footer .powercat-logo img{height:30px}
         <button class="hero-dot" type="button" aria-label="Show message 4"></button>
       </div>
       <button class="hero-control" id="heroNext" type="button" aria-label="Next message" title="Next message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      <button class="hero-pause" id="heroPause" type="button" aria-label="Pause featured messages" aria-pressed="false">Pause</button>
       </div>
     </div>
   </div>
@@ -445,7 +451,7 @@ footer .powercat-logo img{height:30px}
       <a class="fcard" href="ssp-search.html#skills" data-feature-reason="Provides one entry point to the complete published skills catalog.">
         <div class="ftop"><span class="fbadge">Build</span><span class="fkind">Catalog</span></div>
         <div class="fbody">
-          <h4>Browse published skills</h4>
+          <h3>Browse published skills</h3>
           <p>Explore 127 published skills by product and task, with source instructions and availability details.</p>
           <div class="ffoot"><span>127 catalog entries</span></div>
         </div>
@@ -453,7 +459,7 @@ footer .powercat-logo img{height:30px}
       <a class="fcard" href="ssp-design.html#skill-well-architected-design-check" data-feature-reason="Helps teams identify material design risks before delivery.">
         <div class="ftop"><span class="fbadge">Review</span><span class="fkind">Guide</span></div>
         <div class="fbody">
-          <h4>Well-Architected Design Check</h4>
+          <h3>Well-Architected Design Check</h3>
           <p>Challenge a proposed solution across reliability, security, operations, performance, and experience.</p>
           <div class="ffoot"><span>Architecture guide</span></div>
         </div>
@@ -461,7 +467,7 @@ footer .powercat-logo img{height:30px}
       <a class="fcard" href="https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=managed-platform-governance%2FREADME.md&amp;branch=main" target="_blank" rel="noopener" data-feature-reason="Provides a hands-on path for current environment governance practices.">
         <div class="ftop"><span class="fbadge">Learn</span><span class="fkind">Lab</span></div>
         <div class="fbody">
-          <h4>Managed Governance: Environment Strategy &amp; Governance</h4>
+          <h3>Managed Governance: Environment Strategy &amp; Governance</h3>
           <p>Build guardrails for your environment group, turning ungoverned sprawl into a place where makers can move fast while risk stays contained.</p>
           <div class="ffoot"><span>Power Apps makers, admins · 120 minutes</span></div>
         </div>
@@ -521,10 +527,26 @@ const hero=document.querySelector('.hero');
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let heroFocused=false;
 let heroHovered=false;
+let heroPaused=false;
+try{heroPaused=localStorage.getItem('sspHeroPaused')==='true'}catch(e){}
 const heroActions=heroSlides.map(slide=>slide.querySelector('.cta'));
 heroActions.forEach(actions=>{if(actions)document.querySelector('.hero-action-options').appendChild(actions);});
 let heroIndex=0;
 let heroTimer;
+const heroPause=document.getElementById('heroPause');
+function syncHeroPause(){
+  if(reducedMotion.matches){
+    heroPause.textContent='Auto-play off';
+    heroPause.setAttribute('aria-label','Automatic rotation disabled by reduced motion preference');
+    heroPause.setAttribute('aria-pressed','true');
+    heroPause.disabled=true;
+    return;
+  }
+  heroPause.textContent=heroPaused?'Play':'Pause';
+  heroPause.setAttribute('aria-label',heroPaused?'Play featured messages':'Pause featured messages');
+  heroPause.setAttribute('aria-pressed',String(heroPaused));
+  heroPause.disabled=false;
+}
 function showHeroSlide(index){
   heroIndex=(index+heroSlides.length)%heroSlides.length;
   heroSlides.forEach((slide,i)=>{
@@ -542,7 +564,7 @@ function showHeroSlide(index){
 }
 function startHeroRotation(){
   clearInterval(heroTimer);
-  if(!reducedMotion.matches&&!heroFocused&&!heroHovered&&!document.hidden){
+  if(!heroPaused&&!reducedMotion.matches&&!heroFocused&&!heroHovered&&!document.hidden){
     heroTimer=setInterval(()=>showHeroSlide(heroIndex+1),4000);
   }
 }
@@ -552,12 +574,19 @@ hero.addEventListener('focusout',event=>{
 });
 hero.addEventListener('mouseenter',()=>{heroHovered=true;startHeroRotation();});
 hero.addEventListener('mouseleave',()=>{heroHovered=false;startHeroRotation();});
-reducedMotion.addEventListener('change',startHeroRotation);
+heroPause.addEventListener('click',()=>{
+  heroPaused=!heroPaused;
+  try{localStorage.setItem('sspHeroPaused',String(heroPaused))}catch(e){}
+  syncHeroPause();
+  startHeroRotation();
+});
+reducedMotion.addEventListener('change',()=>{syncHeroPause();startHeroRotation();});
 document.getElementById('heroPrev').addEventListener('click',()=>{showHeroSlide(heroIndex-1);startHeroRotation();});
 document.getElementById('heroNext').addEventListener('click',()=>{showHeroSlide(heroIndex+1);startHeroRotation();});
 heroDots.forEach((dot,index)=>dot.addEventListener('click',()=>{showHeroSlide(index);startHeroRotation();}));
 document.addEventListener('visibilitychange',startHeroRotation);
 showHeroSlide(0);
+syncHeroPause();
 startHeroRotation();
 // Horizontal accordion: clicking a collapsed pillar expands it and collapses the rest
 function openPillar(el){

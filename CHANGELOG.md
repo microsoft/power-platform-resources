@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removed the redundant Design hero actions for Design guides, architecture guidance, and the advisor skills catalog.
 - Displayed Design highlight numbers and labels as compact inline pairs separated by dividers.
 - Removed the decorative line before pillar labels and standardized the plain label treatment across Design, Build, and Review.
+- Added a persistent, accessible Pause/Play control to the About carousel, enlarged carousel navigation targets, and strengthened visible keyboard focus while preserving reduced-motion behavior.
+- Corrected featured-card and resource-group heading levels so the About and Resources pages follow a sequential semantic hierarchy.
 
 ## 2026-10-05
 

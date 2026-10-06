@@ -186,7 +186,7 @@
       const row = clean(link.closest('li').textContent);
       const label = clean(link.textContent);
       const prefix = row.includes(' - ') ? row.split(' - ')[0] : '';
-      const heading = [...panel.querySelectorAll('h5')].filter(item => item.compareDocumentPosition(link) & 4).at(-1);
+      const heading = [...panel.querySelectorAll('.resource-group-title')].filter(item => item.compareDocumentPosition(link) & 4).at(-1);
       const section = clean(heading?.textContent || '');
       const rowTitle = prefix && !label.toLowerCase().includes(prefix.toLowerCase()) ? prefix + ': ' + label : label;
       const title = section && !rowTitle.toLowerCase().includes(section.toLowerCase()) ? section + ': ' + rowTitle : rowTitle;
