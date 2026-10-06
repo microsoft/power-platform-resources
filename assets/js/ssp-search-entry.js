@@ -51,6 +51,7 @@
   function describeExternalLink(link) {
     const url = new URL(link.href, location.href);
     if (!['https:', 'http:'].includes(url.protocol) || url.origin === location.origin || link.hasAttribute('download')) return null;
+    if (url.hostname === 'learn.microsoft.com') return null;
     if (url.href === 'https://microsoft.github.io/apps-agents-workshop/labs/' && link.closest('#siteNav')) return null;
     const clean = value => (value || '').replace(/\s+/g, ' ').trim();
     const plainText = value => clean(value)
@@ -115,7 +116,9 @@
       publisher: owner === 'power-cat' ? 'Power CAT' : 'Microsoft',
       marketplace: owner === 'power-cat' ? 'Power CAT Skills' : 'Skills Advisor catalog',
       canonicalSource: link.dataset.canonicalSource || link.href,
-      route: owner === 'power-cat' ? 'Power CAT canonical source' : 'Power Platform Skills Advisor',
+      route: owner === 'power-cat'
+        ? 'Power CAT canonical source'
+        : link.dataset.canonicalSource ? 'Canonical skill source' : 'Power Platform Skills Advisor',
       title
     };
   }
@@ -175,8 +178,12 @@
     details.hidden = !skill && !lab;
     preview.querySelector('.external-preview-kicker').textContent = skill ? skill.type + ' details' : 'External resource';
     continueLink.textContent = skill
-      ? (skill.route === 'Power CAT Skills Marketplace' ? 'Open marketplace details' : skill.route === 'Power CAT canonical source' ? 'Open Power CAT canonical source' : 'Open Power Platform Skills Advisor')
-      : 'Continue to site';
+    ? (skill.route === 'Power CAT Skills Marketplace'
+      ? 'Open marketplace details'
+      : skill.route === 'Power CAT canonical source'
+        ? 'Open Power CAT canonical source'
+        : skill.route === 'Canonical skill source' ? 'Open canonical skill source' : 'Open Power Platform Skills Advisor')
+    : 'Continue to site';
     if (lab) {
       preview.querySelector('.external-preview-kicker').textContent = 'Lab details';
       continueLink.textContent = 'Open lab';
@@ -243,7 +250,7 @@
         : 'Review the prerequisites and required environment in the published lab before starting. Duration is the estimate provided by the workshop authors.';
       details.append(caveat);
     }
-    const destination = skill && !['Power CAT canonical source', 'Power CAT Skills Marketplace'].includes(skill.route) ? skillsAdvisorUrl : resource.url.href;
+    const destination = skill?.route === 'Power Platform Skills Advisor' ? skillsAdvisorUrl : resource.url.href;
     preview.querySelector('#externalPreviewDestination').textContent = destination;
     const target = link.getAttribute('target');
     const opensNewTab = newTab || (target && !['_self', '_top', '_parent'].includes(target.toLowerCase()));

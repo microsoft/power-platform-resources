@@ -43,6 +43,7 @@
     return link;
   }
   let selectedGoal = initialParams.get('goal');
+  let selectedPath = initialParams.get('path') || '';
   function renderJourney(focus = true) {
     byId('goalChoices').hidden = false;
     byId('journeyStep').hidden = !selectedGoal;
@@ -53,51 +54,84 @@
       button.setAttribute('aria-pressed', String(selected));
     });
     if (!selectedGoal) {
+      selectedPath = '';
       if (focus) byId('startHeading').focus();
       return;
     }
     const journey = SSPSearch.journeys.find(item => item.id === selectedGoal);
+    const selectedOption = journey.options.find(option => option.id === selectedPath);
+    if (!selectedOption) selectedPath = '';
     byId('journeyContext').textContent = 'Paths for ' + journey.label.toLowerCase();
     byId('journeyHeading').textContent = journey.question;
     byId('journeyIntro').textContent = journey.intro;
     const paths = byId('answerChoices');
+    if (paths.nextElementSibling?.classList.contains('journey-recommendation')) {
+      paths.nextElementSibling.remove();
+    }
     paths.replaceChildren();
     journey.options.forEach(option => {
-      const card = element('article', null, 'journey-path' + (option.id === 'unsure' ? ' journey-path-unsure' : ''));
-      const label = element('p', option.label, 'journey-path-label');
-      const title = element('h3', option.title);
-      const explanation = element('p', option.why, 'journey-path-explanation');
+      const button = element('button', null, 'journey-path-choice');
+      button.type = 'button';
+      button.dataset.path = option.id;
+      button.setAttribute('aria-pressed', String(option.id === selectedPath));
+      button.append(
+        element('span', option.label, 'journey-path-label'),
+        element('span', option.title, 'journey-path-title')
+      );
+      button.addEventListener('click', () => {
+        selectedPath = option.id;
+        syncUrl(true);
+        renderJourney(false);
+        byId('journeyRecommendationHeading').focus();
+      });
+      paths.append(button);
+    });
+    if (selectedOption) {
+      const recommendation = element('article', null, 'journey-recommendation');
+      recommendation.append(element('p', 'Recommended next action', 'journey-recommendation-label'));
+      const heading = element('h3', selectedOption.title);
+      heading.id = 'journeyRecommendationHeading';
+      heading.tabIndex = -1;
+      recommendation.append(heading);
+      recommendation.append(element('p', `For “${selectedOption.label},” start here before exploring the full resource catalog.`, 'journey-recommendation-intro'));
+      const action = anchor(selectedOption.action, selectedOption.url);
+      action.className = 'btn';
+      action.dataset.previewReason = selectedOption.why;
+      recommendation.append(action);
+      const disclosure = element('details', null, 'journey-recommendation-details');
+      disclosure.append(element('summary', "What you'll need and what you'll get"));
       const details = element('dl', null, 'journey-path-details');
-      for (const [term, value] of [['Best for', option.bestFor], ["You'll leave with", option.outcome]]) {
+      for (const [term, value] of [
+        ['How this helps', selectedOption.why],
+        ['Best for', selectedOption.bestFor],
+        ["You'll leave with", selectedOption.outcome]
+      ]) {
         details.append(element('dt', term), element('dd', value));
       }
-      if (option.destination) details.append(element('dt', 'Next destination'), element('dd', option.destination));
-      const footer = element('div', null, 'journey-path-footer');
-      const action = anchor(option.action, option.url);
-      action.className = 'btn';
-      action.dataset.previewReason = option.why;
-      footer.append(action);
-      if (option.related.length) {
+      if (selectedOption.destination) details.append(element('dt', 'Next destination'), element('dd', selectedOption.destination));
+      disclosure.append(details);
+      if (selectedOption.related.length) {
         const related = element('div', null, 'journey-path-related');
         related.append(element('strong', 'Related resources'));
         const list = element('ul');
-        option.related.forEach(id => {
-          const heading = byId(id)?.querySelector('h2');
-          if (!heading) return;
+        selectedOption.related.forEach(id => {
+          const relatedHeading = byId(id)?.querySelector('h2');
+          if (!relatedHeading) return;
           const item = element('li');
-          item.append(anchor(clean(heading.textContent), '#' + id));
+          item.append(anchor(clean(relatedHeading.textContent), '#' + id));
           list.append(item);
         });
         related.append(list);
-        footer.append(related);
+        disclosure.append(related);
       }
-      card.append(label, title, explanation, details, footer);
-      paths.append(card);
-    });
+      recommendation.append(disclosure);
+      paths.after(recommendation);
+    }
     if (focus) byId('journeyHeading').focus();
   }
   function resetJourney() {
     selectedGoal = null;
+    selectedPath = '';
     syncUrl();
     renderJourney();
   }
@@ -130,13 +164,17 @@
       activeDetail = '';
       byId('scenario').value = '';
       selectedGoal = journey.id;
+      selectedPath = '';
       syncUrl(true);
       renderJourney();
       render();
     });
     byId('goalChoices').append(button);
   });
-  if (!SSPSearch.journeys.some(journey => journey.id === selectedGoal)) selectedGoal = null;
+  if (!SSPSearch.journeys.some(journey => journey.id === selectedGoal)) {
+    selectedGoal = null;
+    selectedPath = '';
+  }
   renderJourney(false);
   byId('chooseGoal').addEventListener('click', resetJourney);
   function extract(doc, source) {
@@ -440,6 +478,7 @@
     set('product', product);
     set('mode', catalogMode ? 'skills' : '');
     set('goal', selectedGoal || '');
+    set('path', selectedGoal ? selectedPath : '');
     set('limit', limit > (catalogMode ? 12 : 3) ? String(limit) : '');
     set('detail', activeDetail);
     if (url.hash === '#skills') url.hash = '';
@@ -461,6 +500,7 @@
   byId('scenarioForm').addEventListener('submit', event => {
     event.preventDefault();
     selectedGoal = null;
+    selectedPath = '';
     renderJourney(false);
     search(byId('scenario').value, true, true);
   });
@@ -477,6 +517,7 @@
   byId('resetSearch').addEventListener('click', () => {
     catalogMode = false;
     selectedGoal = null;
+    selectedPath = '';
     query = '';
     limit = 3;
     activeDetail = '';
@@ -492,6 +533,7 @@
   function browseCatalog(push = false) {
     byId('advancedSearch').open = true;
     selectedGoal = null;
+    selectedPath = '';
     renderJourney(false);
     catalogMode = true;
     focusCatalog = true;
@@ -590,7 +632,11 @@
     query = params.get('q') || '';
     catalogMode = params.get('mode') === 'skills' || location.hash === '#skills';
     selectedGoal = params.get('goal');
-    if (!SSPSearch.journeys.some(journey => journey.id === selectedGoal)) selectedGoal = null;
+    selectedPath = params.get('path') || '';
+    if (!SSPSearch.journeys.some(journey => journey.id === selectedGoal)) {
+      selectedGoal = null;
+      selectedPath = '';
+    }
     limit = Math.max(catalogMode ? 12 : 3, Number.parseInt(params.get('limit') || '0', 10) || 0);
     activeDetail = params.get('detail') || '';
     pendingDetail = activeDetail;

@@ -72,7 +72,7 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 .hero-slide{grid-area:1/1;max-width:940px;visibility:hidden;opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .5s ease,transform .5s ease,visibility .5s}
 .hero-slide.is-active{visibility:visible;opacity:1;transform:translateY(0);pointer-events:auto}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.3px;color:var(--brand);background:var(--brand-soft,rgba(116,39,116,.09));border:1px solid rgba(116,39,116,.2);padding:5px 12px;border-radius:20px;margin-bottom:18px}
-.hero h1{font-size:64px;line-height:1.04;margin:0 0 20px;font-weight:800;letter-spacing:0;color:var(--text);max-width:900px}
+.hero h1{font-size:56px;line-height:1.08;margin:0 0 20px;font-weight:800;letter-spacing:0;color:var(--text);max-width:900px}
 .hero p.sub{font-size:18px;color:var(--muted);margin:0;max-width:720px}
 .hero .cta{display:flex;justify-content:flex-start;gap:12px;flex-wrap:wrap}
 .hero-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;margin-top:20px}
@@ -202,7 +202,7 @@ footer .powercat-logo img{height:30px}
 @media(max-width:360px){.topbar .row{gap:6px}.logo{gap:4px;font-size:10px}.logo>span:nth-child(2){max-width:54px}.logo .mark{min-width:26px;height:22px;padding:0 4px;font-size:10px}.cat-divider{height:20px;margin:0}header .powercat-logo img{height:20px}.icon-btn{width:30px;height:30px}.btn.sm{padding:5px 7px;font-size:10px}.stats{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.hero-slide,.pillar,.pillar-launch{transition:none}.pillar-launch:hover{transform:none}}
 </style>
-<script src="assets/js/ssp-search-entry.js?v=20261001-search-focus" defer></script>
+<script src="assets/js/ssp-search-entry.js?v=20261006-link-routing" defer></script>
 <link rel="stylesheet" href="assets/css/header-brand.css?v=20261001-search-icon">
 <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 </head>
@@ -240,7 +240,7 @@ footer .powercat-logo img{height:30px}
     <div class="hero-viewport">
       <article class="hero-slide is-active" aria-hidden="false">
         <h1>The guided front door for Power Platform</h1>
-        <p class="sub">Self-Service Portal organizes Power CAT skills, Power Series labs, and curated resources by Design, Build, Review, and Learn. Start with concise guidance for basic concerns, then continue to authoritative, maintained destinations for full details.</p>
+        <p class="sub">Built for Power Platform customers and delivery teams—including makers, admins, developers, and solution architects—the Self-Service Portal organizes Power CAT skills, Power Series labs, and curated resources by Design, Build, Review, and Learn.</p>
         <div class="cta">
           <button class="btn" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">Explore the pillars</button>
           <a class="btn ghost" href="ssp-search.html">Resources</a>

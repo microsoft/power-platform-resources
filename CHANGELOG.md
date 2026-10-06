@@ -4,6 +4,17 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-10-06
+
+### Changed
+
+- Clarified that the Self-Service Portal serves Power Platform customers, makers, admins, developers, and solution architects.
+- Reduced the About carousel heading size while preserving its automatic rotation and accessible pause behavior.
+- Routed the Well-Architected action directly to its assessment and named supporting skills to their canonical sources.
+- Opened Microsoft Learn links directly instead of requiring confirmation in the external-resource panel.
+- Replaced the low-resolution light-theme Power CAT logo with a high-resolution rendering.
+- Restructured the Resources guided journey so users choose a scenario, receive one clearly prioritized next action, and reveal prerequisites, outcomes, destinations, and related resources only when needed.
+
 ## 2026-10-05
 
 ### Changed
