@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Updated site ownership references to Power CAT and documented the public portal address as `https://aka.ms/PowerCATSSP`.
 - Simplified the README to a concise, nontechnical overview of the portal, its audiences, and its main areas.
 - Removed the featured-guidance curation cadence wording from the About page while retaining its last-reviewed date.
+- Added spacing between the Resources search filters and goal cards.
 
 ## 2026-10-05
 

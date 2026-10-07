@@ -1098,6 +1098,7 @@ test('guided choices and mobile-first search keep advanced controls optional', (
   assert.match(css, /\.scenario-entry #searchSection\{order:1;/);
   assert.match(css, /\.scenario-entry #searchResults\{order:2\}/);
   assert.match(css, /\.scenario-entry #goalChoices\{order:4;/);
+  assert.match(css, /#goalChoices\{[^}]*margin-top:24px/);
   assert.ok(html.indexOf('id="searchResults"') < html.indexOf('id="guidance"'));
   assert.match(html, /<p class="search-eyebrow">Related guidance<\/p>/);
   assert.match(readFileSync(join(__dirname, '../index.html'), 'utf8'), /<noscript><meta http-equiv="refresh" content="0; url=ssp-landing.html"/);
