@@ -23,7 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Simplified the About carousel to manual dot navigation by removing the previous, next, and Pause/Play controls and automatic rotation.
 - Updated site ownership references to Power CAT and documented the public portal address as `https://aka.ms/PowerCATSSP`.
 - Simplified the README to a concise, nontechnical overview of the portal, its audiences, and its main areas.
-- Removed the featured-guidance curation cadence and review-date sentence from the About page.
+- Removed the featured-guidance curation cadence wording from the About page while retaining its last-reviewed date.
 
 ## 2026-10-05
 

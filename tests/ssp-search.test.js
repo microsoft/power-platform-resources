@@ -210,7 +210,8 @@ test('About statistics and featured guidance match their canonical sources', () 
   assert.match(html, new RegExp(`<div class="n">${workshop.labs.length}</div><div class="l">Hands-on labs</div>`));
   assert.doesNotMatch(html, /\b39 hands-on labs\b|>39 labs<|<div class="n">39<\/div>/i);
   assert.match(html, /<div class="kicker">Featured guidance<\/div>/);
-  assert.doesNotMatch(html, /Curated by Power CAT on a weekly cadence|Last reviewed/);
+  assert.doesNotMatch(html, /Curated by Power CAT on a weekly cadence/);
+  assert.match(html, /Last reviewed <time datetime="2026-09-26">26 September 2026<\/time>/);
   assert.doesNotMatch(html, /Featured this week|Popular skills &amp; guidance/);
   assert.doesNotMatch(html, /Open the Power CAT marketplace \(\d+ skills, \d+ migration tracks\)/);
   for (const item of [...latest.news, ...latest.events]) {
