@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Clarified that the Self-Service Portal serves Power Platform customers, makers, admins, developers, and solution architects.
-- Reduced the About carousel heading size while preserving its automatic rotation and accessible pause behavior.
+- Reduced the About carousel heading size.
 - Routed the Well-Architected action directly to its assessment and named supporting skills to their canonical sources.
 - Opened Microsoft Learn links directly instead of requiring confirmation in the external-resource panel.
 - Replaced the low-resolution light-theme Power CAT logo with a high-resolution rendering.
@@ -17,10 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removed the redundant Design hero actions for Design guides, architecture guidance, and the advisor skills catalog.
 - Displayed Design highlight numbers and labels as compact inline pairs separated by dividers.
 - Removed the decorative line before pillar labels and standardized the plain label treatment across Design, Build, and Review.
-- Added a persistent, accessible Pause/Play control to the About carousel, enlarged carousel navigation targets, and strengthened visible keyboard focus while preserving reduced-motion behavior.
+- Enlarged the About carousel dot targets and strengthened visible keyboard focus.
 - Corrected featured-card and resource-group heading levels so the About and Resources pages follow a sequential semantic hierarchy.
 - Removed the redundant advisor-skills hero action from Build and Review, aligned the two remaining Build actions to the same color treatment, omitted the zero-value PII highlight, and added the October 2026 publication month to every portal footer.
-- Removed the previous and next arrow buttons from the About carousel while retaining direct dot navigation and Pause/Play controls.
+- Simplified the About carousel to manual dot navigation by removing the previous, next, and Pause/Play controls and automatic rotation.
 - Updated site ownership references to Power CAT and documented the public portal address as `https://aka.ms/PowerCATSSP`.
 - Simplified the README to a concise, nontechnical overview of the portal, its audiences, and its main areas.
 

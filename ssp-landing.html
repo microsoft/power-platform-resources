@@ -81,10 +81,7 @@ nav.main a[aria-current="page"]{background:var(--surface-2);color:var(--text);fo
 .hero-action-options .cta.is-active{visibility:visible;pointer-events:auto}
 .hero .btn.ghost{background:var(--surface);border:1px solid var(--border);color:var(--text)}
 .hero-controls{display:flex;align-items:center;gap:8px;flex:none}
-.hero-pause{min-height:36px;padding:0 12px;border:1px solid var(--border);border-radius:18px;background:var(--surface);color:var(--text);cursor:pointer;font:700 12px var(--font)}
-.hero-pause:hover{border-color:var(--brand);color:var(--brand)}
-.hero-pause:disabled{cursor:not-allowed;color:var(--muted)}
-.hero-pause:focus-visible,.hero-dot:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.hero-dot:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
 .hero-dots{display:flex;align-items:center;gap:6px;margin:0 4px}
 .hero-dot{display:grid;place-items:center;width:24px;height:24px;padding:0;border:0;background:transparent;cursor:pointer}
 .hero-dot::before{content:"";display:block;width:24px;height:4px;border-radius:2px;background:var(--border);transition:background .2s ease}
@@ -288,7 +285,6 @@ footer .powercat-logo img{height:30px}
         <button class="hero-dot" type="button" aria-label="Show message 3"></button>
         <button class="hero-dot" type="button" aria-label="Show message 4"></button>
       </div>
-      <button class="hero-pause" id="heroPause" type="button" aria-label="Pause featured messages" aria-pressed="false">Pause</button>
       </div>
     </div>
   </div>
@@ -518,30 +514,9 @@ document.addEventListener('keydown',event=>{
 });
 const heroSlides=Array.from(document.querySelectorAll('.hero-slide'));
 const heroDots=Array.from(document.querySelectorAll('.hero-dot'));
-const hero=document.querySelector('.hero');
-const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-let heroFocused=false;
-let heroHovered=false;
-let heroPaused=false;
-try{heroPaused=localStorage.getItem('sspHeroPaused')==='true'}catch(e){}
 const heroActions=heroSlides.map(slide=>slide.querySelector('.cta'));
 heroActions.forEach(actions=>{if(actions)document.querySelector('.hero-action-options').appendChild(actions);});
 let heroIndex=0;
-let heroTimer;
-const heroPause=document.getElementById('heroPause');
-function syncHeroPause(){
-  if(reducedMotion.matches){
-    heroPause.textContent='Auto-play off';
-    heroPause.setAttribute('aria-label','Automatic rotation disabled by reduced motion preference');
-    heroPause.setAttribute('aria-pressed','true');
-    heroPause.disabled=true;
-    return;
-  }
-  heroPause.textContent=heroPaused?'Play':'Pause';
-  heroPause.setAttribute('aria-label',heroPaused?'Play featured messages':'Pause featured messages');
-  heroPause.setAttribute('aria-pressed',String(heroPaused));
-  heroPause.disabled=false;
-}
 function showHeroSlide(index){
   heroIndex=(index+heroSlides.length)%heroSlides.length;
   heroSlides.forEach((slide,i)=>{
@@ -557,30 +532,8 @@ function showHeroSlide(index){
     else heroDots[i].removeAttribute('aria-current');
   });
 }
-function startHeroRotation(){
-  clearInterval(heroTimer);
-  if(!heroPaused&&!reducedMotion.matches&&!heroFocused&&!heroHovered&&!document.hidden){
-    heroTimer=setInterval(()=>showHeroSlide(heroIndex+1),4000);
-  }
-}
-hero.addEventListener('focusin',()=>{heroFocused=true;startHeroRotation();});
-hero.addEventListener('focusout',event=>{
-  if(!hero.contains(event.relatedTarget)){heroFocused=false;startHeroRotation();}
-});
-hero.addEventListener('mouseenter',()=>{heroHovered=true;startHeroRotation();});
-hero.addEventListener('mouseleave',()=>{heroHovered=false;startHeroRotation();});
-heroPause.addEventListener('click',()=>{
-  heroPaused=!heroPaused;
-  try{localStorage.setItem('sspHeroPaused',String(heroPaused))}catch(e){}
-  syncHeroPause();
-  startHeroRotation();
-});
-reducedMotion.addEventListener('change',()=>{syncHeroPause();startHeroRotation();});
-heroDots.forEach((dot,index)=>dot.addEventListener('click',()=>{showHeroSlide(index);startHeroRotation();}));
-document.addEventListener('visibilitychange',startHeroRotation);
+heroDots.forEach((dot,index)=>dot.addEventListener('click',()=>showHeroSlide(index)));
 showHeroSlide(0);
-syncHeroPause();
-startHeroRotation();
 // Horizontal accordion: clicking a collapsed pillar expands it and collapses the rest
 function openPillar(el){
   const card=el.closest('.pillar');

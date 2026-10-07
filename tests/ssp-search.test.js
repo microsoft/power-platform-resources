@@ -285,11 +285,11 @@ test('Root defaults to About while legacy resource bookmarks preserve their dest
   }
 });
 
-test('About carousel provides persistent Pause and Play and suspends for focus, hover, visibility, and reduced motion', () => {
+test('About carousel uses accessible dot navigation without automatic controls', () => {
   const html = readFileSync(join(__dirname, '../ssp-landing.html'), 'utf8');
-  assert.match(html, /id="heroPause"[\s\S]*?aria-label="Pause featured messages"[\s\S]*?aria-pressed="false"/);
-  assert.doesNotMatch(html, /id="hero(?:Prev|Next)"/);
-  assert.match(html, /\.hero-pause:focus-visible,\.hero-dot:focus-visible/);
+  assert.doesNotMatch(html, /id="hero(?:Prev|Next|Pause)"/);
+  assert.doesNotMatch(html, /hero-pause|startHeroRotation|sspHeroPaused|setInterval/);
+  assert.match(html, /\.hero-dot:focus-visible/);
   assert.match(html, /\.hero-dot\{[^}]*width:24px;height:24px/);
   const script = html.slice(html.indexOf('const heroSlides='), html.indexOf('// Horizontal accordion'));
   function control() {
@@ -300,72 +300,23 @@ test('About carousel provides persistent Pause and Play and suspends for focus, 
       removeAttribute(name) { delete this.attributes[name]; },
       addEventListener(name, handler) { this.listeners[name] = handler; },
       querySelector() { return this.icon; },
-      appendChild() {}, contains(target) { return Boolean(target); }
+      appendChild() {}
     };
   }
-  for (const reduced of [false, true]) {
-    const controls = { heroPause: control() };
-    const hero = control();
-    const actions = Array.from({ length: 4 }, control);
-    const slides = actions.map(action => ({ ...control(), querySelector: () => action }));
-    const dots = Array.from({ length: 4 }, control);
-    const media = { ...control(), matches: reduced };
-    const timers = new Map();
-    let nextTimer = 0;
-    const document = {
-      ...control(), hidden: false,
-      getElementById: id => controls[id],
-      querySelectorAll: selector => selector === '.hero-slide' ? slides : dots,
-      querySelector: selector => selector === '.hero' ? hero : control()
-    };
-    const storage = new Map();
-    runInNewContext(script, {
-      document, window: { matchMedia: () => media },
-      localStorage: {
-        getItem: key => storage.get(key) || null,
-        setItem: (key, value) => storage.set(key, value)
-      },
-      setInterval: callback => { timers.set(++nextTimer, callback); return nextTimer; },
-      clearInterval: id => timers.delete(id)
-    });
-    assert.equal(timers.size, reduced ? 0 : 1);
-    assert.equal(controls.heroPause.attributes['aria-pressed'], reduced ? 'true' : 'false');
-    assert.equal(controls.heroPause.textContent, reduced ? 'Auto-play off' : 'Pause');
-    if (!reduced) {
-      controls.heroPause.listeners.click();
-      assert.equal(timers.size, 0);
-      assert.equal(controls.heroPause.textContent, 'Play');
-      assert.equal(storage.get('sspHeroPaused'), 'true');
-      controls.heroPause.listeners.click();
-      assert.equal(timers.size, 1);
-      assert.equal(controls.heroPause.textContent, 'Pause');
-    }
-    dots[1].listeners.click();
-    assert.equal(slides[1].attributes['aria-hidden'], 'false');
-    assert.equal(timers.size, reduced ? 0 : 1);
-    hero.listeners.focusin();
-    assert.equal(timers.size, 0);
-    hero.listeners.focusout({ relatedTarget: controls.heroPause });
-    assert.equal(timers.size, 0);
-    hero.listeners.focusout({ relatedTarget: null });
-    assert.equal(timers.size, reduced ? 0 : 1);
-    hero.listeners.mouseenter();
-    assert.equal(timers.size, 0);
-    hero.listeners.mouseleave();
-    assert.equal(timers.size, reduced ? 0 : 1);
-    document.hidden = true;
-    document.listeners.visibilitychange();
-    assert.equal(timers.size, 0);
-    document.hidden = false;
-    document.listeners.visibilitychange();
-    assert.equal(timers.size, reduced ? 0 : 1);
-    media.matches = true;
-    media.listeners.change();
-    assert.equal(timers.size, 0);
-    media.matches = false;
-    media.listeners.change();
-    assert.equal(timers.size, 1);
-  }
+  const actions = Array.from({ length: 4 }, control);
+  const slides = actions.map(action => ({ ...control(), querySelector: () => action }));
+  const dots = Array.from({ length: 4 }, control);
+  const document = {
+    querySelectorAll: selector => selector === '.hero-slide' ? slides : dots,
+    querySelector: () => control()
+  };
+  runInNewContext(script, { document });
+  assert.equal(slides[0].attributes['aria-hidden'], 'false');
+  assert.equal(dots[0].attributes['aria-current'], 'true');
+  dots[1].listeners.click();
+  assert.equal(slides[0].attributes['aria-hidden'], 'true');
+  assert.equal(slides[1].attributes['aria-hidden'], 'false');
+  assert.equal(dots[1].attributes['aria-current'], 'true');
 });
 
 test('Generic catalog actions and self-service review guidance are labeled accurately', () => {
