@@ -321,11 +321,12 @@ test('About carousel uses accessible dot navigation without automatic controls',
 });
 
 test('Generic catalog actions and self-service review guidance are labeled accurately', () => {
-  for (const [pillar, count] of [['build', 7], ['review', 3]]) {
+  for (const [pillar, count] of [['build', 7], ['review', 0]]) {
     const html = readFileSync(join(__dirname, `../ssp-${pillar}.html`), 'utf8');
     assert.doesNotMatch(html, />Open skill /);
     assert.equal((html.match(/>Browse Skills Advisor </g) || []).length, count);
   }
+  assert.doesNotMatch(readFileSync(join(__dirname, '../ssp-review.html'), 'utf8'), /Browse (?:all )?(?:advisor skills|Skills Advisor)/i);
   const review = readFileSync(join(__dirname, '../ssp-review.html'), 'utf8');
   const build = readFileSync(join(__dirname, '../ssp-build.html'), 'utf8');
   for (const title of ['Cloud Flow Builder', 'Approval Workflow Accelerator']) {
