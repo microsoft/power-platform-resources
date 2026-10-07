@@ -278,7 +278,6 @@ function renderFeatured(config, items) {
     '    <div class="sec-head">',
     '      <div class="kicker">Featured guidance</div>',
     '      <h2>Selected skills, labs &amp; guidance</h2>',
-    `      <p>Curated by ${escapeHtml(config.owner)} on a ${escapeHtml(config.cadence.toLowerCase())} cadence. Last reviewed <time datetime="${config.reviewed}">${formatDate(config.reviewed)}</time>.</p>`,
     '    </div>',
     '    <div class="feat-grid">',
     cards,
