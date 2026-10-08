@@ -217,13 +217,27 @@
 <script src="assets/js/ssp-design.js?v=20260926-pdf-brief"></script>
 <script>
   (() => {
+    const toSafeReturnTarget = (value) => {
+      if (!value) return null;
+      try {
+        const url = new URL(value, location.origin);
+        if (url.origin !== location.origin) return null;
+        const allowedPath = '/ssp-design-guide.html';
+        if (url.pathname !== allowedPath) return null;
+        return `${url.pathname}${url.search}${url.hash}`;
+      } catch (error) {
+        return null;
+      }
+    };
+
     window.addEventListener('DOMContentLoaded', () => {
       const returnTarget = new URLSearchParams(location.search).get('return');
+      const safeReturnTarget = toSafeReturnTarget(returnTarget);
       const card = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
-      if (!returnTarget || !/^ssp-design-guide\.html(?:[?#]|$)/.test(returnTarget) || !card?.classList.contains('skill-card')) return;
+      if (!safeReturnTarget || !card?.classList.contains('skill-card')) return;
       const link = document.createElement('a');
       link.className = 'design-return-context';
-      link.href = returnTarget;
+      link.href = safeReturnTarget;
       link.textContent = 'Return to your Design topic and step';
       link.setAttribute('aria-label', 'Return to your previous Design topic and step');
       card.prepend(link);
