@@ -545,6 +545,19 @@ test('Every portal footer shows the publication month semantically', () => {
   }
 });
 
+test('Portal feedback opens the public Microsoft Form instead of GitHub issues', () => {
+  const formUrl = 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6OE0-90qhlFrJ2NRTnSVt5URE5RRU9UVFgwMUZVVzk1UkZBQVBWMTlTMi4u';
+  for (const page of sspPages) {
+    const html = readFileSync(join(__dirname, '..', page), 'utf8');
+    assert.doesNotMatch(html, /github\.com\/microsoft\/power-platform-resources\/issues\/new/i, page);
+  }
+  for (const [page, count] of [['ssp-landing.html', 2], ['ssp-design.html', 3], ['ssp-build.html', 3], ['ssp-review.html', 3]]) {
+    const html = readFileSync(join(__dirname, '..', page), 'utf8');
+    assert.equal((html.match(/>Send feedback /g) || []).length, count, page);
+    assert.equal(html.split(`href="${formUrl}"`).length - 1, count, page);
+  }
+});
+
 test('Design guides route skills by owner after providing local context', () => {
   const html = readFileSync(join(__dirname, '../ssp-design.html'), 'utf8');
   const searchScript = readFileSync(join(__dirname, '../assets/js/ssp-search.js'), 'utf8');
