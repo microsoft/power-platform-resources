@@ -218,12 +218,27 @@
 <script>
   (() => {
     const toSafeReturnTarget = (value) => {
-      if (!value) return null;
+      const rawReturnTarget = new URLSearchParams(location.search).get('return');
       try {
-        const url = new URL(value, location.origin);
+      if (!rawReturnTarget || !card?.classList.contains('skill-card')) return;
+
+      let parsedReturnTarget;
+      try {
+        parsedReturnTarget = new URL(rawReturnTarget, window.location.origin);
+      } catch (error) {
+        return;
+      }
+
+      if (
+        parsedReturnTarget.origin !== window.location.origin ||
+        parsedReturnTarget.pathname !== '/ssp-design-guide.html' ||
+        !/^https?:$/.test(parsedReturnTarget.protocol)
+      ) return;
+
+      const safeReturnHref = `${parsedReturnTarget.pathname}${parsedReturnTarget.search}${parsedReturnTarget.hash}`;
         if (url.origin !== location.origin) return null;
         const allowedPath = '/ssp-design-guide.html';
-        if (url.pathname !== allowedPath) return null;
+      link.href = safeReturnHref;
         return `${url.pathname}${url.search}${url.hash}`;
       } catch (error) {
         return null;
