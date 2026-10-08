@@ -1000,12 +1000,23 @@ test('About and Resources use consistent navigation and landmarks', () => {
 });
 
 test('Self-Service Portal naming is consistent in user-facing copy', () => {
+  function replaceUntilStable(input, pattern, replacement) {
+    let previous;
+    let current = input;
+    do {
+      previous = current;
+      current = current.replace(pattern, replacement);
+    } while (current !== previous);
+    return current;
+  }
+
   for (const page of sspPages) {
     const html = readFileSync(join(__dirname, '..', page), 'utf8');
-    const visibleText = html
-      .replace(/<script\b[\s\S]*?<\/script>/gi, '')
-      .replace(/<style\b[\s\S]*?<\/style>/gi, '')
-      .replace(/<[^>]+>/g, ' ');
+    const visibleText = replaceUntilStable(
+      replaceUntilStable(html, /<script\b[\s\S]*?<\/script>/gi, ''),
+      /<style\b[\s\S]*?<\/style>/gi,
+      ''
+    ).replace(/<[^>]+>/g, ' ');
     assert.doesNotMatch(visibleText, /\bSSP\b/);
     for (const match of visibleText.matchAll(/self[\s-]service portal/gi)) {
       assert.equal(match[0], 'Self-Service Portal', `${page} uses inconsistent portal naming`);
