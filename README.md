@@ -1,82 +1,24 @@
-# Microsoft Power Platform Resources
+# Power Platform Self-Service Portal
 
-A curated collection of learning, adoption, architecture, governance, development, AI, and community resources for Microsoft Power Platform.
+The Power Platform Self-Service Portal is a Power CAT-maintained starting point for customers, makers, admins, developers, and solution architects.
 
-The site is maintained by [Robert Standefer](https://linkedin.com/in/rstandefer) and is available at:
+Use the portal to find practical guidance for:
 
-**https://microsoft.github.io/power-platform-resources/**
+- **Design** - Plan architecture, data, security, governance, and application lifecycle management.
+- **Build** - Find implementation guidance, skills, and hands-on learning.
+- **Review** - Assess architecture, security, performance, and solution quality.
+- **Learn** - Explore Power Series labs and other learning resources.
+- **Resources** - Search curated Power Platform guidance and choose a recommended next action.
 
-## What the site provides
+The portal brings trusted Microsoft, Power CAT, and Power Series resources together in one place. It helps users find the right next step but does not replace product support or final architecture, security, licensing, or production-readiness decisions.
 
-- Search across resource categories.
-- Journey-based navigation for new and experienced Power Platform users.
-- Curated links for Power Apps, Power Automate, Power Pages, Copilot Studio, Dataverse, Power BI, and related technologies.
-- Guidance for adoption, architecture, administration, governance, development, and application lifecycle management.
-- Light and dark color themes.
-- Responsive, keyboard-accessible expandable resource sections.
+The site is maintained by Power CAT and is available at:
 
-## Run locally
+**[https://aka.ms/PowerCATSSP](https://aka.ms/PowerCATSSP)**
 
-The site is dependency-free and does not require a build step.
+## Feedback and support
 
-From the repository root, start a local web server:
-
-```powershell
-python -m http.server 8000
-```
-
-Then open [http://localhost:8000/](http://localhost:8000/).
-
-Opening `index.html` directly may work for basic viewing, but using a local server more closely matches the deployed experience.
-
-## Repository structure
-
-| Path | Purpose |
-|------|---------|
-| `index.html` | Application shell and complete resource content |
-| `assets/css/main.css` | Responsive layout, design tokens, and light/dark themes |
-| `assets/js/main.js` | Theme switching, search filtering, and category navigation |
-| `DESIGN.md` | Visual design system and interaction principles |
-| `CHANGELOG.md` | Notable content and site changes |
-| `TODOS.md` | Deferred maintenance and design work |
-
-The deployed page uses only `assets/css/main.css` and `assets/js/main.js`. Legacy template assets remain in the repository but are not part of the current runtime.
-
-## Make changes
-
-Resource wording and URLs are treated as maintained content. Keep changes focused and preserve existing links unless the purpose of the contribution is to add, update, or remove a resource.
-
-When adding a resource category:
-
-1. Add a semantic `<details>` element under `#resources`.
-2. Give it a unique `id`.
-3. Add a matching navigation link whose fragment points to that exact `id`.
-4. Follow the existing heading and list patterns.
-5. Record the change in `CHANGELOG.md`.
-
-For presentation changes, use the existing `--cp-*` CSS custom properties and define theme-specific values for both light and dark modes. Read `DESIGN.md` before changing typography, color, spacing, layout, or motion.
-
-## Validate changes
-
-There is no automated build or test suite. Use the following checks:
-
-```powershell
-node --check assets\js\main.js
-git diff --check
-```
-
-Preview the site at desktop and mobile widths. Verify:
-
-- Both color themes.
-- Search filtering.
-- Sticky category navigation.
-- Expanding and collapsing resource sections.
-- Keyboard focus and navigation.
-- External links and fragment targets.
-
-## Suggest a resource or correction
-
-Open a pull request with the proposed update. Explain why the resource belongs in the collection and place it in the most relevant existing category where possible.
+Open a pull request to suggest a resource or correction.
 
 For general support guidance, see [SUPPORT.md](SUPPORT.md). To report a security issue, follow [SECURITY.md](SECURITY.md) rather than opening a public issue.
 

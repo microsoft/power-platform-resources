@@ -1,0 +1,25 @@
+{
+  "reviewed": "2026-09-26",
+  "owner": "Power CAT",
+  "cadence": "Weekly",
+  "items": [
+    {
+      "type": "catalog",
+      "badge": "Build",
+      "reason": "Provides one entry point to the complete published skills catalog."
+    },
+    {
+      "type": "guide",
+      "page": "ssp-design.html",
+      "anchor": "skill-well-architected-design-check",
+      "badge": "Review",
+      "reason": "Helps teams identify material design risks before delivery."
+    },
+    {
+      "type": "lab",
+      "path": "managed-platform-governance/README.md",
+      "badge": "Learn",
+      "reason": "Provides a hands-on path for current environment governance practices."
+    }
+  ]
+}

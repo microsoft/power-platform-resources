@@ -2,6 +2,20 @@
 <html>
 
 <head>
+	<script>
+		(() => {
+			const destination = !window.location.hash || window.location.hash === "#pillars" ? "ssp-landing.html" : "ssp-search.html";
+			const home = new URL(destination, window.location.href);
+			home.search = window.location.search;
+			home.hash = window.location.hash;
+			const theme = home.searchParams.get("clawpilotTheme");
+			if (!home.searchParams.has("scoutTheme") && (theme === "light" || theme === "dark")) {
+				home.searchParams.set("scoutTheme", theme);
+			}
+			window.location.replace(home.href);
+		})();
+	</script>
+	<noscript><meta http-equiv="refresh" content="0; url=ssp-landing.html" /></noscript>
 	<title>Microsoft Power Platform Resources</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -52,6 +66,7 @@
 	</script>
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="icon" href="images/banner.png" sizes="32x32">
+<link rel="stylesheet" href="assets/css/header-brand.css">
 </head>
 
 <body class="landing is-preload">
@@ -67,7 +82,7 @@
 		</button>
 	</div>
 	<header id="header" class="alt">
-		<h1 id="logo"><a href="index.html">Microsoft Power Platform Resources</a></h1>
+		<h1 id="logo"><a href="index.html"><img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="200" height="60"><span>Microsoft Power Platform Resources</span></a></h1>
 	</header>
 
 	<!-- Banner -->
@@ -1084,7 +1099,7 @@
 	</section>
 	<!-- Footer -->
 	<footer id="footer">
-		Created and maintained by <a href="https://linkedin.com/in/rstandefer">Robert Standefer</a>
+		Created and maintained by Power CAT
 		<p class="footer-links">
 			<a href="https://github.com/microsoft/power-platform-resources/blob/main/README.md" target="_blank"
 				rel="noopener">README</a>

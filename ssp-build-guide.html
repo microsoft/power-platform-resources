@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Service Portal - Coached Build journeys</title>
+  <script>
+    (() => {
+      let saved;
+      try { saved = localStorage.getItem("sspTheme"); } catch {}
+      document.documentElement.dataset.theme = new URLSearchParams(location.search).get("scoutTheme") || saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/ssp-design.css?v=20261006-pillar-label">
+  <link rel="stylesheet" href="assets/css/ssp-build-guide.css?v=20260928-narrow-gutters">
+  <link rel="stylesheet" href="assets/css/header-brand.css?v=20261001-search-icon">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <script src="assets/js/ssp-search-entry.js?v=20261006-footer-actions" defer></script>
+</head>
+<body class="pillar-build">
+  <header class="topbar"><div class="wrap row">
+    <a class="logo" href="ssp-landing.html" aria-label="About Self-Service Portal"><img class="platform-logo" src="assets/img/ms-power-platform-logo-stacked-gray-rgb.png" alt="Microsoft Power Platform" width="220" height="92"></a>
+    <nav class="main" id="siteNav" aria-label="Primary navigation"><a href="ssp-landing.html">About</a><a href="ssp-design.html">Design</a><a href="ssp-build.html" aria-current="page">Build</a><a href="ssp-review.html">Review</a><a href="https://microsoft.github.io/apps-agents-workshop/labs/" target="ssp-learn" rel="noopener">Learn</a></nav>
+    <div class="spacer"></div>
+    <button class="icon-btn menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">&#9776;</button>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme" title="Toggle theme">&#9790;</button>
+    <picture class="powercat-logo header-powercat" title="Power CAT"><img class="logo-on-light" src="assets/img/power-cat-dark.png" alt="Power CAT" height="46"><img class="logo-on-dark" src="assets/img/power-cat-light.png" alt="" height="46"></picture>
+  </div></header>
+
+  <main class="wrap build-guide-main">
+    <div class="build-guide-toolbar">
+      <a class="btn" href="ssp-build.html#journeys"><span class="fas fa-arrow-left" aria-hidden="true"></span>Back to Build</a>
+      <nav class="journey-nav" aria-label="Build journeys"><a href="#create-app">Create an app</a><a href="#automate-process">Automate a process</a><a href="#extend-experience">Extend an experience</a><a href="#ship-safely">Ship safely</a></nav>
+    </div>
+
+    <article class="build-journey" id="create-app" aria-labelledby="create-app-heading">
+      <header class="journey-heading"><span class="journey-number">Journey 01</span><h1 id="create-app-heading">Create an app people can use</h1><p>Start with one user outcome, select the lightest-fit app experience, and finish with a testable end-to-end slice rather than an empty shell.</p></header>
+      <div class="journey-layout">
+        <ol class="coached-steps">
+          <li class="coached-step" id="create-app-outcome"><h3>Frame the first useful outcome</h3><p>Name the user, the decision or task they must complete, the record they need, and the evidence that the task worked. Keep the first increment narrow enough to demonstrate in one sitting.</p><div class="step-output"><strong>Working output:</strong> a one-sentence outcome and a three-to-five-step happy path.</div><div class="step-action"><a class="btn" href="#create-app-subtype">Choose the app experience <span aria-hidden="true">&rarr;</span></a></div></li>
+          <li class="coached-step" id="create-app-subtype"><h3>Choose the experience that fits the task</h3><p>Use the user and task constraints to choose a subtype. Do not combine experiences until one can deliver the first outcome.</p><div class="subtype-grid"><div class="subtype"><strong>Canvas app</strong>Use for tailored task flows, responsive layouts, and multiple connected data sources.</div><div class="subtype"><strong>Model-driven app</strong>Use for role-based work centered on Dataverse records, forms, views, and processes.</div><div class="subtype"><strong>Code app</strong>Use when a React experience, source-controlled code, or custom interaction is essential.</div><div class="subtype"><strong>Generative page</strong>Use for a focused custom page inside a model-driven app, backed by Dataverse.</div></div><div class="step-output"><strong>Working output:</strong> one selected subtype with a short reason and known constraints.</div><div class="step-action"><a class="btn" href="#create-app-increment">Build the vertical slice <span aria-hidden="true">&rarr;</span></a></div></li>
+          <li class="coached-step" id="create-app-increment"><h3>Build one end-to-end slice</h3><p>Create the minimum navigation, data read or write, validation, and error state needed for the happy path. Use a solution and environment-safe configuration from the start.</p><p class="external-note">Skills Advisor opens the current catalog so you can select the published Canvas, model-driven, code app, generative page, or Dataverse skill that matches your subtype.</p><div class="step-output"><strong>Working output:</strong> a runnable increment that completes the chosen task with representative data.</div><div class="step-action"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Find the matching build skill <span aria-hidden="true">&nearr;</span></a></div></li>
+          <li class="coached-step" id="create-app-verify"><h3>Verify with a real task</h3><p>Ask a representative user to complete the happy path and one recovery path. Capture gaps in usability, access, data correctness, and error handling before broadening scope.</p><div class="step-output"><strong>Working output:</strong> a demonstrated slice, recorded findings, and a prioritized next increment.</div><div class="step-action"><a class="btn" href="ssp-review.html">Take the increment to Review <span aria-hidden="true">&rarr;</span></a></div></li>
+        </ol>
+        <aside class="journey-support" aria-labelledby="create-app-support"><h3 id="create-app-support">Supporting resources</h3><p>Keep these visible while you work. Self-Service Portal routes non-Power CAT skills through Skills Advisor so you see current prerequisites and availability.</p><ul class="support-list"><li><a href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Skills Advisor app catalog <span aria-hidden="true">&nearr;</span></a><span>Catalog mappings: generate-canvas-app, app-builder, create-code-app, genpage, dv-metadata, and add-datasource.</span></li><li><a data-skill-owner="power-cat" href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-code-apps__design-guide" target="_blank" rel="noopener">Code App design-guide marketplace details <span aria-hidden="true">&nearr;</span></a><span>For a code app, bring brand assets and audience goals before implementation; receive design tokens and implementation guidance.</span></li><li><a data-skill-owner="power-cat" href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-governance__create-pp-dev-env" target="_blank" rel="noopener">Governed developer environment marketplace details <span aria-hidden="true">&nearr;</span></a><span>Bring the teammate identity and approved settings; receive a configured developer environment.</span></li><li><a href="ssp-design-guide.html#new">Design a new solution</a><span>Return to intent, experience, data, and access decisions if the build boundary is unclear.</span></li><li><a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intro" target="_blank" rel="noopener">Dataverse overview <span aria-hidden="true">&nearr;</span></a><span>Microsoft Learn explains the data platform before you implement tables and relationships.</span></li></ul><p class="catalog-return"><a href="ssp-build.html#skills">View the existing Build catalog</a></p></aside>
+      </div>
+    </article>
+
+    <article class="build-journey" id="automate-process" aria-labelledby="automate-process-heading">
+      <header class="journey-heading"><span class="journey-number">Journey 02</span><h2 id="automate-process-heading">Automate a repeatable process</h2><p>Define the event, expected result, and exception owner first. Then choose cloud or desktop automation and prove that failures are visible and recoverable.</p></header>
+      <div class="journey-layout">
+        <ol class="coached-steps">
+          <li class="coached-step" id="automate-process-outcome"><h3>Bound the process</h3><p>Write down the trigger, required inputs, business result, systems touched, completion target, and the person accountable when the run cannot finish.</p><div class="step-output"><strong>Working output:</strong> a trigger-to-result process outline with an exception owner.</div><div class="step-action"><a class="btn" href="#automate-process-subtype">Choose the automation type <span aria-hidden="true">&rarr;</span></a></div></li>
+          <li class="coached-step" id="automate-process-subtype"><h3>Select cloud or desktop</h3><p>Choose based on where the work happens, not familiarity with the tool.</p><div class="subtype-grid"><div class="subtype"><strong>Cloud flow</strong>Use for service events, schedules, approvals, connectors, APIs, and unattended orchestration.</div><div class="subtype"><strong>Desktop flow</strong>Use when the required system exposes only a desktop interface; document machine, session, credential, and unattended-run needs.</div></div><div class="step-output"><strong>Working output:</strong> the selected automation type and a list of dependencies.</div><div class="step-action"><a class="btn" href="#automate-process-increment">Implement one successful run <span aria-hidden="true">&rarr;</span></a></div></li>
+          <li class="coached-step" id="automate-process-increment"><h3>Implement the smallest complete run</h3><p>Build the trigger, essential actions, and result record. Use clear names, connection references, least-privilege identities, and idempotent behavior where retries are possible.</p><p class="external-note">Skills Advisor opens current automation options. The catalog includes build-flow for cloud flows; use its search to check current desktop-flow guidance.</p><div class="step-output"><strong>Working output:</strong> a successful test run using controlled input and traceable output.</div><div class="step-action"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Find an automation skill <span aria-hidden="true">&nearr;</span></a></div></li>
+          <li class="coached-step" id="automate-process-harden"><h3>Make failure actionable</h3><p>Test invalid input, unavailable dependencies, duplicate events, timeout, and partial completion. Add scoped handling, useful run details, notification, and a documented retry or recovery path.</p><div class="step-output"><strong>Working output:</strong> a flow with tested success and failure paths plus owner-facing recovery notes.</div><div class="step-action"><a class="btn" href="ssp-review.html#skills">Review reliability and maintainability <span aria-hidden="true">&rarr;</span></a></div></li>
+        </ol>
+        <aside class="journey-support" aria-labelledby="automate-support"><h3 id="automate-support">Supporting resources</h3><p>These links supplement the coached steps; they are not hidden behind expandable panels.</p><ul class="support-list"><li><a href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Skills Advisor automation catalog <span aria-hidden="true">&nearr;</span></a><span>Catalog mappings include build-flow and add-cloud-flow. Search the live catalog for desktop-flow support.</span></li><li><a href="ssp-design-guide.html#new">Confirm the solution boundary</a><span>Use the design journey when the process crosses unclear ownership or system boundaries.</span></li><li><a href="ssp-build.html#skill-cloud-flow-builder">Build catalog: Cloud Flow Builder</a><span>See the existing portal-authored guide summary and expected output.</span></li></ul><p class="catalog-return"><a href="ssp-build.html#skills">View the existing Build catalog</a></p></aside>
+      </div>
+    </article>
+
+    <article class="build-journey" id="extend-experience" aria-labelledby="extend-experience-heading">
+      <header class="journey-heading"><span class="journey-number">Journey 03</span><h2 id="extend-experience-heading">Extend an experience where work happens</h2><p>Add one capability to an existing journey, choose the right surface only after the boundary is clear, and connect the extension through intentional data and action contracts.</p></header>
+      <div class="journey-layout">
+        <ol class="coached-steps">
+          <li class="coached-step" id="extend-experience-outcome"><h3>Define the capability gap</h3><p>Describe what users cannot do today, where they are when the need occurs, and what the existing experience should continue to own. Name the success signal for the extension.</p><div class="step-output"><strong>Working output:</strong> a bounded capability statement and the host experience it extends.</div><div class="step-action"><a class="btn" href="#extend-experience-subtype">Choose the extension surface <span aria-hidden="true">&rarr;</span></a></div></li>
+          <li class="coached-step" id="extend-experience-subtype"><h3>Select the extension surface</h3><p>Choose the smallest surface that closes the capability gap.</p><div class="subtype-grid"><div class="subtype"><strong>Agent</strong>Use for conversational discovery or action when knowledge grounding, permissions, fallback, and evaluation can be explicit.</div><div class="subtype"><strong>Mobile app</strong>Use for purpose-built mobile tasks that need device-aware interaction and connected services.</div><div class="subtype"><strong>Mobile extension</strong>Use when an existing wrapped Canvas app needs a specific native Android or iOS capability.</div><div class="subtype"><strong>Connected experience</strong>Use a connector, API, Dataverse, or data integration when the visible experience is sufficient but lacks trusted data or actions.</div></div><div class="step-output"><strong>Working output:</strong> one surface choice, its host boundary, and explicit non-goals.</div><div class="step-action"><a class="btn" href="#extend-experience-connect">Define data and action contracts <span aria-hidden="true">&rarr;</span></a></div></li>
+          <li class="coached-step" id="extend-experience-connect"><h3>Connect only what the capability needs</h3><p>Define input and output shapes, identity, permissions, latency, error behavior, and ownership. For Dataverse, model the required tables and relationships; for external systems, use supported connectors or typed API contracts.</p><p class="external-note">Skills Advisor opens current mobile, extension, connector, Dataverse, and integration skills so you can review prerequisites before execution.</p><div class="step-output"><strong>Working output:</strong> an implemented happy path with least-privilege access and observable failures.</div><div class="step-action"><a class="btn" href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Find the matching extension skill <span aria-hidden="true">&nearr;</span></a></div></li>
+          <li class="coached-step" id="extend-experience-verify"><h3>Test the boundary, not only the demo</h3><p>Verify authorization, unavailable data, unsupported requests, fallback, and the handoff back to the host experience. For agents, evaluate grounded and ungrounded prompts; for mobile, test the target device conditions.</p><div class="step-output"><strong>Working output:</strong> a tested extension with acceptance evidence and a known fallback.</div><div class="step-action"><a class="btn" href="ssp-review.html">Review the integrated experience <span aria-hidden="true">&rarr;</span></a></div></li>
+        </ol>
+        <aside class="journey-support" aria-labelledby="extend-support"><h3 id="extend-support">Supporting resources</h3><p>Use current catalog entries for capabilities that evolve quickly; Self-Service Portal does not bypass their prerequisites.</p><ul class="support-list"><li><a href="https://aka.ms/powerplatformskillsadvisor" target="ssp-skills" rel="noopener">Skills Advisor extension catalog <span aria-hidden="true">&nearr;</span></a><span>Catalog mappings: create-mobile-app, native-app-planner, generate-native-extension, add-connector, dv-metadata, integrate-backend, and integrate-webapi. The snapshot has agent migration tooling but no general new-agent build skill, so confirm current agent options in Advisor.</span></li><li><a data-skill-owner="power-cat" href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-dataverse__dataverse-webapi-query" target="_blank" rel="noopener">Dataverse Web API query marketplace details <span aria-hidden="true">&nearr;</span></a><span>Bring query intent, table metadata, target client, or a failing request; receive a target-ready OData or FetchXML query.</span></li><li><a href="ssp-design-guide.html#new">Design the integration boundary</a><span>Return to Design if identity, data ownership, or the host boundary is unresolved.</span></li><li><a href="ssp-build.html#skill-connector-and-api-builder">Build catalog: Connector and API Builder</a><span>See the existing integration guide summary and expected output.</span></li></ul><p class="catalog-return"><a href="ssp-build.html#skills">View the existing Build catalog</a></p></aside>
+      </div>
+    </article>
+
+    <article class="build-journey" id="ship-safely" aria-labelledby="ship-safely-heading">
+      <header class="journey-heading"><span class="journey-number">Journey 04</span><h2 id="ship-safely-heading">Ship a change safely</h2><p>Turn a working increment into a versioned release with environment-safe configuration, independent evidence, controlled promotion, and a practical recovery plan.</p></header>
+      <div class="journey-layout">
+        <ol class="coached-steps">
+          <li class="coached-step" id="ship-safely-scope"><h3>Define the release unit</h3><p>Inventory changed components, dependencies, data changes, configuration, owners, and acceptance criteria. Separate unrelated work so the release remains reviewable and reversible.</p><div class="step-output"><strong>Working output:</strong> a release manifest with a version, owner, dependencies, and acceptance criteria.</div><div class="step-action"><a class="btn" href="#ship-safely-package">Package for environments <span aria-hidden="true">&rarr;</span></a></div></li>
+          <li class="coached-step" id="ship-safely-package"><h3>Package and configure the solution</h3><p>Place components in the intended solution, verify the publisher and dependencies, and move environment-specific values into environment variables and connection references. Commit unpacked source when that is part of the team standard.</p><div class="step-output"><strong>Working output:</strong> a versioned deployment artifact with no hard-coded target configuration.</div><div class="step-action"><a class="btn" href="ssp-build.html#skill-solution-packaging-guide">Use the packaging guide <span aria-hidden="true">&rarr;</span></a></div></li>
+          <li class="coached-step" id="ship-safely-validate"><h3>Validate in the target path</h3><p>Import into a non-production environment, resolve solution-check findings, run functional and access tests, and capture approval evidence. Define rollback criteria before promotion.</p><div class="step-output"><strong>Working output:</strong> a validated artifact, approval record, post-deployment checks, and rollback criteria.</div><div class="step-action"><a class="btn" href="ssp-review.html">Run the Review journey <span aria-hidden="true">&rarr;</span></a></div></li>
+          <li class="coached-step" id="ship-safely-deploy"><h3>Promote, verify, and hand over</h3><p>Use the agreed pipeline and approvals to promote the same artifact. Apply target configuration, run smoke checks, monitor the release, and record the operating owner and recovery steps.</p><p class="external-note">Microsoft Learn opens the ALM overview used by Self-Service Portal's existing release checklist; review it before establishing or changing the delivery path.</p><div class="step-output"><strong>Working output:</strong> a verified release with traceable deployment evidence and an owned runbook.</div><div class="step-action"><a class="btn" href="https://learn.microsoft.com/power-platform/alm/overview-alm" target="_blank" rel="noopener">Open Power Platform ALM guidance <span aria-hidden="true">&nearr;</span></a></div></li>
+        </ol>
+        <aside class="journey-support" aria-labelledby="ship-support"><h3 id="ship-support">Supporting resources</h3><p>These references stay visible throughout the release sequence.</p><ul class="support-list"><li><a href="ssp-build.html#process-heading">Existing ALM release checklist</a><span>Use the portal's Plan, Package, Validate, and Deploy summary.</span></li><li><a data-skill-owner="power-cat" href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-procode-eval__eval-generator-code-app" target="_blank" rel="noopener">Code App eval marketplace details <span aria-hidden="true">&nearr;</span></a><span>Bring a testable Code App project and optional requirements; receive presence checks, static security analysis, and a dashboard.</span></li><li><a data-skill-owner="power-cat" href="https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-procode-eval__eval-generator-gen-pages" target="_blank" rel="noopener">Generative Page eval marketplace details <span aria-hidden="true">&nearr;</span></a><span>Bring a testable Generative Page and optional requirements; receive presence checks, unit tests, security analysis, and a dashboard.</span></li><li><a href="ssp-design-guide.html#govern">Enterprise-scale design journey</a><span>Revisit environments, source control, ownership, and gates when the release path is unclear.</span></li><li><a href="https://learn.microsoft.com/power-platform/alm/overview-alm" target="_blank" rel="noopener">Power Platform ALM overview <span aria-hidden="true">&nearr;</span></a><span>Microsoft Learn provides the canonical lifecycle concepts behind this journey.</span></li></ul><p class="catalog-return"><a href="ssp-build.html#skills">View the existing Build catalog</a></p></aside>
+      </div>
+    </article>
+  </main>
+
+  <footer><div class="wrap row"><span>Self-Service Portal - Curated by Power CAT &middot; Last published: <time datetime="2026-10">Oct, 2026</time></span><div class="footer-links"><a href="ssp-build.html#journeys">Build journeys</a><a href="ssp-build.html#skills">Build catalog</a></div></div></footer>
+  <script>
+    (() => {
+      const themeButton = document.getElementById("themeBtn");
+      const menuButton = document.querySelector(".menu-toggle");
+      const siteNav = document.getElementById("siteNav");
+      function syncTheme() {
+        const dark = document.documentElement.dataset.theme === "dark";
+        themeButton.textContent = dark ? "\u2600" : "\u263E";
+        themeButton.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+        themeButton.title = themeButton.getAttribute("aria-label");
+      }
+      themeButton.addEventListener("click", () => {
+        document.documentElement.dataset.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        try { localStorage.setItem("sspTheme", document.documentElement.dataset.theme); } catch {}
+        syncTheme();
+      });
+      menuButton.addEventListener("click", () => {
+        const open = menuButton.getAttribute("aria-expanded") !== "true";
+        siteNav.classList.toggle("is-open", open);
+        menuButton.setAttribute("aria-expanded", String(open));
+        menuButton.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+        menuButton.textContent = open ? "\u00D7" : "\u2630";
+      });
+      siteNav.addEventListener("click", event => {
+        if (event.target.closest("a")) {
+          siteNav.classList.remove("is-open");
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.setAttribute("aria-label", "Open navigation menu");
+          menuButton.textContent = "\u2630";
+        }
+      });
+      syncTheme();
+    })();
+  </script>
+</body>
+</html>
