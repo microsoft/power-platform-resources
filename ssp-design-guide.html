@@ -186,7 +186,7 @@
           const isSameOrigin = parsedReturn.origin === location.origin;
           const isDesignPage = /(?:^|\/)ssp-design\.html$/.test(parsedReturn.pathname);
           if (isSameOrigin && isDesignPage) {
-            safeReturnTarget = `ssp-design.html${parsedReturn.search}${parsedReturn.hash}`;
+            safeReturnTarget = 'ssp-design.html';
           }
         } catch {}
       }
