@@ -1013,8 +1013,8 @@ test('Self-Service Portal naming is consistent in user-facing copy', () => {
   for (const page of sspPages) {
     const html = readFileSync(join(__dirname, '..', page), 'utf8');
     const visibleText = replaceUntilStable(
-      replaceUntilStable(html, /<script\b[\s\S]*?<\/script>/gi, ''),
-      /<style\b[\s\S]*?<\/style>/gi,
+      replaceUntilStable(html, /<script\b[\s\S]*?<\/script\b[^>]*>/gi, ''),
+      /<style\b[\s\S]*?<\/style\b[^>]*>/gi,
       ''
     ).replace(/<[^>]+>/g, ' ');
     assert.doesNotMatch(visibleText, /\bSSP\b/);
