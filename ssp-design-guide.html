@@ -178,10 +178,21 @@
       const topics = Array.from(document.querySelectorAll('.topic'));
       const links = Array.from(document.querySelectorAll('.topic-nav a'));
       const stepSelectors = new Map();
-      const returnTarget = new URLSearchParams(location.search).get('return');
-      if (returnTarget && /^ssp-design\.html(?:[?#]|$)/.test(returnTarget)) {
+      const returnParam = new URLSearchParams(location.search).get('return');
+      let safeReturnTarget = null;
+      if (returnParam) {
+        try {
+          const parsedReturn = new URL(returnParam, location.origin);
+          const isSameOrigin = parsedReturn.origin === location.origin;
+          const isDesignPage = /(?:^|\/)ssp-design\.html$/.test(parsedReturn.pathname);
+          if (isSameOrigin && isDesignPage) {
+            safeReturnTarget = `ssp-design.html${parsedReturn.search}${parsedReturn.hash}`;
+          }
+        } catch {}
+      }
+      if (safeReturnTarget) {
         document.querySelectorAll('.back-to-design, .breadcrumb a, .topic-support a[href^="ssp-design.html"], footer a[href^="ssp-design.html"]').forEach(link => {
-          link.href = returnTarget;
+          link.href = safeReturnTarget;
         });
       }
       const paths = {
