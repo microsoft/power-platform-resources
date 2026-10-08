@@ -269,7 +269,7 @@ test('About and Start here menus close on Escape and return keyboard focus', () 
 
 test('Root defaults to About while legacy resource bookmarks preserve their destinations and theme', () => {
   const html = readFileSync(join(__dirname, '../index.html'), 'utf8');
-  const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const script = html.match(/<script\b[^>]*>([\s\S]*?)<\/script\s*>/i)[1];
   const resources = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
   const categories = [...resources.matchAll(/data-target="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(categories).size, 13);
