@@ -1,8 +1,8 @@
 {
   "source": "https://microsoft.github.io/power-cat-skills/skill-advisor/",
-  "sourceGenerated": "21 Sep 2026",
-  "retrieved": "2026-09-26T21:38:30.793Z",
-  "sha256": "b0e796d10fcdb073cfd6fce70792be2072fce2fe85877380872d6e403743d019",
+  "sourceGenerated": "5 Oct 2026",
+  "retrieved": "2026-10-12T15:06:16.184Z",
+  "sha256": "b146c71f440fabdc7aac0208ab7190d46f66f5678a40bf21e75dcd4216a9ae99",
   "skills": [
     {
       "id": "skill-66",
@@ -45,7 +45,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-connector",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -58,8 +58,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "add-connector",
-        "sourceSha256": "5a5a548a04065414095a83994415324d7f94a2d80535467c0e66400ffd74437f",
-        "prompt": "Use add-connector: Add Power Platform connectors and generated services."
+        "sourceSha256": "93853bfcaccdb4e860f7132608ea9d29290b49823ebc3d75c55401696c3f0502",
+        "prompt": "Use add-connector: Add Power Platform connectors and generated services.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -308,7 +309,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/model-apps/skills/app-builder",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -321,8 +322,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "app-builder",
-        "sourceSha256": "4687deffa5faf7268863095ac0e4062d55e65cc6356170be6dd881d95817ce70",
-        "prompt": "Use app-builder: Build or edit a complete model-driven app from a reviewable App Spec."
+        "sourceSha256": "e0b55d100805336e58a8fc790da767e2d97b67673cb0e7437fbcc6719939d224",
+        "prompt": "Use app-builder: Build or edit a complete model-driven app from a reviewable App Spec.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -764,7 +766,7 @@
       "source": "https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-connect/SKILL.md",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "MCP & Tooling"
       ],
@@ -780,8 +782,9 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-connect/SKILL.md"
         ],
         "skillName": "dv-connect",
-        "sourceSha256": "66b2aac1dd9851db68663b82c19d2b4ef04a2ac0c2b61f38e94e7288cd5fab0e",
-        "prompt": "Use dv-connect: Authenticate and register an environment server."
+        "sourceSha256": "8cef7f5becce9e57e91601122dba6309eab8f395cc848f4c7210fdd618320fe6",
+        "prompt": "Use dv-connect: Authenticate and register an environment server.",
+        "sourceRevision": "3be592f66d2fcc8e8da6d5514e59dbb744d83c28"
       }
     },
     {
@@ -993,7 +996,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/create-mobile-app",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1006,8 +1009,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-mobile-app",
-        "sourceSha256": "aca316cca9afe22ad4179f6755f1a2c8640f47017a859b84931d6520aa7e3226",
-        "prompt": "Use create-mobile-app: Generate Expo/React Native screens in parallel."
+        "sourceSha256": "5c671e08f5c24f24f0c5274277ac31d63bb4bb5cfb08b0e2657028b7b2a5e8c7",
+        "prompt": "Use create-mobile-app: Generate Expo/React Native screens in parallel.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -1138,7 +1142,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/debug-app",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1151,8 +1155,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "debug-app",
-        "sourceSha256": "01c552f80b3c7a30910c38e2c36c134b906b56f4b2e9d5b36d6c1de692fc19a6",
-        "prompt": "Use debug-app: Check routes, payloads, contrast, icons, and runtime issues."
+        "sourceSha256": "50cd4db4b9a2c3a5daa50cc745374ad061794770a225230758d4d03ac98cb273",
+        "prompt": "Use debug-app: Check routes, payloads, contrast, icons, and runtime issues.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -1310,7 +1315,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/deploy",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1322,8 +1327,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "deploy",
-        "sourceSha256": "1865b876622d3f831a35725d49f6f08c8fa72c914074a4fd23fe6049723c0991",
-        "prompt": "Use deploy: Build, push, and prepare distribution through Power Apps Wrap."
+        "sourceSha256": "273a1613a911ac28dfca3a5262ce699f24a05145a1007275e5603beea8fb36a8",
+        "prompt": "Use deploy: Build, push, and prepare distribution through Power Apps Wrap.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -1459,7 +1465,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/design-system",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1472,8 +1478,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "design-system",
-        "sourceSha256": "dfaddf6c09113e4da464963059dc629ba6f151e8372b1aaa3ad375cc4eb9aaa0",
-        "prompt": "Use design-system: Choose a visual direction and generate branded design tokens."
+        "sourceSha256": "056309f40f37de5be218b06d46c6adc73c9889bcc243e27218197c26a98283da",
+        "prompt": "Use design-system: Choose a visual direction and generate branded design tokens.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -1642,7 +1649,7 @@
       "source": "https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-connect/SKILL.md",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Dataverse"
       ],
@@ -1658,8 +1665,9 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-connect/SKILL.md"
         ],
         "skillName": "dv-connect",
-        "sourceSha256": "66b2aac1dd9851db68663b82c19d2b4ef04a2ac0c2b61f38e94e7288cd5fab0e",
-        "prompt": "Use dv-connect: Install tools, authenticate, and register the Dataverse MCP server."
+        "sourceSha256": "8cef7f5becce9e57e91601122dba6309eab8f395cc848f4c7210fdd618320fe6",
+        "prompt": "Use dv-connect: Install tools, authenticate, and register the Dataverse MCP server.",
+        "sourceRevision": "3be592f66d2fcc8e8da6d5514e59dbb744d83c28"
       }
     },
     {
@@ -1883,7 +1891,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/edit-app",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1896,8 +1904,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "edit-app",
-        "sourceSha256": "d27a42080a57db85b93dbfb2b2ea0bdb6815d4107f6e0da3e95884c3d5cda672",
-        "prompt": "Use edit-app: Apply safe plan deltas; add offline scope when required."
+        "sourceSha256": "6f37457e141dee57c8df15429fb20b14831043ea16599a97aff6767ccdec8ae1",
+        "prompt": "Use edit-app: Apply safe plan deltas; add offline scope when required.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -2270,7 +2279,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/model-apps/skills/genpage",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Cross-Cutting",
         "Power Apps"
@@ -2286,8 +2295,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "genpage",
-        "sourceSha256": "5e2c00a376134d2951692a89e8b8e24660bf63e5702234c815569e8c2fefa8d9",
-        "prompt": "Use genpage: Plan a model-driven generative page and its Dataverse shape."
+        "sourceSha256": "74231ebd2c100abc8d3b170f0f96525271860d2b24d72bea43b1105bbb3ce85a",
+        "prompt": "Use genpage: Plan a model-driven generative page and its Dataverse shape.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -2891,7 +2901,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/model-apps/skills/genpage",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -2903,8 +2913,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "genpage",
-        "sourceSha256": "5e2c00a376134d2951692a89e8b8e24660bf63e5702234c815569e8c2fefa8d9",
-        "prompt": "Use genpage: Upload the generated page to its target app."
+        "sourceSha256": "74231ebd2c100abc8d3b170f0f96525271860d2b24d72bea43b1105bbb3ce85a",
+        "prompt": "Use genpage: Upload the generated page to its target app.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -3161,7 +3172,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/preview-screens",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -3174,8 +3185,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "preview-screens",
-        "sourceSha256": "94726e9941f85e6127f8a8dc12880735fe2e951d2cb4607952665705b9fca7bc",
-        "prompt": "Use preview-screens: Review generated screens without running Metro."
+        "sourceSha256": "24b897054d44cf68b8e869aeefcecedd06537cc62bc87276ef1e1c83227bbf33",
+        "prompt": "Use preview-screens: Review generated screens without running Metro.",
+        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
       }
     },
     {
@@ -3758,16 +3770,16 @@
       "id": "skill-146",
       "name": "add-skill",
       "displayName": "Add Skill",
-      "description": "PLUGIN COMMAND: Acquire an existing skill from a local file or CAT gallery and optionally import it into a Copilot Studio CLI-agent workspace. Publishing is separate.",
+      "description": "Acquire an existing skill from a local file or CAT gallery and optionally import it into a Copilot Studio CLI-agent workspace. Publishing is separate.",
       "kind": "deploy",
       "purpose": "Deploy",
       "marketplace": "Copilot Studio Plugin",
       "maturity": "Preview",
       "status": "Experimental",
-      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/a0833db3ca5fd1014849fea1b627a9c2b63c27c1/commands/add-skill.md",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/add-skill/SKILL.md",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "21 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Agent Skills"
       ],
@@ -3776,17 +3788,254 @@
       ],
       "tier": "skill",
       "action": {
-        "kind": "command",
+        "kind": "skill",
         "skillName": "add-skill",
-        "note": "Plugin command, not a SKILL.md skill. Requires the installed Copilot Studio plugin; optional import requires a cloned CLI-agent workspace. This command does not publish.",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Agent Skill (SKILL.md). Moved upstream from commands/add-skill.md (a0833db3) to skills/add-skill/SKILL.md (4014ae68); same portal entry. Requires the installed Copilot Studio plugin and Node.js for its helper script; optional import requires a cloned agent workspace. It never pushes or publishes.",
         "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/add-skill/SKILL.md",
           "https://github.com/microsoft/copilot-studio-plugin/blob/a0833db3ca5fd1014849fea1b627a9c2b63c27c1/commands/add-skill.md"
         ],
-        "sourceSha256": "4998cae40fa305993378e4a8c6dbe3df87d3c29720fca5a284c45cc55335e8af",
-        "sourceRevision": "a0833db3ca5fd1014849fea1b627a9c2b63c27c1",
-        "prompt": "Add an existing agent skill from my local files or the CAT gallery to my Copilot Studio workspace.",
-        "command": "/add-skill",
-        "userInvocable": true
+        "sourceSha256": "f21629928e7cefbb30ed4267d9a92db94cc59b335ea9ae45f560056ccbec7976",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Add an existing agent skill from my local files or the CAT gallery to my Copilot Studio workspace."
+      }
+    },
+    {
+      "id": "skill-147",
+      "name": "add-knowledge",
+      "displayName": "Add Knowledge",
+      "description": "Add a public website, SharePoint, OneDrive or uploaded-file knowledge source to a locally cloned Copilot Studio agent by writing knowledge YAML; push and publish are separate.",
+      "kind": "author",
+      "purpose": "Author",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/add-knowledge/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · EXTEND"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "add-knowledge",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and a locally cloned agent; it writes local files only, so push and publish separately.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/add-knowledge/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "0e09ed4f5f2ee7c4340ec20e4e37234f3a645389ee6b23fbd786a30d0593ae6c",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Add our public product documentation website as a knowledge source to my cloned Copilot Studio agent."
+      }
+    },
+    {
+      "id": "skill-148",
+      "name": "clone-agent",
+      "displayName": "Clone Agent",
+      "description": "Clone an existing Copilot Studio agent into a new local PAC CLI workspace; it reads the cloud agent and writes local files only.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/clone-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · CREATE & CLONE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "clone-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. It never pushes, publishes or deletes a cloud agent.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/clone-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "10912efcd24402ed1ea32ebe56d46729f48621ccf620e53413d5a513681889b9",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Clone my Copilot Studio agent into a local folder so I can edit it."
+      }
+    },
+    {
+      "id": "skill-149",
+      "name": "create-agent",
+      "displayName": "Create Agent",
+      "description": "Create a new Copilot Studio agent and PAC-connected local workspace, optionally adding instructions, skills, tools, knowledge and settings; it never publishes.",
+      "kind": "author",
+      "purpose": "Author",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/create-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · CREATE & CLONE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "create-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. It never publishes; an explicit publish request is handed to publish-agent.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/create-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "31b6f66fa73b89f344427cd52f0aa644c2dcaa11d5b28dbeedc103d858704a4d",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Create a new Copilot Studio agent that answers HR policy questions."
+      }
+    },
+    {
+      "id": "skill-150",
+      "name": "delete-agent",
+      "displayName": "Delete Agent",
+      "description": "DESTRUCTIVE: permanently delete a Copilot Studio agent from the cloud after an exact typed confirmation. Irreversible; local workspace files are not deleted.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/delete-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · PUBLISH & DELETE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "delete-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. DESTRUCTIVE and irreversible: it permanently deletes the cloud agent only after the skill's exact typed confirmation and cannot be undone. Local files are not deleted and any local workspace becomes stale.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/delete-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "94686809f7382a3d3ad76e345a313653493f52dd40fc3a53c6e60589cfea109e",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Permanently delete the Copilot Studio agent <agent name> from my environment."
+      }
+    },
+    {
+      "id": "skill-151",
+      "name": "publish-agent",
+      "displayName": "Publish Agent",
+      "description": "Publish an existing Copilot Studio agent, making its current cloud draft live for users who can access it; it does not upload, pull or push.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/publish-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · PUBLISH & DELETE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "publish-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. Publishing makes the current cloud draft live after confirmation.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/publish-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "f56b32693f8835e18b67ca82b6627ed9796a4046aad186644cb21bd32a5a81cd",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Publish my Copilot Studio agent so its current draft goes live."
+      }
+    },
+    {
+      "id": "skill-152",
+      "name": "pull-agent",
+      "displayName": "Pull Agent",
+      "description": "Pull remote Copilot Studio agent changes into an existing PAC CLI workspace, merging into local files; it never pushes or publishes.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/pull-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · SYNC"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "pull-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. It can merge remote changes into local files.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/pull-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "15b4ff8487c9ca18c332b9835cacf2e00ae0d9156fa735a3a0786f2c6b6a4bfa",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Pull the latest remote changes into my local Copilot Studio agent workspace."
+      }
+    },
+    {
+      "id": "skill-153",
+      "name": "push-agent",
+      "displayName": "Push Agent",
+      "description": "Push local changes from a PAC CLI workspace to the Copilot Studio agent's cloud draft, pulling first; it never publishes.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/push-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · SYNC"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "push-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. It updates draft content only; publish separately.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/push-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "b1269ba90173b858aa34985bdc1feea1dd9ed79efadbc0b4c30a6c6ca34fa89c",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Push my local Copilot Studio agent changes to the cloud draft without publishing."
       }
     }
   ]

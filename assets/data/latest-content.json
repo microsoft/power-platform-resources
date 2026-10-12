@@ -3,25 +3,30 @@
     "news": "https://www.microsoft.com/en-us/power-platform/blog/feed/",
     "events": "https://www.microsoft.com/en-us/power-platform/blog/content-type/events/feed/"
   },
-  "retrieved": "2026-09-26T23:12:34.368Z",
+  "retrieved": "2026-10-12T15:06:26.270Z",
   "news": [
+    {
+      "title": "Microsoft Power Pages is now available in Sweden Central and Italy North",
+      "url": "https://www.microsoft.com/power-platform/blog/power-pages/microsoft-power-pages-is-now-available-in-sweden-central-and-italy-north/",
+      "published": "2026-10-08"
+    },
+    {
+      "title": "Simplify Site Governance with Self-Service Ownership Transfer in Power Pages",
+      "url": "https://www.microsoft.com/power-platform/blog/power-pages/transfer-power-pages-site-ownership-with-self-service/",
+      "published": "2026-09-27"
+    },
     {
       "title": "Modern List in Power Pages is now generally available",
       "url": "https://www.microsoft.com/power-platform/blog/power-pages/modern-list-in-power-pages-is-now-generally-available/",
       "published": "2026-09-23"
-    },
-    {
-      "title": "Extend Server Logic with Power Automate Cloud Flows in Power Pages",
-      "url": "https://www.microsoft.com/power-platform/blog/power-pages/extend-server-logic-with-power-automate-cloud-flows-in-power-pages/",
-      "published": "2026-09-18"
-    },
-    {
-      "title": "What’s new in Power Platform: September 2026 feature update",
-      "url": "https://www.microsoft.com/power-platform/blog/power-apps/whats-new-in-power-platform-september-2026-feature-update/",
-      "published": "2026-09-17"
     }
   ],
   "events": [
+    {
+      "title": "Your AI transformation starts with what you’ve already built",
+      "url": "https://www.microsoft.com/power-platform/blog/power-apps/your-ai-transformation-starts-with-what-youve-already-built/",
+      "published": "2026-10-01"
+    },
     {
       "title": "PPCC 2026: Bringing AI and your business processes together",
       "url": "https://www.microsoft.com/microsoft-365/blog/2026/09/03/ppcc-2026-bringing-ai-and-your-business-processes-together/",
@@ -31,11 +36,6 @@
       "title": "Register now for PPCC 2026: Come for the learning, stay for the community",
       "url": "https://www.microsoft.com/power-platform/blog/2026/08/13/register-now-for-ppcc-2026-come-for-the-learning-stay-for-the-community/",
       "published": "2026-08-13"
-    },
-    {
-      "title": "Building trustworthy AI: A practical framework for adaptive governance",
-      "url": "https://www.microsoft.com/power-platform/blog/2026/04/01/building-trustworthy-ai-a-practical-framework-for-adaptive-governance/",
-      "published": "2026-04-01"
     }
   ]
 }
