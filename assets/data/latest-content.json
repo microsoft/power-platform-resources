@@ -3,22 +3,22 @@
     "news": "https://www.microsoft.com/en-us/power-platform/blog/feed/",
     "events": "https://www.microsoft.com/en-us/power-platform/blog/content-type/events/feed/"
   },
-  "retrieved": "2026-10-12T15:06:26.270Z",
+  "retrieved": "2026-10-19T15:03:10.945Z",
   "news": [
+    {
+      "title": "Go multilingual with the Power Pages plugin",
+      "url": "https://www.microsoft.com/power-platform/blog/power-pages/go-multilingual-with-the-power-pages-plugin/",
+      "published": "2026-10-14"
+    },
+    {
+      "title": "Create Power Pages sites in minutes with SPA templates",
+      "url": "https://www.microsoft.com/power-platform/blog/power-pages/create-power-pages-sites-in-minutes-with-spa-templates/",
+      "published": "2026-10-13"
+    },
     {
       "title": "Microsoft Power Pages is now available in Sweden Central and Italy North",
       "url": "https://www.microsoft.com/power-platform/blog/power-pages/microsoft-power-pages-is-now-available-in-sweden-central-and-italy-north/",
       "published": "2026-10-08"
-    },
-    {
-      "title": "Simplify Site Governance with Self-Service Ownership Transfer in Power Pages",
-      "url": "https://www.microsoft.com/power-platform/blog/power-pages/transfer-power-pages-site-ownership-with-self-service/",
-      "published": "2026-09-27"
-    },
-    {
-      "title": "Modern List in Power Pages is now generally available",
-      "url": "https://www.microsoft.com/power-platform/blog/power-pages/modern-list-in-power-pages-is-now-generally-available/",
-      "published": "2026-09-23"
     }
   ],
   "events": [

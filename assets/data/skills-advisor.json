@@ -1,8 +1,8 @@
 {
   "source": "https://microsoft.github.io/power-cat-skills/skill-advisor/",
   "sourceGenerated": "5 Oct 2026",
-  "retrieved": "2026-10-12T15:06:16.184Z",
-  "sha256": "b146c71f440fabdc7aac0208ab7190d46f66f5678a40bf21e75dcd4216a9ae99",
+  "retrieved": "2026-10-19T15:03:02.363Z",
+  "sha256": "919cd96da5d20275590dca97c2487bf010c915cce69fedf7e53435fcab14c71d",
   "skills": [
     {
       "id": "skill-66",
@@ -29,7 +29,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "add-cloud-flow",
-        "sourceSha256": "63a3a590671df28db110f06471ffe762618ec928c1bba80318b253bb4772005a",
+        "sourceSha256": "257ad98cfdda423ce53b22a548b83663f11198f645cca1e3afcefe0e7d4aa876",
         "prompt": "Use add-cloud-flow: Connect notifications or asynchronous processes."
       }
     },
@@ -58,9 +58,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "add-connector",
-        "sourceSha256": "93853bfcaccdb4e860f7132608ea9d29290b49823ebc3d75c55401696c3f0502",
+        "sourceSha256": "cb6493f651aff4de7a0c40a2b67d706defa34b8f2af819fdc3caf7945d933791",
         "prompt": "Use add-connector: Add Power Platform connectors and generated services.",
-        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -383,7 +383,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "audit-permissions",
-        "sourceSha256": "5fc933e0fb5f8c5631b8d02128febf6272876a8fa47874803e47d1ea67ea2269",
+        "sourceSha256": "8a1a01160a92f2b3c73de4b2fcfba4513345d1053a39987abab91d53034008f4",
         "prompt": "Use audit-permissions: Review table permissions and scopes."
       }
     },
@@ -493,7 +493,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "browse-flows",
-        "sourceSha256": "5d05adfbab7dab48cd449f4d30f4eca8d2ff03b4ceaf8775439e19f8e95677ef",
+        "sourceSha256": "e6937d173b35d36574d7fb57f7ccf38a9b61ee6f38c3053393550085f55bb85e",
         "prompt": "Use browse-flows: Browse environments, flows, connections, and runs."
       }
     },
@@ -553,7 +553,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "build-flow",
-        "sourceSha256": "c15d7c2f9a09b7e91310a3acef6acd9978d9bb7297967d5c636e348ed86f4daa",
+        "sourceSha256": "17aa71ae0c81400177cd635d53d1b6944f0b4be166b18023f4c343e404db125a",
         "prompt": "Use build-flow: Generate a complete cloud flow through FlowAgent."
       }
     },
@@ -674,7 +674,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "check-updates",
-        "sourceSha256": "f47c46a6bbe95643e0f344ab3687a83b86a28d98f5807276c3cbc014d22ad8b0",
+        "sourceSha256": "61896c45633ed554435d16539d958d717e559c5e44c8f24a6abc6bff6592fbea",
         "prompt": "Use check-updates: Check the plugin, native host, Microsoft packages, and direct npm dependencies with per-package approval and rollback."
       }
     },
@@ -782,9 +782,9 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-connect/SKILL.md"
         ],
         "skillName": "dv-connect",
-        "sourceSha256": "8cef7f5becce9e57e91601122dba6309eab8f395cc848f4c7210fdd618320fe6",
+        "sourceSha256": "65c8edb5be4a139a21b9103db39f1ce25610b08d36fbb615cfc1188b97df7ade",
         "prompt": "Use dv-connect: Authenticate and register an environment server.",
-        "sourceRevision": "3be592f66d2fcc8e8da6d5514e59dbb744d83c28"
+        "sourceRevision": "1966192f0bee20216f1b58cf11f8b0c4b0e3edb8"
       }
     },
     {
@@ -980,7 +980,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-flow",
-        "sourceSha256": "745ad655853c5527e3484010bd200ec198b91dc357361eadcb04b072cf0949b9",
+        "sourceSha256": "ca88d3313bf56e649fe0cf85ea2db9b71ed002c8e38fbeb4e20ea14479a5ef46",
         "prompt": "Use create-flow: Guided creation with explicit choices and connection mapping."
       }
     },
@@ -1009,9 +1009,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-mobile-app",
-        "sourceSha256": "5c671e08f5c24f24f0c5274277ac31d63bb4bb5cfb08b0e2657028b7b2a5e8c7",
+        "sourceSha256": "7a57152d162d1f6443f887ae1bfbc35d4a192c2b2183a74ef299760bd38f0fbb",
         "prompt": "Use create-mobile-app: Generate Expo/React Native screens in parallel.",
-        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -1069,7 +1069,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-site",
-        "sourceSha256": "a52d2015b0f19b4fc2175a53ed0872afdaa84db4a68a901911299685b09bb8fb",
+        "sourceSha256": "dd42423c85790819c1c135c54e6d31b18af7a6d9c3247f3425fa51ad5b509f42",
         "prompt": "Use create-site: Create a modern Power Pages code site."
       }
     },
@@ -1155,9 +1155,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "debug-app",
-        "sourceSha256": "50cd4db4b9a2c3a5daa50cc745374ad061794770a225230758d4d03ac98cb273",
+        "sourceSha256": "1b063edca21ab2bf7f9fc9c59a1224e627625957c2a7bf46c6d26a8dc35ad563",
         "prompt": "Use debug-app: Check routes, payloads, contrast, icons, and runtime issues.",
-        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -1239,7 +1239,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "debug-flow",
-        "sourceSha256": "0f45db1538f28229ef7135b4e078e0ad3c94ef4a22cb515faee47f0ea8b81994",
+        "sourceSha256": "11773e8153a208ff4cdb4d8dcb2cd20078b6a27678018ad346dfddba49376d7b",
         "prompt": "Use debug-flow: Interactively inspect a failed run and its actions."
       }
     },
@@ -1327,9 +1327,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "deploy",
-        "sourceSha256": "273a1613a911ac28dfca3a5262ce699f24a05145a1007275e5603beea8fb36a8",
+        "sourceSha256": "b107d6b37a2c0a5ab0dfa91e7eeb9854b8db6cff5b726d2de2a69b860db4b6bd",
         "prompt": "Use deploy: Build, push, and prepare distribution through Power Apps Wrap.",
-        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -1359,7 +1359,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "deploy-site",
-        "sourceSha256": "14ca219b29d01f63911b73a348d837b5955a4d8b14531b47c386073ba74c15ff",
+        "sourceSha256": "5d94ee1acf1fa5464c6607bbdc52776b3ed8962569151ed2d28fb481f9113cb1",
         "prompt": "Use deploy-site: Build and upload a Power Pages code site."
       }
     },
@@ -1478,9 +1478,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "design-system",
-        "sourceSha256": "056309f40f37de5be218b06d46c6adc73c9889bcc243e27218197c26a98283da",
+        "sourceSha256": "6ad423f7a5417e13e9e62a5b22b8bb4bae2147d82c2c02c50c225570f9cd9e4c",
         "prompt": "Use design-system: Choose a visual direction and generate branded design tokens.",
-        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -1565,7 +1565,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "diagnose-flow",
-        "sourceSha256": "efe2ec82b6742f01a9bb53e423c17030b45a93b621e65b553decb300c68f16d2",
+        "sourceSha256": "35a010c3f7546cecb2bf90024d32fc47d69ec0e3ab4ffcac01c859adea611131",
         "prompt": "Use diagnose-flow: Diagnose failed runs, loops, connections, and expressions."
       }
     },
@@ -1601,7 +1601,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-admin/SKILL.md"
         ],
         "skillName": "dv-admin",
-        "sourceSha256": "ed1e393c51aac454f6394e2a88936192e813335246dbf0b66e9c77a3a5276a55",
+        "sourceSha256": "f8403f935518fe99b98821a1a5eacd67431bd1e68b7110a19c73c2053d44e190",
         "prompt": "Use dv-admin: Retention, archival, settings, audit, recycle bin, and bulk delete."
       }
     },
@@ -1633,7 +1633,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-security/SKILL.md"
         ],
         "skillName": "dv-admin",
-        "sourceSha256": "ed1e393c51aac454f6394e2a88936192e813335246dbf0b66e9c77a3a5276a55",
+        "sourceSha256": "f8403f935518fe99b98821a1a5eacd67431bd1e68b7110a19c73c2053d44e190",
         "prompt": "Use dv-admin: Maintain settings, retention, audit, roles, users, and access."
       }
     },
@@ -1665,9 +1665,9 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-connect/SKILL.md"
         ],
         "skillName": "dv-connect",
-        "sourceSha256": "8cef7f5becce9e57e91601122dba6309eab8f395cc848f4c7210fdd618320fe6",
+        "sourceSha256": "65c8edb5be4a139a21b9103db39f1ce25610b08d36fbb615cfc1188b97df7ade",
         "prompt": "Use dv-connect: Install tools, authenticate, and register the Dataverse MCP server.",
-        "sourceRevision": "3be592f66d2fcc8e8da6d5514e59dbb744d83c28"
+        "sourceRevision": "1966192f0bee20216f1b58cf11f8b0c4b0e3edb8"
       }
     },
     {
@@ -1700,7 +1700,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-data/SKILL.md"
         ],
         "skillName": "dv-data",
-        "sourceSha256": "0fe26813b039263468010e8f486e086d2233a0d2252a1011b662a89c66fa595e",
+        "sourceSha256": "bc0baf8118452ba7e13b282eb584f953ab4fd2742bf4b7867b2e5d0bc52718aa",
         "prompt": "Use dv-data: CRUD, CSV import, multi-table loads, upsert, and sample data."
       }
     },
@@ -1738,7 +1738,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-metadata/SKILL.md"
         ],
         "skillName": "dv-metadata",
-        "sourceSha256": "cfd7d87efde7ed8b05199470bc1704a9320bcad78b80aaeac630bbcdb2963a3a",
+        "sourceSha256": "f944a60c1b60101a7faa32adcebfed7fd2aaba06183686cde01925a88dfb4cfc",
         "prompt": "Use dv-metadata: Design tables, columns, relationships, forms, and views."
       }
     },
@@ -1770,7 +1770,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-overview/SKILL.md"
         ],
         "skillName": "dv-overview",
-        "sourceSha256": "702103f7eee1154037cb1d9bd0e71da689c1a503bbd1c57d41dc991bf6878bc5",
+        "sourceSha256": "6b08615c22189ca6f8ebc636cdabbdf56cc0f8d6755cdf24f67338294820723a",
         "prompt": "Use dv-overview: Load foundational context, safety rules, and tool-capability guidance; specialist skills self-route by intent."
       }
     },
@@ -1802,7 +1802,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-query/SKILL.md"
         ],
         "skillName": "dv-query",
-        "sourceSha256": "4aed7ed14c67dab4269061639eeec1d1421fb065dec427cfc0bed03638e3a24e",
+        "sourceSha256": "ffaff762037cfc1d138f642f61bcf43839ad37eb917f92a00245ce026e01c3a5",
         "prompt": "Use dv-query: Read, filter, page, aggregate, and load records into pandas."
       }
     },
@@ -1904,9 +1904,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "edit-app",
-        "sourceSha256": "6f37457e141dee57c8df15429fb20b14831043ea16599a97aff6767ccdec8ae1",
+        "sourceSha256": "14f74dd30fec507696dc8f7c638200796f8fbb16a7d541a06c07752293ca09d1",
         "prompt": "Use edit-app: Apply safe plan deltas; add offline scope when required.",
-        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -2147,7 +2147,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "generate-mcp-app-ui",
-        "sourceSha256": "8cf68cacb90ae2d8dbaa44518de47dfb42553020ce43e4bfd5f8e666265c4f4d",
+        "sourceSha256": "b941ccbe9ee66bd7ddd34291d1e40473a7dfeba4a65b9c280288f2a62b945fa2",
         "prompt": "Use generate-mcp-app-ui: Create interactive widgets for MCP tool output."
       }
     },
@@ -2295,9 +2295,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "genpage",
-        "sourceSha256": "74231ebd2c100abc8d3b170f0f96525271860d2b24d72bea43b1105bbb3ce85a",
+        "sourceSha256": "d49465d600463ae7c7cda585ac529c248ab850964135e5cea11980e92f9cfccc",
         "prompt": "Use genpage: Plan a model-driven generative page and its Dataverse shape.",
-        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -2324,7 +2324,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "powercat-overpage",
-        "sourceSha256": "c24c001cffee4f7957bd40b17bc1e2c90024a223d7ddf574f6b466c010ef3ae5",
+        "sourceSha256": "476197626b1867d802da984933cd75ad4cf5ca9b08f4893a963e0fdff027f9b6",
         "evidence": [
           "https://github.com/microsoft/power-cat-skills/blob/6cd3c2973f1b9ed7df2900da83e66e771e0575cf/plugins/powercat-overpage/skills/powercat-overpage/SKILL.md"
         ],
@@ -2387,7 +2387,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "infopath-to-canvas",
-        "sourceSha256": "be663627eabb6f055d7287b087795841746c33691a388e7ad2ad99e0ae7f3fe0",
+        "sourceSha256": "fe56fa9ba279a52a132c160cbb8833780eb5b2b01cf5a9761d7ce588f9a2f9f6",
         "evidence": [
           "https://github.com/microsoft/power-cat-skills/blob/6cd3c2973f1b9ed7df2900da83e66e771e0575cf/Power%20Platform%20Migration%20Factory/infopath-to-canvas/SKILL.md"
         ],
@@ -2448,7 +2448,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "integrate-webapi",
-        "sourceSha256": "e60d22bed6133bf579fb00560fafbcac0ea8b63cc61e0ee9f830550b684d4366",
+        "sourceSha256": "faecac682d484fe46a5d19db33e786ca3e24faa212d3aee897deb5ec8251be4e",
         "prompt": "Use integrate-webapi: Create typed clients, services, permissions, and settings."
       }
     },
@@ -2506,7 +2506,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "manage-desktop-flows",
-        "sourceSha256": "eb9b912fd65ad5f8f1beaa7b8979fdaef7339a7cf7b0c36b6244d2fed4043724",
+        "sourceSha256": "09ba1540ae2872b64d1ab7e69efa7ae9c691a924ffe0e86c77f8e6529f7dea94",
         "prompt": "Use manage-desktop-flows: List and run desktop-flow assets."
       }
     },
@@ -2537,7 +2537,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "manage-flows",
-        "sourceSha256": "7ab993f115c3f6d783ec56896cfe4120d3891d0dfe2cb55395c5a87e8865797a",
+        "sourceSha256": "30bc64b04365f0e17db528ee4237449c48422910f31fe387d9ba20582b6467bd",
         "prompt": "Use manage-flows: Publish, disable, copy, inventory, test, and batch operations."
       }
     },
@@ -2593,7 +2593,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "generate-mcp-app-ui",
-        "sourceSha256": "8cf68cacb90ae2d8dbaa44518de47dfb42553020ce43e4bfd5f8e666265c4f4d",
+        "sourceSha256": "b941ccbe9ee66bd7ddd34291d1e40473a7dfeba4a65b9c280288f2a62b945fa2",
         "prompt": "Use generate-mcp-app-ui: Visualize structured tool output in compatible hosts."
       }
     },
@@ -2882,7 +2882,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "powercat-overpage",
-        "sourceSha256": "c24c001cffee4f7957bd40b17bc1e2c90024a223d7ddf574f6b466c010ef3ae5",
+        "sourceSha256": "476197626b1867d802da984933cd75ad4cf5ca9b08f4893a963e0fdff027f9b6",
         "evidence": [
           "https://github.com/microsoft/power-cat-skills/blob/6cd3c2973f1b9ed7df2900da83e66e771e0575cf/plugins/powercat-overpage/skills/powercat-overpage/SKILL.md"
         ],
@@ -2913,9 +2913,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "genpage",
-        "sourceSha256": "74231ebd2c100abc8d3b170f0f96525271860d2b24d72bea43b1105bbb3ce85a",
+        "sourceSha256": "d49465d600463ae7c7cda585ac529c248ab850964135e5cea11980e92f9cfccc",
         "prompt": "Use genpage: Upload the generated page to its target app.",
-        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -3099,7 +3099,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "powercat-overpage",
-        "sourceSha256": "c24c001cffee4f7957bd40b17bc1e2c90024a223d7ddf574f6b466c010ef3ae5",
+        "sourceSha256": "476197626b1867d802da984933cd75ad4cf5ca9b08f4893a963e0fdff027f9b6",
         "evidence": [
           "https://github.com/microsoft/power-cat-skills/blob/6cd3c2973f1b9ed7df2900da83e66e771e0575cf/plugins/powercat-overpage/skills/powercat-overpage/SKILL.md"
         ],
@@ -3185,9 +3185,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "preview-screens",
-        "sourceSha256": "24b897054d44cf68b8e869aeefcecedd06537cc62bc87276ef1e1c83227bbf33",
+        "sourceSha256": "279b1a66644006d7510bfba218d4080fcfa9e66d2634d8beb6c435f59611b94c",
         "prompt": "Use preview-screens: Review generated screens without running Metro.",
-        "sourceRevision": "27632c79eee8c30eedef5101915c5067999926b2"
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -3328,7 +3328,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "route-environments",
-        "sourceSha256": "c5125148aa7f4efbc5736770803a867a46bdb23088203633bd2080cf5d5cb6a8",
+        "sourceSha256": "5063c9232d13baeeb4ca55e64c4d8d021dff2141406b39ec4621825e704ae450",
         "prompt": "Use route-environments: Resolve the correct environment before any lifecycle action."
       }
     },
@@ -3417,7 +3417,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "setup",
-        "sourceSha256": "93c7d248701f3fc93680041ac46be6340bb903141c52004b7364741730f032e8",
+        "sourceSha256": "3edea832e6aae3a67377534b5619657d79ae837abc37239cff39320da39f15b8",
         "prompt": "Use setup: Verify Node, Azure CLI login, environment, and FlowAgent MCP."
       }
     },
@@ -3446,7 +3446,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "setup-auth",
-        "sourceSha256": "747c40267f631ea3317f13e548656dbd37a908404e4e1e93a5c85893ad27b637",
+        "sourceSha256": "2008b1e5908b4c54a9de6aae0ebea69438e2271b223d2466b75c8fa1c310e9bf",
         "prompt": "Use setup-auth: Configure authentication and identity providers."
       }
     },
@@ -3661,7 +3661,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "test-site",
-        "sourceSha256": "a1af78c7f08cf24cea9e58cfd845fc0db6b9263295a37a32d37ae85f3b6134ca",
+        "sourceSha256": "cb663277f46719bc937cc8fae1117ace8bf732a4e9fbb2f4f25d21fd987193a7",
         "prompt": "Use test-site: Crawl pages in a real browser and inspect console/network failures."
       }
     },
