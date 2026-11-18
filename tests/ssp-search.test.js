@@ -269,7 +269,7 @@ test('About and Start here menus close on Escape and return keyboard focus', () 
 
 test('Root defaults to About while legacy resource bookmarks preserve their destinations and theme', () => {
   const html = readFileSync(join(__dirname, '../index.html'), 'utf8');
-  const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const script = html.match(/<script\b[^>]*>([\s\S]*?)<\/script\s*>/i)[1];
   const resources = readFileSync(join(__dirname, '../ssp-search.html'), 'utf8');
   const categories = [...resources.matchAll(/data-target="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(categories).size, 13);
@@ -542,6 +542,19 @@ test('Every portal footer shows the publication month semantically', () => {
     const footer = html.match(/<footer[\s\S]*?<\/footer>/)?.[0];
     assert.ok(footer, `${page} footer`);
     assert.match(footer, /Last published: <time datetime="2026-10">Oct, 2026<\/time>/, page);
+  }
+});
+
+test('Portal feedback opens the public Microsoft Form instead of GitHub issues', () => {
+  const formUrl = 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6OE0-90qhlFrJ2NRTnSVt5URE5RRU9UVFgwMUZVVzk1UkZBQVBWMTlTMi4u';
+  for (const page of sspPages) {
+    const html = readFileSync(join(__dirname, '..', page), 'utf8');
+    assert.doesNotMatch(html, /github\.com\/microsoft\/power-platform-resources\/issues\/new/i, page);
+  }
+  for (const [page, count] of [['ssp-landing.html', 2], ['ssp-design.html', 3], ['ssp-build.html', 3], ['ssp-review.html', 3]]) {
+    const html = readFileSync(join(__dirname, '..', page), 'utf8');
+    assert.equal((html.match(/>Send feedback /g) || []).length, count, page);
+    assert.equal(html.split(`href="${formUrl}"`).length - 1, count, page);
   }
 });
 
@@ -1000,12 +1013,23 @@ test('About and Resources use consistent navigation and landmarks', () => {
 });
 
 test('Self-Service Portal naming is consistent in user-facing copy', () => {
+  function replaceUntilStable(input, pattern, replacement) {
+    let previous;
+    let current = input;
+    do {
+      previous = current;
+      current = current.replace(pattern, replacement);
+    } while (current !== previous);
+    return current;
+  }
+
   for (const page of sspPages) {
     const html = readFileSync(join(__dirname, '..', page), 'utf8');
-    const visibleText = html
-      .replace(/<script\b[\s\S]*?<\/script>/gi, '')
-      .replace(/<style\b[\s\S]*?<\/style>/gi, '')
-      .replace(/<[^>]+>/g, ' ');
+    const visibleText = replaceUntilStable(
+      replaceUntilStable(html, /<script\b[\s\S]*?<\/script\b[^>]*>/gi, ''),
+      /<style\b[\s\S]*?<\/style\b[^>]*>/gi,
+      ''
+    ).replace(/<[^>]+>/g, ' ');
     assert.doesNotMatch(visibleText, /\bSSP\b/);
     for (const match of visibleText.matchAll(/self[\s-]service portal/gi)) {
       assert.equal(match[0], 'Self-Service Portal', `${page} uses inconsistent portal naming`);

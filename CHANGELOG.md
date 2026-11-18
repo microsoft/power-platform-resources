@@ -17,6 +17,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Regenerated About catalog statistics, featured catalog totals, and Resources news and event links for publishing.
 - Made marketplace regression checks independent of fixed catalog totals so future content refreshes retain validation without requiring count-only test edits.
 
+## 2026-10-07
+
+### Changed
+
+- Routed public feedback actions to Microsoft Forms so visitors do not need a GitHub account.
+
 ## 2026-10-06
 
 ### Changed

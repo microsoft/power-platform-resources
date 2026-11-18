@@ -28,11 +28,11 @@ function escapeHtml(value) {
 function textFromHtml(value) {
   return value
     .replace(/<[^>]+>/g, ' ')
-    .replace(/&amp;/g, '&')
     .replace(/&middot;/g, '·')
     .replace(/&nbsp;/g, ' ')
     .replace(/&#39;/g, "'")
     .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, '&')
     .replace(/\s+/g, ' ')
     .trim();
 }
