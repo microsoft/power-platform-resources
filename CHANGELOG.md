@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Changes are published continuously (every change is pushed to `main`), so there is no "Unreleased" section. The project does not use version tags either, so entries are grouped by commit date rather than by [Semantic Versioning](https://semver.org/spec/v2.0.0.html) number.
 
+## 2026-11-18
+
+### Added
+
+- Added Microsoft Ignite to the Events conference directories using the official event site.
+
+### Changed
+
+- Refreshed the published Skills Advisor catalog from 127 to 239 entries and the Power CAT marketplace from 16 to 23 skills and from 4 to 6 migration tracks.
+- Updated the Power Series lab snapshot and replaced the latest news and event announcements from the official Microsoft Power Platform feeds.
+- Regenerated About catalog statistics, featured catalog totals, and Resources news and event links for publishing.
+- Made marketplace regression checks independent of fixed catalog totals so future content refreshes retain validation without requiring count-only test edits.
+
 ## 2026-10-07
 
 ### Changed
