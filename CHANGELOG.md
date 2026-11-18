@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Pinned checkout and setup-node actions to full commit SHAs with version comments in the content refresh and site validation workflows.
 - Refreshed the published Skills Advisor catalog from 127 to 239 entries and the Power CAT marketplace from 16 to 23 skills and from 4 to 6 migration tracks.
 - Updated the Power Series lab snapshot and replaced the latest news and event announcements from the official Microsoft Power Platform feeds.
 - Regenerated About catalog statistics, featured catalog totals, and Resources news and event links for publishing.
