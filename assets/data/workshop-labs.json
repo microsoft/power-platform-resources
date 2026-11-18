@@ -1,8 +1,8 @@
 {
   "repository": "https://github.com/microsoft/apps-agents-workshop",
   "source": "https://microsoft.github.io/apps-agents-workshop/labs/",
-  "commit": "3cf657be9944a9ed4f6445a4cd6d0b933a92834a",
-  "retrieved": "2026-09-21T23:32:20.055Z",
+  "commit": "c4ebd7ba825b9de65ba0df589043cff2e9bef082",
+  "retrieved": "2026-11-18T17:32:38.072Z",
   "license": "CC-BY-4.0",
   "labs": [
     {
@@ -231,8 +231,8 @@
     },
     {
       "title": "Managed Operations: Inventory & Monitoring",
-      "description": "Build a unified view of all agents, apps, and flows built on Power Platform across your organization.",
-      "text": "Build a unified view of all agents, apps, and flows built on Power Platform across your organization. Power Apps makers, admins Level 200 120 minutes strengthen governance and security Power Platform Power Series workshop lab labs hands-on learning training",
+      "description": "Build a unified view of all agents, apps, and flows built on Power Platform across your organization, then ask it questions in plain language with Power Platform Admin in Cowork.",
+      "text": "Build a unified view of all agents, apps, and flows built on Power Platform across your organization, then ask it questions in plain language with Power Platform Admin in Cowork. Power Apps makers, admins Level 200 150 minutes strengthen governance and security Power Platform Power Series workshop lab labs hands-on learning training",
       "category": "Learn / Power Series",
       "type": "Learning",
       "url": "https://microsoft.github.io/apps-agents-workshop/labs/lab.html?path=managed-platform-operations%2FREADME.md&branch=main",
@@ -240,7 +240,7 @@
       "sourceName": "Power Series labs",
       "path": "managed-platform-operations/README.md",
       "level": "200",
-      "duration": "120 minutes",
+      "duration": "150 minutes",
       "persona": "Power Apps makers, admins"
     },
     {

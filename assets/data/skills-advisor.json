@@ -1,8 +1,8 @@
 {
   "source": "https://microsoft.github.io/power-cat-skills/skill-advisor/",
-  "sourceGenerated": "21 Sep 2026",
-  "retrieved": "2026-09-26T21:38:30.793Z",
-  "sha256": "b0e796d10fcdb073cfd6fce70792be2072fce2fe85877380872d6e403743d019",
+  "sourceGenerated": "17 Nov 2026",
+  "retrieved": "2026-11-18T17:32:21.374Z",
+  "sha256": "73a7f1e1ddb37ae85490474c7ad38d244f1983337f2d50e47f389bc183c2dca7",
   "skills": [
     {
       "id": "skill-66",
@@ -29,8 +29,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "add-cloud-flow",
-        "sourceSha256": "63a3a590671df28db110f06471ffe762618ec928c1bba80318b253bb4772005a",
-        "prompt": "Use add-cloud-flow: Connect notifications or asynchronous processes."
+        "sourceSha256": "1d6b3dcee34492f3d7f72fb1562dd56c4bead3472057c053ca9e84ff89421acc",
+        "prompt": "Use add-cloud-flow: Connect notifications or asynchronous processes.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -45,7 +46,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-connector",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -58,8 +59,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "add-connector",
-        "sourceSha256": "5a5a548a04065414095a83994415324d7f94a2d80535467c0e66400ffd74437f",
-        "prompt": "Use add-connector: Add Power Platform connectors and generated services."
+        "sourceSha256": "cb6493f651aff4de7a0c40a2b67d706defa34b8f2af819fdc3caf7945d933791",
+        "prompt": "Use add-connector: Add Power Platform connectors and generated services.",
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -87,8 +89,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "add-connector",
-        "sourceSha256": "30a7e2fe381635a35479b8d162e0ae1bb486830923d6f00bbe6caa4756a59dae",
-        "prompt": "Use add-connector: Use the generic connector fallback safely."
+        "sourceSha256": "d978e586003d35c7ed2a05873864be9babe77b2db33ceeb89828733800227fe6",
+        "prompt": "Use add-connector: Use the generic connector fallback safely.",
+        "sourceRevision": "6422d3ea90b9b631429928d9a41e572b13d308e3"
       }
     },
     {
@@ -142,8 +145,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "add-datasource",
-        "sourceSha256": "be31c48e45c0c283ea510d7c39b51aae8492a85a5fa1be859f57093a3a7c18a6",
-        "prompt": "Use add-datasource: Connect Dataverse, SharePoint, Teams, Excel, or other services."
+        "sourceSha256": "fa8a21694ce1f13b7b9c5707d112fcff66f65cce5efc772d1fbbe4f3354f4948",
+        "prompt": "Use add-datasource: Connect Dataverse, SharePoint, Teams, Excel, or other services.",
+        "sourceRevision": "6422d3ea90b9b631429928d9a41e572b13d308e3"
       }
     },
     {
@@ -308,7 +312,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/model-apps/skills/app-builder",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -321,8 +325,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "app-builder",
-        "sourceSha256": "4687deffa5faf7268863095ac0e4062d55e65cc6356170be6dd881d95817ce70",
-        "prompt": "Use app-builder: Build or edit a complete model-driven app from a reviewable App Spec."
+        "sourceSha256": "2561ef228792910c8fdab9114b0d6caecca768b531c2e933acbde7af6829a82b",
+        "prompt": "Use app-builder: Build or edit a complete model-driven app from a reviewable App Spec.",
+        "sourceRevision": "3a017729c414d7d0295ad201e2bf29be3304217c"
       }
     },
     {
@@ -381,8 +386,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "audit-permissions",
-        "sourceSha256": "5fc933e0fb5f8c5631b8d02128febf6272876a8fa47874803e47d1ea67ea2269",
-        "prompt": "Use audit-permissions: Review table permissions and scopes."
+        "sourceSha256": "afb6afb0f9da69cb1e11b013a2798156cb59d1cefc6481d84ad5171b3cf86e36",
+        "prompt": "Use audit-permissions: Review table permissions and scopes.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -491,8 +497,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "browse-flows",
-        "sourceSha256": "5d05adfbab7dab48cd449f4d30f4eca8d2ff03b4ceaf8775439e19f8e95677ef",
-        "prompt": "Use browse-flows: Browse environments, flows, connections, and runs."
+        "sourceSha256": "ea8cb1894d353885e9a364bcd85ff588293400b9823dfd475b1a04f7fdbe2263",
+        "prompt": "Use browse-flows: Browse environments, flows, connections, and runs.",
+        "sourceRevision": "96d16d0718e4439adcb0ba06542ecca85b664818"
       }
     },
     {
@@ -551,8 +558,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "build-flow",
-        "sourceSha256": "c15d7c2f9a09b7e91310a3acef6acd9978d9bb7297967d5c636e348ed86f4daa",
-        "prompt": "Use build-flow: Generate a complete cloud flow through FlowAgent."
+        "sourceSha256": "b97449dec72d52ca5ba217e8bbdd1753d73ee2419dd96aa7e1b2fe67409a2240",
+        "prompt": "Use build-flow: Generate a complete cloud flow through FlowAgent.",
+        "sourceRevision": "96d16d0718e4439adcb0ba06542ecca85b664818"
       }
     },
     {
@@ -672,8 +680,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "check-updates",
-        "sourceSha256": "f47c46a6bbe95643e0f344ab3687a83b86a28d98f5807276c3cbc014d22ad8b0",
-        "prompt": "Use check-updates: Check the plugin, native host, Microsoft packages, and direct npm dependencies with per-package approval and rollback."
+        "sourceSha256": "9fc19bdfe3bd3cea088fd187f85b66deb75344424eb54e684c41d0ae55a8ebd4",
+        "prompt": "Use check-updates: Check the plugin, native host, Microsoft packages, and direct npm dependencies with per-package approval and rollback.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -764,7 +773,7 @@
       "source": "https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-connect/SKILL.md",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "MCP & Tooling"
       ],
@@ -780,8 +789,9 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-connect/SKILL.md"
         ],
         "skillName": "dv-connect",
-        "sourceSha256": "66b2aac1dd9851db68663b82c19d2b4ef04a2ac0c2b61f38e94e7288cd5fab0e",
-        "prompt": "Use dv-connect: Authenticate and register an environment server."
+        "sourceSha256": "f53cbb890930d402ef6de8acbf26995ce163de3fdb7cf7a25a306f70213ab9b9",
+        "prompt": "Use dv-connect: Authenticate and register an environment server.",
+        "sourceRevision": "27e6f6a3fef23075ede87d8e5f028cde29e0130e"
       }
     },
     {
@@ -948,8 +958,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-code-app",
-        "sourceSha256": "ea45d691f034a290845a02d5cb8489c8c0fceeeb56d5c1fc2e614c9ffdd8e167",
-        "prompt": "Use create-code-app: Scaffold React/Vite apps with connector-first data access."
+        "sourceSha256": "aae63dcddd26e9989638829b6825e761079748509453b83161c04dda8b0693c2",
+        "prompt": "Use create-code-app: Scaffold React/Vite apps with connector-first data access.",
+        "sourceRevision": "6422d3ea90b9b631429928d9a41e572b13d308e3"
       }
     },
     {
@@ -977,8 +988,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-flow",
-        "sourceSha256": "745ad655853c5527e3484010bd200ec198b91dc357361eadcb04b072cf0949b9",
-        "prompt": "Use create-flow: Guided creation with explicit choices and connection mapping."
+        "sourceSha256": "58b2de1d11959ba212ada28a13d7bbafeb007adb2f4a3fe5f78062b5a4510a66",
+        "prompt": "Use create-flow: Guided creation with explicit choices and connection mapping.",
+        "sourceRevision": "96d16d0718e4439adcb0ba06542ecca85b664818"
       }
     },
     {
@@ -993,7 +1005,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/create-mobile-app",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1006,8 +1018,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-mobile-app",
-        "sourceSha256": "aca316cca9afe22ad4179f6755f1a2c8640f47017a859b84931d6520aa7e3226",
-        "prompt": "Use create-mobile-app: Generate Expo/React Native screens in parallel."
+        "sourceSha256": "047faeecf53366ce2277763f4b5c221de1d55352aa25aff17627aeddda02bafb",
+        "prompt": "Use create-mobile-app: Generate Expo/React Native screens in parallel.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -1065,8 +1078,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-site",
-        "sourceSha256": "a52d2015b0f19b4fc2175a53ed0872afdaa84db4a68a901911299685b09bb8fb",
-        "prompt": "Use create-site: Create a modern Power Pages code site."
+        "sourceSha256": "289e75de601a03883080f5838fb1541988dd905f3ba794b7e34b194625d9adc4",
+        "prompt": "Use create-site: Create a modern Power Pages code site.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
       }
     },
     {
@@ -1094,8 +1108,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-webroles",
-        "sourceSha256": "60e1a6320cc35dab7680a4716895b0f60431413066255cc255a744ccd86c9b7e",
-        "prompt": "Use create-webroles: Create roles and access mapping."
+        "sourceSha256": "5d26719a44343a9f84dc3f4870a6c234a4f41f091f0821cc2da609a5d6c3a673",
+        "prompt": "Use create-webroles: Create roles and access mapping.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -1138,7 +1153,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/debug-app",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1151,8 +1166,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "debug-app",
-        "sourceSha256": "01c552f80b3c7a30910c38e2c36c134b906b56f4b2e9d5b36d6c1de692fc19a6",
-        "prompt": "Use debug-app: Check routes, payloads, contrast, icons, and runtime issues."
+        "sourceSha256": "807d53e8dbab7027f7c39d8f107c9317871fefec55895dec09d9a49669b60c1f",
+        "prompt": "Use debug-app: Check routes, payloads, contrast, icons, and runtime issues.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -1234,8 +1250,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "debug-flow",
-        "sourceSha256": "0f45db1538f28229ef7135b4e078e0ad3c94ef4a22cb515faee47f0ea8b81994",
-        "prompt": "Use debug-flow: Interactively inspect a failed run and its actions."
+        "sourceSha256": "9cb8a45c2970121b016c58f73d58b1c6454425e4c06b78017f1aedd218fda240",
+        "prompt": "Use debug-flow: Interactively inspect a failed run and its actions.",
+        "sourceRevision": "96d16d0718e4439adcb0ba06542ecca85b664818"
       }
     },
     {
@@ -1265,8 +1282,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "deploy",
-        "sourceSha256": "fd9002a4a5bf07b80b674d31bbda52e30f5065050eabf235d8ae7c5554e5aa67",
-        "prompt": "Use deploy: Push Code Apps or Mobile Apps through product tooling."
+        "sourceSha256": "6e27e0e9bc4bd08967beafd09928864406d05bdc28de421a41f528d9cee30c62",
+        "prompt": "Use deploy: Push Code Apps or Mobile Apps through product tooling.",
+        "sourceRevision": "6422d3ea90b9b631429928d9a41e572b13d308e3"
       }
     },
     {
@@ -1294,8 +1312,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "deploy",
-        "sourceSha256": "fd9002a4a5bf07b80b674d31bbda52e30f5065050eabf235d8ae7c5554e5aa67",
-        "prompt": "Use deploy: Push product artifacts."
+        "sourceSha256": "6e27e0e9bc4bd08967beafd09928864406d05bdc28de421a41f528d9cee30c62",
+        "prompt": "Use deploy: Push product artifacts.",
+        "sourceRevision": "6422d3ea90b9b631429928d9a41e572b13d308e3"
       }
     },
     {
@@ -1310,7 +1329,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/deploy",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1322,8 +1341,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "deploy",
-        "sourceSha256": "1865b876622d3f831a35725d49f6f08c8fa72c914074a4fd23fe6049723c0991",
-        "prompt": "Use deploy: Build, push, and prepare distribution through Power Apps Wrap."
+        "sourceSha256": "b107d6b37a2c0a5ab0dfa91e7eeb9854b8db6cff5b726d2de2a69b860db4b6bd",
+        "prompt": "Use deploy: Build, push, and prepare distribution through Power Apps Wrap.",
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -1353,8 +1373,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "deploy-site",
-        "sourceSha256": "14ca219b29d01f63911b73a348d837b5955a4d8b14531b47c386073ba74c15ff",
-        "prompt": "Use deploy-site: Build and upload a Power Pages code site."
+        "sourceSha256": "6d48a30d7eff81799dfa82751127bb9156b204299814dc82bf6d68ce11984ba8",
+        "prompt": "Use deploy-site: Build and upload a Power Pages code site.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -1459,7 +1480,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/design-system",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1472,8 +1493,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "design-system",
-        "sourceSha256": "dfaddf6c09113e4da464963059dc629ba6f151e8372b1aaa3ad375cc4eb9aaa0",
-        "prompt": "Use design-system: Choose a visual direction and generate branded design tokens."
+        "sourceSha256": "6ad423f7a5417e13e9e62a5b22b8bb4bae2147d82c2c02c50c225570f9cd9e4c",
+        "prompt": "Use design-system: Choose a visual direction and generate branded design tokens.",
+        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
       }
     },
     {
@@ -1558,7 +1580,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "diagnose-flow",
-        "sourceSha256": "efe2ec82b6742f01a9bb53e423c17030b45a93b621e65b553decb300c68f16d2",
+        "sourceSha256": "35a010c3f7546cecb2bf90024d32fc47d69ec0e3ab4ffcac01c859adea611131",
         "prompt": "Use diagnose-flow: Diagnose failed runs, loops, connections, and expressions."
       }
     },
@@ -1594,7 +1616,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-admin/SKILL.md"
         ],
         "skillName": "dv-admin",
-        "sourceSha256": "ed1e393c51aac454f6394e2a88936192e813335246dbf0b66e9c77a3a5276a55",
+        "sourceSha256": "f8403f935518fe99b98821a1a5eacd67431bd1e68b7110a19c73c2053d44e190",
         "prompt": "Use dv-admin: Retention, archival, settings, audit, recycle bin, and bulk delete."
       }
     },
@@ -1626,7 +1648,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-security/SKILL.md"
         ],
         "skillName": "dv-admin",
-        "sourceSha256": "ed1e393c51aac454f6394e2a88936192e813335246dbf0b66e9c77a3a5276a55",
+        "sourceSha256": "f8403f935518fe99b98821a1a5eacd67431bd1e68b7110a19c73c2053d44e190",
         "prompt": "Use dv-admin: Maintain settings, retention, audit, roles, users, and access."
       }
     },
@@ -1642,7 +1664,7 @@
       "source": "https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/dv-connect/SKILL.md",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Dataverse"
       ],
@@ -1658,8 +1680,9 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-connect/SKILL.md"
         ],
         "skillName": "dv-connect",
-        "sourceSha256": "66b2aac1dd9851db68663b82c19d2b4ef04a2ac0c2b61f38e94e7288cd5fab0e",
-        "prompt": "Use dv-connect: Install tools, authenticate, and register the Dataverse MCP server."
+        "sourceSha256": "f53cbb890930d402ef6de8acbf26995ce163de3fdb7cf7a25a306f70213ab9b9",
+        "prompt": "Use dv-connect: Install tools, authenticate, and register the Dataverse MCP server.",
+        "sourceRevision": "27e6f6a3fef23075ede87d8e5f028cde29e0130e"
       }
     },
     {
@@ -1692,7 +1715,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-data/SKILL.md"
         ],
         "skillName": "dv-data",
-        "sourceSha256": "0fe26813b039263468010e8f486e086d2233a0d2252a1011b662a89c66fa595e",
+        "sourceSha256": "bc0baf8118452ba7e13b282eb584f953ab4fd2742bf4b7867b2e5d0bc52718aa",
         "prompt": "Use dv-data: CRUD, CSV import, multi-table loads, upsert, and sample data."
       }
     },
@@ -1730,7 +1753,7 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-metadata/SKILL.md"
         ],
         "skillName": "dv-metadata",
-        "sourceSha256": "cfd7d87efde7ed8b05199470bc1704a9320bcad78b80aaeac630bbcdb2963a3a",
+        "sourceSha256": "f944a60c1b60101a7faa32adcebfed7fd2aaba06183686cde01925a88dfb4cfc",
         "prompt": "Use dv-metadata: Design tables, columns, relationships, forms, and views."
       }
     },
@@ -1762,8 +1785,9 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-overview/SKILL.md"
         ],
         "skillName": "dv-overview",
-        "sourceSha256": "702103f7eee1154037cb1d9bd0e71da689c1a503bbd1c57d41dc991bf6878bc5",
-        "prompt": "Use dv-overview: Load foundational context, safety rules, and tool-capability guidance; specialist skills self-route by intent."
+        "sourceSha256": "cb1c7fb590b3f48499ac773ca060e8e3297649ad51e8a087a6f2ced2382bb67e",
+        "prompt": "Use dv-overview: Load foundational context, safety rules, and tool-capability guidance; specialist skills self-route by intent.",
+        "sourceRevision": "27e6f6a3fef23075ede87d8e5f028cde29e0130e"
       }
     },
     {
@@ -1794,8 +1818,9 @@
           "https://github.com/microsoft/Dataverse-skills/blob/a2bddb8c4c7f9395a771cf6c85ac701dc437a594/.github/plugins/dataverse/skills/dv-query/SKILL.md"
         ],
         "skillName": "dv-query",
-        "sourceSha256": "4aed7ed14c67dab4269061639eeec1d1421fb065dec427cfc0bed03638e3a24e",
-        "prompt": "Use dv-query: Read, filter, page, aggregate, and load records into pandas."
+        "sourceSha256": "00ac862e8a543ecfef0e9a77ce09e6a2fc4095acbeae2c78dfaff4329e360236",
+        "prompt": "Use dv-query: Read, filter, page, aggregate, and load records into pandas.",
+        "sourceRevision": "27e6f6a3fef23075ede87d8e5f028cde29e0130e"
       }
     },
     {
@@ -1883,7 +1908,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/edit-app",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -1896,8 +1921,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "edit-app",
-        "sourceSha256": "d27a42080a57db85b93dbfb2b2ea0bdb6815d4107f6e0da3e95884c3d5cda672",
-        "prompt": "Use edit-app: Apply safe plan deltas; add offline scope when required."
+        "sourceSha256": "cc8ccdf68356d078fe654e5a05624c34a2d0cd11562a69cee43924eeef4659e1",
+        "prompt": "Use edit-app: Apply safe plan deltas; add offline scope when required.",
+        "sourceRevision": "336c9c5f14f1cb0aef30b4f61cbedf3c06e1a213"
       }
     },
     {
@@ -2138,7 +2164,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "generate-mcp-app-ui",
-        "sourceSha256": "8cf68cacb90ae2d8dbaa44518de47dfb42553020ce43e4bfd5f8e666265c4f4d",
+        "sourceSha256": "b941ccbe9ee66bd7ddd34291d1e40473a7dfeba4a65b9c280288f2a62b945fa2",
         "prompt": "Use generate-mcp-app-ui: Create interactive widgets for MCP tool output."
       }
     },
@@ -2270,7 +2296,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/model-apps/skills/genpage",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Cross-Cutting",
         "Power Apps"
@@ -2286,8 +2312,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "genpage",
-        "sourceSha256": "5e2c00a376134d2951692a89e8b8e24660bf63e5702234c815569e8c2fefa8d9",
-        "prompt": "Use genpage: Plan a model-driven generative page and its Dataverse shape."
+        "sourceSha256": "f4a7ad83a8efc51bc83c27888e4adf22a54f91b125ff74053961c0e6c1e2d940",
+        "prompt": "Use genpage: Plan a model-driven generative page and its Dataverse shape.",
+        "sourceRevision": "3a017729c414d7d0295ad201e2bf29be3304217c"
       }
     },
     {
@@ -2314,7 +2341,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "powercat-overpage",
-        "sourceSha256": "c24c001cffee4f7957bd40b17bc1e2c90024a223d7ddf574f6b466c010ef3ae5",
+        "sourceSha256": "476197626b1867d802da984933cd75ad4cf5ca9b08f4893a963e0fdff027f9b6",
         "evidence": [
           "https://github.com/microsoft/power-cat-skills/blob/6cd3c2973f1b9ed7df2900da83e66e771e0575cf/plugins/powercat-overpage/skills/powercat-overpage/SKILL.md"
         ],
@@ -2377,7 +2404,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "infopath-to-canvas",
-        "sourceSha256": "be663627eabb6f055d7287b087795841746c33691a388e7ad2ad99e0ae7f3fe0",
+        "sourceSha256": "fe56fa9ba279a52a132c160cbb8833780eb5b2b01cf5a9761d7ce588f9a2f9f6",
         "evidence": [
           "https://github.com/microsoft/power-cat-skills/blob/6cd3c2973f1b9ed7df2900da83e66e771e0575cf/Power%20Platform%20Migration%20Factory/infopath-to-canvas/SKILL.md"
         ],
@@ -2409,8 +2436,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "integrate-backend",
-        "sourceSha256": "42c60ce8a99aaa4d49786965ebc78c888131c96b94427309bbf74eed155a06e3",
-        "prompt": "Use integrate-backend: Choose Web API, server logic, cloud flow, or a combination."
+        "sourceSha256": "5c788ce62ea600cd9ea6f4519584abd5a49010eae0369a9b8c1836f4a42fe68f",
+        "prompt": "Use integrate-backend: Choose Web API, server logic, cloud flow, or a combination.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -2438,8 +2466,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "integrate-webapi",
-        "sourceSha256": "e60d22bed6133bf579fb00560fafbcac0ea8b63cc61e0ee9f830550b684d4366",
-        "prompt": "Use integrate-webapi: Create typed clients, services, permissions, and settings."
+        "sourceSha256": "27b552d3fb639a1199c6d2c9ecad8082cde3ff231894e7f1aa4c8a7a117097c5",
+        "prompt": "Use integrate-webapi: Create typed clients, services, permissions, and settings.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -2467,8 +2496,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "list-connections",
-        "sourceSha256": "2f46632de77720d6f5f27610aa8ad2e1384e406427c5eadfeb52e431539e2b66",
-        "prompt": "Use list-connections: Discover connection identifiers and availability."
+        "sourceSha256": "83b04dd024157910cfc2f4276bd2780d7d2e0f9a2713abb1167943330f0b189f",
+        "prompt": "Use list-connections: Discover connection identifiers and availability.",
+        "sourceRevision": "6422d3ea90b9b631429928d9a41e572b13d308e3"
       }
     },
     {
@@ -2496,7 +2526,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "manage-desktop-flows",
-        "sourceSha256": "eb9b912fd65ad5f8f1beaa7b8979fdaef7339a7cf7b0c36b6244d2fed4043724",
+        "sourceSha256": "09ba1540ae2872b64d1ab7e69efa7ae9c691a924ffe0e86c77f8e6529f7dea94",
         "prompt": "Use manage-desktop-flows: List and run desktop-flow assets."
       }
     },
@@ -2527,8 +2557,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "manage-flows",
-        "sourceSha256": "7ab993f115c3f6d783ec56896cfe4120d3891d0dfe2cb55395c5a87e8865797a",
-        "prompt": "Use manage-flows: Publish, disable, copy, inventory, test, and batch operations."
+        "sourceSha256": "11cc57ee9229b2173fa931735a0f2f00f5d38fe7b3a5e00c571551acb890d653",
+        "prompt": "Use manage-flows: Publish, disable, copy, inventory, test, and batch operations.",
+        "sourceRevision": "96d16d0718e4439adcb0ba06542ecca85b664818"
       }
     },
     {
@@ -2583,7 +2614,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "generate-mcp-app-ui",
-        "sourceSha256": "8cf68cacb90ae2d8dbaa44518de47dfb42553020ce43e4bfd5f8e666265c4f4d",
+        "sourceSha256": "b941ccbe9ee66bd7ddd34291d1e40473a7dfeba4a65b9c280288f2a62b945fa2",
         "prompt": "Use generate-mcp-app-ui: Visualize structured tool output in compatible hosts."
       }
     },
@@ -2697,8 +2728,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "migrate-bootstrap",
-        "sourceSha256": "bade9b790786f8fa802e6562fcd69dca6920f39cc790257e3bdbaafcd9d97f24",
-        "prompt": "Use migrate-bootstrap: Migrate a traditional Power Pages site from Bootstrap 3 to Bootstrap 5 with a restore point, reviewed residual fixes, upload, and validation."
+        "sourceSha256": "1cb04ad11109bde6d219fb418849ff7fda242fe3cfcbf9d93d23d0c0a5863f61",
+        "prompt": "Use migrate-bootstrap: Migrate a traditional Power Pages site from Bootstrap 3 to Bootstrap 5 with a restore point, reviewed residual fixes, upload, and validation.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -2872,7 +2904,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "powercat-overpage",
-        "sourceSha256": "c24c001cffee4f7957bd40b17bc1e2c90024a223d7ddf574f6b466c010ef3ae5",
+        "sourceSha256": "476197626b1867d802da984933cd75ad4cf5ca9b08f4893a963e0fdff027f9b6",
         "evidence": [
           "https://github.com/microsoft/power-cat-skills/blob/6cd3c2973f1b9ed7df2900da83e66e771e0575cf/plugins/powercat-overpage/skills/powercat-overpage/SKILL.md"
         ],
@@ -2881,8 +2913,8 @@
     },
     {
       "id": "skill-53",
-      "name": "pac model genpage upload",
-      "description": "Upload the generated page to its target app.",
+      "name": "genpage-upload.js",
+      "description": "Upload the generated page to its target app through the bundled SDK.",
       "kind": "deploy",
       "purpose": "Deploy",
       "marketplace": "Power Platform Skills",
@@ -2891,7 +2923,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/model-apps/skills/genpage",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -2903,8 +2935,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "genpage",
-        "sourceSha256": "5e2c00a376134d2951692a89e8b8e24660bf63e5702234c815569e8c2fefa8d9",
-        "prompt": "Use genpage: Upload the generated page to its target app."
+        "sourceSha256": "f4a7ad83a8efc51bc83c27888e4adf22a54f91b125ff74053961c0e6c1e2d940",
+        "prompt": "Use genpage: Upload the generated page to its target app through the bundled SDK.",
+        "sourceRevision": "3a017729c414d7d0295ad201e2bf29be3304217c"
       }
     },
     {
@@ -2939,8 +2972,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "plan-alm",
-        "sourceSha256": "549016275cef0b11f9dcc0112d2731c6727fb767c6a35f519dbded8453b525a7",
-        "prompt": "Use plan-alm: Choose solution boundaries, pipelines, and deployment topology."
+        "sourceSha256": "7866a2b1cfe7ec1424f90b94efd8c6b61043786cb2c75ee31bd6669a30e9b0b9",
+        "prompt": "Use plan-alm: Choose solution boundaries, pipelines, and deployment topology.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -3088,7 +3122,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "powercat-overpage",
-        "sourceSha256": "c24c001cffee4f7957bd40b17bc1e2c90024a223d7ddf574f6b466c010ef3ae5",
+        "sourceSha256": "476197626b1867d802da984933cd75ad4cf5ca9b08f4893a963e0fdff027f9b6",
         "evidence": [
           "https://github.com/microsoft/power-cat-skills/blob/6cd3c2973f1b9ed7df2900da83e66e771e0575cf/plugins/powercat-overpage/skills/powercat-overpage/SKILL.md"
         ],
@@ -3161,7 +3195,7 @@
       "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/preview-screens",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "7 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Power Apps"
       ],
@@ -3174,8 +3208,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "preview-screens",
-        "sourceSha256": "94726e9941f85e6127f8a8dc12880735fe2e951d2cb4607952665705b9fca7bc",
-        "prompt": "Use preview-screens: Review generated screens without running Metro."
+        "sourceSha256": "8a971915d5a3ca5a45a7019cf09212e23fc3e3e7a4b579edca5c7eaaf46c628a",
+        "prompt": "Use preview-screens: Review generated screens without running Metro.",
+        "sourceRevision": "336c9c5f14f1cb0aef30b4f61cbedf3c06e1a213"
       }
     },
     {
@@ -3316,7 +3351,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "route-environments",
-        "sourceSha256": "c5125148aa7f4efbc5736770803a867a46bdb23088203633bd2080cf5d5cb6a8",
+        "sourceSha256": "5063c9232d13baeeb4ca55e64c4d8d021dff2141406b39ec4621825e704ae450",
         "prompt": "Use route-environments: Resolve the correct environment before any lifecycle action."
       }
     },
@@ -3405,8 +3440,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "setup",
-        "sourceSha256": "93c7d248701f3fc93680041ac46be6340bb903141c52004b7364741730f032e8",
-        "prompt": "Use setup: Verify Node, Azure CLI login, environment, and FlowAgent MCP."
+        "sourceSha256": "c9e2890b0dea9783ce73262f4e68bde524724347ad076343b2dcbc06de6055ad",
+        "prompt": "Use setup: Verify Node, Azure CLI login, environment, and FlowAgent MCP.",
+        "sourceRevision": "96d16d0718e4439adcb0ba06542ecca85b664818"
       }
     },
     {
@@ -3434,8 +3470,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "setup-auth",
-        "sourceSha256": "747c40267f631ea3317f13e548656dbd37a908404e4e1e93a5c85893ad27b637",
-        "prompt": "Use setup-auth: Configure authentication and identity providers."
+        "sourceSha256": "ccc50b27c119f2afaec3d9081aad0f443be110dfd3238b54b9b40262ee012c19",
+        "prompt": "Use setup-auth: Configure authentication and identity providers.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -3465,8 +3502,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "setup-datamodel",
-        "sourceSha256": "c631b1198d37bcb9ca5510e6337bcb7ff0535f1d7b8792985d8385a3eafc9e47",
-        "prompt": "Use setup-datamodel: Design Dataverse tables and relationships."
+        "sourceSha256": "c79496b84c9b35c4c33c576054f016ca87b0bd78bbc147a6d612de0c84178a6b",
+        "prompt": "Use setup-datamodel: Design Dataverse tables and relationships.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -3498,8 +3536,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "setup-pipeline",
-        "sourceSha256": "0552bbf131e0a8f2968e8c39ece94f5320fe319fcd5a4af277265ff67ffc4742",
-        "prompt": "Use setup-pipeline: Configure Power Platform pipelines."
+        "sourceSha256": "b12e9dc6b2740f036c448a909cc2fe17ed34c9f154c4ab5b13429df10b666dc4",
+        "prompt": "Use setup-pipeline: Configure Power Platform pipelines.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
       }
     },
     {
@@ -3649,7 +3688,7 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "test-site",
-        "sourceSha256": "a1af78c7f08cf24cea9e58cfd845fc0db6b9263295a37a32d37ae85f3b6134ca",
+        "sourceSha256": "cb663277f46719bc937cc8fae1117ace8bf732a4e9fbb2f4f25d21fd987193a7",
         "prompt": "Use test-site: Crawl pages in a real browser and inspect console/network failures."
       }
     },
@@ -3758,16 +3797,16 @@
       "id": "skill-146",
       "name": "add-skill",
       "displayName": "Add Skill",
-      "description": "PLUGIN COMMAND: Acquire an existing skill from a local file or CAT gallery and optionally import it into a Copilot Studio CLI-agent workspace. Publishing is separate.",
+      "description": "Acquire an existing skill from a local file or CAT gallery and optionally import it into a Copilot Studio CLI-agent workspace. Publishing is separate.",
       "kind": "deploy",
       "purpose": "Deploy",
       "marketplace": "Copilot Studio Plugin",
       "maturity": "Preview",
       "status": "Experimental",
-      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/a0833db3ca5fd1014849fea1b627a9c2b63c27c1/commands/add-skill.md",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/add-skill/SKILL.md",
       "license": "MIT licensed",
       "publisher": "Microsoft",
-      "verified": "21 Sep 2026",
+      "verified": "5 Oct 2026",
       "products": [
         "Agent Skills"
       ],
@@ -3776,17 +3815,3273 @@
       ],
       "tier": "skill",
       "action": {
-        "kind": "command",
+        "kind": "skill",
         "skillName": "add-skill",
-        "note": "Plugin command, not a SKILL.md skill. Requires the installed Copilot Studio plugin; optional import requires a cloned CLI-agent workspace. This command does not publish.",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Agent Skill (SKILL.md). Moved upstream from commands/add-skill.md (a0833db3) to skills/add-skill/SKILL.md (4014ae68); same portal entry. Requires the installed Copilot Studio plugin and Node.js for its helper script; optional import requires a cloned agent workspace. It never pushes or publishes.",
         "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/add-skill/SKILL.md",
           "https://github.com/microsoft/copilot-studio-plugin/blob/a0833db3ca5fd1014849fea1b627a9c2b63c27c1/commands/add-skill.md"
         ],
-        "sourceSha256": "4998cae40fa305993378e4a8c6dbe3df87d3c29720fca5a284c45cc55335e8af",
-        "sourceRevision": "a0833db3ca5fd1014849fea1b627a9c2b63c27c1",
-        "prompt": "Add an existing agent skill from my local files or the CAT gallery to my Copilot Studio workspace.",
-        "command": "/add-skill",
-        "userInvocable": true
+        "sourceSha256": "f21629928e7cefbb30ed4267d9a92db94cc59b335ea9ae45f560056ccbec7976",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Add an existing agent skill from my local files or the CAT gallery to my Copilot Studio workspace."
+      }
+    },
+    {
+      "id": "skill-147",
+      "name": "add-knowledge",
+      "displayName": "Add Knowledge",
+      "description": "Add a public website, SharePoint, OneDrive or uploaded-file knowledge source to a locally cloned Copilot Studio agent by writing knowledge YAML; push and publish are separate.",
+      "kind": "author",
+      "purpose": "Author",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/add-knowledge/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · EXTEND"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "add-knowledge",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and a locally cloned agent; it writes local files only, so push and publish separately.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/add-knowledge/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "0e09ed4f5f2ee7c4340ec20e4e37234f3a645389ee6b23fbd786a30d0593ae6c",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Add our public product documentation website as a knowledge source to my cloned Copilot Studio agent."
+      }
+    },
+    {
+      "id": "skill-148",
+      "name": "clone-agent",
+      "displayName": "Clone Agent",
+      "description": "Clone an existing Copilot Studio agent into a new local PAC CLI workspace; it reads the cloud agent and writes local files only.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/clone-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · CREATE & CLONE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "clone-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. It never pushes, publishes or deletes a cloud agent.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/clone-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "10912efcd24402ed1ea32ebe56d46729f48621ccf620e53413d5a513681889b9",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Clone my Copilot Studio agent into a local folder so I can edit it."
+      }
+    },
+    {
+      "id": "skill-149",
+      "name": "create-agent",
+      "displayName": "Create Agent",
+      "description": "Create a new Copilot Studio agent and PAC-connected local workspace, optionally adding instructions, skills, tools, knowledge and settings; it never publishes.",
+      "kind": "author",
+      "purpose": "Author",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/create-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · CREATE & CLONE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "create-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. It never publishes; an explicit publish request is handed to publish-agent.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/create-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "31b6f66fa73b89f344427cd52f0aa644c2dcaa11d5b28dbeedc103d858704a4d",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Create a new Copilot Studio agent that answers HR policy questions."
+      }
+    },
+    {
+      "id": "skill-150",
+      "name": "delete-agent",
+      "displayName": "Delete Agent",
+      "description": "DESTRUCTIVE: permanently delete a Copilot Studio agent from the cloud after an exact typed confirmation. Irreversible; local workspace files are not deleted.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/delete-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · PUBLISH & DELETE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "delete-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. DESTRUCTIVE and irreversible: it permanently deletes the cloud agent only after the skill's exact typed confirmation and cannot be undone. Local files are not deleted and any local workspace becomes stale.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/delete-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "94686809f7382a3d3ad76e345a313653493f52dd40fc3a53c6e60589cfea109e",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Permanently delete the Copilot Studio agent <agent name> from my environment."
+      }
+    },
+    {
+      "id": "skill-151",
+      "name": "publish-agent",
+      "displayName": "Publish Agent",
+      "description": "Publish an existing Copilot Studio agent, making its current cloud draft live for users who can access it; it does not upload, pull or push.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/publish-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · PUBLISH & DELETE"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "publish-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. Publishing makes the current cloud draft live after confirmation.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/publish-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "f56b32693f8835e18b67ca82b6627ed9796a4046aad186644cb21bd32a5a81cd",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Publish my Copilot Studio agent so its current draft goes live."
+      }
+    },
+    {
+      "id": "skill-152",
+      "name": "pull-agent",
+      "displayName": "Pull Agent",
+      "description": "Pull remote Copilot Studio agent changes into an existing PAC CLI workspace, merging into local files; it never pushes or publishes.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/pull-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · SYNC"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "pull-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. It can merge remote changes into local files.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/pull-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "15b4ff8487c9ca18c332b9835cacf2e00ae0d9156fa735a3a0786f2c6b6a4bfa",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Pull the latest remote changes into my local Copilot Studio agent workspace."
+      }
+    },
+    {
+      "id": "skill-153",
+      "name": "push-agent",
+      "displayName": "Push Agent",
+      "description": "Push local changes from a PAC CLI workspace to the Copilot Studio agent's cloud draft, pulling first; it never publishes.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/push-agent/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "5 Oct 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · SYNC"
+      ],
+      "tier": "skill",
+      "action": {
+        "kind": "skill",
+        "skillName": "push-agent",
+        "note": "Copilot Studio Plugin preview skill: work in progress, supported through GitHub Issues. Requires the installed plugin and PAC CLI 2.9.3 or later. It updates draft content only; publish separately.",
+        "evidence": [
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/skills/push-agent/SKILL.md",
+          "https://github.com/microsoft/copilot-studio-plugin/blob/4014ae689d1228d86cb3aaab938b1e66f8e2e10d/README.md"
+        ],
+        "sourceSha256": "b1269ba90173b858aa34985bdc1feea1dd9ed79efadbc0b4c30a6c6ca34fa89c",
+        "sourceRevision": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+        "prompt": "Push my local Copilot Studio agent changes to the cloud draft without publishing."
+      }
+    },
+    {
+      "id": "skill-154",
+      "name": "pcf",
+      "description": "Build, test, deploy and verify Power Apps component framework (PCF) code components from Microsoft templates.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/pcf/skills/pcf",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "20 Oct 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / PCF Code Components · PLAN",
+        "Power Apps Skills Index / PCF Code Components · BUILD",
+        "Power Apps Skills Index / PCF Code Components · REVIEW",
+        "Power Apps Skills Index / PCF Code Components · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "PCF Code Components",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "pcf",
+        "sourceSha256": "0fac09240f809d918f1e7821d0bea5fb65664df151c0b72692511e09b561e2ee",
+        "prompt": "Use pcf: Build, test, deploy and verify Power Apps component framework (PCF) code components from Microsoft templates.",
+        "sourceRevision": "336c9c5f14f1cb0aef30b4f61cbedf3c06e1a213"
+      }
+    },
+    {
+      "id": "skill-155",
+      "name": "report-issue",
+      "description": "File a bug report for the PCF plugin in its GitHub repository.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/pcf/skills/report-issue",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "20 Oct 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / PCF Code Components · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Report Issue · PCF",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "report-issue",
+        "sourceSha256": "2bba5dc01cec324006eed51fd3ff7fc6aa486c3e46c8ddd46c9d4378096c05de",
+        "prompt": "Use report-issue: File a bug report for the PCF plugin in its GitHub repository.",
+        "sourceRevision": "336c9c5f14f1cb0aef30b4f61cbedf3c06e1a213"
+      }
+    },
+    {
+      "id": "skill-156",
+      "name": "telemetry",
+      "description": "Enable, disable, or check the PCF plugin's usage-data telemetry.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/pcf/skills/telemetry",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "20 Oct 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / PCF Code Components · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Telemetry · PCF",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "telemetry",
+        "sourceSha256": "efcd1d9638986b1efce1cfd65f3d0c26618c15dae346fd97f446d084cf956ac8",
+        "prompt": "Use telemetry: Enable, disable, or check the PCF plugin's usage-data telemetry.",
+        "sourceRevision": "336c9c5f14f1cb0aef30b4f61cbedf3c06e1a213"
+      }
+    },
+    {
+      "id": "skill-157",
+      "name": "edit-site",
+      "description": "Plan and customize a downloaded non-SPA Power Pages site: pages, content, navigation, templates and styling.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/edit-site",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "26 Oct 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Site Experience · BUILD / INTEGRATE"
+      ],
+      "tier": "skill",
+      "displayName": "Edit Site",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "edit-site",
+        "sourceSha256": "5dd2d3506515ea82eb97bf31cee3baddfdf06ebf536377a036ece29f988a4da8",
+        "prompt": "Use edit-site: Plan and customize a downloaded non-SPA Power Pages site: pages, content, navigation, templates and styling.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
+      }
+    },
+    {
+      "id": "skill-158",
+      "name": "analyze-performance",
+      "description": "Scan a non-SPA Power Pages site for performance anti-patterns and offer safe fixes with approval.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/analyze-performance",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "26 Oct 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Site Experience · VALIDATE / REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Analyze Performance",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "analyze-performance",
+        "sourceSha256": "13e9343f728c9541c6b6e3c3edfbd962012dc81e05754beb89a4272da4bdd88a",
+        "prompt": "Use analyze-performance: Scan a non-SPA Power Pages site for performance anti-patterns and offer safe fixes with approval.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
+      }
+    },
+    {
+      "id": "skill-159",
+      "name": "author-webpage-content",
+      "description": "Compose the localized HTML body of an existing non-SPA webpage for edit-site; not a direct user command.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/author-webpage-content",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "26 Oct 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Site Experience · BUILD / INTEGRATE"
+      ],
+      "tier": "skill",
+      "displayName": "Author Webpage Content",
+      "action": {
+        "kind": "agent-only",
+        "note": "Model-only worker (user-invocable: false); invoked by edit-site or integrate-webapi, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-160",
+      "name": "telemetry",
+      "description": "Enable, disable, or check usage telemetry transmission for the Power Apps Mobile Extension plugin.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-apps-mobile-extension/skills/telemetry",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "26 Oct 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Power Apps Mobile Extension · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Telemetry · Mobile Extension",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "telemetry",
+        "sourceSha256": "47735bc95f5ff1b1a08e094fb60158746c7dcc2b5ad849764262a3ca5cdd4eea",
+        "prompt": "Use telemetry: Enable, disable, or check usage telemetry transmission for the Power Apps Mobile Extension plugin.",
+        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
+      }
+    },
+    {
+      "id": "skill-161",
+      "name": "dev-environment-deprecation-report",
+      "description": "Report which unmanaged developer environments will be suspended, the apps, flows and agents at risk, and makers over the limit.",
+      "kind": "govern",
+      "purpose": "Govern",
+      "marketplace": "Power CAT Skills",
+      "maturity": "Preview",
+      "status": "Preview",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-governance/skills/dev-environment-deprecation-report",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "26 Oct 2026",
+      "products": [
+        "Cross-Cutting",
+        "Power CAT"
+      ],
+      "locations": [
+        "Power Platform Cross-Cutting Skills Index / ENVIRONMENTS",
+        "Power CAT Advisory Skills Index / GOVERN"
+      ],
+      "tier": "skill",
+      "displayName": "Dev Environment Deprecation Report",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "dev-environment-deprecation-report",
+        "sourceSha256": "0e85cba4208d89dec93ca445b70aeca8a38f24485ffa5d959c601d0799662fa0",
+        "prompt": "Use dev-environment-deprecation-report: Report which unmanaged developer environments will be suspended, the apps, flows and agents at risk, and makers over the limit.",
+        "sourceRevision": "0ddf6a5a7859ba98b84a3adccf6e9d1a92c18aee"
+      }
+    },
+    {
+      "id": "skill-162",
+      "name": "loop-my-prompt",
+      "description": "Rewrite a prompt with explicit outcomes, observable feedback, evidence-based correction and bounded stopping conditions.",
+      "kind": "author",
+      "purpose": "Author",
+      "marketplace": "Power CAT Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/loop-my-prompt/skills/loop-my-prompt",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "26 Oct 2026",
+      "products": [
+        "Power CAT"
+      ],
+      "locations": [
+        "Power CAT Advisory Skills Index / ADOPT"
+      ],
+      "tier": "skill",
+      "displayName": "Loop My Prompt",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "loop-my-prompt",
+        "sourceSha256": "905da89472eb2ebb11c84e307b5a095982eea01d8c309aa692e85f2ede2b7603",
+        "prompt": "Use loop-my-prompt: Rewrite a prompt with explicit outcomes, observable feedback, evidence-based correction and bounded stopping conditions.",
+        "sourceRevision": "0ddf6a5a7859ba98b84a3adccf6e9d1a92c18aee"
+      }
+    },
+    {
+      "id": "skill-163",
+      "name": "compare-site-configurations",
+      "description": "Compare two Power Pages sites' configurations and explain behavior-changing differences.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/compare-site-configurations",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Quality & ALM · VALIDATE / REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Compare Site Configurations",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "compare-site-configurations",
+        "sourceSha256": "169f9de55c86032fa9f464e5c5122fe098f6e26236a2d5390ec205906132bf0b",
+        "prompt": "Use compare-site-configurations: Compare two Power Pages sites' configurations and explain behavior-changing differences.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-164",
+      "name": "create-pcf",
+      "description": "Create or extend accessible virtual PCF controls for model-driven apps.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power CAT Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-pcf/skills/create-pcf",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps",
+        "Power CAT"
+      ],
+      "locations": [
+        "Power Apps Skills Index / PCF Code Components · BUILD",
+        "Power CAT Advisory Skills Index / DESIGN"
+      ],
+      "tier": "skill",
+      "displayName": "Create PCF",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "create-pcf",
+        "sourceSha256": "127ed0016996e4deeb3aff317c7a5617294b6b31f7a116435c97e0414e41fc8f",
+        "prompt": "Use create-pcf: Create or extend accessible virtual PCF controls for model-driven apps.",
+        "sourceRevision": "67ed2d245f8d0cc8024fd2a572b67983567fb520"
+      }
+    },
+    {
+      "id": "skill-165",
+      "name": "powercat-skills-router",
+      "description": "Route a Power Platform request to the best-fit skill across both marketplaces.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power CAT Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-skills-router/skills/powercat-skills-router",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power CAT"
+      ],
+      "locations": [
+        "Power CAT Advisory Skills Index / ADOPT"
+      ],
+      "tier": "skill",
+      "displayName": "Power CAT Skills Router",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "powercat-skills-router",
+        "sourceSha256": "f79f40993f31bda6dbaffc721c438ea97b4afcaf557ee54b36387572664335ec",
+        "prompt": "Use powercat-skills-router: Route a Power Platform request to the best-fit skill across both marketplaces.",
+        "sourceRevision": "67ed2d245f8d0cc8024fd2a572b67983567fb520"
+      }
+    },
+    {
+      "id": "skill-166",
+      "name": "powercat-codeappscompact",
+      "description": "Build React/TypeScript Code Apps with typed workspaces and nested-record editors.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power CAT Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-codeappscompact/skills/powercat-codeappscompact",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps",
+        "Power CAT"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · BUILD",
+        "Power CAT Advisory Skills Index / DESIGN"
+      ],
+      "tier": "skill",
+      "displayName": "PowerCat-CodeAppsCompact",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "powercat-codeappscompact",
+        "sourceSha256": "453d44f4ffb8601c90decd6a778609b0f7b76745e05538181ae8109111c16dcc",
+        "prompt": "Use powercat-codeappscompact: Build React/TypeScript Code Apps with typed workspaces and nested-record editors.",
+        "sourceRevision": "67ed2d245f8d0cc8024fd2a572b67983567fb520"
+      }
+    },
+    {
+      "id": "skill-167",
+      "name": "code-app-architect",
+      "description": "Advise on Code App architecture, Dataverse integration and connectors.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/code-apps/com.github.copilot/agents/code-app-architect.agent.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Code App Architect",
+      "action": {
+        "kind": "agent-only",
+        "note": "Copilot agent persona (code-apps plugin) consulted for architecture decisions; not a direct user command.",
+        "evidence": [
+          "https://github.com/microsoft/power-platform-skills/blob/198d91b94abc29fcd59962d6202b454274500411/plugins/code-apps/agents/code-app-architect.md"
+        ]
+      }
+    },
+    {
+      "id": "skill-168",
+      "name": "erp-sql",
+      "description": "Read Finance and Operations dev-environment tables through temporary Reader-only SQL access.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Dataverse Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/Dataverse-skills/blob/main/.github/plugins/dataverse/skills/erp-sql/SKILL.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Dataverse"
+      ],
+      "locations": [
+        "Dataverse Skills Index / Application Data · READ / WRITE"
+      ],
+      "tier": "skill",
+      "displayName": "ERP SQL",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "evidence": [
+          "https://github.com/microsoft/Dataverse-skills/blob/3821c2c930f0149777d387cc75e95f9691599161/.github/plugins/dataverse/skills/erp-sql/SKILL.md"
+        ],
+        "skillName": "erp-sql",
+        "sourceSha256": "3233285472d56b8bd4b8bd6a9015844306a4535c5a37dc2c446c36c838e5d527",
+        "prompt": "Use erp-sql: Read Finance and Operations dev-environment tables through temporary Reader-only SQL access.",
+        "sourceRevision": "3821c2c930f0149777d387cc75e95f9691599161"
+      }
+    },
+    {
+      "id": "skill-169",
+      "name": "configure-canvas-mcp",
+      "description": "Connect the Canvas Authoring MCP server to the app open in Studio.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/canvas-apps/skills/configure-canvas-mcp",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Canvas Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Configure Canvas MCP",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "configure-canvas-mcp",
+        "sourceSha256": "b3d2c0094328c55470d6c2cb8e2d7bb18ff5d3228548d8dabb9774e45227d30c",
+        "prompt": "Use configure-canvas-mcp: Connect the Canvas Authoring MCP server to the app open in Studio.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-170",
+      "name": "report-issue",
+      "description": "Draft a bug report for the canvas-apps plugin.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/canvas-apps/skills/report-issue",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Canvas Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Report Issue · Canvas Apps",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "report-issue",
+        "sourceSha256": "a6135150c1e41be200342da96bae67da8452b065480f303fd3b9010c1ff1d67a",
+        "prompt": "Use report-issue: Draft a bug report for the canvas-apps plugin.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-171",
+      "name": "canvas-app-planner",
+      "description": "Plan scoped edits to an existing Canvas App, including new screens.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/canvas-apps/agents/canvas-app-planner.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Canvas Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Canvas App Planner",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the canvas-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-172",
+      "name": "canvas-screen-builder",
+      "description": "Add or modify one screen in an existing Canvas App from a shared contract.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/canvas-apps/agents/canvas-screen-builder.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Canvas Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Canvas Screen Builder",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the canvas-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-173",
+      "name": "canvas-create-functionality",
+      "description": "Define users, tasks, actions and outcomes for a new Canvas App.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/canvas-apps/agents/canvas-create-functionality.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Canvas Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Canvas Create Functionality",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the canvas-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-174",
+      "name": "canvas-create-screens",
+      "description": "Group approved intent into task-oriented screens and navigation.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/canvas-apps/agents/canvas-create-screens.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Canvas Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Canvas Create Screens",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the canvas-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-175",
+      "name": "canvas-create-layout",
+      "description": "Design visual hierarchy, regions and responsive layout before control choice.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/canvas-apps/agents/canvas-create-layout.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Canvas Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Canvas Create Layout",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the canvas-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-176",
+      "name": "canvas-create-discovery",
+      "description": "Check experience feasibility against real controls, data and APIs.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/canvas-apps/agents/canvas-create-discovery.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Canvas Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Canvas Create Discovery",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the canvas-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-177",
+      "name": "canvas-create-builder",
+      "description": "Write one new Canvas screen from approved experience decisions.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/canvas-apps/agents/canvas-create-builder.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Canvas Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Canvas Create Builder",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the canvas-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-178",
+      "name": "add-dataverse",
+      "description": "Add Dataverse tables with generated TypeScript models and services.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/add-dataverse",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add Dataverse · Code Apps",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-dataverse",
+        "sourceSha256": "4ad361a161d7b9d9842fd9d64616de987018517c246ecf3d53e51ff789d0f3d2",
+        "prompt": "Use add-dataverse: Add Dataverse tables with generated TypeScript models and services.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-179",
+      "name": "add-sharepoint",
+      "description": "Add the SharePoint Online connector to a code app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/add-sharepoint",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add SharePoint · Code Apps",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-sharepoint",
+        "sourceSha256": "1a596a0f2844563160036d5ad6bbc7e6dd17ed9a4b50caf9b94f3162ce3214c2",
+        "prompt": "Use add-sharepoint: Add the SharePoint Online connector to a code app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-180",
+      "name": "add-excel",
+      "description": "Add the Excel Online (Business) connector to a code app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/add-excel",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add Excel",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-excel",
+        "sourceSha256": "2038d630de5ef62723e9a5fe56d6afed7646eb881aa355998d935fa80da306f4",
+        "prompt": "Use add-excel: Add the Excel Online (Business) connector to a code app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-181",
+      "name": "add-onedrive",
+      "description": "Add the OneDrive for Business connector to a code app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/add-onedrive",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add OneDrive",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-onedrive",
+        "sourceSha256": "43346388a5a16ad0cdc9cc92cf2a23cd59f9ea3b765dcc0b69bbdfbd91269b94",
+        "prompt": "Use add-onedrive: Add the OneDrive for Business connector to a code app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-182",
+      "name": "add-teams",
+      "description": "Add the Microsoft Teams connector to a code app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/add-teams",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add Teams",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-teams",
+        "sourceSha256": "9df2e4febeec755d8c26e090c53ea01a9c9d1b05649bc9e343cd322aaaa2758e",
+        "prompt": "Use add-teams: Add the Microsoft Teams connector to a code app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-183",
+      "name": "add-office365",
+      "description": "Add the Office 365 Outlook connector to a code app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/add-office365",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add Office 365 Outlook",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-office365",
+        "sourceSha256": "c9a779689f2845c54d24288dc471d70e8e1ab9f783a2245e31f7a594a565344c",
+        "prompt": "Use add-office365: Add the Office 365 Outlook connector to a code app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-184",
+      "name": "add-azuredevops",
+      "description": "Add the Azure DevOps connector to a code app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/add-azuredevops",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add Azure DevOps",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-azuredevops",
+        "sourceSha256": "a4bd1f593d70ba617cb43aa151359510ffffc1953497f4dc4538b9ec1794ae03",
+        "prompt": "Use add-azuredevops: Add the Azure DevOps connector to a code app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-185",
+      "name": "add-mcscopilot",
+      "description": "Add a Copilot Studio agent connector to a code app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/add-mcscopilot",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add Copilot Studio",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-mcscopilot",
+        "sourceSha256": "ddba5e9f881c8e553e677e96cb10007ac4593e832ca0670d65802d1f592c1713",
+        "prompt": "Use add-mcscopilot: Add a Copilot Studio agent connector to a code app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-186",
+      "name": "add-workiq",
+      "description": "Add Microsoft 365 search and chat through Work IQ.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/add-workiq",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add Work IQ",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-workiq",
+        "sourceSha256": "8f700fb72bcfa7cf7da7fb3064b36c04ef4326e99164b34058bda9497262bcfc",
+        "prompt": "Use add-workiq: Add Microsoft 365 search and chat through Work IQ.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-187",
+      "name": "report-issue",
+      "description": "Prepare a public bug report for the code-apps plugin.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/code-apps/skills/report-issue",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Code Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Report Issue · Code Apps",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "report-issue",
+        "sourceSha256": "bf1db5eee6943ae772a107acbd29d08f2023c7a2d85bdec97cdb4a0291672867",
+        "prompt": "Use report-issue: Prepare a public bug report for the code-apps plugin.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-188",
+      "name": "report-issue",
+      "description": "Draft a bug report for the mcp-apps plugin.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mcp-apps/skills/report-issue",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "MCP & Tooling"
+      ],
+      "locations": [
+        "MCP & Agent Tooling Skills Index / MCP APPS"
+      ],
+      "tier": "skill",
+      "displayName": "Report Issue · MCP Apps",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "report-issue",
+        "sourceSha256": "a1e5a2c2b00d11a6ad0447a658450ce6452e7701f55badb2c9838a935ecd2b62",
+        "prompt": "Use report-issue: Draft a bug report for the mcp-apps plugin.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-189",
+      "name": "setup-datamodel",
+      "description": "Plan and approve the Dataverse schema and connectors for a mobile app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/setup-datamodel",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Setup Data Model · Mobile",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "setup-datamodel",
+        "sourceSha256": "d0828f45098d7d388367542c09f6682ada382bb8ca417c27910d7f7b332452d2",
+        "prompt": "Use setup-datamodel: Plan and approve the Dataverse schema and connectors for a mobile app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-190",
+      "name": "add-datasource",
+      "description": "Route an unspecified data source to Dataverse, SharePoint or a connector.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-datasource",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add Data Source · Mobile",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-datasource",
+        "sourceSha256": "adc7f9dba8b7f4bf68edb1dc3b481c3ce2a035acc1e159bdf2a15ee35397ff6d",
+        "prompt": "Use add-datasource: Route an unspecified data source to Dataverse, SharePoint or a connector.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-191",
+      "name": "add-dataverse",
+      "description": "Add existing or new Dataverse tables to a mobile app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-dataverse",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add Dataverse · Mobile",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-dataverse",
+        "sourceSha256": "625495842d637e2c056f76751a81e0581cde8977477cb0c7c8a4efe3e1822d98",
+        "prompt": "Use add-dataverse: Add existing or new Dataverse tables to a mobile app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-192",
+      "name": "add-sharepoint",
+      "description": "Read or write SharePoint lists and documents from a mobile app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-sharepoint",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Add SharePoint · Mobile",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-sharepoint",
+        "sourceSha256": "dfc7d76a2e862a3e070e0d419b3c089a5d36cbd44d984d4253263120de332ffe",
+        "prompt": "Use add-sharepoint: Read or write SharePoint lists and documents from a mobile app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-193",
+      "name": "list-connections",
+      "description": "Find or create a connection ID for a mobile app.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/list-connections",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "List Connections · Mobile",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "list-connections",
+        "sourceSha256": "b1a5d902a866c8cefbbde4d985c9f83f5dad1b72bfa9fac2e5582e4576d1964a",
+        "prompt": "Use list-connections: Find or create a connection ID for a mobile app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-194",
+      "name": "set-app-registration-native",
+      "description": "Wire an Entra ID app registration to a Wrap mobile app.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/set-app-registration-native",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "Set App Registration (Native)",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "set-app-registration-native",
+        "sourceSha256": "6f167f18af3a86de63dabdf4371befb5b9fc79aabd23e0e5056a4eb7c84280e5",
+        "prompt": "Use set-app-registration-native: Wire an Entra ID app registration to a Wrap mobile app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-195",
+      "name": "add-native",
+      "description": "Add camera, scanner, GPS, PDF or pen capabilities to a mobile app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-native",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Add Native Capability",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-native",
+        "sourceSha256": "9be4cb33348c87bef442d0f99b478d18599b22890908c9f618dd41804ec4f887",
+        "prompt": "Use add-native: Add camera, scanner, GPS, PDF or pen capabilities to a mobile app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-196",
+      "name": "add-sample-data",
+      "description": "Seed Dataverse tables with realistic sample records for a new app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-sample-data",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Add Sample Data · Mobile",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-sample-data",
+        "sourceSha256": "8692f9e3ff0fadc7b6ff16e4c525c56aaf3682fb436201bd10107f8385f082da",
+        "prompt": "Use add-sample-data: Seed Dataverse tables with realistic sample records for a new app.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-197",
+      "name": "setup-offline-profile",
+      "description": "Enable offline mode and create a Mobile Offline Profile.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/setup-offline-profile",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Setup Offline Profile",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "setup-offline-profile",
+        "sourceSha256": "d8d8b26ee78d95557a55a5dc528264968ded1ca3375f909c027930e30bfb66e7",
+        "prompt": "Use setup-offline-profile: Enable offline mode and create a Mobile Offline Profile.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-198",
+      "name": "open-wrap-url",
+      "description": "Open the Power Apps Wrap page for an app in the active environment.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/open-wrap-url",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Open Wrap URL",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "open-wrap-url",
+        "sourceSha256": "3928d8efbc46641a930781ee03515a86328448c886d80e539f710422420f0ca4",
+        "prompt": "Use open-wrap-url: Open the Power Apps Wrap page for an app in the active environment.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-199",
+      "name": "report-issue",
+      "description": "Prepare a GitHub issue body for the mobile-apps plugin.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/report-issue",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Report Issue · Mobile Apps",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "report-issue",
+        "sourceSha256": "a06cfbb46d9db19a087a9388c63459358238cd848612d39daf9a7f20a33c51ce",
+        "prompt": "Use report-issue: Prepare a GitHub issue body for the mobile-apps plugin.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-200",
+      "name": "add-camera",
+      "description": "Camera, image picker and barcode/QR scanning for add-native.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-native/add-camera",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Add Camera",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by /add-native, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-201",
+      "name": "add-geolocation",
+      "description": "Background GPS tracking with durable storage for add-native.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-native/add-geolocation",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Add Geolocation",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by /add-native, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-202",
+      "name": "add-pdf-report",
+      "description": "App-generated PDF report workflows for add-native.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-native/add-pdf-report",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Add PDF Report",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by /add-native, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-203",
+      "name": "add-pdf-viewer",
+      "description": "Native PDF viewing for add-native.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-native/add-pdf-viewer",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Add PDF Viewer",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by /add-native, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-204",
+      "name": "add-pen-input",
+      "description": "Pen, signature and handwriting capture for add-native.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-native/add-pen-input",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Add Pen Input",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by /add-native, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-205",
+      "name": "enable-tables-offline",
+      "description": "Enable Dataverse tables for offline sync before profile setup.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/enable-tables-offline",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Enable Tables Offline",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by /setup-offline-profile, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-206",
+      "name": "add-table-to-offline-profile",
+      "description": "Add one Dataverse table to an existing offline profile.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/add-table-to-offline-profile",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Add Table to Offline Profile",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by the mobile orchestrators, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-207",
+      "name": "edit-offline-profile",
+      "description": "Change one table's offline scope, columns or sync frequency.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/edit-offline-profile",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Edit Offline Profile",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by the mobile orchestrators, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-208",
+      "name": "assign-offline-profile",
+      "description": "Bind users or teams to a Mobile Offline Profile.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/assign-offline-profile",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Assign Offline Profile",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by the mobile orchestrators, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-209",
+      "name": "preview-offline-scope",
+      "description": "Estimate offline download size and sync cost before rollout.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/mobile-apps/skills/preview-offline-scope",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Preview Offline Scope",
+      "action": {
+        "kind": "agent-only",
+        "note": "Internal implementation skill (user-invocable: false); invoked by the mobile orchestrators, not a direct user command."
+      }
+    },
+    {
+      "id": "skill-210",
+      "name": "data-model-architect",
+      "description": "Propose a Dataverse data model and ER diagram for a mobile app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/mobile-apps/agents/data-model-architect.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Data Model Architect · Mobile",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the mobile-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-211",
+      "name": "screen-planner",
+      "description": "Plan the screen graph and per-screen specs for a mobile app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/mobile-apps/agents/screen-planner.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Screen Planner",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the mobile-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-212",
+      "name": "offline-profile-architect",
+      "description": "Design an offline profile: row scope, columns and sync frequency.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/mobile-apps/agents/offline-profile-architect.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Offline Profile Architect",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the mobile-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-213",
+      "name": "screen-builder",
+      "description": "Implement one mobile app screen from its spec.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/mobile-apps/agents/screen-builder.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Screen Builder",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the mobile-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-214",
+      "name": "genpage-planner",
+      "description": "Plan a generative page: requirements, entities and approval.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/model-apps/agents/genpage-planner.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Model-driven Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "GenPage Planner",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the model-apps (genpage) plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-215",
+      "name": "genpage-edit-planner",
+      "description": "Plan edits to an existing generative page.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/model-apps/agents/genpage-edit-planner.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Model-driven Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "GenPage Edit Planner",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the model-apps (genpage) plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-216",
+      "name": "genpage-entity-builder",
+      "description": "Create the Dataverse tables, columns and sample data a page needs.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/model-apps/agents/genpage-entity-builder.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Model-driven Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "GenPage Entity Builder",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the model-apps (genpage) plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-217",
+      "name": "genpage-page-builder",
+      "description": "Generate one complete .tsx generative page from the plan.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/model-apps/agents/genpage-page-builder.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Model-driven Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "GenPage Page Builder",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the model-apps (genpage) plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-218",
+      "name": "genpage-connector-builder",
+      "description": "Discover and bind connectors for a generative page.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/model-apps/agents/genpage-connector-builder.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Model-driven Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "GenPage Connector Builder",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the model-apps (genpage) plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-219",
+      "name": "genpage-customapi-builder",
+      "description": "Discover and bind Dataverse Custom APIs for a generative page.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/model-apps/agents/genpage-customapi-builder.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Model-driven Apps · CONNECT"
+      ],
+      "tier": "skill",
+      "displayName": "GenPage Custom API Builder",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the model-apps (genpage) plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-220",
+      "name": "report-issue",
+      "description": "Draft a bug report for the model-apps plugin.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/model-apps/skills/report-issue",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Model-driven Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Report Issue · Model Apps",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "report-issue",
+        "sourceSha256": "1edfe2baf053c96598aef83a38a0145b6192e2dab68ffb47cd9c034a0a275ada",
+        "prompt": "Use report-issue: Draft a bug report for the model-apps plugin.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-221",
+      "name": "telemetry",
+      "description": "Enable, disable or check the model-apps plugin's usage telemetry.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/model-apps/skills/telemetry",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Model-driven Apps · DEPLOY / EVOLVE"
+      ],
+      "tier": "skill",
+      "displayName": "Telemetry · Model Apps",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "telemetry",
+        "sourceSha256": "f5e3c813fe6a80d5d3a2f6a6f4bfea12a019b2955bde565f839e3aef731cc5ae",
+        "prompt": "Use telemetry: Enable, disable or check the model-apps plugin's usage telemetry.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-222",
+      "name": "telemetry",
+      "description": "Enable, disable or check the power-automate plugin's usage telemetry.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-automate/skills/telemetry",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Connections & Platform · OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Telemetry · Power Automate",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "telemetry",
+        "sourceSha256": "076107a55d9aadcb50eca558a7dd88286524e6d7aca44d10322506bc856a48b6",
+        "prompt": "Use telemetry: Enable, disable or check the power-automate plugin's usage telemetry.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-223",
+      "name": "report-issue",
+      "description": "Draft a bug report for the power-automate plugin.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-automate/skills/report-issue",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Connections & Platform · OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Report Issue · Power Automate",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "report-issue",
+        "sourceSha256": "8f942613a213949fad8d4e9f2bdb6f1506b51b64325abd86a786c5a12ed2f6e5",
+        "prompt": "Use report-issue: Draft a bug report for the power-automate plugin.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-224",
+      "name": "setup",
+      "description": "Configure, sign in to and diagnose the Process Intelligence connection.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/setup",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · DISCOVER"
+      ],
+      "tier": "skill",
+      "displayName": "Setup · Process Intelligence",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "setup",
+        "sourceSha256": "8d2f38388f52e8a59adda22f568b8c8e3f3fce9789609bac9adebd4974500dab",
+        "prompt": "Use setup: Configure, sign in to and diagnose the Process Intelligence connection.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-225",
+      "name": "analytics",
+      "description": "Select a process, get an overview and route follow-up questions.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/analytics",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · DISCOVER"
+      ],
+      "tier": "skill",
+      "displayName": "Process Analytics",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "analytics",
+        "sourceSha256": "4d46d54503a0e94c9e1123ab87b374398edc9a2bb4d468101e858aef7325db4e",
+        "prompt": "Use analytics: Select a process, get an overview and route follow-up questions.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-226",
+      "name": "derive-metric",
+      "description": "Reuse saved metrics or run a validated ephemeral formula.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/derive-metric",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Derive Metric",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "derive-metric",
+        "sourceSha256": "376a3113f03bbbe48791541360ed2e93eb70c8ec948d4c9500be413b35e2595f",
+        "prompt": "Use derive-metric: Reuse saved metrics or run a validated ephemeral formula.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-227",
+      "name": "investigate-process",
+      "description": "Test a business hypothesis across analytical perspectives.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/investigate-process",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Investigate Process",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "investigate-process",
+        "sourceSha256": "50ea9362232c2f3bec1c1e5946b01105081f690123154d42630d91b3f7993fbf",
+        "prompt": "Use investigate-process: Test a business hypothesis across analytical perspectives.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-228",
+      "name": "analyze-performance",
+      "description": "Find slow activities, waiting, handoffs and bottlenecks.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/analyze-performance",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Analyze Performance · Process Mining",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "analyze-performance",
+        "sourceSha256": "f877f18a11b55ad0cc119e0dcc572963f569226bfc8510393bd7787f925ac6dd",
+        "prompt": "Use analyze-performance: Find slow activities, waiting, handoffs and bottlenecks.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-229",
+      "name": "analyze-variants",
+      "description": "Compare variants, examine rework and find a specific case.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/analyze-variants",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Analyze Variants",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "analyze-variants",
+        "sourceSha256": "d6fce457d45ae57f9722b2a743081ae28dce67404e324184d4870f8e1f5a92e9",
+        "prompt": "Use analyze-variants: Compare variants, examine rework and find a specific case.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-230",
+      "name": "analyze-drivers",
+      "description": "Investigate which case attributes relate to delays or rework.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/analyze-drivers",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Analyze Drivers",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "analyze-drivers",
+        "sourceSha256": "f4a45d5c9e052441f19185e2d4c9d2d0fa9190bcd8de238a50ef3e427a38afb6",
+        "prompt": "Use analyze-drivers: Investigate which case attributes relate to delays or rework.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-231",
+      "name": "compare-cohorts",
+      "description": "Compare matched groups or time periods in a process.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/compare-cohorts",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Compare Cohorts",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "compare-cohorts",
+        "sourceSha256": "f20fd706307752f6ab3a8c6fcb84b3df081befe83502b9ee9043dad661a7ee8c",
+        "prompt": "Use compare-cohorts: Compare matched groups or time periods in a process.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-232",
+      "name": "analyze-objects",
+      "description": "Analyze object-centric executions and cross-object delay.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/analyze-objects",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Analyze Objects",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "analyze-objects",
+        "sourceSha256": "0e627261526083dff841faed8e3a3e46c4f1eef597eaceeb89601ddbad2efad1",
+        "prompt": "Use analyze-objects: Analyze object-centric executions and cross-object delay.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-233",
+      "name": "report-issue",
+      "description": "Prepare a support draft for a failed Process Intelligence operation.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/process-intelligence/skills/report-issue",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Automate"
+      ],
+      "locations": [
+        "Power Automate Skills Index / Process Mining · OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Report Issue · Process Intelligence",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "report-issue",
+        "sourceSha256": "4ff007adec7fb88706074dbff49e5a0b1985396729e7fea69ac754194c696f25",
+        "prompt": "Use report-issue: Prepare a support draft for a failed Process Intelligence operation.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-234",
+      "name": "activate-site",
+      "description": "Provision and activate a Power Pages site with a public URL.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/activate-site",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Site Experience · DEPLOY / OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Activate Site",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "activate-site",
+        "sourceSha256": "aba0b497a0e349d8cda781ad2f56e22a83fd1f2a733ab9c557b325480160a20e",
+        "prompt": "Use activate-site: Provision and activate a Power Pages site with a public URL.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-235",
+      "name": "add-localization",
+      "description": "Add languages and a language selector to a code-site SPA.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/add-localization",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Site Experience · BUILD / INTEGRATE"
+      ],
+      "tier": "skill",
+      "displayName": "Add Localization",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-localization",
+        "sourceSha256": "48d15caae6d06afbb4e36df9521d9190031ec31a15e7f89b826f10938f4cf750",
+        "prompt": "Use add-localization: Add languages and a language selector to a code-site SPA.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-236",
+      "name": "add-seo",
+      "description": "Add robots.txt, sitemap, meta and Open Graph tags to an SPA site.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/add-seo",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Site Experience · BUILD / INTEGRATE"
+      ],
+      "tier": "skill",
+      "displayName": "Add SEO",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-seo",
+        "sourceSha256": "4799e046f366c0ae4603d8dc81fb4ad9a41a4038db98e7f6fe1ead1aaaac6dcd",
+        "prompt": "Use add-seo: Add robots.txt, sitemap, meta and Open Graph tags to an SPA site.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-237",
+      "name": "exceptional-web-design",
+      "description": "Review a site's design and recommend what to change.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/exceptional-web-design",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Site Experience · VALIDATE / REVIEW"
+      ],
+      "tier": "skill",
+      "displayName": "Exceptional Web Design",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "exceptional-web-design",
+        "sourceSha256": "8ef43a70c3be5e984407d023d258f1099fd844d0fc35418c1b803e1af15bdce9",
+        "prompt": "Use exceptional-web-design: Review a site's design and recommend what to change.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-238",
+      "name": "add-server-logic",
+      "description": "Create and manage server-side JavaScript on the Power Pages runtime.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/add-server-logic",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Dataverse & APIs · BUILD / INTEGRATE"
+      ],
+      "tier": "skill",
+      "displayName": "Add Server Logic",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-server-logic",
+        "sourceSha256": "349cb30f575f4954e87f713e46a1dfd5d4a337fd2eade2a866a0651725df52fb",
+        "prompt": "Use add-server-logic: Create and manage server-side JavaScript on the Power Pages runtime.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-239",
+      "name": "add-ai-webapi",
+      "description": "Add generative-AI search and data summaries to an SPA site (preview APIs).",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/add-ai-webapi",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Dataverse & APIs · BUILD / INTEGRATE"
+      ],
+      "tier": "skill",
+      "displayName": "Add AI Web API",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "add-ai-webapi",
+        "sourceSha256": "6344fdb4e9d2e41c04161888d2efa5ce949f7d6e1f12e7aedec23287193d6dd8",
+        "prompt": "Use add-ai-webapi: Add generative-AI search and data summaries to an SPA site (preview APIs).",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-240",
+      "name": "manage-firewall",
+      "description": "Inspect and configure the web application firewall for a site.",
+      "kind": "govern",
+      "purpose": "Govern",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/manage-firewall",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Identity & Access · SECURE"
+      ],
+      "tier": "skill",
+      "displayName": "Manage Firewall",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "manage-firewall",
+        "sourceSha256": "a7e8d96b7f73076d04fdccad5e9c38f5db77210d5895dd6047393a8e28a94909",
+        "prompt": "Use manage-firewall: Inspect and configure the web application firewall for a site.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-241",
+      "name": "scan-site",
+      "description": "Run a security scan on a deployed site and summarize the findings.",
+      "kind": "review",
+      "purpose": "Review",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/scan-site",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Identity & Access · SECURE"
+      ],
+      "tier": "skill",
+      "displayName": "Scan Site",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "scan-site",
+        "sourceSha256": "c8406ec1a2798be36251d2e590634a51548d267418b4bc9c431695ff40380243",
+        "prompt": "Use scan-site: Run a security scan on a deployed site and summarize the findings.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-242",
+      "name": "ensure-pipelines-host",
+      "description": "Make sure the tenant has a usable Power Platform Pipelines host.",
+      "kind": "govern",
+      "purpose": "Govern",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/ensure-pipelines-host",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Quality & ALM · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Ensure Pipelines Host",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "ensure-pipelines-host",
+        "sourceSha256": "eb6696a23feb7c8f191bbc92485c12f4c80ffedd9f6a3d48ba5b494d0e3a9014",
+        "prompt": "Use ensure-pipelines-host: Make sure the tenant has a usable Power Platform Pipelines host.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-243",
+      "name": "configure-env-variables",
+      "description": "Make site settings environment-specific with environment variables.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/configure-env-variables",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Quality & ALM · DEPLOY / OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Configure Environment Variables",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "configure-env-variables",
+        "sourceSha256": "19647ee7f021017cedbd7d8b47cbf2dba8c583d0a6aefa9aa962adcfc3581959",
+        "prompt": "Use configure-env-variables: Make site settings environment-specific with environment variables.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-244",
+      "name": "export-solution",
+      "description": "Export a solution with site components as a deployable zip.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/export-solution",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Quality & ALM · DEPLOY / OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Export Solution",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "export-solution",
+        "sourceSha256": "f40d6b06fa656ee5b6d18c21e3f65a4471a91c4b346220b42e6d9acf0d399038",
+        "prompt": "Use export-solution: Export a solution with site components as a deployable zip.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-245",
+      "name": "import-solution",
+      "description": "Import a solution zip into a target environment.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/import-solution",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Quality & ALM · DEPLOY / OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Import Solution",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "import-solution",
+        "sourceSha256": "9e8fa24c3686bc48c5824bb161f5e81849c161b94ec48d3a775d756e637758cc",
+        "prompt": "Use import-solution: Import a solution zip into a target environment.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-246",
+      "name": "deploy-pipeline",
+      "description": "Run a Power Platform Pipelines deployment for a site solution.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/deploy-pipeline",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Quality & ALM · DEPLOY / OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Deploy Pipeline",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "deploy-pipeline",
+        "sourceSha256": "486782cea3a41c8d5e8c0c177def046671075b0ac494e3c7990bca0a53b0c31b",
+        "prompt": "Use deploy-pipeline: Run a Power Platform Pipelines deployment for a site solution.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-247",
+      "name": "force-link-environment",
+      "description": "Force-link an environment to a Pipelines host.",
+      "kind": "govern",
+      "purpose": "Govern",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/force-link-environment",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Quality & ALM · DEPLOY / OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Force-Link Environment",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "force-link-environment",
+        "sourceSha256": "4e50714f91df32fbcf5b8c71c86f366bdb90843baacde1777728e962b4739850",
+        "prompt": "Use force-link-environment: Force-link an environment to a Pipelines host.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-248",
+      "name": "report-issue",
+      "description": "Draft a bug report for a Power Pages skill.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/report-issue",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Quality & ALM · DEPLOY / OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Report Issue · Power Pages",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "report-issue",
+        "sourceSha256": "de08b248165c2e828d76eb0d44af1755db8eab6457ab516482e329f3130db267",
+        "prompt": "Use report-issue: Draft a bug report for a Power Pages skill.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-249",
+      "name": "telemetry",
+      "description": "Enable, disable or check the power-pages plugin's usage telemetry.",
+      "kind": "operate",
+      "purpose": "Operate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/telemetry",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Quality & ALM · DEPLOY / OPERATE"
+      ],
+      "tier": "skill",
+      "displayName": "Telemetry · Power Pages",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "telemetry",
+        "sourceSha256": "bbf315f0aa8cc0d46aa9f66e62d2c3591bbca0845b2073f20788f14a811b4d8f",
+        "prompt": "Use telemetry: Enable, disable or check the power-pages plugin's usage telemetry.",
+        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+      }
+    },
+    {
+      "id": "skill-250",
+      "name": "data-model-architect",
+      "description": "Propose a Dataverse data model and ER diagram for a site.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/power-pages/agents/data-model-architect.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Dataverse & APIs · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Data Model Architect · Power Pages",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the power-pages plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-251",
+      "name": "webapi-integration",
+      "description": "Generate a typed Web API client and CRUD services for one table.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/power-pages/agents/webapi-integration.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Dataverse & APIs · BUILD / INTEGRATE"
+      ],
+      "tier": "skill",
+      "displayName": "Web API Integration",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the power-pages plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-252",
+      "name": "webapi-settings-architect",
+      "description": "Propose and create Web API site settings for tables and columns.",
+      "kind": "govern",
+      "purpose": "Govern",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/power-pages/agents/webapi-settings-architect.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Dataverse & APIs · SECURE"
+      ],
+      "tier": "skill",
+      "displayName": "Web API Settings Architect",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the power-pages plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-253",
+      "name": "ai-webapi-integration",
+      "description": "Wire a generative-AI summarization API into site code.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/power-pages/agents/ai-webapi-integration.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Dataverse & APIs · BUILD / INTEGRATE"
+      ],
+      "tier": "skill",
+      "displayName": "AI Web API Integration",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the power-pages plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-254",
+      "name": "ai-webapi-settings-architect",
+      "description": "Propose and create generative-AI summarization site settings.",
+      "kind": "govern",
+      "purpose": "Govern",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/power-pages/agents/ai-webapi-settings-architect.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Dataverse & APIs · SECURE"
+      ],
+      "tier": "skill",
+      "displayName": "AI Web API Settings Architect",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the power-pages plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-255",
+      "name": "table-permissions-architect",
+      "description": "Plan and create table permissions for web roles.",
+      "kind": "govern",
+      "purpose": "Govern",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/power-pages/agents/table-permissions-architect.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Power Pages"
+      ],
+      "locations": [
+        "Power Pages Skills Index / Identity & Access · SECURE"
+      ],
+      "tier": "skill",
+      "displayName": "Table Permissions Architect",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the power-pages plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-256",
+      "name": "copilot-studio-init",
+      "description": "Set up an empty Copilot Studio agent workspace with pac copilot init.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/main/agents/copilot-studio-init.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · CREATE & CLONE"
+      ],
+      "tier": "skill",
+      "displayName": "Copilot Studio Init",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the copilot-studio plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-257",
+      "name": "copilot-studio-manage",
+      "description": "Run PAC CLI ALM operations for existing Copilot Studio agent workspaces.",
+      "kind": "deploy",
+      "purpose": "Deploy",
+      "marketplace": "Copilot Studio Plugin",
+      "maturity": "Preview",
+      "status": "Experimental",
+      "source": "https://github.com/microsoft/copilot-studio-plugin/blob/main/agents/copilot-studio-manage.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "16 Nov 2026",
+      "products": [
+        "Agent Skills"
+      ],
+      "locations": [
+        "Agent Skills & Tooling Index / Copilot Studio Agent Lifecycle · SYNC"
+      ],
+      "tier": "skill",
+      "displayName": "Copilot Studio Manage",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the copilot-studio plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-258",
+      "name": "powercat-nintex-form-to-canvas",
+      "description": "Inventory and verify a Nintex form export, then hand off an approved Canvas App migration.",
+      "kind": "migrate",
+      "purpose": "Migrate",
+      "marketplace": "Power CAT Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-form-to-canvas",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "17 Nov 2026",
+      "products": [
+        "Modernization",
+        "Power CAT"
+      ],
+      "locations": [
+        "Modernization & Migration Skills Index / InfoPath / Canvas · PLAN",
+        "Power CAT Advisory Skills Index / MODERNIZE"
+      ],
+      "tier": "skill",
+      "displayName": "Nintex Form To Canvas",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "powercat-nintex-form-to-canvas",
+        "sourceSha256": "582e2e50cb08a3dc90c71e91a9c73bd498e6658282bf705d94aa84b3bfa783f5",
+        "prompt": "Use powercat-nintex-form-to-canvas: Inventory and verify a Nintex form export, then hand off an approved Canvas App migration.",
+        "sourceRevision": "78e6b6bf1f1226906b41077d512911d6325f8022"
       }
     }
   ]

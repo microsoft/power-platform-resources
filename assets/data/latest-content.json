@@ -3,39 +3,39 @@
     "news": "https://www.microsoft.com/en-us/power-platform/blog/feed/",
     "events": "https://www.microsoft.com/en-us/power-platform/blog/content-type/events/feed/"
   },
-  "retrieved": "2026-09-26T23:12:34.368Z",
+  "retrieved": "2026-11-18T17:32:36.811Z",
   "news": [
     {
-      "title": "Modern List in Power Pages is now generally available",
-      "url": "https://www.microsoft.com/power-platform/blog/power-pages/modern-list-in-power-pages-is-now-generally-available/",
-      "published": "2026-09-23"
+      "title": "Act faster: hourly alerts for your critical flows, apps, and agents",
+      "url": "https://www.microsoft.com/power-platform/blog/2026/11/11/act-faster-hourly-alerts-for-your-critical-flows-apps-and-agents/",
+      "published": "2026-11-11"
     },
     {
-      "title": "Extend Server Logic with Power Automate Cloud Flows in Power Pages",
-      "url": "https://www.microsoft.com/power-platform/blog/power-pages/extend-server-logic-with-power-automate-cloud-flows-in-power-pages/",
-      "published": "2026-09-18"
+      "title": "What’s new in Power Platform: October/November 2026 feature update",
+      "url": "https://www.microsoft.com/power-platform/blog/power-apps/whats-new-in-power-platform-october-2026-feature-update/",
+      "published": "2026-11-10"
     },
     {
-      "title": "What’s new in Power Platform: September 2026 feature update",
-      "url": "https://www.microsoft.com/power-platform/blog/power-apps/whats-new-in-power-platform-september-2026-feature-update/",
-      "published": "2026-09-17"
+      "title": "New Authentication Governance Controls in Power Pages",
+      "url": "https://www.microsoft.com/power-platform/blog/power-pages/new-authentication-governance-controls-in-power-pages/",
+      "published": "2026-11-09"
     }
   ],
   "events": [
     {
-      "title": "PPCC 2026: Bringing AI and your business processes together",
-      "url": "https://www.microsoft.com/microsoft-365/blog/2026/09/03/ppcc-2026-bringing-ai-and-your-business-processes-together/",
-      "published": "2026-09-03"
+      "title": "Built by makers: Five years of Power Platform Community Conference",
+      "url": "https://www.microsoft.com/power-platform/blog/2026/10/29/built-by-makers-five-years-of-power-platform-community-conference/",
+      "published": "2026-10-29"
     },
     {
-      "title": "Register now for PPCC 2026: Come for the learning, stay for the community",
-      "url": "https://www.microsoft.com/power-platform/blog/2026/08/13/register-now-for-ppcc-2026-come-for-the-learning-stay-for-the-community/",
-      "published": "2026-08-13"
+      "title": "AI that understands your business: Dataverse and Work IQ at PPCC 2026",
+      "url": "https://www.microsoft.com/power-platform/blog/2026/10/23/dataverse-and-workiq-ppcc-2026/",
+      "published": "2026-10-23"
     },
     {
-      "title": "Building trustworthy AI: A practical framework for adaptive governance",
-      "url": "https://www.microsoft.com/power-platform/blog/2026/04/01/building-trustworthy-ai-a-practical-framework-for-adaptive-governance/",
-      "published": "2026-04-01"
+      "title": "Your AI transformation starts with what you’ve already built",
+      "url": "https://www.microsoft.com/power-platform/blog/power-apps/your-ai-transformation-starts-with-what-youve-already-built/",
+      "published": "2026-10-01"
     }
   ]
 }

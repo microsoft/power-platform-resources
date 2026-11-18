@@ -1,8 +1,8 @@
 {
   "source": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/data/catalog.json",
   "marketplace": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/",
-  "retrieved": "2026-09-26T23:27:36.232Z",
-  "sha256": "fc996c98a7c4900b35063a3615a1374f2218cbe039a9a4760ed5616fdfa18507",
+  "retrieved": "2026-11-18T17:32:31.296Z",
+  "sha256": "b7b2329a17a5334c269361a3ea4bcc65e17c2028c9382e31eba6d455d5131365",
   "categories": [
     {
       "id": "performance-quality",
@@ -83,6 +83,31 @@
       "id": "powercat-architecture-advisor",
       "label": "powercat-architecture-advisor",
       "description": "Power CAT style architecture advisor for Power Platform scenarios with structured discovery and comprehensive implementation recommendations."
+    },
+    {
+      "id": "loop-my-prompt",
+      "label": "loop-my-prompt",
+      "description": "Rewrite prompts with explicit outcomes, observable feedback, evidence-based correction, and bounded stopping conditions without executing the underlying task."
+    },
+    {
+      "id": "powercat-skills-router",
+      "label": "powercat-skills-router",
+      "description": "Route Microsoft Power Platform requests to the best-fit specialist skill across the Power CAT and Power Platform marketplaces, with approval-gated installation and execution."
+    },
+    {
+      "id": "powercat-codeappscompact",
+      "label": "PowerCat-CodeAppsCompact",
+      "description": "Build React/TypeScript Power Apps Code Apps with typed workspaces, reusable authoring helpers, acceptance workflows, permission-bound host verification, and metered finalization."
+    },
+    {
+      "id": "powercat-pcf",
+      "label": "powercat-pcf",
+      "description": "Create accessible virtual PCF controls for model-driven apps using host-provided React and Fluent UI v9."
+    },
+    {
+      "id": "powercat-template",
+      "label": "powercat-template",
+      "description": "Apply the official Power CAT template to presentations, documents, apps, and other branded assets."
     }
   ],
   "skills": [
@@ -483,6 +508,171 @@
       "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-architecture-advisor__powercat-pp-architecture-advisor"
     },
     {
+      "id": "loop-my-prompt",
+      "detailId": "loop-my-prompt__loop-my-prompt",
+      "title": "loop-my-prompt",
+      "categoryId": "adoption-storytelling",
+      "category": "Adoption & Storytelling",
+      "plugin": "loop-my-prompt",
+      "pluginLabel": "loop my prompt",
+      "description": "Rewrite prompts with explicit outcomes, observable feedback, evidence-based correction, and bounded stopping conditions without executing the underlying task.",
+      "tags": [
+        "loop my prompt",
+        "power-platform",
+        "powercat"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "Rewrite prompts with explicit outcomes, observable feedback, evidence-based correction, and bounded stopping conditions without executing the underlying task.",
+      "when": [
+        "Use this when you need rewrite prompts with explicit outcomes, observable feedback, evidence-based correction, and bounded stopping conditions without executing the underlying task.",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install loop-my-prompt@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/loop-my-prompt/skills/loop-my-prompt",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/loop-my-prompt/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=loop-my-prompt__loop-my-prompt"
+    },
+    {
+      "id": "powercat-skills-router",
+      "detailId": "powercat-skills-router__powercat-skills-router",
+      "title": "powercat-skills-router",
+      "categoryId": "adoption-storytelling",
+      "category": "Adoption & Storytelling",
+      "plugin": "powercat-skills-router",
+      "pluginLabel": "skills router",
+      "description": "Route Microsoft Power Platform requests to the best-fit specialist skill across the Power CAT and Power Platform marketplaces, with approval-gated installation and execution.",
+      "tags": [
+        "skills router",
+        "power-platform",
+        "powercat"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "Route Microsoft Power Platform requests to the best-fit specialist skill across the Power CAT and Power Platform marketplaces, with approval-gated installation and execution.",
+      "when": [
+        "Use this when you need route Microsoft Power Platform requests to the best-fit specialist skill across the Power CAT and Power Platform marketplaces, with approval-gated installation and execution.",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-skills-router@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-skills-router/skills/powercat-skills-router",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-skills-router/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-skills-router__powercat-skills-router"
+    },
+    {
+      "id": "powercat-codeappscompact",
+      "detailId": "powercat-codeappscompact__powercat-codeappscompact",
+      "title": "PowerCat-CodeAppsCompact",
+      "categoryId": "app-design-ux",
+      "category": "App Design & UX",
+      "plugin": "powercat-codeappscompact",
+      "pluginLabel": "PowerCat-CodeAppsCompact",
+      "description": "Build React/TypeScript Power Apps Code Apps with typed workspaces, reusable authoring helpers, acceptance workflows, permission-bound host verification, and metered finalization.",
+      "tags": [
+        "PowerCat-CodeAppsCompact",
+        "power-platform",
+        "powercat"
+      ],
+      "products": [
+        "Power Apps"
+      ],
+      "what": "Build React/TypeScript Power Apps Code Apps with typed workspaces, reusable authoring helpers, acceptance workflows, permission-bound host verification, and metered finalization.",
+      "when": [
+        "Use this when you need build React/TypeScript Power Apps Code Apps with typed workspaces, reusable authoring helpers, acceptance workflows, permission-bound host verification, and metered finalization.",
+        "Use it when the work belongs in App Design & UX.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-codeappscompact@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-codeappscompact/skills/powercat-codeappscompact",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-codeappscompact/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-codeappscompact__powercat-codeappscompact"
+    },
+    {
+      "id": "create-pcf",
+      "detailId": "powercat-pcf__create-pcf",
+      "title": "create-pcf",
+      "categoryId": "adoption-storytelling",
+      "category": "Adoption & Storytelling",
+      "plugin": "powercat-pcf",
+      "pluginLabel": "pcf",
+      "description": "Create accessible virtual PCF controls for model-driven Power Apps using host-provided React and Fluent UI v9.",
+      "tags": [
+        "pcf",
+        "model-driven apps",
+        "power apps"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "Create accessible virtual PCF controls for model-driven Power Apps using host-provided React and Fluent UI v9.",
+      "when": [
+        "Use this when you need create accessible virtual PCF controls for model-driven Power Apps using host-provided React and Fluent UI v9.",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-pcf@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-pcf/skills/create-pcf",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-pcf/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-pcf__create-pcf"
+    },
+    {
+      "id": "powercat-template",
+      "detailId": "powercat-template__powercat-template",
+      "title": "powercat-template",
+      "categoryId": "adoption-storytelling",
+      "category": "Adoption & Storytelling",
+      "plugin": "powercat-template",
+      "pluginLabel": "template",
+      "description": "Apply the official Power CAT template to presentations, documents, apps, and other branded assets.",
+      "tags": [
+        "template",
+        "power-platform",
+        "powercat"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "Apply the official Power CAT template to presentations, documents, apps, and other branded assets.",
+      "when": [
+        "Use this when you need apply the official Power CAT template to presentations, documents, apps, and other branded assets.",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-template@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-template/skills/powercat-template",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-template/README.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-template__powercat-template"
+    },
+    {
       "id": "Access to Dataverse Migration",
       "detailId": "powercat-migration-factory__Access to Dataverse Migration",
       "title": "Access to Dataverse Migration",
@@ -614,6 +804,72 @@
       "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/migrate-to-dataverse",
       "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/migrate-to-dataverse/README.md",
       "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__migrate-to-dataverse"
+    },
+    {
+      "id": "powercat-nintex-form-to-canvas",
+      "detailId": "powercat-migration-factory__powercat-nintex-form-to-canvas",
+      "title": "powercat-nintex-form-to-canvas",
+      "categoryId": "migration-power-platform",
+      "category": "Migration to Power Platform",
+      "plugin": "powercat-migration-factory",
+      "pluginLabel": "migration factory",
+      "description": "Migrate a Nintex form (Nintex Forms for SharePoint 2010-2019, Office 365 classic .nfp packages, the SharePoint Online New Responsive Designer, or Nintex Automation Cloud) to a Pow…",
+      "tags": [
+        "migration factory",
+        "migration",
+        "power platform"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "Migrate a Nintex form (Nintex Forms for SharePoint 2010-2019, Office 365 classic .nfp packages, the SharePoint Online New Responsive Designer, or Nintex Automation Cloud) to a Pow…",
+      "when": [
+        "Use this when you need migrate a Nintex form (Nintex Forms for SharePoint 2010-2019, Office 365 classic .nfp packages, the SharePoint Online New Responsive Designer, or Nintex Automation Cloud) to a Pow…",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-migration-factory@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-form-to-canvas",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-form-to-canvas/SKILL.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__powercat-nintex-form-to-canvas"
+    },
+    {
+      "id": "powercat-nintex-workflow-to-power-automate",
+      "detailId": "powercat-migration-factory__powercat-nintex-workflow-to-power-automate",
+      "title": "powercat-nintex-workflow-to-power-automate",
+      "categoryId": "migration-power-platform",
+      "category": "Migration to Power Platform",
+      "plugin": "powercat-migration-factory",
+      "pluginLabel": "migration factory",
+      "description": "Migrate one Nintex workflow (Nintex Automation Cloud export; best-effort for Nintex Workflow for SharePoint on-prem .nwf and Office 365 .nwp) to a Power Automate cloud flow.",
+      "tags": [
+        "migration factory",
+        "migration",
+        "power platform"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": "Migrate one Nintex workflow (Nintex Automation Cloud export; best-effort for Nintex Workflow for SharePoint on-prem .nwf and Office 365 .nwp) to a Power Automate cloud flow.",
+      "when": [
+        "Use this when you need migrate one Nintex workflow (Nintex Automation Cloud export; best-effort for Nintex Workflow for SharePoint on-prem .nwf and Office 365 .nwp) to a Power Automate cloud flow.",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-migration-factory@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-workflow-to-power-automate",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-workflow-to-power-automate/SKILL.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__powercat-nintex-workflow-to-power-automate"
     }
   ],
   "migrationTracks": [
@@ -675,6 +931,34 @@
       "detailId": "powercat-migration-factory__migrate-to-dataverse",
       "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/migrate-to-dataverse",
       "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__migrate-to-dataverse"
+    },
+    {
+      "id": "powercat-nintex-form-to-canvas",
+      "title": "powercat-nintex-form-to-canvas",
+      "description": "Migrate a Nintex form (Nintex Forms for SharePoint 2010-2019, Office 365 classic .nfp packages, the SharePoint Online New Responsive Designer, or Nintex Automation Cloud) to a Pow…",
+      "products": [
+        "Power Platform"
+      ],
+      "status": "Available skill",
+      "cta": "Available skill",
+      "skillId": "powercat-nintex-form-to-canvas",
+      "detailId": "powercat-migration-factory__powercat-nintex-form-to-canvas",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-form-to-canvas",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__powercat-nintex-form-to-canvas"
+    },
+    {
+      "id": "powercat-nintex-workflow-to-power-automate",
+      "title": "powercat-nintex-workflow-to-power-automate",
+      "description": "Migrate one Nintex workflow (Nintex Automation Cloud export; best-effort for Nintex Workflow for SharePoint on-prem .nwf and Office 365 .nwp) to a Power Automate cloud flow.",
+      "products": [
+        "Power Platform"
+      ],
+      "status": "Available skill",
+      "cta": "Available skill",
+      "skillId": "powercat-nintex-workflow-to-power-automate",
+      "detailId": "powercat-migration-factory__powercat-nintex-workflow-to-power-automate",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-workflow-to-power-automate",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__powercat-nintex-workflow-to-power-automate"
     }
   ]
 }
