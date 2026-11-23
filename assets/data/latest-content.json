@@ -3,8 +3,13 @@
     "news": "https://www.microsoft.com/en-us/power-platform/blog/feed/",
     "events": "https://www.microsoft.com/en-us/power-platform/blog/content-type/events/feed/"
   },
-  "retrieved": "2026-11-18T19:45:20.122Z",
+  "retrieved": "2026-11-23T15:02:05.626Z",
   "news": [
+    {
+      "title": "Discover and review Power Pages sites with Power Platform inventory (public preview)",
+      "url": "https://www.microsoft.com/power-platform/blog/power-pages/discover-and-review-power-pages-sites-with-power-platform-inventory-public-preview/",
+      "published": "2026-11-20"
+    },
     {
       "title": "Act faster: hourly alerts for your critical flows, apps, and agents",
       "url": "https://www.microsoft.com/power-platform/blog/2026/11/11/act-faster-hourly-alerts-for-your-critical-flows-apps-and-agents/",
@@ -14,14 +19,14 @@
       "title": "What’s new in Power Platform: October/November 2026 feature update",
       "url": "https://www.microsoft.com/power-platform/blog/power-apps/whats-new-in-power-platform-october-2026-feature-update/",
       "published": "2026-11-10"
-    },
-    {
-      "title": "New Authentication Governance Controls in Power Pages",
-      "url": "https://www.microsoft.com/power-platform/blog/power-pages/new-authentication-governance-controls-in-power-pages/",
-      "published": "2026-11-09"
     }
   ],
   "events": [
+    {
+      "title": "Turn AI ambition into real business value with Power Platform",
+      "url": "https://www.microsoft.com/power-platform/blog/2026/11/18/turn-ai-ambition-into-real-business-value-with-power-platform/",
+      "published": "2026-11-18"
+    },
     {
       "title": "Built by makers: Five years of Power Platform Community Conference",
       "url": "https://www.microsoft.com/power-platform/blog/2026/10/29/built-by-makers-five-years-of-power-platform-community-conference/",
@@ -31,11 +36,6 @@
       "title": "AI that understands your business: Dataverse and Work IQ at PPCC 2026",
       "url": "https://www.microsoft.com/power-platform/blog/2026/10/23/dataverse-and-workiq-ppcc-2026/",
       "published": "2026-10-23"
-    },
-    {
-      "title": "Your AI transformation starts with what you’ve already built",
-      "url": "https://www.microsoft.com/power-platform/blog/power-apps/your-ai-transformation-starts-with-what-youve-already-built/",
-      "published": "2026-10-01"
     }
   ]
 }

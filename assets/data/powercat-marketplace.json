@@ -1,8 +1,8 @@
 {
   "source": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/data/catalog.json",
   "marketplace": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/",
-  "retrieved": "2026-11-18T17:32:31.296Z",
-  "sha256": "b7b2329a17a5334c269361a3ea4bcc65e17c2028c9382e31eba6d455d5131365",
+  "retrieved": "2026-11-23T15:01:56.123Z",
+  "sha256": "d6352a2bfc74aad0b005eebe1dfc256ad5ad5c8b5d89c4c44af074ac8db5d721",
   "categories": [
     {
       "id": "performance-quality",
@@ -97,7 +97,7 @@
     {
       "id": "powercat-codeappscompact",
       "label": "PowerCat-CodeAppsCompact",
-      "description": "Build React/TypeScript Power Apps Code Apps with typed workspaces, reusable authoring helpers, acceptance workflows, permission-bound host verification, and metered finalization."
+      "description": "Build React/TypeScript Power Apps Code Apps by configuring bundled, accessible controls and compositions (record flows, workspaces, tables, editors, dashboards, schedules, CSV), loading only the control cards each app needs."
     },
     {
       "id": "powercat-pcf",
@@ -581,7 +581,7 @@
       "category": "App Design & UX",
       "plugin": "powercat-codeappscompact",
       "pluginLabel": "PowerCat-CodeAppsCompact",
-      "description": "Build React/TypeScript Power Apps Code Apps with typed workspaces, reusable authoring helpers, acceptance workflows, permission-bound host verification, and metered finalization.",
+      "description": "Build React/TypeScript Power Apps Code Apps by configuring bundled, accessible controls and compositions (record flows, workspaces, tables, editors, dashboards, schedules, CSV), l…",
       "tags": [
         "PowerCat-CodeAppsCompact",
         "power-platform",
@@ -590,9 +590,9 @@
       "products": [
         "Power Apps"
       ],
-      "what": "Build React/TypeScript Power Apps Code Apps with typed workspaces, reusable authoring helpers, acceptance workflows, permission-bound host verification, and metered finalization.",
+      "what": "Build React/TypeScript Power Apps Code Apps by configuring bundled, accessible controls and compositions (record flows, workspaces, tables, editors, dashboards, schedules, CSV), l…",
       "when": [
-        "Use this when you need build React/TypeScript Power Apps Code Apps with typed workspaces, reusable authoring helpers, acceptance workflows, permission-bound host verification, and metered finalization.",
+        "Use this when you need build React/TypeScript Power Apps Code Apps by configuring bundled, accessible controls and compositions (record flows, workspaces, tables, editors, dashboards, schedules, CSV), l…",
         "Use it when the work belongs in App Design & UX.",
         "Use it when you want a guided workflow instead of starting from a blank prompt."
       ],
@@ -870,6 +870,39 @@
       "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-workflow-to-power-automate",
       "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-workflow-to-power-automate/SKILL.md",
       "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__powercat-nintex-workflow-to-power-automate"
+    },
+    {
+      "id": "powercat-nintex-form-to-codeapps",
+      "detailId": "powercat-migration-factory__powercat-nintex-form-to-codeapps",
+      "title": "powercat-nintex-form-to-codeapps",
+      "categoryId": "migration-power-platform",
+      "category": "Migration to Power Platform",
+      "plugin": "powercat-migration-factory",
+      "pluginLabel": "migration factory",
+      "description": ">-",
+      "tags": [
+        "migration factory",
+        "migration",
+        "power platform"
+      ],
+      "products": [
+        "Power Platform"
+      ],
+      "what": ">-",
+      "when": [
+        "Use this when you need >-",
+        "Use it when the work belongs in Adoption & Storytelling.",
+        "Use it when you want a guided workflow instead of starting from a blank prompt."
+      ],
+      "how": [
+        "Guides the agent through a repeatable Power CAT delivery pattern.",
+        "Structures inputs, decisions, and outputs so the work is easier to review.",
+        "Links back to the source skill so teams can inspect or extend the workflow."
+      ],
+      "install": "copilot plugin install powercat-migration-factory@power-cat-skills",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-form-to-codeapps",
+      "docsSource": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-form-to-codeapps/SKILL.md",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__powercat-nintex-form-to-codeapps"
     }
   ],
   "migrationTracks": [
@@ -945,6 +978,20 @@
       "detailId": "powercat-migration-factory__powercat-nintex-form-to-canvas",
       "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-form-to-canvas",
       "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__powercat-nintex-form-to-canvas"
+    },
+    {
+      "id": "powercat-nintex-form-to-codeapps",
+      "title": "powercat-nintex-form-to-codeapps",
+      "description": ">-",
+      "products": [
+        "Power Platform"
+      ],
+      "status": "Available skill",
+      "cta": "Available skill",
+      "skillId": "powercat-nintex-form-to-codeapps",
+      "detailId": "powercat-migration-factory__powercat-nintex-form-to-codeapps",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-form-to-codeapps",
+      "detailUrl": "https://microsoft.github.io/power-cat-skills/power-platform-migration-factory/skill.html?id=powercat-migration-factory__powercat-nintex-form-to-codeapps"
     },
     {
       "id": "powercat-nintex-workflow-to-power-automate",

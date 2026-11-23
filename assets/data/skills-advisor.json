@@ -1,8 +1,8 @@
 {
   "source": "https://microsoft.github.io/power-cat-skills/skill-advisor/",
-  "sourceGenerated": "17 Nov 2026",
-  "retrieved": "2026-11-18T19:45:17.787Z",
-  "sha256": "73a7f1e1ddb37ae85490474c7ad38d244f1983337f2d50e47f389bc183c2dca7",
+  "sourceGenerated": "23 Nov 2026",
+  "retrieved": "2026-11-23T15:01:55.726Z",
+  "sha256": "4a23939cf437f54147b78a7ebe8ca705783a99badf17a464056a472ea5c69366",
   "skills": [
     {
       "id": "skill-66",
@@ -658,7 +658,7 @@
     {
       "id": "skill-35",
       "name": "check-updates",
-      "description": "Check the plugin, native host, Microsoft packages, and direct npm dependencies with per-package approval and rollback.",
+      "description": "Update dependencies, migrate templates or repair the native host, with per-package approval and rollback.",
       "kind": "operate",
       "purpose": "Operate",
       "marketplace": "Power Platform Skills",
@@ -680,9 +680,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "check-updates",
-        "sourceSha256": "9fc19bdfe3bd3cea088fd187f85b66deb75344424eb54e684c41d0ae55a8ebd4",
-        "prompt": "Use check-updates: Check the plugin, native host, Microsoft packages, and direct npm dependencies with per-package approval and rollback.",
-        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
+        "sourceSha256": "b79d480ee761c600317dc5a82c33c7a086aa3df04d3f145b2f7efd1d131b7835",
+        "prompt": "Use check-updates: Update dependencies, migrate templates or repair the native host, with per-package approval and rollback.",
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -1018,9 +1018,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "create-mobile-app",
-        "sourceSha256": "047faeecf53366ce2277763f4b5c221de1d55352aa25aff17627aeddda02bafb",
+        "sourceSha256": "8c6f12c5c58b0ca196018a35f7055f0f567d01fd03012f9668cdae37ad48021c",
         "prompt": "Use create-mobile-app: Generate Expo/React Native screens in parallel.",
-        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -1166,9 +1166,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "debug-app",
-        "sourceSha256": "807d53e8dbab7027f7c39d8f107c9317871fefec55895dec09d9a49669b60c1f",
+        "sourceSha256": "057b04e8273d5dd86a13f84342f14fc63461b61df673f72d34550fe8c2cb1195",
         "prompt": "Use debug-app: Check routes, payloads, contrast, icons, and runtime issues.",
-        "sourceRevision": "ea1e2e7518e241617475a567068a270c1a40db52"
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -1341,9 +1341,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "deploy",
-        "sourceSha256": "b107d6b37a2c0a5ab0dfa91e7eeb9854b8db6cff5b726d2de2a69b860db4b6bd",
+        "sourceSha256": "26fd360b6a36944172ae598ae2af0f7becb38c61bc32398f8da6dc4a33f96084",
         "prompt": "Use deploy: Build, push, and prepare distribution through Power Apps Wrap.",
-        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -1493,9 +1493,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "design-system",
-        "sourceSha256": "6ad423f7a5417e13e9e62a5b22b8bb4bae2147d82c2c02c50c225570f9cd9e4c",
+        "sourceSha256": "72754f9e6568366762b749c463ade26e5ba4fd945c2c978d8f9edea343304f99",
         "prompt": "Use design-system: Choose a visual direction and generate branded design tokens.",
-        "sourceRevision": "83e2c4463762156370cdd946689d0fcb8070cb09"
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -1921,9 +1921,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "edit-app",
-        "sourceSha256": "cc8ccdf68356d078fe654e5a05624c34a2d0cd11562a69cee43924eeef4659e1",
+        "sourceSha256": "8e23c9848b1306c6dc6addb8db013a571ac668324a040ca0268f567e231f59d3",
         "prompt": "Use edit-app: Apply safe plan deltas; add offline scope when required.",
-        "sourceRevision": "336c9c5f14f1cb0aef30b4f61cbedf3c06e1a213"
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -3208,9 +3208,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "preview-screens",
-        "sourceSha256": "8a971915d5a3ca5a45a7019cf09212e23fc3e3e7a4b579edca5c7eaaf46c628a",
+        "sourceSha256": "8fda88b20835a65d9e8dfb0986468415d280fe821b90e4fc59241a79c59afc65",
         "prompt": "Use preview-screens: Review generated screens without running Metro.",
-        "sourceRevision": "336c9c5f14f1cb0aef30b4f61cbedf3c06e1a213"
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -4431,7 +4431,7 @@
     {
       "id": "skill-166",
       "name": "powercat-codeappscompact",
-      "description": "Build React/TypeScript Code Apps with typed workspaces and nested-record editors.",
+      "description": "Build Power Apps Code Apps by configuring bundled, accessible controls and compositions.",
       "kind": "build",
       "purpose": "Build",
       "marketplace": "Power CAT Skills",
@@ -4455,9 +4455,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "powercat-codeappscompact",
-        "sourceSha256": "453d44f4ffb8601c90decd6a778609b0f7b76745e05538181ae8109111c16dcc",
-        "prompt": "Use powercat-codeappscompact: Build React/TypeScript Code Apps with typed workspaces and nested-record editors.",
-        "sourceRevision": "67ed2d245f8d0cc8024fd2a572b67983567fb520"
+        "sourceSha256": "68c7218a9ed774d9e2d7a47c9f42ae23dc8050d6230e9e1b36d4244b3f9bd0f0",
+        "prompt": "Use powercat-codeappscompact: Build Power Apps Code Apps by configuring bundled, accessible controls and compositions.",
+        "sourceRevision": "247ceed931a763f1cb93d4aab3da500913d193b9"
       }
     },
     {
@@ -5179,9 +5179,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "add-dataverse",
-        "sourceSha256": "625495842d637e2c056f76751a81e0581cde8977477cb0c7c8a4efe3e1822d98",
+        "sourceSha256": "109b5287aaa35db946568ad611d5879433ab62c2e2948f8fabb74fab137e409c",
         "prompt": "Use add-dataverse: Add existing or new Dataverse tables to a mobile app.",
-        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -5299,9 +5299,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "add-native",
-        "sourceSha256": "9be4cb33348c87bef442d0f99b478d18599b22890908c9f618dd41804ec4f887",
+        "sourceSha256": "4ebac098cdeda36c2134627522d377f40ea81fa293487af34c3f91ee2ea4b25f",
         "prompt": "Use add-native: Add camera, scanner, GPS, PDF or pen capabilities to a mobile app.",
-        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -5419,9 +5419,9 @@
         "kind": "skill",
         "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
         "skillName": "report-issue",
-        "sourceSha256": "a06cfbb46d9db19a087a9388c63459358238cd848612d39daf9a7f20a33c51ce",
+        "sourceSha256": "6c4fdca8aa0d29ec605ed73142fd54030cff0736502a3527f8b94defd0131e8d",
         "prompt": "Use report-issue: Prepare a GitHub issue body for the mobile-apps plugin.",
-        "sourceRevision": "198d91b94abc29fcd59962d6202b454274500411"
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
       }
     },
     {
@@ -5453,7 +5453,7 @@
     {
       "id": "skill-201",
       "name": "add-geolocation",
-      "description": "Background GPS tracking with durable storage for add-native.",
+      "description": "One-shot location or background GPS tracking with durable storage for add-native.",
       "kind": "build",
       "purpose": "Build",
       "marketplace": "Power Platform Skills",
@@ -7082,6 +7082,150 @@
         "sourceSha256": "582e2e50cb08a3dc90c71e91a9c73bd498e6658282bf705d94aa84b3bfa783f5",
         "prompt": "Use powercat-nintex-form-to-canvas: Inventory and verify a Nintex form export, then hand off an approved Canvas App migration.",
         "sourceRevision": "78e6b6bf1f1226906b41077d512911d6325f8022"
+      }
+    },
+    {
+      "id": "skill-259",
+      "name": "architecture-planner",
+      "description": "Propose the architecture and, when Dataverse is selected, the data model for a previewed mobile app.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/mobile-apps/agents/architecture-planner.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "23 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · PLAN"
+      ],
+      "tier": "skill",
+      "displayName": "Architecture Planner",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the mobile-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-260",
+      "name": "preview-screen-builder",
+      "description": "Build one screen of the sample-data preview from the approved screen graph.",
+      "kind": "build",
+      "purpose": "Build",
+      "marketplace": "Power Platform Skills",
+      "maturity": "Preview",
+      "status": "Private Preview",
+      "source": "https://github.com/microsoft/power-platform-skills/blob/main/plugins/mobile-apps/agents/preview-screen-builder.md",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "23 Nov 2026",
+      "products": [
+        "Power Apps"
+      ],
+      "locations": [
+        "Power Apps Skills Index / Mobile Apps · BUILD"
+      ],
+      "tier": "skill",
+      "displayName": "Preview Screen Builder",
+      "action": {
+        "kind": "agent-only",
+        "note": "Sub-agent the mobile-apps plugin's workflows invoke; not a direct user command."
+      }
+    },
+    {
+      "id": "skill-261",
+      "name": "migrate-datamodel",
+      "description": "Migrate an existing Power Pages site from the Standard to the Enhanced data model with PAC CLI.",
+      "kind": "migrate",
+      "purpose": "Migrate",
+      "marketplace": "Power Platform Skills",
+      "maturity": "GA",
+      "status": "Generally available",
+      "source": "https://github.com/microsoft/power-platform-skills/tree/main/plugins/power-pages/skills/migrate-datamodel",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "23 Nov 2026",
+      "products": [
+        "Modernization"
+      ],
+      "locations": [
+        "Modernization & Migration Skills Index / Power Pages · TRANSFORM"
+      ],
+      "tier": "skill",
+      "displayName": "Migrate Datamodel",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "migrate-datamodel",
+        "sourceSha256": "44c2f81052828e9eda745fa1736ece6eba644e0c5acbc474d26e845c806666eb",
+        "prompt": "Use migrate-datamodel: Migrate an existing Power Pages site from the Standard to the Enhanced data model with PAC CLI.",
+        "sourceRevision": "28c209c9eec2b7dedd598b3e211104a0b04e94c7"
+      }
+    },
+    {
+      "id": "skill-262",
+      "name": "powercat-nintex-workflow-to-power-automate",
+      "description": "Inventory and verify a Nintex workflow export, then build a validated Power Automate cloud flow.",
+      "kind": "migrate",
+      "purpose": "Migrate",
+      "marketplace": "Power CAT Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/Power%20Platform%20Migration%20Factory/powercat-nintex-workflow-to-power-automate",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "23 Nov 2026",
+      "products": [
+        "Modernization",
+        "Power CAT"
+      ],
+      "locations": [
+        "Modernization & Migration Skills Index / SharePoint / Dataverse · TRANSFORM",
+        "Power CAT Advisory Skills Index / MODERNIZE"
+      ],
+      "tier": "skill",
+      "displayName": "Nintex Workflow To Power Automate",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "powercat-nintex-workflow-to-power-automate",
+        "sourceSha256": "2fbc84d419d70f161a85514a945d08901b0e545ac8eee7d181549f1ad1c342f3",
+        "prompt": "Use powercat-nintex-workflow-to-power-automate: Inventory and verify a Nintex workflow export, then build a validated Power Automate cloud flow.",
+        "sourceRevision": "247ceed931a763f1cb93d4aab3da500913d193b9"
+      }
+    },
+    {
+      "id": "skill-263",
+      "name": "powercat-template",
+      "description": "Apply the official Power CAT template to presentations, documents and apps.",
+      "kind": "author",
+      "purpose": "Author",
+      "marketplace": "Power CAT Skills",
+      "maturity": "Unspecified",
+      "status": "Release status not established",
+      "source": "https://github.com/microsoft/power-cat-skills/tree/main/plugins/powercat-template/skills/powercat-template",
+      "license": "MIT licensed",
+      "publisher": "Microsoft",
+      "verified": "23 Nov 2026",
+      "products": [
+        "Power CAT"
+      ],
+      "locations": [
+        "Power CAT Advisory Skills Index / ADOPT"
+      ],
+      "tier": "skill",
+      "displayName": "Power CAT Template",
+      "action": {
+        "kind": "skill",
+        "note": "Source-defined Agent Skill; use natural-language intent in a compatible installed host.",
+        "skillName": "powercat-template",
+        "sourceSha256": "e6134504c20c8b5cbb521631d803935d2b26298684e0a6f34bf3b35ec931c980",
+        "prompt": "Use powercat-template: Apply the official Power CAT template to presentations, documents and apps.",
+        "sourceRevision": "247ceed931a763f1cb93d4aab3da500913d193b9"
       }
     }
   ]
